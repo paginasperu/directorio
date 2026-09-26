@@ -59,6 +59,15 @@ function loadBusinesses() {
     });
 }
 
+        // Estado de categorías, filtros y ficha abierta.
+        let activeCategory = "Todos";
+        let activeType = "all";
+        let categorySelected = false;
+        let modalReturnFocus = null;
+        let modalCloseTimer = null;
+        let currentDetailId = null;
+        let lastOpenStateSignature = '';
+        let pendingStatusRefresh = false;
         let categoryOptions = [];
         const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
         const normalizeSearch = value => String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/\s+/g, ' ').trim();
@@ -154,7 +163,7 @@ function loadBusinesses() {
             document.addEventListener('visibilitychange', () => {
                 if (!document.hidden) refreshOpenStates();
             });
-            lucide.createIcons();
+            window.lucide?.createIcons?.();
             const siteHeader = document.getElementById('siteHeader');
             let lastScrollY = window.scrollY;
             let hiddenDistance = 0;
@@ -281,7 +290,7 @@ function loadBusinesses() {
                     </div>
                 </article>`;
             }).join('');
-            lucide.createIcons();
+            window.lucide?.createIcons?.();
         }
 
         function openStateSignature(now = new Date()) {
@@ -373,7 +382,7 @@ function loadBusinesses() {
             contactButton.textContent = 'Contactar por WhatsApp';
             contactButton.classList.toggle('hidden', !contact);
             toggleModal('modalDetail', true);
-            lucide.createIcons();
+            window.lucide?.createIcons?.();
         }
 
         // Controlador Genérico de Modales
