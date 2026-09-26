@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIRECTORIO OFICIAL - Negocios, productos y servicios</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                        },
+                        gold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .site-header { background: #26344d; color: #fff; transition: transform 320ms cubic-bezier(.2,.7,.2,1); }
+        .card-shadow {
+            box-shadow: 0 10px 25px -5px rgba(124, 58, 237, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+        }
+        #providersGrid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 1rem;
+            width: 100%;
+        }
+        .provider-card { min-width: 0; display: flex; flex-direction: column; gap: 14px; padding: 18px; border: 1px solid #e2e8f0; border-radius: 18px; background: #fff; box-shadow: 0 4px 18px #26344d0a; transition: border-color .2s, box-shadow .2s, transform .2s; }
+        .provider-card:hover { border-color: #cbd5e1; box-shadow: 0 12px 28px #26344d14; transform: translateY(-2px); }
+        .provider-primary { display: grid; grid-template-columns: 60px minmax(0, 1fr); gap: 14px; width: 100%; min-height: 86px; text-align: left; cursor: pointer; }
+        .provider-primary:focus-visible, .provider-detail:focus-visible, .provider-whatsapp:focus-visible { outline: 2px solid #7c3aed; outline-offset: 3px; }
+        .provider-primary:hover .provider-name { color: #26344d; }
+        .provider-primary:hover .provider-avatar { background: #dce4ef; }
+        .provider-avatar { width: 60px; height: 60px; border-radius: 14px; display: grid; place-items: center; overflow: hidden; background: #e9edf5; color: #26344d; font-size: 19px; font-weight: 800; letter-spacing: -.04em; flex: none; }
+        .provider-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .provider-avatar img[hidden], .provider-avatar span[hidden] { display: none; }
+        .provider-main { min-width: 0; }
+        .provider-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+        .provider-classification { min-width: 0; color: #64748b; font-size: 12px; font-weight: 700; line-height: 1.3; }
+        .provider-status { display: inline-flex; align-items: center; gap: 5px; flex: none; color: #52765d; font-size: 11px; font-weight: 700; white-space: nowrap; }
+        .provider-status::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+        .provider-status.closed { color: #82736e; }
+        .provider-status.unknown { color: #64748b; }
+        .provider-name { display: block; margin-top: 6px; color: #0f172a; font-size: 17px; line-height: 1.25; font-weight: 800; text-align: left; }
+        .provider-description { margin-top: 5px; color: #64748b; font-size: 12px; line-height: 1.45; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+        .provider-footer { display: flex; align-items: center; flex-wrap: wrap; column-gap: 16px; row-gap: 4px; margin-top: auto; padding-top: 10px; border-top: 1px solid #e9edf5; }
+        .provider-location { display: inline-flex; align-items: center; gap: 5px; margin-right: auto; min-width: 0; color: #64748b; font-size: 12px; }
+        .provider-detail, .provider-whatsapp { display: inline-flex; align-items: center; min-height: 32px; flex: none; font-size: 12px; font-weight: 800; }
+        .provider-detail { color: #26344d; }
+        .provider-whatsapp { padding: 0 10px; border: 1px solid #cae7d5; border-radius: 8px; background: #edf8f1; color: #226442; }
+        .provider-whatsapp:hover { background: #e0f2e7; border-color: #a6d4b6; }
+        .detail-avatar { width: 64px; height: 64px; border-radius: 15px; display: grid; place-items: center; flex: none; overflow: hidden; background: #e9edf5; color: #26344d; font-size: 20px; font-weight: 800; }
+        .detail-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .detail-info { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+        .detail-info > div { min-width: 0; padding: 12px; border-radius: 12px; background: #f8fafc; }
+        .detail-info dt { color: #64748b; font-size: 11px; font-weight: 600; }
+        .detail-info dd { margin-top: 3px; color: #334155; font-size: 13px; font-weight: 700; overflow-wrap: anywhere; }
+        @media (min-width: 768px) {
+            #providersGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (min-width: 1024px) {
+            #providersGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        }
+
+        .brand-logo { display: inline-flex; align-items: center; flex-shrink: 0; }
+        .brand-avatar { width: 52px; height: 52px; border-radius: 50%; background: #f1f5f9; border: 1px solid #dbe3ee; color: #7c3aed; display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; }
+        .brand-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .brand-avatar svg { width: 25px; height: 25px; }
+        .header-layout { display: flex; gap: 16px; }
+        .header-brand { width: auto; height: 42px; text-align: left; flex-shrink: 0; }
+        .header-brand img { width: 220px; max-width: 100%; height: 100%; object-fit: contain; object-position: left center; }
+        .header-brand img[hidden], .header-brand span[hidden] { display: none; }
+        .header-brand-name { color: #fff; font-size: 18px; line-height: 1.15; font-weight: 800; letter-spacing: -.04em; white-space: nowrap; }
+        .header-search { flex: 0 1 600px; width: 100%; max-width: 600px; }
+        .header-search-icon { width: 52px; }
+        .subscribe-soft { background: transparent; color: #e9edf5; border: 0; }
+        .subscribe-soft:hover { color: #fff; text-decoration: underline; text-underline-offset: 4px; }
+        .subscribe-soft:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+        footer { background: #fff !important; border-color: #e2e8f0 !important; }
+        footer a:hover { color: #7c3aed !important; }
+        .category-strip { background: #e9edf5; border-bottom: 1px solid #d7deea; }
+        #categoryNavigation { display: flex; align-items: center; gap: 6px; overflow-x: auto; scrollbar-width: thin; }
+        .category-option { flex: none; padding: 10px 13px 8px; border-bottom: 2px solid transparent; color: #26344d; font-size: 13px; font-weight: 600; white-space: nowrap; }
+        .category-option:hover { background: #dce4f1; }
+        .category-option[aria-pressed="true"] { border-bottom-color: #6d28d9; color: #4c1d95; }
+        .category-option:focus-visible { outline: 2px solid #7c3aed; outline-offset: -3px; }
+        .results-filters { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+        #moreFilters, #emptyState, #providersGrid { scroll-margin-top: 84px; }
+        .results-filters select { min-width: 180px; }
+        .open-switch { display: inline-flex; align-items: center; gap: 10px; min-height: 40px; cursor: pointer; color: #334155; font-size: 14px; font-weight: 600; }
+        .switch-track { display: inline-flex; width: 40px; height: 24px; align-items: center; border-radius: 999px; background: #cbd5e1; padding: 3px; transition: background 160ms ease; }
+        .switch-thumb { width: 18px; height: 18px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px #0003; transition: transform 160ms ease; }
+        .open-switch input:checked + .switch-track { background: #6d28d9; }
+        .open-switch input:checked + .switch-track .switch-thumb { transform: translateX(16px); }
+        .open-switch input:focus-visible + .switch-track { outline: 2px solid #6d28d9; outline-offset: 3px; }
+        @media (max-width: 767px) {
+            .header-layout { gap: 8px; }
+            .header-brand { width: auto; max-width: calc(100% - 112px); height: 42px; }
+            .header-brand-name { font-size: clamp(11px, 3.3vw, 15px); }
+            .subscribe-soft { padding: 8px 10px; font-size: 12px; }
+            #mobileSearch > form { min-width: 0; }
+            .results-filters select { flex: 1 1 140px; min-width: 0; }
+            .provider-card { padding: 15px; gap: 12px; }
+            .provider-primary { gap: 12px; }
+            .detail-info { grid-template-columns: 1fr; }
+        }
+        @media (prefers-reduced-motion: reduce) { .site-header { transform: none !important; } }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-brand-500 selection:text-white">
+
+    <header id="siteHeader" class="site-header sticky top-0 z-40">
+        <div class="header-layout max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 items-center">
+            <button class="header-brand" onclick="goHome()" aria-label="Directorio Oficial, inicio">
+                <img id="businessLogo" alt="Directorio Oficial" hidden onload="this.hidden=false; this.nextElementSibling.hidden=true" onerror="this.hidden=true; this.nextElementSibling.hidden=false">
+                <span id="directoryName" class="header-brand-name">DIRECTORIO OFICIAL</span>
+            </button>
+
+            <div class="header-search hidden md:flex items-center min-w-0">
+                <form class="relative flex-1 min-w-0" onsubmit="showSearchResults(event)">
+                    <input type="text" id="searchInput" aria-label="Buscar producto, servicio o negocio" oninput="applyFilters()" placeholder="Buscar producto, servicio o negocio" class="w-full h-10 pl-4 pr-14 bg-white border border-slate-300 rounded-lg text-[15px] text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500">
+                    <button type="submit" aria-label="Ver resultados" title="Ver resultados" class="header-search-icon absolute right-0 top-0 h-10 flex items-center justify-center text-slate-700 border-l border-slate-200 rounded-r-lg hover:bg-slate-50"><i data-lucide="search" class="w-5 h-5"></i></button>
+                </form>
+            </div>
+
+            <a id="subscribeLink" href="https://wa.me/51950141414?text=Hola%2C%20quiero%20suscribirme%20gratis%20al%20Directorio%20Oficial..." target="_blank" rel="noopener noreferrer" aria-label="Suscríbete por WhatsApp para recibir promociones, novedades y recomendaciones" class="subscribe-soft ml-auto shrink-0 px-3 py-2 text-sm font-medium transition">Suscríbete</a>
+        </div>
+
+        <div id="mobileSearch" class="md:hidden px-4 pb-2 flex flex-wrap gap-2">
+            <form class="relative flex-1" onsubmit="showSearchResults(event)">
+                <input type="text" id="mobileSearchInput" aria-label="Buscar producto, servicio o negocio" oninput="syncMobileSearch(this.value)" placeholder="Buscar producto, servicio o negocio" class="w-full h-11 pl-3 pr-11 bg-white border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                <button type="submit" aria-label="Ver resultados" title="Ver resultados" class="absolute right-0 top-0 h-11 w-11 flex items-center justify-center text-slate-600"><i data-lucide="search" class="w-5 h-5"></i></button>
+            </form>
+        </div>
+
+    </header>
+    <div class="category-strip">
+        <nav id="categoryNavigation" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Categorías de anuncios"></nav>
+    </div>
+
+
+    <main class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 relative z-20 flex-grow pb-16">
+        <section id="moreFilters" class="hidden mb-6 rounded-xl border border-slate-200 bg-white p-4 shadow-sm" aria-label="Filtros de resultados">
+            <div class="mb-3 flex items-baseline justify-between gap-3">
+                <h2 class="text-sm font-bold text-slate-800">Filtrar resultados</h2>
+                <span id="resultsCount" class="text-xs text-slate-500" aria-live="polite"></span>
+            </div>
+            <div class="results-filters">
+                <label class="open-switch">
+                    <input id="openNowFilter" type="checkbox" role="switch" class="sr-only" onchange="applyFilters()">
+                    <span class="switch-track" aria-hidden="true"><span class="switch-thumb"></span></span>
+                    <span>Solo abiertos ahora</span>
+                </label>
+                <select id="typeFilter" aria-label="Tipo de negocio" onchange="setTypeFilter(this.value)" class="px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm">
+                    <option value="all">Todos los tipos</option>
+                </select>
+                <button onclick="resetFilters()" class="px-3 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-sm font-semibold">Limpiar búsqueda y filtros</button>
+            </div>
+        </section>
+
+        <div id="providersGrid">
+            <!-- Renderizado dinámico de tarjetas -->
+        </div>
+
+        <!-- Estado vacío si no hay resultados -->
+        <div id="emptyState" class="hidden text-center py-16 bg-white rounded-3xl border border-dashed border-slate-300 my-8">
+            <div class="w-16 h-16 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i data-lucide="search-x" class="w-8 h-8"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-800">No se encontraron resultados</h3>
+            <p class="text-sm text-slate-500 mt-1 max-w-md mx-auto">Prueba con otra palabra, categoría o tipo de negocio.</p>
+            <button id="searchAllCategoriesButton" type="button" onclick="searchAllCategories()" class="hidden mt-4 px-4 py-2 bg-brand-600 text-white text-xs font-bold rounded-xl hover:bg-brand-700">Buscar en todas las categorías</button>
+            <button onclick="resetFilters()" class="mt-4 px-4 py-2 bg-brand-50 text-brand-700 text-xs font-bold rounded-xl hover:bg-brand-100 transition">
+                Limpiar búsqueda y filtros
+            </button>
+        </div>
+    </main>
+
+    <div id="modalDetail" role="dialog" aria-modal="true" aria-labelledby="modalTitle" class="fixed inset-0 z-50 hidden overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden relative max-h-[90vh] flex flex-col my-auto transition-all transform scale-95 opacity-0 duration-300" id="modalDetailContent">
+            <button type="button" onclick="toggleModal('modalDetail', false)" aria-label="Cerrar ficha" class="absolute top-4 right-4 z-20 w-9 h-9 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-full flex items-center justify-center"><i data-lucide="x" class="w-5 h-5"></i></button>
+            <div class="overflow-y-auto flex-grow">
+                <img id="modalImg" alt="" class="hidden w-full max-h-52 object-cover">
+                <div class="p-5 sm:p-7 space-y-5">
+                    <div class="flex items-start gap-4 pr-9">
+                        <div class="detail-avatar"><img id="modalProfileImg" class="hidden" alt=""><span id="modalInitials"></span></div>
+                        <div class="min-w-0">
+                            <p class="text-xs font-extrabold text-brand-700"><span id="modalCategory"></span> · <span id="modalTypeBadge"></span></p>
+                            <h2 id="modalTitle" class="text-2xl font-extrabold text-slate-900 leading-tight mt-1"></h2>
+                            <p id="modalDescription" class="text-slate-600 text-sm leading-relaxed mt-2"></p>
+                        </div>
+                    </div>
+                    <dl class="detail-info">
+                        <div><dt>Ubicación</dt><dd id="modalLocation"></dd></div>
+                        <div><dt>Atención</dt><dd id="modalOpenStatus"></dd></div>
+                        <div><dt>Horario</dt><dd id="modalHours"></dd></div>
+                        <div><dt>Teléfono para llamadas</dt><dd id="modalPhone"></dd></div>
+                    </dl>
+                    <div id="modalProductsSection"><h3 class="text-sm font-bold text-slate-900 mb-2">Productos</h3><ul id="modalProducts" class="flex flex-wrap gap-2"></ul></div>
+                    <div id="modalServicesSection"><h3 class="text-sm font-bold text-slate-900 mb-2">Servicios</h3><ul id="modalServices" class="flex flex-wrap gap-2"></ul></div>
+                    <div id="modalContactLinks" class="flex flex-wrap gap-2"></div>
+                </div>
+            </div>
+            <div class="p-4 sm:px-7 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row justify-end gap-2.5">
+                <a id="modalCallBtn" href="#" class="w-full sm:w-auto px-5 py-3 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-xl text-sm text-center">Llamar</a>
+                <a id="modalWhatsappBtn" href="#" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-5 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-sm text-center">Contactar por WhatsApp</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <button class="brand-logo" onclick="goHome()" aria-label="Directorio Oficial, inicio"><span class="brand-avatar"><i data-lucide="store" aria-hidden="true"></i></span></button>
+            
+            <p class="text-xs text-slate-500 text-center">
+                © 2026 <span id="directoryFooterName">DIRECTORIO OFICIAL</span>
+            </p>
+
+            <div class="flex gap-4 text-xs font-medium">
+                <a id="contactLink" href="https://wa.me/51950141414?text=Hola%2C%20quiero%20contactar%20al%20Directorio%20Oficial..." target="_blank" rel="noopener noreferrer" class="hover:text-white transition">Contacto</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Data de Proveedores / Productos / Servicios
+        // Solo datos públicos aprobados se envían al navegador.
+        const directoryConfig = { name: 'DIRECTORIO OFICIAL', logoUrl: '', timeZone: 'America/Lima', contactWhatsapp: '51950141414' };
+        const providersData = [
+            { id: 1, name: 'Costa y Sabor', description: 'Ceviches y platos marinos preparados al momento.', category: 'Restaurantes', type: 'Cevichería', location: 'Local A-01', whatsapp: '51950141414', callPhone: '950141414', additionalPhones: [], instagram: '', facebook: '', tiktok: '', products: ['Ceviche clásico', 'Chicharrón de pescado'], services: [], profilePhoto: '', coverPhoto: '', openingHours: [{ days: [1,2,3,4,5,6], opens: '11:00', closes: '19:00' }] },
+            { id: 2, name: 'Sazón a la Brasa', description: 'Pollos a la brasa y opciones para compartir.', category: 'Restaurantes', type: 'Pollería', location: 'Local A-02', whatsapp: '51950141414', callPhone: '950141414', additionalPhones: [], instagram: '', facebook: '', tiktok: '', products: ['Pollo a la brasa', 'Papas fritas'], services: [], profilePhoto: '', coverPhoto: '', openingHours: [{ days: [0,1,2,3,4,5,6], opens: '12:00', closes: '22:00' }] },
+            { id: 3, name: 'Manos y Color', description: 'Cuidado y diseño de uñas con atención previa cita.', category: 'Belleza', type: 'Salón de uñas', location: 'Local B-01', whatsapp: '51950141414', callPhone: '950141414', additionalPhones: [], instagram: '', facebook: '', tiktok: '', products: [], services: ['Manicura', 'Diseño de uñas'], profilePhoto: '', coverPhoto: '', openingHours: [{ days: [1,2,3,4,5,6], opens: '10:00', closes: '20:00' }] },
+            { id: 4, name: 'Corte Urbano', description: 'Cortes de cabello y arreglo de barba.', category: 'Belleza', type: 'Barbería', location: 'Local B-02', whatsapp: '51950141414', callPhone: '950141414', additionalPhones: [], instagram: '', facebook: '', tiktok: '', products: [], services: ['Corte clásico', 'Arreglo de barba'], profilePhoto: '', coverPhoto: '', openingHours: [{ days: [2,3,4,5,6,0], opens: '09:00', closes: '19:00' }] },
+            { id: 5, name: 'Estilo Diario', description: 'Prendas y accesorios para uso diario.', category: 'Moda', type: 'Boutique', location: 'Local C-01', whatsapp: '51950141414', callPhone: '950141414', additionalPhones: [], instagram: '', facebook: '', tiktok: '', products: ['Blusas', 'Accesorios'], services: [], profilePhoto: '', coverPhoto: '', openingHours: [{ days: [1,2,3,4,5,6], opens: '10:00', closes: '20:00' }] },
+            { id: 6, name: 'Mundo Móvil', description: 'Accesorios y protección para teléfonos.', category: 'Tecnología', type: 'Accesorios de celulares', location: 'Local C-02', whatsapp: '51950141414', callPhone: '950141414', additionalPhones: [], instagram: '', facebook: '', tiktok: '', products: ['Fundas', 'Cargadores'], services: [], profilePhoto: '', coverPhoto: '', openingHours: [{ days: [0,1,2,3,4,5,6], opens: '10:00', closes: '21:00' }] },
+            { id: 7, name: 'Casa Viva', description: 'Artículos decorativos para el hogar.', category: 'Hogar', type: 'Decoración', location: 'Local D-01', whatsapp: '51950141414', callPhone: '950141414', additionalPhones: [], instagram: '', facebook: '', tiktok: '', products: ['Lámparas', 'Cuadros'], services: [], profilePhoto: '', coverPhoto: '', openingHours: [{ days: [1,2,3,4,5,6], opens: '10:00', closes: '19:00' }] },
+            { id: 8, name: 'Soporte Express', description: 'Diagnóstico y reparación de teléfonos.', category: 'Servicios', type: 'Reparación de celulares', location: 'Local D-02', whatsapp: '51950141414', callPhone: '950141414', additionalPhones: [], instagram: '', facebook: '', tiktok: '', products: [], services: ['Diagnóstico', 'Cambio de pantalla'], profilePhoto: '', coverPhoto: '', openingHours: [{ days: [1,2,3,4,5,6], opens: '09:00', closes: '18:00' }] }
+        ];
+
+        // Estado de filtros
+        let activeCategory = "Todos";
+        let activeType = "all";
+        let categorySelected = false;
+        let modalReturnFocus = null;
+        let modalCloseTimer = null;
+        let currentDetailId = null;
+        let lastOpenStateSignature = '';
+        let pendingStatusRefresh = false;
+
+
+        const categoryOptions = ['Todos', ...new Set(providersData.map(item => item.category))];
+        const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+        const normalizeSearch = value => String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/\s+/g, ' ').trim();
+        const matchesSearch = (item, query) => !query || normalizeSearch([item.name, item.description, item.category, item.type, item.location, ...item.products, ...item.services].join(' ')).includes(query);
+        const businessInitials = name => String(name || '').trim().split(/\s+/).slice(0, 2).map(word => word[0] || '').join('').toLocaleUpperCase('es');
+        const safePhoto = value => {
+            const url = String(value || '').trim();
+            return /^(https?:\/\/|\.?\.?\/|[a-z0-9_-][a-z0-9_./-]*$)/i.test(url) ? url : '';
+        };
+        const whatsappUrl = item => {
+            const digits = String(item.whatsapp || '').replace(/\D/g, '');
+            return digits.length >= 8 && digits.length <= 15
+                ? `https://wa.me/${digits}?text=${encodeURIComponent(`Hola, vi tu negocio ${item.name} en ${directoryConfig.name}...`)}`
+                : null;
+        };
+        function getOpenState(item, now = new Date()) {
+            if (!item.openingHours?.length) return null;
+            const parts = Object.fromEntries(new Intl.DateTimeFormat('en-US', {
+                timeZone: directoryConfig.timeZone, weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23'
+            }).formatToParts(now).map(part => [part.type, part.value]));
+            const day = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(parts.weekday);
+            const minute = Number(parts.hour) * 60 + Number(parts.minute);
+            const toMinute = time => Number(time.slice(0, 2)) * 60 + Number(time.slice(3, 5));
+            return item.openingHours.some(slot => {
+                const opens = toMinute(slot.opens), closes = toMinute(slot.closes);
+                if (opens === closes) return false;
+                if (opens < closes) return slot.days.includes(day) && minute >= opens && minute < closes;
+                const previousDay = (day + 6) % 7;
+                return (slot.days.includes(day) && minute >= opens) || (slot.days.includes(previousDay) && minute < closes);
+            });
+        }
+        function formatHours(item) {
+            if (!item.openingHours?.length) return 'Horario no informado';
+            const days = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+            return item.openingHours.map(slot => `${slot.days.length === 7 ? 'Todos los días' : `${days[slot.days[0]]}–${days[slot.days.at(-1)]}`} · ${slot.opens}–${slot.closes}`).join('; ');
+        }
+        function syncCategoryControls() {
+            document.getElementById('categoryNavigation').innerHTML = categoryOptions.map((name, index) =>
+                `<button type="button" class="category-option" data-category-index="${index}" aria-pressed="${name === activeCategory}">${escapeHtml(name)}</button>`
+            ).join('');
+            const types = [...new Set(providersData.filter(item => activeCategory === 'Todos' || item.category === activeCategory).map(item => item.type))];
+            const typeFilter = document.getElementById('typeFilter');
+            typeFilter.innerHTML = '<option value="all">Todos los tipos</option>' + types.map(type => `<option value="${escapeHtml(type)}">${escapeHtml(type)}</option>`).join('');
+            typeFilter.value = activeType;
+        }
+
+        // Inicialización
+        window.onload = function() {
+            // Ajusta directoryConfig para cada mercado, galería, centro comercial o feria.
+            document.title = `${directoryConfig.name} - Negocios, productos y servicios`;
+            document.getElementById('directoryName').textContent = directoryConfig.name;
+            document.getElementById('directoryFooterName').textContent = directoryConfig.name;
+            const directoryPhone = String(directoryConfig.contactWhatsapp || '').replace(/\D/g, '');
+            if (directoryPhone.length >= 8 && directoryPhone.length <= 15) {
+                document.getElementById('subscribeLink').href = `https://wa.me/${directoryPhone}?text=${encodeURIComponent(`Hola, quiero suscribirme gratis al ${directoryConfig.name}...`)}`;
+                document.getElementById('contactLink').href = `https://wa.me/${directoryPhone}?text=${encodeURIComponent(`Hola, quiero contactar al ${directoryConfig.name}...`)}`;
+            }
+            document.getElementById('businessLogo').alt = directoryConfig.name;
+            document.querySelector('.header-brand').setAttribute('aria-label', `${directoryConfig.name}, inicio`);
+            if (directoryConfig.logoUrl) document.getElementById('businessLogo').src = directoryConfig.logoUrl;
+            document.getElementById('categoryNavigation').addEventListener('click', event => {
+                const button = event.target.closest('[data-category-index]');
+                if (button) selectCategory(categoryOptions[Number(button.dataset.categoryIndex)]);
+            });
+            const detailModal = document.getElementById('modalDetail');
+            detailModal.addEventListener('click', event => {
+                if (event.target === detailModal) toggleModal('modalDetail', false);
+            });
+            document.addEventListener('keydown', event => {
+                if (detailModal.classList.contains('hidden')) return;
+                if (event.key === 'Escape') {
+                    event.preventDefault();
+                    toggleModal('modalDetail', false);
+                } else if (event.key === 'Tab') {
+                    const focusable = [...detailModal.querySelectorAll('button:not([disabled]), a[href]')]
+                        .filter(element => !element.classList.contains('hidden'));
+                    if (!focusable.length) return;
+                    const first = focusable[0], last = focusable.at(-1);
+                    if (event.shiftKey && document.activeElement === first) {
+                        event.preventDefault();
+                        last.focus();
+                    } else if (!event.shiftKey && document.activeElement === last) {
+                        event.preventDefault();
+                        first.focus();
+                    }
+                }
+            });
+            applyFilters();
+            setInterval(() => {
+                if (!document.hidden) refreshOpenStates();
+            }, 60000);
+            document.addEventListener('visibilitychange', () => {
+                if (!document.hidden) refreshOpenStates();
+            });
+            lucide.createIcons();
+            const siteHeader = document.getElementById('siteHeader');
+            let lastScrollY = window.scrollY;
+            let hiddenDistance = 0;
+            window.addEventListener('scroll', () => {
+                const currentScrollY = window.scrollY;
+                const movement = currentScrollY - lastScrollY;
+                const headerHeight = siteHeader.offsetHeight;
+                hiddenDistance = currentScrollY < 30
+                    ? 0
+                    : Math.max(0, Math.min(headerHeight, hiddenDistance + movement * 0.75));
+                siteHeader.style.transform = `translateY(-${hiddenDistance}px)`;
+                lastScrollY = currentScrollY;
+            }, { passive: true });
+        };
+
+        // Seleccionar Categoría
+        function selectCategory(catName) {
+            activeCategory = catName;
+            categorySelected = catName !== 'Todos';
+            activeType = 'all';
+            applyFilters();
+        }
+
+        // Cambiar subcategoría o tipo de negocio
+        function setTypeFilter(type) {
+            activeType = type;
+            applyFilters();
+        }
+        function searchAllCategories() {
+            activeCategory = 'Todos';
+            activeType = 'all';
+            categorySelected = false;
+            applyFilters();
+            document.getElementById('moreFilters').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Restablecer Filtros
+        function resetFilters() {
+            document.getElementById('searchInput').value = '';
+            const mobileSearch = document.getElementById('mobileSearchInput'); if (mobileSearch) mobileSearch.value = '';
+            document.getElementById('openNowFilter').checked = false;
+            activeCategory = "Todos";
+            activeType = "all";
+            categorySelected = false;
+            document.getElementById('typeFilter').value = 'all';
+            
+            applyFilters();
+        }
+        function goHome() {
+            resetFilters();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Filtrar y Renderizar Tarjetas
+        function applyFilters(now = new Date()) {
+            syncCategoryControls();
+            const searchValue = normalizeSearch(document.getElementById('searchInput').value);
+            const openOnly = document.getElementById('openNowFilter').checked;
+            const hasSearch = Boolean(searchValue || categorySelected || openOnly || activeType !== 'all');
+            document.body.classList.toggle('has-search', hasSearch);
+            document.getElementById('moreFilters').classList.toggle('hidden', !hasSearch);
+            document.getElementById('mobileSearchInput').value = document.getElementById('searchInput').value;
+
+            const filtered = providersData.filter(item => {
+                // Filtro Categoría
+                const matchesCategory = (activeCategory === "Todos") || (item.category === activeCategory);
+                
+                // Filtro Tipo
+                const matchesType = (activeType === "all") || (item.type === activeType);
+
+                // Abierto/cerrado se calcula del horario publicado en la zona del directorio.
+                const openState = getOpenState(item, now);
+                const matchesHours = !openOnly || openState === true;
+
+                // Filtro Texto
+                const matchesText = matchesSearch(item, searchValue);
+
+                return matchesCategory && matchesType && matchesHours && matchesText;
+            });
+
+            document.getElementById('resultsCount').textContent = `${filtered.length} ${filtered.length === 1 ? 'resultado' : 'resultados'}`;
+            renderGrid(filtered, now);
+            const hasBroaderMatches = !filtered.length && activeCategory !== 'Todos' && Boolean(searchValue) &&
+                providersData.some(item => item.category !== activeCategory && (!openOnly || getOpenState(item, now) === true) && matchesSearch(item, searchValue));
+            document.getElementById('searchAllCategoriesButton').classList.toggle('hidden', !hasBroaderMatches);
+            lastOpenStateSignature = openStateSignature(now);
+        }
+
+        // Renderizar fichas con campos públicos de NEGOCIOS.
+        function renderGrid(items, now = new Date()) {
+            const grid = document.getElementById('providersGrid');
+            const emptyState = document.getElementById('emptyState');
+            if (!items.length) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+            emptyState.classList.add('hidden');
+            grid.innerHTML = items.map(item => {
+                const open = getOpenState(item, now);
+                const contact = whatsappUrl(item);
+                const profile = safePhoto(item.profilePhoto);
+                const openText = open === null ? 'Horario no informado' : open ? 'Abierto ahora' : 'Cerrado ahora';
+                const statusClass = open === null ? 'unknown' : open ? '' : 'closed';
+                return `
+                <article class="provider-card">
+                    <button type="button" onclick="openDetailModal(${item.id})" aria-label="Ver ficha de ${escapeHtml(item.name)}" class="provider-primary">
+                        <span class="provider-avatar" aria-hidden="true">
+                            ${profile ? `<img src="${escapeHtml(profile)}" alt="" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span hidden>${escapeHtml(businessInitials(item.name))}</span>` : `<span>${escapeHtml(businessInitials(item.name))}</span>`}
+                        </span>
+                        <span class="provider-main">
+                            <span class="provider-top">
+                                <span class="provider-classification">${escapeHtml(item.category)} · ${escapeHtml(item.type)}</span>
+                                <span class="provider-status ${statusClass}" data-status-id="${item.id}">${openText}</span>
+                            </span>
+                            <span class="provider-name">${escapeHtml(item.name)}</span>
+                            <span class="provider-description">${escapeHtml(item.description)}</span>
+                        </span>
+                    </button>
+                    <div class="provider-footer">
+                        <span class="provider-location"><i data-lucide="map-pin" class="w-3.5 h-3.5 shrink-0" aria-hidden="true"></i><span>${escapeHtml(item.location)}</span></span>
+                        <button type="button" onclick="openDetailModal(${item.id})" class="provider-detail" aria-label="Ver ficha de ${escapeHtml(item.name)}">Ver ficha</button>
+                        ${contact ? `<a href="${escapeHtml(contact)}" target="_blank" rel="noopener noreferrer" class="provider-whatsapp" aria-label="Contactar a ${escapeHtml(item.name)} por WhatsApp">WhatsApp</a>` : ''}
+                    </div>
+                </article>`;
+            }).join('');
+            lucide.createIcons();
+        }
+
+        function openStateSignature(now = new Date()) {
+            return providersData.map(item => {
+                const state = getOpenState(item, now);
+                return state === null ? '?' : state ? '1' : '0';
+            }).join('');
+        }
+        function refreshOpenStates(now = new Date()) {
+            const signature = openStateSignature(now);
+            if (signature === lastOpenStateSignature) return;
+            lastOpenStateSignature = signature;
+            const modal = document.getElementById('modalDetail');
+            if (currentDetailId !== null && !modal.classList.contains('hidden')) {
+                const item = providersData.find(record => record.id === currentDetailId);
+                if (item) {
+                    const state = getOpenState(item, now);
+                    document.getElementById('modalOpenStatus').textContent = state === null ? 'Horario no informado' : state ? 'Abierto ahora' : 'Cerrado ahora';
+                }
+            }
+            if (document.getElementById('openNowFilter').checked) {
+                if (modal.classList.contains('hidden')) applyFilters(now);
+                else pendingStatusRefresh = true;
+                return;
+            }
+            document.querySelectorAll('[data-status-id]').forEach(label => {
+                const item = providersData.find(record => record.id === Number(label.dataset.statusId));
+                if (!item) return;
+                const state = getOpenState(item, now);
+                label.textContent = state === null ? 'Horario no informado' : state ? 'Abierto ahora' : 'Cerrado ahora';
+                label.classList.toggle('closed', state === false);
+                label.classList.toggle('unknown', state === null);
+            });
+        }
+
+        function openDetailModal(id) {
+            const item = providersData.find(record => record.id === id);
+            if (!item) return;
+            currentDetailId = id;
+            const image = document.getElementById('modalImg');
+            const cover = safePhoto(item.coverPhoto);
+            if (cover) image.src = cover;
+            else image.removeAttribute('src');
+            image.classList.toggle('hidden', !cover);
+            image.alt = cover ? `Portada de ${item.name}` : '';
+            const profile = safePhoto(item.profilePhoto);
+            const profileImage = document.getElementById('modalProfileImg');
+            if (profile) profileImage.src = profile;
+            else profileImage.removeAttribute('src');
+            profileImage.classList.toggle('hidden', !profile);
+            profileImage.onerror = () => { profileImage.classList.add('hidden'); document.getElementById('modalInitials').classList.remove('hidden'); };
+            profileImage.alt = profile ? `Logo o foto de ${item.name}` : '';
+            const initials = document.getElementById('modalInitials');
+            initials.textContent = businessInitials(item.name);
+            initials.classList.toggle('hidden', Boolean(profile));
+            document.getElementById('modalTitle').textContent = item.name;
+            document.getElementById('modalCategory').textContent = item.category;
+            document.getElementById('modalTypeBadge').textContent = item.type;
+            document.getElementById('modalLocation').textContent = item.location;
+            const open = getOpenState(item);
+            document.getElementById('modalOpenStatus').textContent = open === null ? 'Horario no informado' : open ? 'Abierto ahora' : 'Cerrado ahora';
+            document.getElementById('modalHours').textContent = formatHours(item);
+            document.getElementById('modalPhone').textContent = item.callPhone || 'No informado';
+            document.getElementById('modalDescription').textContent = item.description;
+            const contactLinks = [];
+            const phoneNumbers = (item.additionalPhones || []).filter(Boolean);
+            phoneNumbers.forEach(phone => {
+                const dial = String(phone).replace(/[^+\d]/g, '');
+                if (dial) contactLinks.push(`<a href="tel:${escapeHtml(dial)}" class="px-3 py-2 rounded-lg bg-slate-100 text-sm font-semibold text-slate-700">Teléfono adicional: ${escapeHtml(phone)}</a>`);
+            });
+            [['Instagram',item.instagram],['Facebook',item.facebook],['TikTok',item.tiktok]].forEach(([label,url]) => {
+                if (/^https:\/\//i.test(url || '')) contactLinks.push(`<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-lg bg-slate-100 text-sm font-semibold text-slate-700">${label}</a>`);
+            });
+            document.getElementById('modalContactLinks').innerHTML = contactLinks.join('');
+            const featureMarkup = values => values.map(value => `<li class="rounded-lg border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs text-slate-700">${escapeHtml(value)}</li>`).join('');
+            document.getElementById('modalProducts').innerHTML = featureMarkup(item.products || []);
+            document.getElementById('modalServices').innerHTML = featureMarkup(item.services || []);
+            document.getElementById('modalProductsSection').classList.toggle('hidden', !item.products?.length);
+            document.getElementById('modalServicesSection').classList.toggle('hidden', !item.services?.length);
+            const dial = String(item.callPhone || '').replace(/[^+\d]/g, '');
+            const callButton = document.getElementById('modalCallBtn');
+            if (dial) callButton.href = `tel:${dial}`;
+            else callButton.removeAttribute('href');
+            callButton.classList.toggle('hidden', !dial);
+            const contact = whatsappUrl(item);
+            const contactButton = document.getElementById('modalWhatsappBtn');
+            if (contact) contactButton.href = contact;
+            else contactButton.removeAttribute('href');
+            contactButton.textContent = 'Contactar por WhatsApp';
+            contactButton.classList.toggle('hidden', !contact);
+            toggleModal('modalDetail', true);
+            lucide.createIcons();
+        }
+
+        // Controlador Genérico de Modales
+        function toggleModal(modalId, show) {
+            const modal = document.getElementById(modalId);
+            if (!modal) return;
+
+            if (show) {
+                clearTimeout(modalCloseTimer);
+                modalReturnFocus = document.activeElement;
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                modal.querySelector('[aria-label="Cerrar ficha"]')?.focus();
+                setTimeout(() => {
+                    const content = modal.querySelector('div');
+                    if(content) {
+                        content.classList.remove('scale-95', 'opacity-0');
+                        content.classList.add('scale-100', 'opacity-100');
+                    }
+                }, 10);
+            } else {
+                if (modal.classList.contains('hidden')) return;
+                const content = modal.querySelector('div');
+                if(content) {
+                    content.classList.remove('scale-100', 'opacity-100');
+                    content.classList.add('scale-95', 'opacity-0');
+                }
+                clearTimeout(modalCloseTimer);
+                modalCloseTimer = setTimeout(() => {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = '';
+                    currentDetailId = null;
+                    if (pendingStatusRefresh) {
+                        pendingStatusRefresh = false;
+                        applyFilters();
+                    }
+                    (modalReturnFocus?.isConnected ? modalReturnFocus : document.getElementById('searchInput')).focus();
+                }, 200);
+            }
+        }
+
+        function syncMobileSearch(value) { const el=document.getElementById('searchInput'); if(el){el.value=value; applyFilters();} }
+        function showSearchResults(event) {
+            event.preventDefault();
+            const field = event.currentTarget.querySelector('input');
+            const query = field.value.trim();
+            if (!query) return;
+            document.getElementById('searchInput').value = field.value;
+            applyFilters();
+            const target = document.getElementById('emptyState').classList.contains('hidden') ? 'moreFilters' : 'emptyState';
+            document.getElementById(target).scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    </script>
+</body>
+</html>

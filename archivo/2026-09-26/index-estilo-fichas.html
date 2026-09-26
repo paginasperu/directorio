@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#ffd900">
+  <meta name="description" content="Directorio de tiendas y servicios del Centro Comercial Las Flores de Breña.">
+  <title>Directorio | Las Flores de Breña</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='14' r='13' fill='%23f2cf18'/%3E%3Ccircle cx='49' cy='31' r='13' fill='%231e98b4'/%3E%3Ccircle cx='32' cy='49' r='13' fill='%23b20e27'/%3E%3Ccircle cx='15' cy='31' r='13' fill='%23f2cf18'/%3E%3Ccircle cx='32' cy='31' r='9' fill='white'/%3E%3C/svg%3E">
+  <style>
+    :root{--yellow:#ffd900;--ink:#171713;--muted:#6f7069;--paper:#f4f4ef;--white:#fff;--line:#e5e5dd;--green:#14845d;--red:#d13048;--blue:#178eac;--shadow:0 18px 50px rgba(26,27,20,.08)}
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    html{scroll-behavior:smooth;overflow-x:hidden}
+    body{margin:0;overflow-x:hidden;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+    button,input{font:inherit}
+    button,a,[role="button"]{touch-action:manipulation}
+    button:focus:not(:focus-visible),a:focus:not(:focus-visible),[role="button"]:focus:not(:focus-visible){outline:none}
+    button:focus-visible,a:focus-visible,[role="button"]:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+    .top{height:70px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;position:sticky;top:0;z-index:30}
+    .top-inner,.wrap{width:min(1220px,calc(100% - 36px));margin:auto}
+    .top-inner{display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink)}
+    .mark{display:flex}.mark svg{width:25px;height:25px;margin-left:-6px}.mark svg:first-child{margin-left:0}
+    .brand strong{display:block;font-size:18px;letter-spacing:-.04em}.brand small{display:block;font-size:8px;text-transform:uppercase;letter-spacing:.17em;color:#777;font-weight:800;margin-top:1px}
+    .visit{display:inline-flex;align-items:center;gap:8px;color:var(--ink);text-decoration:none;font-size:12px;font-weight:800;border:1px solid var(--line);border-radius:999px;padding:9px 13px;transition:.2s}.visit:hover{background:var(--yellow);border-color:var(--yellow);transform:translateY(-1px)}
+    .visit svg,.search svg,.card-meta svg,.link svg,.close svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .hero{background:#171713;color:#fff;position:relative;overflow:hidden}
+    .hero::after{content:"";position:absolute;width:390px;height:390px;border:90px solid rgba(255,217,0,.12);border-radius:50%;right:-110px;top:-235px}
+    .hero-inner{width:min(1220px,calc(100% - 36px));margin:auto;padding:44px 0 104px;display:flex;align-items:flex-end;justify-content:space-between;gap:35px;position:relative;z-index:1}
+    .hero h1{font-size:clamp(38px,5vw,68px);letter-spacing:-.065em;line-height:.92;margin:0;max-width:670px}.hero h1 em{font-style:normal;color:var(--yellow)}
+    .hero p{font-size:15px;line-height:1.55;color:#bdbdb5;max-width:430px;margin:0}.hero p strong{color:#fff}
+    .toolbar-wrap{position:relative;z-index:5;margin-top:-66px}
+    .toolbar{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:var(--shadow)}
+    .search-row{display:grid;grid-template-columns:minmax(220px,1fr) auto;gap:10px}
+    .search{position:relative}.search svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:#7c7d76}
+    .search input{width:100%;height:52px;border:1px solid #dcdcd4;border-radius:12px;padding:0 45px;font-size:15px;color:var(--ink);outline:none;background:#fafaf7;transition:.2s}.search input:focus{border-color:#b1a416;box-shadow:0 0 0 4px rgba(255,217,0,.2);background:#fff}.search input::-webkit-search-cancel-button{display:none}
+    .clear{border:0;background:#f0f0ea;border-radius:12px;padding:0 17px;font-size:13px;font-weight:800;cursor:pointer;color:#555650}.clear:hover{background:#e8e8df}
+    .filters{display:flex;align-items:center;gap:8px;margin-top:13px;overflow-x:auto;padding:2px 1px 3px;scrollbar-width:none}.filters::-webkit-scrollbar{display:none}
+    .chip{border:1px solid var(--line);background:#fff;border-radius:999px;white-space:nowrap;padding:9px 13px;font-size:12px;font-weight:750;color:#575851;cursor:pointer;transition:.2s}.chip:hover{border-color:#b4b4aa}.chip.active{background:#171713;border-color:#171713;color:#fff}.open-toggle{margin-left:auto;display:flex;align-items:center;gap:9px;white-space:nowrap;padding-left:10px;font-size:12px;font-weight:750;color:#51524c;cursor:pointer}.open-toggle input{appearance:none;width:38px;height:22px;border-radius:999px;background:#d9d9d1;position:relative;cursor:pointer;transition:.2s}.open-toggle input::after{content:"";position:absolute;width:16px;height:16px;border-radius:50%;background:#fff;left:3px;top:3px;box-shadow:0 2px 5px rgba(0,0,0,.18);transition:.2s}.open-toggle input:checked{background:var(--green)}.open-toggle input:checked::after{transform:translateX(16px)}
+    .directory{padding:32px 0 64px}
+    .directory-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:18px}
+    .directory-head h2{margin:0;font-size:24px;letter-spacing:-.04em}.count{color:var(--muted);font-size:13px;margin-top:5px}.legend{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--muted)}.legend i,.status-dot{width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+    .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;display:grid;grid-template-columns:54px 1fr;gap:14px;position:relative;min-height:183px;transition:transform .22s,box-shadow .22s,border-color .22s;cursor:pointer}.card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(29,30,23,.09);border-color:#d1d1c7}.card:focus:not(:focus-visible){outline:none}.card:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+    .avatar{width:54px;height:54px;border-radius:14px;display:grid;place-items:center;font-weight:950;font-size:18px;letter-spacing:-.04em;color:#fff;background:var(--avatar);box-shadow:inset 0 0 0 1px rgba(255,255,255,.2)}
+    .card-body{min-width:0}.card-top{display:flex;align-items:center;justify-content:space-between;gap:8px}.category{font-size:9px;text-transform:uppercase;letter-spacing:.11em;font-weight:900;color:var(--cat)}.status{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--green);font-weight:800}.status.closed{color:#a05e3d}.status.closed .status-dot{background:#a05e3d}
+    .card h3{font-size:17px;letter-spacing:-.03em;margin:7px 0 5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.description{font-size:12px;line-height:1.42;color:var(--muted);margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .card-footer{grid-column:1/-1;min-width:0;display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid #eeeDE7;padding-top:12px;margin-top:3px}.card-meta{min-width:0;display:flex;align-items:center;gap:6px;color:#666760;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.card-meta svg{width:14px;height:14px;flex:0 0 auto}.view{flex:0 0 auto;border:0;background:transparent;font-size:11px;font-weight:900;color:var(--ink);cursor:pointer;padding:5px 0}.view::after{content:" →";color:#a68d00}
+    .empty{display:none;text-align:center;padding:60px 20px;background:#fff;border:1px dashed #cecec4;border-radius:16px}.empty.show{display:block}.empty-icon{font-size:32px}.empty h3{margin:10px 0 5px}.empty p{margin:0;color:var(--muted);font-size:13px}
+    .note{margin-top:24px;padding:13px 15px;border-radius:11px;background:#ecece6;color:#666760;font-size:11px;line-height:1.45}.note strong{color:#383933}
+    dialog{border:0;padding:0;border-radius:21px;width:min(520px,calc(100% - 28px));box-shadow:0 30px 100px rgba(0,0,0,.28);color:var(--ink);overflow:hidden}dialog::backdrop{background:rgba(10,11,8,.58);backdrop-filter:blur(4px)}
+    .detail-accent{height:10px;background:var(--modal-color,var(--yellow))}.detail{padding:24px}.detail-head{display:flex;align-items:flex-start;gap:15px}.detail .avatar{width:62px;height:62px;flex:0 0 auto}.detail-title{min-width:0;flex:1}.detail-title small{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--modal-color);font-weight:900}.detail-title h2{font-size:25px;letter-spacing:-.04em;margin:5px 0}.detail-title p{font-size:13px;color:var(--muted);line-height:1.45;margin:0}.close{width:37px;height:37px;display:grid;place-items:center;border:1px solid var(--line);background:#fff;border-radius:50%;cursor:pointer}.close:hover{background:#f1f1eb}
+    .details-list{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:21px 0}.detail-item{background:#f5f5f0;border-radius:11px;padding:12px}.detail-item span{display:block;font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:#82837b;font-weight:800}.detail-item strong{display:block;font-size:13px;margin-top:4px}.detail-actions{display:flex;gap:9px}.link{flex:1;height:44px;border-radius:999px;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:8px;font-size:12px;font-weight:900}.link.primary{background:#171713;color:#fff}.link.whatsapp{background:#dff4e9;color:#176c4e}
+    footer{background:#171713;color:#aaa;padding:24px 0;font-size:11px}.footer-inner{width:min(1220px,calc(100% - 36px));margin:auto;display:flex;justify-content:space-between;gap:20px}.footer-inner strong{color:#fff}
+    @media(max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-inner{padding-top:36px}.hero p{max-width:350px}}
+    @media(max-width:650px){.top{height:62px}.top-inner,.wrap,.hero-inner,.footer-inner{width:min(100% - 24px,1220px)}.brand small{display:none}.visit{font-size:0;padding:9px}.visit svg{width:18px}.hero-inner{padding:32px 0 94px;display:block}.hero h1{font-size:39px;max-width:360px}.hero p{font-size:13px;margin-top:15px;max-width:350px}.toolbar-wrap{margin-top:-68px}.toolbar{min-width:0;padding:11px;border-radius:15px}.search-row{grid-template-columns:minmax(0,1fr) auto}.search{min-width:0}.search input{height:48px;font-size:14px}.clear{padding:0 10px;font-size:11px}.open-toggle{margin-left:0}.grid{grid-template-columns:minmax(0,1fr);gap:10px}.directory{padding-top:25px}.directory-head{align-items:flex-start}.legend{display:none}.card{min-width:0;min-height:166px;padding:15px}.details-list{grid-template-columns:1fr}.detail{padding:19px}.detail-head{gap:11px}.detail-title h2{font-size:21px}.detail-actions{flex-direction:column}.footer-inner{display:block}.footer-inner span{display:block;margin-top:7px}}
+    @media(max-width:650px){.top-inner,.wrap,.hero-inner,.footer-inner{width:calc(100% - 24px);max-width:calc(100vw - 24px)}.toolbar{width:100%;overflow:hidden}.search-row{display:block}.clear{display:none}.grid,.card{width:100%;max-width:100%}.card{overflow:hidden}.detail-actions{gap:10px}.detail-actions .link{flex:0 0 auto;width:100%;height:46px;min-height:46px;line-height:1.2}}
+    @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="top-inner">
+      <a class="brand" href="#" aria-label="Inicio del directorio">
+        <span class="mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64"><path fill="#f2cf18" d="M32 2c8 0 13 7 13 15 8-4 17-1 20 6s-2 15-10 18c7 5 8 14 3 20s-15 5-21-2c-3 8-12 11-19 7S9 52 14 45C5 45-1 38 1 30s11-12 19-9C19 11 24 2 32 2Z"/><circle cx="32" cy="33" r="10" fill="#fff"/></svg>
+          <svg viewBox="0 0 64 64"><path fill="#b20e27" d="M32 2c8 0 13 7 13 15 8-4 17-1 20 6s-2 15-10 18c7 5 8 14 3 20s-15 5-21-2c-3 8-12 11-19 7S9 52 14 45C5 45-1 38 1 30s11-12 19-9C19 11 24 2 32 2Z"/><circle cx="32" cy="33" r="10" fill="#fff"/></svg>
+          <svg viewBox="0 0 64 64"><path fill="#1e98b4" d="M32 2c8 0 13 7 13 15 8-4 17-1 20 6s-2 15-10 18c7 5 8 14 3 20s-15 5-21-2c-3 8-12 11-19 7S9 52 14 45C5 45-1 38 1 30s11-12 19-9C19 11 24 2 32 2Z"/><circle cx="32" cy="33" r="10" fill="#fff"/></svg>
+        </span>
+        <span><strong>Las Flores.</strong><small>Directorio comercial · Breña</small></span>
+      </a>
+      <a class="visit" href="https://www.google.com/maps/search/?api=1&amp;query=Centro+Comercial+Las+Flores+de+Bre%C3%B1a%2C+Jr.+Juan+Pablo+Fernandini+656%2C+Bre%C3%B1a" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>Cómo llegar</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <h1>Encuentra lo que buscas, <em>más cerca.</em></h1>
+      <p>Explora tiendas, productos y servicios del <strong>Centro Comercial Las Flores de Breña</strong>.</p>
+    </div>
+  </section>
+
+  <div class="wrap toolbar-wrap">
+    <div class="toolbar" aria-label="Filtros del directorio">
+      <div class="search-row">
+        <label class="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="search" type="search" placeholder="Buscar tienda, producto o servicio…" autocomplete="off" aria-label="Buscar en el directorio"></label>
+        <button class="clear" id="clear" type="button">Limpiar</button>
+      </div>
+      <div class="filters" id="filters" role="group" aria-label="Filtrar por categoría"></div>
+    </div>
+  </div>
+
+  <main class="wrap directory">
+    <div class="directory-head">
+      <div><h2>Locales y servicios</h2><div class="count" id="count" aria-live="polite"></div></div>
+      <div class="legend"><i></i> Abierto ahora</div>
+    </div>
+    <div class="grid" id="grid"></div>
+    <div class="empty" id="empty"><div class="empty-icon">⌕</div><h3>No encontramos coincidencias</h3><p>Prueba con otro término o elimina algún filtro.</p></div>
+    <div class="note"><strong>Datos demostrativos:</strong> los nombres, ubicaciones internas y contactos de los locales son ejemplos para visualizar el funcionamiento del directorio.</div>
+  </main>
+
+  <dialog id="detailDialog" aria-labelledby="detailName">
+    <div class="detail-accent"></div>
+    <div class="detail" id="detailContent"></div>
+  </dialog>
+
+  <footer><div class="footer-inner"><strong>Centro Comercial Las Flores de Breña</strong><span>Jr. Juan Pablo Fernandini 656 · Lunes a sábado 7 AM–9 PM</span></div></footer>
+
+  <script>
+    const stores=[
+      {id:1,name:"Frutas Don Lucho",cat:"Alimentos",desc:"Frutas de temporada, jugos y productos frescos seleccionados cada mañana.",loc:"Pabellón A · Local 18",hours:"7:00 AM–7:30 PM",phone:"970 111 201",open:true,color:"#2f8a58",initials:"DL",tags:["frutas","jugos","frescos"]},
+      {id:2,name:"Carnes San Martín",cat:"Alimentos",desc:"Cortes de res, pollo y cerdo con atención personalizada para el hogar.",loc:"Pabellón A · Local 42",hours:"7:00 AM–6:00 PM",phone:"970 111 202",open:true,color:"#bd3d48",initials:"SM",tags:["carnes","pollo","res"]},
+      {id:3,name:"Abarrotes El Ahorro",cat:"Abarrotes",desc:"Productos de primera necesidad, bebidas y compras por mayor y menor.",loc:"Pabellón B · Local 76",hours:"7:00 AM–9:00 PM",phone:"970 111 203",open:true,color:"#d59b13",initials:"EA",tags:["arroz","bebidas","mayorista"]},
+      {id:4,name:"Bodega Natural",cat:"Abarrotes",desc:"Granos, frutos secos, miel y alternativas naturales para todos los días.",loc:"Pabellón B · Local 81",hours:"8:00 AM–7:00 PM",phone:"970 111 204",open:false,color:"#658342",initials:"BN",tags:["granos","miel","natural"]},
+      {id:5,name:"Textiles Mariela",cat:"Moda",desc:"Telas, lanas y materiales para confección con venta al detalle y por mayor.",loc:"Galería 2 · Local 114",hours:"8:30 AM–7:30 PM",phone:"970 111 205",open:true,color:"#8b55a4",initials:"TM",tags:["telas","lanas","confección"]},
+      {id:6,name:"Mercería El Botón",cat:"Moda",desc:"Hilos, cierres, botones y accesorios para costura y emprendimientos.",loc:"Galería 2 · Local 127",hours:"9:00 AM–7:00 PM",phone:"970 111 206",open:true,color:"#d04f72",initials:"EB",tags:["hilos","cierres","botones"]},
+      {id:7,name:"Calzados Lucía",cat:"Moda",desc:"Calzado para damas, caballeros y niños con modelos para cada ocasión.",loc:"Galería 3 · Local 205",hours:"9:00 AM–8:00 PM",phone:"970 111 207",open:false,color:"#90654a",initials:"CL",tags:["zapatos","calzado","niños"]},
+      {id:8,name:"Librería Fernandini",cat:"Servicios",desc:"Útiles escolares, impresiones, fotocopias y artículos de oficina.",loc:"Puerta 4 · Local 233",hours:"8:00 AM–8:00 PM",phone:"970 111 208",open:true,color:"#2d68a5",initials:"LF",tags:["útiles","copias","impresiones"]},
+      {id:9,name:"Servicios Express",cat:"Servicios",desc:"Pagos, recargas, trámites digitales e impresión de documentos.",loc:"Puerta 6 · Local 288",hours:"8:00 AM–8:30 PM",phone:"970 111 209",open:true,color:"#148e8a",initials:"SE",tags:["pagos","recargas","trámites"]},
+      {id:10,name:"Óptica Visión",cat:"Salud",desc:"Medición de vista, monturas, lentes de lectura y asesoría especializada.",loc:"Galería 1 · Local 64",hours:"9:00 AM–7:00 PM",phone:"970 111 210",open:true,color:"#168eac",initials:"OV",tags:["lentes","óptica","vista"]},
+      {id:11,name:"Botica Las Flores",cat:"Salud",desc:"Medicamentos, cuidado personal y orientación para compras cotidianas.",loc:"Puerta 2 · Local 31",hours:"7:30 AM–9:00 PM",phone:"970 111 211",open:true,color:"#16865c",initials:"BF",tags:["botica","medicinas","cuidado"]},
+      {id:12,name:"Tecnología Nova",cat:"Tecnología",desc:"Accesorios para celulares, cargadores, audífonos y soporte básico.",loc:"Galería 3 · Local 219",hours:"9:00 AM–8:00 PM",phone:"970 111 212",open:false,color:"#4d58b2",initials:"TN",tags:["celulares","audífonos","cargadores"]}
+    ];
+    const categories=["Todos",...new Set(stores.map(store=>store.cat))];
+    const state={query:"",category:"Todos",openOnly:false};
+    const grid=document.querySelector("#grid"),count=document.querySelector("#count"),empty=document.querySelector("#empty"),search=document.querySelector("#search"),filters=document.querySelector("#filters"),dialog=document.querySelector("#detailDialog"),detail=document.querySelector("#detailContent");
+    const pin='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>';
+    const phoneIcon='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 3h3l1.4 5-2.2 1.4c1.3 3.1 3.8 5.6 6.9 6.9l1.4-2.2 5 1.4v3c0 1.4-1.1 2.5-2.5 2.5C10 21 3 14 3 5.5 3 4.1 4.1 3 5.5 3Z"/></svg>';
+    function normalized(value){return value.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase()}
+    function filteredStores(){const q=normalized(state.query);return stores.filter(store=>(state.category==="Todos"||store.cat===state.category)&&(!state.openOnly||store.open)&&(!q||normalized([store.name,store.cat,store.desc,...store.tags].join(" ")).includes(q)))}
+    function renderFilters(){filters.innerHTML=categories.map(cat=>'<button class="chip '+(state.category===cat?'active':'')+'" type="button" data-category="'+cat+'" aria-pressed="'+(state.category===cat)+'">'+cat+'</button>').join("")+'<label class="open-toggle"><input id="openOnly" type="checkbox" '+(state.openOnly?'checked':'')+'> Solo abiertos</label>';filters.querySelectorAll("[data-category]").forEach(button=>button.addEventListener("click",()=>{state.category=button.dataset.category;render()}));filters.querySelector("#openOnly").addEventListener("change",event=>{state.openOnly=event.target.checked;render()})}
+    function cardTemplate(store){return '<article class="card" tabindex="0" role="button" aria-label="Ver ficha de '+store.name+'" data-id="'+store.id+'"><div class="avatar" style="--avatar:'+store.color+'">'+store.initials+'</div><div class="card-body"><div class="card-top"><span class="category" style="--cat:'+store.color+'">'+store.cat+'</span><span class="status '+(store.open?'':'closed')+'"><i class="status-dot"></i>'+(store.open?'Abierto':'Cerrado')+'</span></div><h3>'+store.name+'</h3><p class="description">'+store.desc+'</p></div><div class="card-footer"><span class="card-meta">'+pin+store.loc+'</span><button class="view" type="button" tabindex="-1">Ver ficha</button></div></article>'}
+    function render(){renderFilters();const list=filteredStores();grid.innerHTML=list.map(cardTemplate).join("");count.textContent=list.length+" "+(list.length===1?"resultado":"resultados");grid.style.display=list.length?"grid":"none";empty.classList.toggle("show",!list.length);grid.querySelectorAll(".card").forEach(card=>{card.addEventListener("click",()=>openDetail(Number(card.dataset.id)));card.addEventListener("keydown",event=>{if(event.key==="Enter"||event.key===" "){event.preventDefault();openDetail(Number(card.dataset.id))}})})}
+    function openDetail(id){const store=stores.find(item=>item.id===id);if(!store)return;dialog.style.setProperty("--modal-color",store.color);detail.innerHTML='<div class="detail-head"><div class="avatar" style="--avatar:'+store.color+'">'+store.initials+'</div><div class="detail-title"><small>'+store.cat+' · '+(store.open?'Abierto ahora':'Cerrado ahora')+'</small><h2 id="detailName">'+store.name+'</h2><p>'+store.desc+'</p></div><button class="close" type="button" aria-label="Cerrar ficha"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><div class="details-list"><div class="detail-item"><span>Ubicación</span><strong>'+store.loc+'</strong></div><div class="detail-item"><span>Horario referencial</span><strong>'+store.hours+'</strong></div><div class="detail-item"><span>Teléfono</span><strong>'+store.phone+'</strong></div><div class="detail-item"><span>Productos</span><strong>'+store.tags.join(", ")+'</strong></div></div><div class="detail-actions"><a class="link primary" href="tel:+51'+store.phone.replace(/\s/g,"")+'">'+phoneIcon+'Llamar</a><a class="link whatsapp" target="_blank" rel="noopener noreferrer" href="https://wa.me/51'+store.phone.replace(/\s/g,"")+'?text=Hola%2C%20vi%20su%20ficha%20en%20el%20directorio%20de%20Las%20Flores">Escribir por WhatsApp</a></div>';detail.querySelector(".close").addEventListener("click",()=>dialog.close());dialog.showModal()}
+    search.addEventListener("input",event=>{state.query=event.target.value;render()});
+    document.querySelector("#clear").addEventListener("click",()=>{state.query="";state.category="Todos";state.openOnly=false;search.value="";render();search.focus()});
+    dialog.addEventListener("click",event=>{if(event.target===dialog)dialog.close()});
+    render();
+    if(document.modelContext?.registerTool){try{Promise.resolve(document.modelContext.registerTool({name:"filter_directory",title:"Filtrar directorio",description:"Busca y filtra los locales visibles del Centro Comercial Las Flores.",inputSchema:{type:"object",properties:{query:{type:"string"},category:{type:"string",enum:categories},openOnly:{type:"boolean"}},additionalProperties:false},annotations:{readOnlyHint:true,untrustedContentHint:false},execute(input){if(input.query!==undefined){state.query=String(input.query);search.value=state.query}if(categories.includes(input.category))state.category=input.category;if(typeof input.openOnly==="boolean")state.openOnly=input.openOnly;render();return{count:filteredStores().length,filters:{...state}}}})).catch(()=>{})}catch(error){}}
+  </script>
+</body>
+</html>
