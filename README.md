@@ -1,25 +1,18 @@
-# DIRECTORIO OFICIAL
+# Directorio Oficial de Publicidad
 
-Plantilla estática del directorio. El HTML, los estilos, el comportamiento y los datos están separados para que sea fácil ubicar qué editar.
+Sitio estático para descubrir perfiles profesionales y recibir solicitudes de registro.
 
-## Archivos
+## Estructura
 
-- `index.html`: contenido y orden de la página; GitHub Pages lo abre como inicio.
-- `styles.css`: diseño de fichas, cabecera y detalles visuales.
-- `app.js`: búsqueda, categorías, horarios, filtros y fichas. También contiene una copia de los datos para que la vista funcione al abrir `index.html` con doble clic.
-- `negocios.csv`: datos que se usan al publicar el sitio. Exporta la hoja de Google Sheets a CSV y reemplaza este archivo.
-- `archivo/`: prototipos anteriores y respaldo; no son parte de la página activa.
+- `index.html`, `styles.css`, `scripts.js`: directorio público.
+- `registro/`: formulario de registro.
+- `privacidad/`: política de privacidad.
+- `data/perfiles.csv`: datos que se publican; contiene solo columnas públicas.
+- `data/distritos.csv`: catálogo para los desplegables de ubicación.
+- `config.js`: configuración pública del sitio, Cloudinary y endpoint de Apps Script.
 
-## Datos CSV
+El formulario valida los datos en el navegador y Apps Script vuelve a validarlos antes de guardarlos en la hoja privada. Las imágenes se cargan en Cloudinary. No publiques contraseñas, API Secrets ni el código de Apps Script con identificadores de hojas.
 
-La página publicada carga `negocios.csv`. Las columnas necesarias son:
+## Publicación
 
-`id,nombre,descripcion,categoria,tipo,ubicacion,whatsapp,telefono,telefonos adicionales,instagram,facebook,tiktok,productos,servicios,foto de perfil,foto de portada,dias,abre,cierra`
-
-Separa varios productos, servicios, teléfonos o días con `|`. Los días usan números: domingo `0`, lunes `1` … sábado `6`. Las columnas `dias`, `abre` y `cierra` alimentan el estado de abierto/cerrado. No incluyas fecha de registro, notas internas ni estado administrativo.
-
-Los navegadores bloquean la lectura automática de archivos vecinos al abrir una página con `file://`. Para que la demo siga funcionando con doble clic, `app.js` conserva datos locales de vista previa. En el sitio publicado se usan los datos de `negocios.csv`; al cambiar el CSV, sube también el cambio correspondiente antes de publicar.
-
-## Tailwind e iconos
-
-La página conserva Tailwind por CDN porque forma parte del diseño actual. Su breve configuración de colores está dentro de `index.html`, junto a la carga de Tailwind; no necesita otro archivo. Los iconos de búsqueda se dibujan como SVG en el HTML, y el resto usa Lucide por CDN.
+El sitio se sirve desde la raíz del repositorio de GitHub Pages. `CNAME` conserva el dominio `directorio.oficial.pe`. Para actualizar perfiles públicos, reemplaza `data/perfiles.csv` por una exportación de la vista pública de la hoja.
