@@ -1,0 +1,5140 @@
+{
+  "total": 85,
+  "negocios": [
+    {
+      "id": 1,
+      "nombre": "Fashion Outlet Perú",
+      "estado": "No verificado",
+      "categoria": "Moda y accesorios",
+      "tipo": "Tienda de ropa",
+      "descripcion_corta": "Tienda de ropa y moda",
+      "descripcion_larga": "Explora prendas y propuestas de moda para renovar tu estilo y encontrar opciones para distintas ocasiones",
+      "catalogo": [
+        "Ropa",
+        "prendas de vestir"
+      ],
+      "reputacion": {
+        "calificacion": 4.9,
+        "opiniones": 263
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "955012834",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 1,
+          "titulo": "Vestido urbano Aurora",
+          "descripcion": "Descubre Vestido urbano Aurora en Fashion Outlet Perú.",
+          "condiciones": "Válido hasta el 31/12/2026. Presenta esta oferta al solicitar el producto o servicio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 79.9,
+          "precio_rebajado": 71.91,
+          "categoria": "Moda y accesorios",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 86,
+          "titulo": "Polo básico de algodón",
+          "descripcion": "Participa en el sorteo para ganar Polo básico de algodón; el negocio anunciará a la persona ganadora.",
+          "condiciones": "Sorteo válido hasta el 31/12/2026; un ganador. Coordinar recojo con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Moda y accesorios",
+          "tipo": "Regalo",
+          "modalidad": "Sorteo",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "JG Motos",
+      "estado": "No verificado",
+      "categoria": "Vehículos y motocicletas",
+      "tipo": "Tienda de repuestos para motocicletas",
+      "descripcion_corta": "Repuestos para motocicletas",
+      "descripcion_larga": "Un espacio enfocado en componentes y repuestos para motocicletas, pensado para quienes buscan mantener o personalizar sus motos",
+      "catalogo": [
+        "Repuestos para motocicletas",
+        "partes para motocicletas"
+      ],
+      "reputacion": {
+        "calificacion": 4.1,
+        "opiniones": 115
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "986037168",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 2,
+          "titulo": "Kit de mantenimiento para moto 150 cc",
+          "descripcion": "Aprovecha Kit de mantenimiento para moto 150 cc y consulta con JG Motos los detalles de la oferta.",
+          "condiciones": "Aplica al artículo o servicio indicado en el título; confirmar disponibilidad directamente con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 249.9,
+          "precio_rebajado": 224.91,
+          "categoria": "Vehículos y motocicletas",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 87,
+          "titulo": "Cambio de aceite para motocicleta",
+          "descripcion": "Completa la dinámica del negocio; el premio del concurso es Cambio de aceite para motocicleta.",
+          "condiciones": "Enviar una sola participación; el establecimiento seleccionará al ganador.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Vehículos y motocicletas",
+          "tipo": "Regalo",
+          "modalidad": "Concurso",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "nombre": "DMAX",
+      "estado": "No verificado",
+      "categoria": "Tecnología",
+      "tipo": "Servicio técnico de celulares y laptops",
+      "descripcion_corta": "Servicio técnico para celulares y laptops",
+      "descripcion_larga": "Atención especializada en equipos móviles y computadoras portátiles, con enfoque en soporte y solución de necesidades tecnológicas",
+      "catalogo": [
+        "Reparación de celulares",
+        "reparación de laptops"
+      ],
+      "reputacion": {
+        "calificacion": 4.9,
+        "opiniones": 80
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 3,
+          "titulo": "Diagnóstico y limpieza de laptop",
+          "descripcion": "Esta propuesta de Diagnóstico y limpieza de laptop está disponible en DMAX; confirma existencias antes de comprar.",
+          "condiciones": "Precio promocional por una unidad o servicio. No acumulable con otros descuentos o cupones.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 149.9,
+          "precio_rebajado": 134.91,
+          "categoria": "Tecnología",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 88,
+          "titulo": "Limpieza interna de laptop",
+          "descripcion": "Disfruta Limpieza interna de laptop gratis al presentar tu beneficio de canje.",
+          "condiciones": "Requiere reserva previa para servicios. Productos sujetos a disponibilidad del negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Tecnología",
+          "tipo": "Regalo",
+          "modalidad": "Canje",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "nombre": "Gekko Bookstore",
+      "estado": "No verificado",
+      "categoria": "Libros y entretenimiento",
+      "tipo": "Tienda de cómics",
+      "descripcion_corta": "Librería especializada en cómics e historietas",
+      "descripcion_larga": "Un punto de encuentro para lectores y aficionados a las historietas, el cómic y sus distintos universos narrativos",
+      "catalogo": [
+        "Cómics",
+        "historietas"
+      ],
+      "reputacion": {
+        "calificacion": 4.7,
+        "opiniones": 68
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "955071104",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 4,
+          "titulo": "Pack de 3 cómics de aventura",
+          "descripcion": "Consulta con Gekko Bookstore cómo aprovechar Pack de 3 cómics de aventura.",
+          "condiciones": "Para servicios, coordinar cita con anticipación; productos sujetos a disponibilidad del local.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 59.9,
+          "precio_rebajado": 53.91,
+          "categoria": "Libros y entretenimiento",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 89,
+          "titulo": "Cómic de aventura, edición regular",
+          "descripcion": "Participa en el sorteo para ganar Cómic de aventura, edición regular; el negocio anunciará a la persona ganadora.",
+          "condiciones": "Sorteo válido hasta el 31/12/2026; un ganador. Coordinar recojo con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Libros y entretenimiento",
+          "tipo": "Regalo",
+          "modalidad": "Sorteo",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "nombre": "Papurri Store TCG",
+      "estado": "No verificado",
+      "categoria": "Juguetes y entretenimiento",
+      "tipo": "Tienda de juegos",
+      "descripcion_corta": "Tienda de juegos y entretenimiento",
+      "descripcion_larga": "Encuentra alternativas para disfrutar del juego y el entretenimiento, explorar nuevas aficiones y compartir buenos momentos",
+      "catalogo": [
+        "Juegos"
+      ],
+      "reputacion": {
+        "calificacion": 4.9,
+        "opiniones": 57
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "975568299",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 5,
+          "titulo": "Sobre de cartas coleccionables TCG",
+          "descripcion": "Descubre Sobre de cartas coleccionables TCG en Papurri Store TCG.",
+          "condiciones": "Una promoción por cliente durante la vigencia indicada. No canjeable por dinero en efectivo.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 89.9,
+          "precio_rebajado": 80.91,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 90,
+          "titulo": "Sobre de cartas TCG sorpresa",
+          "descripcion": "Completa la dinámica del negocio; el premio del concurso es Sobre de cartas TCG sorpresa.",
+          "condiciones": "Enviar una sola participación; el establecimiento seleccionará al ganador.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Regalo",
+          "modalidad": "Concurso",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "nombre": "Kuro Kuma",
+      "estado": "No verificado",
+      "categoria": "Gastronomía",
+      "tipo": "Restaurante",
+      "descripcion_corta": "Restaurante",
+      "descripcion_larga": "Una propuesta gastronómica para disfrutar de una pausa y compartir una experiencia alrededor de la comida",
+      "catalogo": [
+        "Restaurante"
+      ],
+      "reputacion": {
+        "calificacion": 2.6,
+        "opiniones": 53
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 6,
+          "titulo": "Combo ramen clásico con bebida",
+          "descripcion": "Aprovecha Combo ramen clásico con bebida y consulta con Kuro Kuma los detalles de la oferta.",
+          "condiciones": "Solicita la oferta antes de pagar y confirma con el establecimiento cualquier detalle de atención o entrega.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 69.9,
+          "precio_rebajado": 62.91,
+          "categoria": "Gastronomía",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 91,
+          "titulo": "Postre de la casa para compartir",
+          "descripcion": "Disfruta Postre de la casa para compartir gratis al presentar tu beneficio de canje.",
+          "condiciones": "Requiere reserva previa para servicios. Productos sujetos a disponibilidad del negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Gastronomía",
+          "tipo": "Regalo",
+          "modalidad": "Canje",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "nombre": "Latino Seguridad",
+      "estado": "No verificado",
+      "categoria": "Seguridad",
+      "tipo": "Proveedor de sistemas de seguridad",
+      "descripcion_corta": "Sistemas de videovigilancia y seguridad",
+      "descripcion_larga": "Soluciones orientadas a la seguridad y la videovigilancia, para conocer alternativas de monitoreo y protección de espacios",
+      "catalogo": [
+        "Sistemas de seguridad",
+        "cámaras ocultas",
+        "seguridad discreta"
+      ],
+      "reputacion": {
+        "calificacion": 4.8,
+        "opiniones": 28
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 7,
+          "titulo": "Kit de videovigilancia de 4 cámaras",
+          "descripcion": "Esta propuesta de Kit de videovigilancia de 4 cámaras está disponible en Latino Seguridad; confirma existencias antes de comprar.",
+          "condiciones": "Válido hasta el 31/12/2026. Presenta esta oferta al solicitar el producto o servicio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 199.9,
+          "precio_rebajado": 179.91,
+          "categoria": "Seguridad",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 92,
+          "titulo": "Instalación de cámara de seguridad interior",
+          "descripcion": "Participa en el sorteo para ganar Instalación de cámara de seguridad interior; el negocio anunciará a la persona ganadora.",
+          "condiciones": "Sorteo válido hasta el 31/12/2026; un ganador. Coordinar recojo con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Seguridad",
+          "tipo": "Regalo",
+          "modalidad": "Sorteo",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "nombre": "DapKris Store",
+      "estado": "No verificado",
+      "categoria": "Juguetes y entretenimiento",
+      "tipo": "Tienda de cartas coleccionables",
+      "descripcion_corta": "Tienda de cartas coleccionables",
+      "descripcion_larga": "Un espacio para aficionados a las cartas coleccionables, ideal para descubrir piezas, ampliar colecciones y disfrutar de esta afición",
+      "catalogo": [
+        "Cartas coleccionables"
+      ],
+      "reputacion": {
+        "calificacion": 4.5,
+        "opiniones": 26
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "946445043",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 8,
+          "titulo": "Caja de sobres TCG edición especial",
+          "descripcion": "Consulta con DapKris Store cómo aprovechar Caja de sobres TCG edición especial.",
+          "condiciones": "Aplica al artículo o servicio indicado en el título; confirmar disponibilidad directamente con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 99.9,
+          "precio_rebajado": 89.91,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 93,
+          "titulo": "Sobre de cartas coleccionables",
+          "descripcion": "Completa la dinámica del negocio; el premio del concurso es Sobre de cartas coleccionables.",
+          "condiciones": "Enviar una sola participación; el establecimiento seleccionará al ganador.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Regalo",
+          "modalidad": "Concurso",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "nombre": "Factory Comics Store",
+      "estado": "No verificado",
+      "categoria": "Libros y entretenimiento",
+      "tipo": "Tienda de cómics",
+      "descripcion_corta": "Tienda de cómics",
+      "descripcion_larga": "Historias, personajes y mundos ilustrados para lectores y coleccionistas que disfrutan del universo del cómic",
+      "catalogo": [
+        "Cómics"
+      ],
+      "reputacion": {
+        "calificacion": 3.7,
+        "opiniones": 13
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "915088664",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 9,
+          "titulo": "Novela gráfica edición coleccionista",
+          "descripcion": "Descubre Novela gráfica edición coleccionista en Factory Comics Store.",
+          "condiciones": "Precio promocional por una unidad o servicio. No acumulable con otros descuentos o cupones.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 54.9,
+          "precio_rebajado": 49.41,
+          "categoria": "Libros y entretenimiento",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 94,
+          "titulo": "Novela gráfica de edición regular",
+          "descripcion": "Disfruta Novela gráfica de edición regular gratis al presentar tu beneficio de canje.",
+          "condiciones": "Requiere reserva previa para servicios. Productos sujetos a disponibilidad del negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Libros y entretenimiento",
+          "tipo": "Regalo",
+          "modalidad": "Canje",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "nombre": "Nasareth",
+      "estado": "No verificado",
+      "categoria": "Belleza y cuidado personal",
+      "tipo": "Salón de belleza",
+      "descripcion_corta": "Salón de belleza y bienestar",
+      "descripcion_larga": "Un espacio dedicado al cuidado personal y la belleza, pensado para quienes desean reservar un momento para sí",
+      "catalogo": [
+        "Servicios de belleza"
+      ],
+      "reputacion": {
+        "calificacion": 5,
+        "opiniones": 12
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 10,
+          "titulo": "Manicure semipermanente con diseño",
+          "descripcion": "Aprovecha Manicure semipermanente con diseño y consulta con Nasareth los detalles de la oferta.",
+          "condiciones": "Para servicios, coordinar cita con anticipación; productos sujetos a disponibilidad del local.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 89.9,
+          "precio_rebajado": 80.91,
+          "categoria": "Belleza y cuidado personal",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 95,
+          "titulo": "Tratamiento capilar nutritivo",
+          "descripcion": "Participa en el sorteo para ganar Tratamiento capilar nutritivo; el negocio anunciará a la persona ganadora.",
+          "condiciones": "Sorteo válido hasta el 31/12/2026; un ganador. Coordinar recojo con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Belleza y cuidado personal",
+          "tipo": "Regalo",
+          "modalidad": "Sorteo",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "nombre": "Latinos.pe",
+      "estado": "No verificado",
+      "categoria": "Tecnología",
+      "tipo": "Tienda de accesorios tecnológicos",
+      "descripcion_corta": "Tienda de accesorios tecnológicos",
+      "descripcion_larga": "Accesorios y artículos tecnológicos para complementar tus dispositivos y acompañar tus actividades cotidianas",
+      "catalogo": [
+        "Accesorios tecnológicos"
+      ],
+      "reputacion": {
+        "calificacion": 4.9,
+        "opiniones": 12
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "987423543",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 11,
+          "titulo": "Audífonos inalámbricos Urban Sound",
+          "descripcion": "Esta propuesta de Audífonos inalámbricos Urban Sound está disponible en Latinos.pe; confirma existencias antes de comprar.",
+          "condiciones": "Una promoción por cliente durante la vigencia indicada. No canjeable por dinero en efectivo.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 69.9,
+          "precio_rebajado": 62.91,
+          "categoria": "Tecnología",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 96,
+          "titulo": "Soporte plegable para celular",
+          "descripcion": "Completa la dinámica del negocio; el premio del concurso es Soporte plegable para celular.",
+          "condiciones": "Enviar una sola participación; el establecimiento seleccionará al ganador.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Tecnología",
+          "tipo": "Regalo",
+          "modalidad": "Concurso",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "nombre": "Kratos Toys",
+      "estado": "No verificado",
+      "categoria": "Juguetes y entretenimiento",
+      "tipo": "Tienda de hobbies y pasatiempos",
+      "descripcion_corta": "Tienda de hobbies y artículos para pasatiempos",
+      "descripcion_larga": "Encuentra artículos para explorar tus intereses, dedicar tiempo a tus pasatiempos y disfrutar de nuevas actividades",
+      "catalogo": [
+        "Hobbies",
+        "artículos para pasatiempos"
+      ],
+      "reputacion": {
+        "calificacion": 5,
+        "opiniones": 12
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "999389905",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 12,
+          "titulo": "Set de figuras coleccionables",
+          "descripcion": "Consulta con Kratos Toys cómo aprovechar Set de figuras coleccionables.",
+          "condiciones": "Solicita la oferta antes de pagar y confirma con el establecimiento cualquier detalle de atención o entrega.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 129.9,
+          "precio_rebajado": 116.91,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 97,
+          "titulo": "Figura mini de colección",
+          "descripcion": "Disfruta Figura mini de colección gratis al presentar tu beneficio de canje.",
+          "condiciones": "Requiere reserva previa para servicios. Productos sujetos a disponibilidad del negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Regalo",
+          "modalidad": "Canje",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "nombre": "Eco Wheels",
+      "estado": "No verificado",
+      "categoria": "Vehículos y motocicletas",
+      "tipo": "Concesionario de motocicletas",
+      "descripcion_corta": "Venta de motocicletas",
+      "descripcion_larga": "Una alternativa para conocer motocicletas y encontrar opciones de movilidad sobre dos ruedas según tus preferencias",
+      "catalogo": [
+        "Motocicletas"
+      ],
+      "reputacion": {
+        "calificacion": 4.2,
+        "opiniones": 12
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "934992264",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 13,
+          "titulo": "Casco urbano Eco Ride",
+          "descripcion": "Descubre Casco urbano Eco Ride en Eco Wheels.",
+          "condiciones": "Válido hasta el 31/12/2026. Presenta esta oferta al solicitar el producto o servicio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 499.9,
+          "precio_rebajado": 449.91,
+          "categoria": "Vehículos y motocicletas",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 98,
+          "titulo": "Casco reflectante para bicicleta",
+          "descripcion": "Participa en el sorteo para ganar Casco reflectante para bicicleta; el negocio anunciará a la persona ganadora.",
+          "condiciones": "Sorteo válido hasta el 31/12/2026; un ganador. Coordinar recojo con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Vehículos y motocicletas",
+          "tipo": "Regalo",
+          "modalidad": "Sorteo",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "nombre": "Marabu Spa",
+      "estado": "No verificado",
+      "categoria": "Salud y bienestar",
+      "tipo": "Spa y centro de bienestar",
+      "descripcion_corta": "Spa y centro de bienestar",
+      "descripcion_larga": "Un espacio pensado para hacer una pausa, relajarte y dedicar tiempo al bienestar y al cuidado personal",
+      "catalogo": [
+        "Spa",
+        "bienestar"
+      ],
+      "reputacion": {
+        "calificacion": 4.6,
+        "opiniones": 11
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 14,
+          "titulo": "Ritual facial hidratante de 60 minutos",
+          "descripcion": "Aprovecha Ritual facial hidratante de 60 minutos y consulta con Marabu Spa los detalles de la oferta.",
+          "condiciones": "Aplica al artículo o servicio indicado en el título; confirmar disponibilidad directamente con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 159.9,
+          "precio_rebajado": 143.91,
+          "categoria": "Salud y bienestar",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 99,
+          "titulo": "Mascarilla facial hidratante",
+          "descripcion": "Completa la dinámica del negocio; el premio del concurso es Mascarilla facial hidratante.",
+          "condiciones": "Enviar una sola participación; el establecimiento seleccionará al ganador.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Salud y bienestar",
+          "tipo": "Regalo",
+          "modalidad": "Concurso",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "nombre": "Style Mobile",
+      "estado": "No verificado",
+      "categoria": "Tecnología",
+      "tipo": "Servicio técnico de celulares",
+      "descripcion_corta": "Servicio técnico y reparación de celulares",
+      "descripcion_larga": "Soporte para celulares orientado a atender necesidades de mantenimiento y reparación de dispositivos móviles",
+      "catalogo": [
+        "Reparación de celulares",
+        "servicio técnico"
+      ],
+      "reputacion": {
+        "calificacion": 4.2,
+        "opiniones": 10
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 15,
+          "titulo": "Cambio de batería para smartphone",
+          "descripcion": "Esta propuesta de Cambio de batería para smartphone está disponible en Style Mobile; confirma existencias antes de comprar.",
+          "condiciones": "Precio promocional por una unidad o servicio. No acumulable con otros descuentos o cupones.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 79.9,
+          "precio_rebajado": 71.91,
+          "categoria": "Tecnología",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 100,
+          "titulo": "Protector de pantalla para celular",
+          "descripcion": "Disfruta Protector de pantalla para celular gratis al presentar tu beneficio de canje.",
+          "condiciones": "Requiere reserva previa para servicios. Productos sujetos a disponibilidad del negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Tecnología",
+          "tipo": "Regalo",
+          "modalidad": "Canje",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "nombre": "Gaelino Store",
+      "estado": "No verificado",
+      "categoria": "Juguetes y entretenimiento",
+      "tipo": "Tienda de coleccionables",
+      "descripcion_corta": "Tienda de artículos coleccionables",
+      "descripcion_larga": "Artículos para quienes disfrutan coleccionar, descubrir nuevos objetos y dar personalidad a sus espacios o colecciones",
+      "catalogo": [
+        "Artículos coleccionables"
+      ],
+      "reputacion": {
+        "calificacion": 4,
+        "opiniones": 9
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "998136686",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 16,
+          "titulo": "Pack de figuras de colección Mini Heroes",
+          "descripcion": "Consulta con Gaelino Store cómo aprovechar Pack de figuras de colección Mini Heroes.",
+          "condiciones": "Para servicios, coordinar cita con anticipación; productos sujetos a disponibilidad del local.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 99.9,
+          "precio_rebajado": 89.91,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 101,
+          "titulo": "Figura coleccionable sorpresa",
+          "descripcion": "Participa en el sorteo para ganar Figura coleccionable sorpresa; el negocio anunciará a la persona ganadora.",
+          "condiciones": "Sorteo válido hasta el 31/12/2026; un ganador. Coordinar recojo con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Regalo",
+          "modalidad": "Sorteo",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "nombre": "Innovatronic",
+      "estado": "No verificado",
+      "categoria": "Tecnología",
+      "tipo": "Tienda de accesorios para celulares",
+      "descripcion_corta": "Accesorios para celulares",
+      "descripcion_larga": "Complementos para celulares que ayudan a adaptar y acompañar el uso diario de tus dispositivos móviles",
+      "catalogo": [
+        "Accesorios para celulares"
+      ],
+      "reputacion": {
+        "calificacion": 4.1,
+        "opiniones": 9
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "969236132",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 17,
+          "titulo": "Cargador rápido USB-C de 25 W",
+          "descripcion": "Descubre Cargador rápido USB-C de 25 W en Innovatronic.",
+          "condiciones": "Una promoción por cliente durante la vigencia indicada. No canjeable por dinero en efectivo.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 49.9,
+          "precio_rebajado": 44.91,
+          "categoria": "Tecnología",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 102,
+          "titulo": "Cable USB-C reforzado",
+          "descripcion": "Completa la dinámica del negocio; el premio del concurso es Cable USB-C reforzado.",
+          "condiciones": "Enviar una sola participación; el establecimiento seleccionará al ganador.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Tecnología",
+          "tipo": "Regalo",
+          "modalidad": "Concurso",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "nombre": "Poleras para Enamorados",
+      "estado": "No verificado",
+      "categoria": "Regalos y recuerdos",
+      "tipo": "Tienda de regalos",
+      "descripcion_corta": "Tienda de regalos",
+      "descripcion_larga": "Ideas para elegir un detalle en ocasiones especiales o sorprender a alguien con un regalo pensado para compartir",
+      "catalogo": [
+        "Regalos"
+      ],
+      "reputacion": {
+        "calificacion": 3.7,
+        "opiniones": 7
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "922910754",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 18,
+          "titulo": "Pack de dos poleras estampadas",
+          "descripcion": "Aprovecha Pack de dos poleras estampadas y consulta con Poleras para Enamorados los detalles de la oferta.",
+          "condiciones": "Solicita la oferta antes de pagar y confirma con el establecimiento cualquier detalle de atención o entrega.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 69.9,
+          "precio_rebajado": 62.91,
+          "categoria": "Regalos y recuerdos",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 103,
+          "titulo": "Polo estampado para pareja",
+          "descripcion": "Disfruta Polo estampado para pareja gratis al presentar tu beneficio de canje.",
+          "condiciones": "Requiere reserva previa para servicios. Productos sujetos a disponibilidad del negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Regalos y recuerdos",
+          "tipo": "Regalo",
+          "modalidad": "Canje",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "nombre": "Bocadulce",
+      "estado": "No verificado",
+      "categoria": "Regalos y recuerdos",
+      "tipo": "Tienda de regalos",
+      "descripcion_corta": "Tienda de regalos",
+      "descripcion_larga": "Encuentra opciones para regalar y celebrar momentos importantes con un detalle elegido para cada ocasión",
+      "catalogo": [
+        "Regalos"
+      ],
+      "reputacion": {
+        "calificacion": 4.3,
+        "opiniones": 6
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "934154217",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 19,
+          "titulo": "Caja de 12 bocaditos surtidos",
+          "descripcion": "Esta propuesta de Caja de 12 bocaditos surtidos está disponible en Bocadulce; confirma existencias antes de comprar.",
+          "condiciones": "Válido hasta el 31/12/2026. Presenta esta oferta al solicitar el producto o servicio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 59.9,
+          "precio_rebajado": 53.91,
+          "categoria": "Regalos y recuerdos",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 104,
+          "titulo": "Caja de seis bocaditos dulces",
+          "descripcion": "Participa en el sorteo para ganar Caja de seis bocaditos dulces; el negocio anunciará a la persona ganadora.",
+          "condiciones": "Sorteo válido hasta el 31/12/2026; un ganador. Coordinar recojo con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Regalos y recuerdos",
+          "tipo": "Regalo",
+          "modalidad": "Sorteo",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "nombre": "Tienda Sent",
+      "estado": "No verificado",
+      "categoria": "Moda y accesorios",
+      "tipo": "Tienda de ropa para hombres",
+      "descripcion_corta": "Tienda de ropa para hombres",
+      "descripcion_larga": "Prendas de vestir para hombres con alternativas para distintos estilos y momentos del día",
+      "catalogo": [
+        "Ropa para hombres",
+        "prendas de vestir"
+      ],
+      "reputacion": {
+        "calificacion": 4.8,
+        "opiniones": 5
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "6761209",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 20,
+          "titulo": "Camisa casual de algodón para hombre",
+          "descripcion": "Consulta con Tienda Sent cómo aprovechar Camisa casual de algodón para hombre.",
+          "condiciones": "Aplica al artículo o servicio indicado en el título; confirmar disponibilidad directamente con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 99.9,
+          "precio_rebajado": 89.91,
+          "categoria": "Moda y accesorios",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 105,
+          "titulo": "Gorra casual de hombre",
+          "descripcion": "Completa la dinámica del negocio; el premio del concurso es Gorra casual de hombre.",
+          "condiciones": "Enviar una sola participación; el establecimiento seleccionará al ganador.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Moda y accesorios",
+          "tipo": "Regalo",
+          "modalidad": "Concurso",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "nombre": "Firgún Perú",
+      "estado": "No verificado",
+      "categoria": "Belleza y cuidado personal",
+      "tipo": "Perfumería",
+      "descripcion_corta": "Perfumería",
+      "descripcion_larga": "Fragancias y propuestas de perfumería para explorar aromas y encontrar opciones acordes a distintos gustos",
+      "catalogo": [
+        "Perfumes",
+        "fragancias"
+      ],
+      "reputacion": {
+        "calificacion": 4.8,
+        "opiniones": 5
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "948713263",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 21,
+          "titulo": "Perfume cítrico de 50 ml",
+          "descripcion": "Descubre Perfume cítrico de 50 ml en Firgún Perú.",
+          "condiciones": "Precio promocional por una unidad o servicio. No acumulable con otros descuentos o cupones.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 79.9,
+          "precio_rebajado": 71.91,
+          "categoria": "Belleza y cuidado personal",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 106,
+          "titulo": "Muestra de perfume de autor",
+          "descripcion": "Disfruta Muestra de perfume de autor gratis al presentar tu beneficio de canje.",
+          "condiciones": "Requiere reserva previa para servicios. Productos sujetos a disponibilidad del negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Belleza y cuidado personal",
+          "tipo": "Regalo",
+          "modalidad": "Canje",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "nombre": "Factory Toys",
+      "estado": "No verificado",
+      "categoria": "Juguetes y entretenimiento",
+      "tipo": "Tienda de coleccionables",
+      "descripcion_corta": "Tienda de artículos coleccionables",
+      "descripcion_larga": "Un lugar para descubrir artículos coleccionables, ampliar tus piezas y conectar con tus aficiones",
+      "catalogo": [
+        "Artículos coleccionables"
+      ],
+      "reputacion": {
+        "calificacion": 4.2,
+        "opiniones": 5
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "902267651",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 22,
+          "titulo": "Set de construcción de 500 piezas",
+          "descripcion": "Aprovecha Set de construcción de 500 piezas y consulta con Factory Toys los detalles de la oferta.",
+          "condiciones": "Para servicios, coordinar cita con anticipación; productos sujetos a disponibilidad del local.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 99.9,
+          "precio_rebajado": 89.91,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 107,
+          "titulo": "Set pequeño de bloques de construcción",
+          "descripcion": "Participa en el sorteo para ganar Set pequeño de bloques de construcción; el negocio anunciará a la persona ganadora.",
+          "condiciones": "Sorteo válido hasta el 31/12/2026; un ganador. Coordinar recojo con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Regalo",
+          "modalidad": "Sorteo",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "nombre": "Generación Abeja",
+      "estado": "No verificado",
+      "categoria": "Alimentos y productos naturales",
+      "tipo": "Tienda de productos naturales",
+      "descripcion_corta": "Tienda de productos naturales",
+      "descripcion_larga": "Productos naturales para quienes buscan conocer alternativas vinculadas al bienestar y a un estilo de vida consciente",
+      "catalogo": [
+        "Productos naturales"
+      ],
+      "reputacion": {
+        "calificacion": 4.5,
+        "opiniones": 4
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "4724790",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 23,
+          "titulo": "Pack natural de miel y polen",
+          "descripcion": "Esta propuesta de Pack natural de miel y polen está disponible en Generación Abeja; confirma existencias antes de comprar.",
+          "condiciones": "Una promoción por cliente durante la vigencia indicada. No canjeable por dinero en efectivo.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 89.9,
+          "precio_rebajado": 80.91,
+          "categoria": "Alimentos y productos naturales",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 108,
+          "titulo": "Frasco de miel natural de 250 g",
+          "descripcion": "Completa la dinámica del negocio; el premio del concurso es Frasco de miel natural de 250 g.",
+          "condiciones": "Enviar una sola participación; el establecimiento seleccionará al ganador.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Alimentos y productos naturales",
+          "tipo": "Regalo",
+          "modalidad": "Concurso",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "nombre": "Mila Masajes",
+      "estado": "No verificado",
+      "categoria": "Salud y bienestar",
+      "tipo": "Servicio de masajes deportivos",
+      "descripcion_corta": "Servicio de masajes deportivos",
+      "descripcion_larga": "Masajes con orientación deportiva para quienes buscan complementar sus rutinas de actividad física y cuidado corporal",
+      "catalogo": [
+        "Masajes deportivos"
+      ],
+      "reputacion": {
+        "calificacion": 3.7,
+        "opiniones": 3
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 24,
+          "titulo": "Sesión de masaje deportivo de 50 minutos",
+          "descripcion": "Consulta con Mila Masajes cómo aprovechar Sesión de masaje deportivo de 50 minutos.",
+          "condiciones": "Solicita la oferta antes de pagar y confirma con el establecimiento cualquier detalle de atención o entrega.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 119.9,
+          "precio_rebajado": 107.91,
+          "categoria": "Salud y bienestar",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 109,
+          "titulo": "Masaje deportivo de 20 minutos",
+          "descripcion": "Disfruta Masaje deportivo de 20 minutos gratis al presentar tu beneficio de canje.",
+          "condiciones": "Requiere reserva previa para servicios. Productos sujetos a disponibilidad del negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Salud y bienestar",
+          "tipo": "Regalo",
+          "modalidad": "Canje",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "nombre": "Okami Dex",
+      "estado": "No verificado",
+      "categoria": "Juguetes y entretenimiento",
+      "tipo": "Juguetería",
+      "descripcion_corta": "Juguetería",
+      "descripcion_larga": "Juguetes para disfrutar el juego, descubrir nuevas actividades y encontrar opciones para diferentes edades e intereses",
+      "catalogo": [
+        "Juguetes"
+      ],
+      "reputacion": {
+        "calificacion": 5,
+        "opiniones": 3
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "930133751",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 25,
+          "titulo": "Figura articulada de colección",
+          "descripcion": "Descubre Figura articulada de colección en Okami Dex.",
+          "condiciones": "Válido hasta el 31/12/2026. Presenta esta oferta al solicitar el producto o servicio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 79.9,
+          "precio_rebajado": 71.91,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 110,
+          "titulo": "Figura articulada mini",
+          "descripcion": "Participa en el sorteo para ganar Figura articulada mini; el negocio anunciará a la persona ganadora.",
+          "condiciones": "Sorteo válido hasta el 31/12/2026; un ganador. Coordinar recojo con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Regalo",
+          "modalidad": "Sorteo",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "nombre": "Katari Spa",
+      "estado": "No verificado",
+      "categoria": "Salud y bienestar",
+      "tipo": "Spa de masajes",
+      "descripcion_corta": "Spa de masajes",
+      "descripcion_larga": "Un espacio para hacer una pausa y disfrutar de una experiencia enfocada en masajes, relajación y bienestar personal",
+      "catalogo": [
+        "Masajes",
+        "servicios de spa"
+      ],
+      "reputacion": {
+        "calificacion": 3.7,
+        "opiniones": 3
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 26,
+          "titulo": "Masaje relajante con aromaterapia",
+          "descripcion": "Aprovecha Masaje relajante con aromaterapia y consulta con Katari Spa los detalles de la oferta.",
+          "condiciones": "Aplica al artículo o servicio indicado en el título; confirmar disponibilidad directamente con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 149.9,
+          "precio_rebajado": 134.91,
+          "categoria": "Salud y bienestar",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 111,
+          "titulo": "Masaje relajante de cuello",
+          "descripcion": "Completa la dinámica del negocio; el premio del concurso es Masaje relajante de cuello.",
+          "condiciones": "Enviar una sola participación; el establecimiento seleccionará al ganador.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Salud y bienestar",
+          "tipo": "Regalo",
+          "modalidad": "Concurso",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "nombre": "Gin & Tonic",
+      "estado": "No verificado",
+      "categoria": "Moda y accesorios",
+      "tipo": "Tienda de ropa juvenil",
+      "descripcion_corta": "Tienda de ropa juvenil",
+      "descripcion_larga": "Moda juvenil con prendas para expresar tu estilo y armar opciones para diferentes planes y ocasiones",
+      "catalogo": [
+        "Ropa juvenil",
+        "prendas de vestir"
+      ],
+      "reputacion": {
+        "calificacion": 5,
+        "opiniones": 3
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "989333194",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 27,
+          "titulo": "Look urbano: polo y gorra",
+          "descripcion": "Esta propuesta de Look urbano: polo y gorra está disponible en Gin & Tonic; confirma existencias antes de comprar.",
+          "condiciones": "Precio promocional por una unidad o servicio. No acumulable con otros descuentos o cupones.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 129.9,
+          "precio_rebajado": 116.91,
+          "categoria": "Moda y accesorios",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 112,
+          "titulo": "Polo juvenil estampado",
+          "descripcion": "Disfruta Polo juvenil estampado gratis al presentar tu beneficio de canje.",
+          "condiciones": "Requiere reserva previa para servicios. Productos sujetos a disponibilidad del negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Moda y accesorios",
+          "tipo": "Regalo",
+          "modalidad": "Canje",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "nombre": "Masajes Antiestrés 1",
+      "estado": "No verificado",
+      "categoria": "Salud y bienestar",
+      "tipo": "Servicio de masajes",
+      "descripcion_corta": "Servicio de masajes",
+      "descripcion_larga": "Una alternativa para dedicar tiempo al bienestar corporal y disfrutar de un momento de relajación",
+      "catalogo": [
+        "Masajes"
+      ],
+      "reputacion": {
+        "calificacion": 2.3,
+        "opiniones": 3
+      },
+      "ubicacion": {
+        "piso": 2,
+        "tienda": 46
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 28,
+          "titulo": "Masaje descontracturante de espalda",
+          "descripcion": "Consulta con Masajes Antiestrés 1 cómo aprovechar Masaje descontracturante de espalda.",
+          "condiciones": "Para servicios, coordinar cita con anticipación; productos sujetos a disponibilidad del local.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 59.9,
+          "precio_rebajado": 53.91,
+          "categoria": "Salud y bienestar",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 113,
+          "titulo": "Masaje localizado de espalda",
+          "descripcion": "Participa en el sorteo para ganar Masaje localizado de espalda; el negocio anunciará a la persona ganadora.",
+          "condiciones": "Sorteo válido hasta el 31/12/2026; un ganador. Coordinar recojo con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Salud y bienestar",
+          "tipo": "Regalo",
+          "modalidad": "Sorteo",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "nombre": "Masajes Antiestrés 2",
+      "estado": "No verificado",
+      "categoria": "Salud y bienestar",
+      "tipo": "Servicio de masajes",
+      "descripcion_corta": "Servicio de masajes",
+      "descripcion_larga": "Un espacio orientado al cuidado corporal y la relajación, ideal para hacer una pausa en la rutina",
+      "catalogo": [
+        "Masajes"
+      ],
+      "reputacion": {
+        "calificacion": 2.3,
+        "opiniones": 3
+      },
+      "ubicacion": {
+        "piso": 2,
+        "tienda": 39
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 29,
+          "titulo": "Masaje antiestrés de cuerpo completo",
+          "descripcion": "Descubre Masaje antiestrés de cuerpo completo en Masajes Antiestrés 2.",
+          "condiciones": "Una promoción por cliente durante la vigencia indicada. No canjeable por dinero en efectivo.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 59.9,
+          "precio_rebajado": 53.91,
+          "categoria": "Salud y bienestar",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 114,
+          "titulo": "Masaje relajante de cuello y hombros",
+          "descripcion": "Completa la dinámica del negocio; el premio del concurso es Masaje relajante de cuello y hombros.",
+          "condiciones": "Enviar una sola participación; el establecimiento seleccionará al ganador.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Salud y bienestar",
+          "tipo": "Regalo",
+          "modalidad": "Concurso",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "nombre": "Elias",
+      "estado": "No verificado",
+      "categoria": "Salud y bienestar",
+      "tipo": "Servicio de masajes y quiropraxia",
+      "descripcion_corta": "Servicio de masajes y quiropraxia",
+      "descripcion_larga": "Atención enfocada en masajes y quiropraxia para quienes buscan opciones relacionadas con el cuidado corporal y el bienestar",
+      "catalogo": [
+        "Masajes",
+        "quiropraxia"
+      ],
+      "reputacion": {
+        "calificacion": 4.7,
+        "opiniones": 3
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 30,
+          "titulo": "Sesión de quiropraxia y movilidad",
+          "descripcion": "Aprovecha Sesión de quiropraxia y movilidad y consulta con Elias los detalles de la oferta.",
+          "condiciones": "Solicita la oferta antes de pagar y confirma con el establecimiento cualquier detalle de atención o entrega.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 99.9,
+          "precio_rebajado": 89.91,
+          "categoria": "Salud y bienestar",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 115,
+          "titulo": "Evaluación de movilidad y postura",
+          "descripcion": "Disfruta Evaluación de movilidad y postura gratis al presentar tu beneficio de canje.",
+          "condiciones": "Requiere reserva previa para servicios. Productos sujetos a disponibilidad del negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Salud y bienestar",
+          "tipo": "Regalo",
+          "modalidad": "Canje",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "nombre": "Lilliput",
+      "estado": "No verificado",
+      "categoria": "Juguetes y entretenimiento",
+      "tipo": "Juguetería",
+      "descripcion_corta": "Juguetería",
+      "descripcion_larga": "Juguetes y alternativas de entretenimiento para acompañar momentos de juego, creatividad y diversión",
+      "catalogo": [
+        "Juguetes"
+      ],
+      "reputacion": {
+        "calificacion": 4.5,
+        "opiniones": 2
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "987775689",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 31,
+          "titulo": "Set de bloques de construcción infantil",
+          "descripcion": "Esta propuesta de Set de bloques de construcción infantil está disponible en Lilliput; confirma existencias antes de comprar.",
+          "condiciones": "Válido hasta el 31/12/2026. Presenta esta oferta al solicitar el producto o servicio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 79.9,
+          "precio_rebajado": 71.91,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 116,
+          "titulo": "Muñeco de tela infantil",
+          "descripcion": "Participa en el sorteo para ganar Muñeco de tela infantil; el negocio anunciará a la persona ganadora.",
+          "condiciones": "Sorteo válido hasta el 31/12/2026; un ganador. Coordinar recojo con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Regalo",
+          "modalidad": "Sorteo",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "nombre": "Lmcell",
+      "estado": "No verificado",
+      "categoria": "Tecnología",
+      "tipo": "Servicio técnico de celulares",
+      "descripcion_corta": "Servicio técnico y reparación de celulares",
+      "descripcion_larga": "Atención para dispositivos móviles con enfoque en soporte y reparación de celulares",
+      "catalogo": [
+        "Reparación de celulares",
+        "servicio técnico"
+      ],
+      "reputacion": {
+        "calificacion": 3,
+        "opiniones": 2
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 32,
+          "titulo": "Cambio de pantalla para celular",
+          "descripcion": "Consulta con Lmcell cómo aprovechar Cambio de pantalla para celular.",
+          "condiciones": "Aplica al artículo o servicio indicado en el título; confirmar disponibilidad directamente con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 89.9,
+          "precio_rebajado": 80.91,
+          "categoria": "Tecnología",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 117,
+          "titulo": "Diagnóstico de batería de celular",
+          "descripcion": "Completa la dinámica del negocio; el premio del concurso es Diagnóstico de batería de celular.",
+          "condiciones": "Enviar una sola participación; el establecimiento seleccionará al ganador.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Tecnología",
+          "tipo": "Regalo",
+          "modalidad": "Concurso",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "nombre": "Zavarcelo Tattoo",
+      "estado": "No verificado",
+      "categoria": "Belleza y cuidado personal",
+      "tipo": "Estudio de tatuajes",
+      "descripcion_corta": "Estudio de tatuajes",
+      "descripcion_larga": "Un espacio dedicado al arte del tatuaje y a la expresión personal a través de diseños sobre la piel",
+      "catalogo": [
+        "Tatuajes"
+      ],
+      "reputacion": {
+        "calificacion": 5,
+        "opiniones": 2
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 33,
+          "titulo": "Diseño de tatuaje lineal pequeño",
+          "descripcion": "Descubre Diseño de tatuaje lineal pequeño en Zavarcelo Tattoo.",
+          "condiciones": "Precio promocional por una unidad o servicio. No acumulable con otros descuentos o cupones.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 199.9,
+          "precio_rebajado": 179.91,
+          "categoria": "Belleza y cuidado personal",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 118,
+          "titulo": "Diseño de tatuaje de hasta 3 cm",
+          "descripcion": "Disfruta Diseño de tatuaje de hasta 3 cm gratis al presentar tu beneficio de canje.",
+          "condiciones": "Requiere reserva previa para servicios. Productos sujetos a disponibilidad del negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Belleza y cuidado personal",
+          "tipo": "Regalo",
+          "modalidad": "Canje",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "nombre": "Juanecotoys",
+      "estado": "No verificado",
+      "categoria": "Juguetes y entretenimiento",
+      "tipo": "Juguetería",
+      "descripcion_corta": "Juguetería",
+      "descripcion_larga": "Opciones de juguetes para jugar, explorar intereses y compartir momentos de entretenimiento",
+      "catalogo": [
+        "Juguetes"
+      ],
+      "reputacion": {
+        "calificacion": 3,
+        "opiniones": 2
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "4946788",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 34,
+          "titulo": "Pack de tres autos de colección",
+          "descripcion": "Aprovecha Pack de tres autos de colección y consulta con Juanecotoys los detalles de la oferta.",
+          "condiciones": "Para servicios, coordinar cita con anticipación; productos sujetos a disponibilidad del local.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 69.9,
+          "precio_rebajado": 62.91,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 119,
+          "titulo": "Auto de colección a escala",
+          "descripcion": "Participa en el sorteo para ganar Auto de colección a escala; el negocio anunciará a la persona ganadora.",
+          "condiciones": "Sorteo válido hasta el 31/12/2026; un ganador. Coordinar recojo con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Regalo",
+          "modalidad": "Sorteo",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "nombre": "BCJ",
+      "estado": "No verificado",
+      "categoria": "Farmacia y salud",
+      "tipo": "Farmacia",
+      "descripcion_corta": "Farmacia",
+      "descripcion_larga": "Establecimiento dedicado a productos de farmacia y artículos vinculados al cuidado de la salud",
+      "catalogo": [
+        "Productos de farmacia"
+      ],
+      "reputacion": {
+        "calificacion": 3,
+        "opiniones": 2
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "2651581",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 35,
+          "titulo": "Botiquín básico de primeros auxilios",
+          "descripcion": "Esta propuesta de Botiquín básico de primeros auxilios está disponible en BCJ; confirma existencias antes de comprar.",
+          "condiciones": "Una promoción por cliente durante la vigencia indicada. No canjeable por dinero en efectivo.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 49.9,
+          "precio_rebajado": 44.91,
+          "categoria": "Farmacia y salud",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 120,
+          "titulo": "Alcohol en gel de bolsillo",
+          "descripcion": "Completa la dinámica del negocio; el premio del concurso es Alcohol en gel de bolsillo.",
+          "condiciones": "Enviar una sola participación; el establecimiento seleccionará al ganador.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Farmacia y salud",
+          "tipo": "Regalo",
+          "modalidad": "Concurso",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "nombre": "DibuToys Lima",
+      "estado": "No verificado",
+      "categoria": "Juguetes y entretenimiento",
+      "tipo": "Tienda de coleccionables",
+      "descripcion_corta": "Tienda de artículos coleccionables",
+      "descripcion_larga": "Artículos para coleccionistas y aficionados que desean descubrir piezas y seguir desarrollando sus colecciones",
+      "catalogo": [
+        "Artículos coleccionables"
+      ],
+      "reputacion": {
+        "calificacion": 5,
+        "opiniones": 2
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "992660301",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 36,
+          "titulo": "Figura sorpresa de colección",
+          "descripcion": "Consulta con DibuToys Lima cómo aprovechar Figura sorpresa de colección.",
+          "condiciones": "Solicita la oferta antes de pagar y confirma con el establecimiento cualquier detalle de atención o entrega.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 79.9,
+          "precio_rebajado": 71.91,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 121,
+          "titulo": "Mini figura coleccionable",
+          "descripcion": "Disfruta Mini figura coleccionable gratis al presentar tu beneficio de canje.",
+          "condiciones": "Requiere reserva previa para servicios. Productos sujetos a disponibilidad del negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Regalo",
+          "modalidad": "Canje",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "nombre": "Sexshop Vip Lince",
+      "estado": "No verificado",
+      "categoria": "Salud y bienestar",
+      "tipo": "Tienda de bienestar íntimo",
+      "descripcion_corta": "Tienda de bienestar íntimo y productos para adultos",
+      "descripcion_larga": "Productos para adultos y opciones de bienestar íntimo, presentados desde un enfoque de cuidado y vida personal",
+      "catalogo": [
+        "Productos para adultos",
+        "bienestar íntimo"
+      ],
+      "reputacion": {
+        "calificacion": 5,
+        "opiniones": 1
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 37,
+          "titulo": "Kit de bienestar íntimo esencial",
+          "descripcion": "Descubre Kit de bienestar íntimo esencial en Sexshop Vip Lince.",
+          "condiciones": "Válido hasta el 31/12/2026. Presenta esta oferta al solicitar el producto o servicio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 99.9,
+          "precio_rebajado": 89.91,
+          "categoria": "Salud y bienestar",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 122,
+          "titulo": "Lubricante íntimo base agua, 50 ml",
+          "descripcion": "Participa en el sorteo para ganar Lubricante íntimo base agua, 50 ml; el negocio anunciará a la persona ganadora.",
+          "condiciones": "Sorteo válido hasta el 31/12/2026; un ganador. Coordinar recojo con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Salud y bienestar",
+          "tipo": "Regalo",
+          "modalidad": "Sorteo",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "nombre": "Welcome to Turin",
+      "estado": "No verificado",
+      "categoria": "Tecnología",
+      "tipo": "Tienda de electrónica",
+      "descripcion_corta": "Tienda de productos electrónicos",
+      "descripcion_larga": "Productos electrónicos y alternativas tecnológicas para acompañar distintas necesidades del hogar y la vida cotidiana",
+      "catalogo": [
+        "Electrónica"
+      ],
+      "reputacion": {
+        "calificacion": 5,
+        "opiniones": 1
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": 76
+      },
+      "contacto": {
+        "whatsapp": "993338268",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 38,
+          "titulo": "Parlante Bluetooth compacto",
+          "descripcion": "Aprovecha Parlante Bluetooth compacto y consulta con Welcome to Turin los detalles de la oferta.",
+          "condiciones": "Aplica al artículo o servicio indicado en el título; confirmar disponibilidad directamente con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 89.9,
+          "precio_rebajado": 80.91,
+          "categoria": "Tecnología",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 123,
+          "titulo": "Adaptador USB de pared",
+          "descripcion": "Completa la dinámica del negocio; el premio del concurso es Adaptador USB de pared.",
+          "condiciones": "Enviar una sola participación; el establecimiento seleccionará al ganador.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Tecnología",
+          "tipo": "Regalo",
+          "modalidad": "Concurso",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "nombre": "Ventas en Línea",
+      "estado": "No verificado",
+      "categoria": "Moda y accesorios",
+      "tipo": "Tienda de accesorios de moda",
+      "descripcion_corta": "Tienda de accesorios de moda",
+      "descripcion_larga": "Accesorios para complementar tus prendas y crear combinaciones acordes a tu estilo personal",
+      "catalogo": [
+        "Accesorios de moda"
+      ],
+      "reputacion": {
+        "calificacion": 5,
+        "opiniones": 1
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "7515600",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 39,
+          "titulo": "Cartera bandolera urbana",
+          "descripcion": "Esta propuesta de Cartera bandolera urbana está disponible en Ventas en Línea; confirma existencias antes de comprar.",
+          "condiciones": "Precio promocional por una unidad o servicio. No acumulable con otros descuentos o cupones.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 69.9,
+          "precio_rebajado": 62.91,
+          "categoria": "Moda y accesorios",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 124,
+          "titulo": "Monedero pequeño de uso diario",
+          "descripcion": "Disfruta Monedero pequeño de uso diario gratis al presentar tu beneficio de canje.",
+          "condiciones": "Requiere reserva previa para servicios. Productos sujetos a disponibilidad del negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Moda y accesorios",
+          "tipo": "Regalo",
+          "modalidad": "Canje",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "nombre": "Gugatienda",
+      "estado": "No verificado",
+      "categoria": "Moda y accesorios",
+      "tipo": "Tienda de accesorios de moda",
+      "descripcion_corta": "Tienda de accesorios de moda",
+      "descripcion_larga": "Descubre accesorios de moda para dar un toque personal a tus looks y completar diferentes estilos",
+      "catalogo": [
+        "Accesorios de moda"
+      ],
+      "reputacion": {
+        "calificacion": 5,
+        "opiniones": 1
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "947815407",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 40,
+          "titulo": "Set de aretes y collar minimalista",
+          "descripcion": "Consulta con Gugatienda cómo aprovechar Set de aretes y collar minimalista.",
+          "condiciones": "Para servicios, coordinar cita con anticipación; productos sujetos a disponibilidad del local.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 79.9,
+          "precio_rebajado": 71.91,
+          "categoria": "Moda y accesorios",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 125,
+          "titulo": "Par de aretes de acero",
+          "descripcion": "Participa en el sorteo para ganar Par de aretes de acero; el negocio anunciará a la persona ganadora.",
+          "condiciones": "Sorteo válido hasta el 31/12/2026; un ganador. Coordinar recojo con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Moda y accesorios",
+          "tipo": "Regalo",
+          "modalidad": "Sorteo",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "nombre": "SeoSupremo",
+      "estado": "No verificado",
+      "categoria": "Servicios profesionales",
+      "tipo": "Agencia de marketing",
+      "descripcion_corta": "Agencia de marketing",
+      "descripcion_larga": "Servicios de marketing para negocios que buscan comunicar mejor su propuesta y fortalecer su presencia ante sus públicos",
+      "catalogo": [
+        "Marketing"
+      ],
+      "reputacion": {
+        "calificacion": 5,
+        "opiniones": 1
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": 76
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 41,
+          "titulo": "Auditoría SEO inicial para negocio",
+          "descripcion": "Descubre Auditoría SEO inicial para negocio en SeoSupremo.",
+          "condiciones": "Una promoción por cliente durante la vigencia indicada. No canjeable por dinero en efectivo.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 199.9,
+          "precio_rebajado": 179.91,
+          "categoria": "Servicios profesionales",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 126,
+          "titulo": "Revisión SEO de una página web",
+          "descripcion": "Completa la dinámica del negocio; el premio del concurso es Revisión SEO de una página web.",
+          "condiciones": "Enviar una sola participación; el establecimiento seleccionará al ganador.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Servicios profesionales",
+          "tipo": "Regalo",
+          "modalidad": "Concurso",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "nombre": "Rapioptica",
+      "estado": "No verificado",
+      "categoria": "Salud y bienestar",
+      "tipo": "Servicio de optometría",
+      "descripcion_corta": "Servicios de optometría y salud visual",
+      "descripcion_larga": "Atención enfocada en optometría y cuidado de la visión para quienes desean consultar sobre su salud visual",
+      "catalogo": [
+        "Optometría",
+        "salud visual"
+      ],
+      "reputacion": {
+        "calificacion": 4,
+        "opiniones": 1
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 42,
+          "titulo": "Evaluación visual y medida de vista",
+          "descripcion": "Aprovecha Evaluación visual y medida de vista y consulta con Rapioptica los detalles de la oferta.",
+          "condiciones": "Solicita la oferta antes de pagar y confirma con el establecimiento cualquier detalle de atención o entrega.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 99.9,
+          "precio_rebajado": 89.91,
+          "categoria": "Salud y bienestar",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 127,
+          "titulo": "Medición visual básica",
+          "descripcion": "Disfruta Medición visual básica gratis al presentar tu beneficio de canje.",
+          "condiciones": "Requiere reserva previa para servicios. Productos sujetos a disponibilidad del negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Salud y bienestar",
+          "tipo": "Regalo",
+          "modalidad": "Canje",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 43,
+      "nombre": "Kiputron",
+      "estado": "No verificado",
+      "categoria": "Tecnología",
+      "tipo": "Especialistas en hardware y software",
+      "descripcion_corta": "Especialistas en hardware y software",
+      "descripcion_larga": "Soluciones relacionadas con componentes físicos y programas informáticos para distintas necesidades tecnológicas",
+      "catalogo": [
+        "Hardware",
+        "software"
+      ],
+      "reputacion": {
+        "calificacion": 1,
+        "opiniones": 1
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 43,
+          "titulo": "Mantenimiento preventivo de PC",
+          "descripcion": "Esta propuesta de Mantenimiento preventivo de PC está disponible en Kiputron; confirma existencias antes de comprar.",
+          "condiciones": "Válido hasta el 31/12/2026. Presenta esta oferta al solicitar el producto o servicio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 149.9,
+          "precio_rebajado": 134.91,
+          "categoria": "Tecnología",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 128,
+          "titulo": "Revisión de rendimiento de computadora",
+          "descripcion": "Participa en el sorteo para ganar Revisión de rendimiento de computadora; el negocio anunciará a la persona ganadora.",
+          "condiciones": "Sorteo válido hasta el 31/12/2026; un ganador. Coordinar recojo con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Tecnología",
+          "tipo": "Regalo",
+          "modalidad": "Sorteo",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "nombre": "Alexa Disfraces",
+      "estado": "No verificado",
+      "categoria": "Sex shop",
+      "tipo": "Tienda para adultos",
+      "descripcion_corta": "Sex shop con productos de lencería",
+      "descripcion_larga": "Lencería y productos para adultos en una propuesta orientada al bienestar íntimo y la expresión personal",
+      "catalogo": [
+        "Lencería"
+      ],
+      "reputacion": {
+        "calificacion": 5,
+        "opiniones": 1
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "944640299",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 44,
+          "titulo": "Disfraz infantil de superhéroe",
+          "descripcion": "Consulta con Alexa Disfraces cómo aprovechar Disfraz infantil de superhéroe.",
+          "condiciones": "Aplica al artículo o servicio indicado en el título; confirmar disponibilidad directamente con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 89.9,
+          "precio_rebajado": 80.91,
+          "categoria": "Sex shop",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 129,
+          "titulo": "Accesorio de disfraz infantil",
+          "descripcion": "Completa la dinámica del negocio; el premio del concurso es Accesorio de disfraz infantil.",
+          "condiciones": "Enviar una sola participación; el establecimiento seleccionará al ganador.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Sex shop",
+          "tipo": "Regalo",
+          "modalidad": "Concurso",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 45,
+      "nombre": "Worldtech Perú",
+      "estado": "No verificado",
+      "categoria": "Hogar y oficina",
+      "tipo": "Tienda de escritorios para computadora",
+      "descripcion_corta": "Tienda de escritorios para computadora",
+      "descripcion_larga": "Escritorios pensados para organizar espacios de estudio, trabajo o entretenimiento frente a la computadora",
+      "catalogo": [
+        "Escritorios para computadora"
+      ],
+      "reputacion": {
+        "calificacion": 5,
+        "opiniones": 1
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "6377838",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 45,
+          "titulo": "Escritorio gamer compacto",
+          "descripcion": "Descubre Escritorio gamer compacto en Worldtech Perú.",
+          "condiciones": "Precio promocional por una unidad o servicio. No acumulable con otros descuentos o cupones.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 299.9,
+          "precio_rebajado": 269.91,
+          "categoria": "Hogar y oficina",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 130,
+          "titulo": "Alfombrilla amplia para escritorio",
+          "descripcion": "Disfruta Alfombrilla amplia para escritorio gratis al presentar tu beneficio de canje.",
+          "condiciones": "Requiere reserva previa para servicios. Productos sujetos a disponibilidad del negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Hogar y oficina",
+          "tipo": "Regalo",
+          "modalidad": "Canje",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "nombre": "Dynamis",
+      "estado": "No verificado",
+      "categoria": "Moda y accesorios",
+      "tipo": "Tienda de accesorios de moda",
+      "descripcion_corta": "Tienda de accesorios de moda",
+      "descripcion_larga": "Complementos de moda para personalizar tus atuendos y encontrar detalles que se adapten a distintas ocasiones",
+      "catalogo": [
+        "Accesorios de moda"
+      ],
+      "reputacion": {
+        "calificacion": 5,
+        "opiniones": 1
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": 10
+      },
+      "contacto": {
+        "whatsapp": "938864771",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 46,
+          "titulo": "Lentes de sol clásicos UV400",
+          "descripcion": "Aprovecha Lentes de sol clásicos UV400 y consulta con Dynamis los detalles de la oferta.",
+          "condiciones": "Para servicios, coordinar cita con anticipación; productos sujetos a disponibilidad del local.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 79.9,
+          "precio_rebajado": 71.91,
+          "categoria": "Moda y accesorios",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 131,
+          "titulo": "Estuche rígido para lentes",
+          "descripcion": "Participa en el sorteo para ganar Estuche rígido para lentes; el negocio anunciará a la persona ganadora.",
+          "condiciones": "Sorteo válido hasta el 31/12/2026; un ganador. Coordinar recojo con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Moda y accesorios",
+          "tipo": "Regalo",
+          "modalidad": "Sorteo",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 47,
+      "nombre": "LimonBird",
+      "estado": "No verificado",
+      "categoria": "Regalos y recuerdos",
+      "tipo": "Tienda de recuerdos y souvenirs",
+      "descripcion_corta": "Tienda de recuerdos y souvenirs",
+      "descripcion_larga": "Recuerdos y souvenirs para conservar momentos especiales o elegir un detalle representativo para regalar",
+      "catalogo": [
+        "Recuerdos",
+        "souvenirs"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "984120033",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 47,
+          "titulo": "Pack de dos recuerdos artesanales",
+          "descripcion": "Esta propuesta de Pack de dos recuerdos artesanales está disponible en LimonBird; confirma existencias antes de comprar.",
+          "condiciones": "Una promoción por cliente durante la vigencia indicada. No canjeable por dinero en efectivo.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 69.9,
+          "precio_rebajado": 62.91,
+          "categoria": "Regalos y recuerdos",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 132,
+          "titulo": "Llavero artesanal de recuerdo",
+          "descripcion": "Completa la dinámica del negocio; el premio del concurso es Llavero artesanal de recuerdo.",
+          "condiciones": "Enviar una sola participación; el establecimiento seleccionará al ganador.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Regalos y recuerdos",
+          "tipo": "Regalo",
+          "modalidad": "Concurso",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "nombre": "PokeNipon",
+      "estado": "No verificado",
+      "categoria": "Juguetes y entretenimiento",
+      "tipo": "Tienda de cartas coleccionables",
+      "descripcion_corta": "Tienda de cartas coleccionables",
+      "descripcion_larga": "Un espacio para quienes disfrutan las cartas coleccionables, ya sea para jugar, intercambiar o ampliar su colección",
+      "catalogo": [
+        "Cartas coleccionables"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 48,
+          "titulo": "Deck inicial de cartas coleccionables",
+          "descripcion": "Consulta con PokeNipon cómo aprovechar Deck inicial de cartas coleccionables.",
+          "condiciones": "Solicita la oferta antes de pagar y confirma con el establecimiento cualquier detalle de atención o entrega.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 99.9,
+          "precio_rebajado": 89.91,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 133,
+          "titulo": "Carta coleccionable sorpresa",
+          "descripcion": "Disfruta Carta coleccionable sorpresa gratis al presentar tu beneficio de canje.",
+          "condiciones": "Requiere reserva previa para servicios. Productos sujetos a disponibilidad del negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Regalo",
+          "modalidad": "Canje",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 49,
+      "nombre": "Diseños",
+      "estado": "No verificado",
+      "categoria": "Salud y bienestar",
+      "tipo": "Spa",
+      "descripcion_corta": "Spa y bienestar",
+      "descripcion_larga": "Servicios de spa pensados para desconectar de la rutina y reservar un momento para el descanso y el cuidado personal",
+      "catalogo": [
+        "Servicios de spa",
+        "bienestar"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 49,
+          "titulo": "Masaje relajante de 45 minutos",
+          "descripcion": "Descubre Masaje relajante de 45 minutos en Diseños.",
+          "condiciones": "Válido hasta el 31/12/2026. Presenta esta oferta al solicitar el producto o servicio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 89.9,
+          "precio_rebajado": 80.91,
+          "categoria": "Salud y bienestar",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 134,
+          "titulo": "Masaje de manos de 15 minutos",
+          "descripcion": "Participa en el sorteo para ganar Masaje de manos de 15 minutos; el negocio anunciará a la persona ganadora.",
+          "condiciones": "Sorteo válido hasta el 31/12/2026; un ganador. Coordinar recojo con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Salud y bienestar",
+          "tipo": "Regalo",
+          "modalidad": "Sorteo",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "nombre": "Smartphone Rocket",
+      "estado": "No verificado",
+      "categoria": "Tecnología",
+      "tipo": "Tienda de celulares",
+      "descripcion_corta": "Tienda de celulares",
+      "descripcion_larga": "Celulares y opciones de tecnología móvil para conocer alternativas de comunicación y uso cotidiano",
+      "catalogo": [
+        "Celulares"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": 29
+      },
+      "contacto": {
+        "whatsapp": "987951023",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 50,
+          "titulo": "Soporte magnético para smartphone",
+          "descripcion": "Aprovecha Soporte magnético para smartphone y consulta con Smartphone Rocket los detalles de la oferta.",
+          "condiciones": "Aplica al artículo o servicio indicado en el título; confirmar disponibilidad directamente con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 129.9,
+          "precio_rebajado": 116.91,
+          "categoria": "Tecnología",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 135,
+          "titulo": "Cable corto de carga para smartphone",
+          "descripcion": "Completa la dinámica del negocio; el premio del concurso es Cable corto de carga para smartphone.",
+          "condiciones": "Enviar una sola participación; el establecimiento seleccionará al ganador.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Tecnología",
+          "tipo": "Regalo",
+          "modalidad": "Concurso",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 51,
+      "nombre": "Duo Salón",
+      "estado": "No verificado",
+      "categoria": "Salud y bienestar",
+      "tipo": "Spa de día",
+      "descripcion_corta": "Spa de día y bienestar",
+      "descripcion_larga": "Una propuesta de spa para hacer una pausa durante el día y dedicar tiempo al bienestar y al cuidado personal",
+      "catalogo": [
+        "Servicios de spa",
+        "bienestar"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": 2,
+        "tienda": 67
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 51,
+          "titulo": "Manicure y pedicure express",
+          "descripcion": "Esta propuesta de Manicure y pedicure express está disponible en Duo Salón; confirma existencias antes de comprar.",
+          "condiciones": "Precio promocional por una unidad o servicio. No acumulable con otros descuentos o cupones.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 149.9,
+          "precio_rebajado": 134.91,
+          "categoria": "Salud y bienestar",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 136,
+          "titulo": "Diseño sencillo de uñas",
+          "descripcion": "Disfruta Diseño sencillo de uñas gratis al presentar tu beneficio de canje.",
+          "condiciones": "Requiere reserva previa para servicios. Productos sujetos a disponibilidad del negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Salud y bienestar",
+          "tipo": "Regalo",
+          "modalidad": "Canje",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 52,
+      "nombre": "Full Natura",
+      "estado": "No verificado",
+      "categoria": "Alimentos y productos naturales",
+      "tipo": "Tienda de productos naturales",
+      "descripcion_corta": "Tienda de productos naturales",
+      "descripcion_larga": "Alternativas de productos naturales para quienes desean explorar opciones relacionadas con su bienestar diario",
+      "catalogo": [
+        "Productos naturales"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "922400229",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 52,
+          "titulo": "Pack de granola, miel y semillas",
+          "descripcion": "Consulta con Full Natura cómo aprovechar Pack de granola, miel y semillas.",
+          "condiciones": "Para servicios, coordinar cita con anticipación; productos sujetos a disponibilidad del local.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 69.9,
+          "precio_rebajado": 62.91,
+          "categoria": "Alimentos y productos naturales",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 137,
+          "titulo": "Barra natural de miel y avena",
+          "descripcion": "Participa en el sorteo para ganar Barra natural de miel y avena; el negocio anunciará a la persona ganadora.",
+          "condiciones": "Sorteo válido hasta el 31/12/2026; un ganador. Coordinar recojo con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Alimentos y productos naturales",
+          "tipo": "Regalo",
+          "modalidad": "Sorteo",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 53,
+      "nombre": "Kurama",
+      "estado": "No verificado",
+      "categoria": "Vehículos y motocicletas",
+      "tipo": "Tienda de repuestos para motocicletas",
+      "descripcion_corta": "Tienda de repuestos para motocicletas",
+      "descripcion_larga": "Repuestos y componentes para motocicletas, dirigidos a quienes buscan opciones para sus vehículos de dos ruedas",
+      "catalogo": [
+        "Repuestos para motocicletas"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "947842138",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 53,
+          "titulo": "Kit de luces LED para motocicleta",
+          "descripcion": "Descubre Kit de luces LED para motocicleta en Kurama.",
+          "condiciones": "Una promoción por cliente durante la vigencia indicada. No canjeable por dinero en efectivo.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 179.9,
+          "precio_rebajado": 161.91,
+          "categoria": "Vehículos y motocicletas",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 138,
+          "titulo": "Luz LED trasera para motocicleta",
+          "descripcion": "Completa la dinámica del negocio; el premio del concurso es Luz LED trasera para motocicleta.",
+          "condiciones": "Enviar una sola participación; el establecimiento seleccionará al ganador.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Vehículos y motocicletas",
+          "tipo": "Regalo",
+          "modalidad": "Concurso",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 54,
+      "nombre": "Bathmate Peruvian",
+      "estado": "No verificado",
+      "categoria": "Salud y bienestar",
+      "tipo": "Sexología y bienestar íntimo",
+      "descripcion_corta": "Sexología y bienestar íntimo",
+      "descripcion_larga": "Una propuesta vinculada a la sexología y el bienestar íntimo, con enfoque en información y cuidado de la vida personal",
+      "catalogo": [
+        "Sexología",
+        "bienestar íntimo"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 54,
+          "titulo": "Asesoría de bienestar íntimo personalizada",
+          "descripcion": "Aprovecha Asesoría de bienestar íntimo personalizada y consulta con Bathmate Peruvian los detalles de la oferta.",
+          "condiciones": "Solicita la oferta antes de pagar y confirma con el establecimiento cualquier detalle de atención o entrega.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 119.9,
+          "precio_rebajado": 107.91,
+          "categoria": "Salud y bienestar",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 139,
+          "titulo": "Consulta informativa de bienestar íntimo",
+          "descripcion": "Disfruta Consulta informativa de bienestar íntimo gratis al presentar tu beneficio de canje.",
+          "condiciones": "Requiere reserva previa para servicios. Productos sujetos a disponibilidad del negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Salud y bienestar",
+          "tipo": "Regalo",
+          "modalidad": "Canje",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 55,
+      "nombre": "Bathmate Hydromax Peru",
+      "estado": "No verificado",
+      "categoria": "Salud y bienestar",
+      "tipo": "Sexología y bienestar íntimo",
+      "descripcion_corta": "Sexología y bienestar íntimo",
+      "descripcion_larga": "Espacio relacionado con sexología y bienestar íntimo, pensado para abordar esta área de la vida personal con naturalidad",
+      "catalogo": [
+        "Sexología",
+        "bienestar íntimo"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 55,
+          "titulo": "Set de cuidado íntimo Hydromax",
+          "descripcion": "Esta propuesta de Set de cuidado íntimo Hydromax está disponible en Bathmate Hydromax Peru; confirma existencias antes de comprar.",
+          "condiciones": "Válido hasta el 31/12/2026. Presenta esta oferta al solicitar el producto o servicio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 129.9,
+          "precio_rebajado": 116.91,
+          "categoria": "Salud y bienestar",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 140,
+          "titulo": "Estuche de viaje Hydromax",
+          "descripcion": "Participa en el sorteo para ganar Estuche de viaje Hydromax; el negocio anunciará a la persona ganadora.",
+          "condiciones": "Sorteo válido hasta el 31/12/2026; un ganador. Coordinar recojo con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Salud y bienestar",
+          "tipo": "Regalo",
+          "modalidad": "Sorteo",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 56,
+      "nombre": "KingStore",
+      "estado": "No verificado",
+      "categoria": "Tecnología",
+      "tipo": "Tienda de accesorios para celulares",
+      "descripcion_corta": "Accesorios para celulares",
+      "descripcion_larga": "Complementos tecnológicos para celulares que acompañan su uso diario y permiten personalizar los dispositivos",
+      "catalogo": [
+        "Accesorios para celulares"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": 2,
+        "tienda": 48
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 56,
+          "titulo": "Cargador portátil de 10 000 mAh",
+          "descripcion": "Consulta con KingStore cómo aprovechar Cargador portátil de 10 000 mAh.",
+          "condiciones": "Aplica al artículo o servicio indicado en el título; confirmar disponibilidad directamente con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 89.9,
+          "precio_rebajado": 80.91,
+          "categoria": "Tecnología",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 141,
+          "titulo": "Soporte de escritorio para celular",
+          "descripcion": "Completa la dinámica del negocio; el premio del concurso es Soporte de escritorio para celular.",
+          "condiciones": "Enviar una sola participación; el establecimiento seleccionará al ganador.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Tecnología",
+          "tipo": "Regalo",
+          "modalidad": "Concurso",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 57,
+      "nombre": "Dertel Peru",
+      "estado": "No verificado",
+      "categoria": "Herramientas e industria",
+      "tipo": "Tienda de herramientas y equipos de medición",
+      "descripcion_corta": "Herramientas y equipos de medición",
+      "descripcion_larga": "Herramientas y equipos de medición: alcoholímetros, tacómetros, anemómetros, pirómetros, luxómetros y distanciómetros",
+      "catalogo": [
+        "Herramientas de medición",
+        "alcoholímetros",
+        "tacómetros",
+        "anemómetros",
+        "pirómetros",
+        "luxómetros",
+        "distanciómetros"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 57,
+          "titulo": "Multímetro digital con puntas de prueba",
+          "descripcion": "Descubre Multímetro digital con puntas de prueba en Dertel Peru.",
+          "condiciones": "Precio promocional por una unidad o servicio. No acumulable con otros descuentos o cupones.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 149.9,
+          "precio_rebajado": 134.91,
+          "categoria": "Herramientas e industria",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 142,
+          "titulo": "Juego de puntas para destornillador",
+          "descripcion": "Disfruta Juego de puntas para destornillador gratis al presentar tu beneficio de canje.",
+          "condiciones": "Requiere reserva previa para servicios. Productos sujetos a disponibilidad del negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Herramientas e industria",
+          "tipo": "Regalo",
+          "modalidad": "Canje",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 58,
+      "nombre": "Taller Gonk",
+      "estado": "No verificado",
+      "categoria": "Arte y entretenimiento",
+      "tipo": "Estudio de arte",
+      "descripcion_corta": "Estudio de arte",
+      "descripcion_larga": "Un espacio dedicado a la creación artística y a la exploración de ideas, técnicas y formas de expresión visual",
+      "catalogo": [
+        "Arte"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 58,
+          "titulo": "Taller de pintura acrílica para principiantes",
+          "descripcion": "Aprovecha Taller de pintura acrílica para principiantes y consulta con Taller Gonk los detalles de la oferta.",
+          "condiciones": "Para servicios, coordinar cita con anticipación; productos sujetos a disponibilidad del local.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 99.9,
+          "precio_rebajado": 89.91,
+          "categoria": "Arte y entretenimiento",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 143,
+          "titulo": "Clase introductoria de dibujo",
+          "descripcion": "Participa en el sorteo para ganar Clase introductoria de dibujo; el negocio anunciará a la persona ganadora.",
+          "condiciones": "Sorteo válido hasta el 31/12/2026; un ganador. Coordinar recojo con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Arte y entretenimiento",
+          "tipo": "Regalo",
+          "modalidad": "Sorteo",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 59,
+      "nombre": "Burning Toys",
+      "estado": "No verificado",
+      "categoria": "Tabaco y fumadores",
+      "tipo": "Proveedor de productos de tabaco",
+      "descripcion_corta": "Proveedor de productos de tabaco",
+      "descripcion_larga": "Productos de tabaco dentro de una oferta orientada a personas adultas interesadas en esta categoría",
+      "catalogo": [
+        "Productos de tabaco"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 59,
+          "titulo": "Kit de accesorios para fumador adulto",
+          "descripcion": "Esta propuesta de Kit de accesorios para fumador adulto está disponible en Burning Toys; confirma existencias antes de comprar.",
+          "condiciones": "Una promoción por cliente durante la vigencia indicada. No canjeable por dinero en efectivo.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 59.9,
+          "precio_rebajado": 53.91,
+          "categoria": "Tabaco y fumadores",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 144,
+          "titulo": "Encendedor recargable para adulto",
+          "descripcion": "Completa la dinámica del negocio; el premio del concurso es Encendedor recargable para adulto.",
+          "condiciones": "Enviar una sola participación; el establecimiento seleccionará al ganador.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Tabaco y fumadores",
+          "tipo": "Regalo",
+          "modalidad": "Concurso",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 60,
+      "nombre": "Kobdi",
+      "estado": "No verificado",
+      "categoria": "Herramientas e industria",
+      "tipo": "Proveedor de equipos industriales",
+      "descripcion_corta": "Proveedor de equipos industriales",
+      "descripcion_larga": "Equipos para actividades industriales y operativas, orientados a distintas necesidades de trabajo y producción",
+      "catalogo": [
+        "Equipos industriales"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 60,
+          "titulo": "Juego de herramientas de precisión",
+          "descripcion": "Consulta con Kobdi cómo aprovechar Juego de herramientas de precisión.",
+          "condiciones": "Solicita la oferta antes de pagar y confirma con el establecimiento cualquier detalle de atención o entrega.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 199.9,
+          "precio_rebajado": 179.91,
+          "categoria": "Herramientas e industria",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 145,
+          "titulo": "Set de llaves de precisión",
+          "descripcion": "Disfruta Set de llaves de precisión gratis al presentar tu beneficio de canje.",
+          "condiciones": "Requiere reserva previa para servicios. Productos sujetos a disponibilidad del negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Herramientas e industria",
+          "tipo": "Regalo",
+          "modalidad": "Canje",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 61,
+      "nombre": "Popzilla",
+      "estado": "No verificado",
+      "categoria": "Juguetes y entretenimiento",
+      "tipo": "Tienda de hobbies y pasatiempos",
+      "descripcion_corta": "Tienda de hobbies y pasatiempos",
+      "descripcion_larga": "Artículos para explorar pasatiempos, desarrollar aficiones y encontrar nuevas formas de disfrutar el tiempo libre",
+      "catalogo": [
+        "Hobbies",
+        "artículos para pasatiempos"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 61,
+          "titulo": "Set de miniaturas para pintar",
+          "descripcion": "Descubre Set de miniaturas para pintar en Popzilla.",
+          "condiciones": "Válido hasta el 31/12/2026. Presenta esta oferta al solicitar el producto o servicio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 79.9,
+          "precio_rebajado": 71.91,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 146,
+          "titulo": "Miniatura para colección",
+          "descripcion": "Participa en el sorteo para ganar Miniatura para colección; el negocio anunciará a la persona ganadora.",
+          "condiciones": "Sorteo válido hasta el 31/12/2026; un ganador. Coordinar recojo con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Regalo",
+          "modalidad": "Sorteo",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 62,
+      "nombre": "Comunicaciones N&M",
+      "estado": "No verificado",
+      "categoria": "Tecnología",
+      "tipo": "Tienda de celulares",
+      "descripcion_corta": "Tienda de celulares",
+      "descripcion_larga": "Opciones de telefonía móvil para quienes buscan conocer celulares y alternativas de comunicación cotidiana",
+      "catalogo": [
+        "Celulares"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "931405922",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 62,
+          "titulo": "Audífonos con micrófono para llamadas",
+          "descripcion": "Aprovecha Audífonos con micrófono para llamadas y consulta con Comunicaciones N&M los detalles de la oferta.",
+          "condiciones": "Aplica al artículo o servicio indicado en el título; confirmar disponibilidad directamente con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 89.9,
+          "precio_rebajado": 80.91,
+          "categoria": "Tecnología",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 147,
+          "titulo": "Cable auxiliar para celular",
+          "descripcion": "Completa la dinámica del negocio; el premio del concurso es Cable auxiliar para celular.",
+          "condiciones": "Enviar una sola participación; el establecimiento seleccionará al ganador.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Tecnología",
+          "tipo": "Regalo",
+          "modalidad": "Concurso",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 63,
+      "nombre": "Amanzintoys",
+      "estado": "No verificado",
+      "categoria": "Juguetes y entretenimiento",
+      "tipo": "Tienda de cartas coleccionables",
+      "descripcion_corta": "Tienda de cartas coleccionables",
+      "descripcion_larga": "Cartas coleccionables para jugar, intercambiar o sumar nuevas piezas a una colección personal",
+      "catalogo": [
+        "Cartas coleccionables"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 63,
+          "titulo": "Sobre de cartas coleccionables edición foil",
+          "descripcion": "Esta propuesta de Sobre de cartas coleccionables edición foil está disponible en Amanzintoys; confirma existencias antes de comprar.",
+          "condiciones": "Precio promocional por una unidad o servicio. No acumulable con otros descuentos o cupones.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 99.9,
+          "precio_rebajado": 89.91,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 148,
+          "titulo": "Carta foil coleccionable",
+          "descripcion": "Disfruta Carta foil coleccionable gratis al presentar tu beneficio de canje.",
+          "condiciones": "Requiere reserva previa para servicios. Productos sujetos a disponibilidad del negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Regalo",
+          "modalidad": "Canje",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 64,
+      "nombre": "El Buzón de Pókemon",
+      "estado": "No verificado",
+      "categoria": "Juguetes y entretenimiento",
+      "tipo": "Tienda de cartas coleccionables",
+      "descripcion_corta": "Tienda de cartas coleccionables",
+      "descripcion_larga": "Un punto para aficionados a las cartas coleccionables que desean explorar el hobby y ampliar sus colecciones",
+      "catalogo": [
+        "Cartas coleccionables"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "994129440",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 64,
+          "titulo": "Colección de cartas Pokémon surtidas",
+          "descripcion": "Consulta con El Buzón de Pókemon cómo aprovechar Colección de cartas Pokémon surtidas.",
+          "condiciones": "Para servicios, coordinar cita con anticipación; productos sujetos a disponibilidad del local.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 89.9,
+          "precio_rebajado": 80.91,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 149,
+          "titulo": "Sobre de cartas Pokémon",
+          "descripcion": "Participa en el sorteo para ganar Sobre de cartas Pokémon; el negocio anunciará a la persona ganadora.",
+          "condiciones": "Sorteo válido hasta el 31/12/2026; un ganador. Coordinar recojo con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Regalo",
+          "modalidad": "Sorteo",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 65,
+      "nombre": "Mahira Masajes SPA",
+      "estado": "No verificado",
+      "categoria": "Belleza y cuidado personal",
+      "tipo": "Spa y centro de masajes",
+      "descripcion_corta": "Spa con servicios de masajes y cuidado personal",
+      "descripcion_larga": "Un espacio de spa enfocado en masajes y cuidado personal para quienes desean reservar un momento de bienestar",
+      "catalogo": [
+        "Servicios de spa",
+        "masajes"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 65,
+          "titulo": "Masaje de espalda y cuello de 40 minutos",
+          "descripcion": "Descubre Masaje de espalda y cuello de 40 minutos en Mahira Masajes SPA.",
+          "condiciones": "Una promoción por cliente durante la vigencia indicada. No canjeable por dinero en efectivo.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 129.9,
+          "precio_rebajado": 116.91,
+          "categoria": "Belleza y cuidado personal",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 150,
+          "titulo": "Masaje de cuello de 20 minutos",
+          "descripcion": "Completa la dinámica del negocio; el premio del concurso es Masaje de cuello de 20 minutos.",
+          "condiciones": "Enviar una sola participación; el establecimiento seleccionará al ganador.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Belleza y cuidado personal",
+          "tipo": "Regalo",
+          "modalidad": "Concurso",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 66,
+      "nombre": "Johnny Cell Phone",
+      "estado": "No verificado",
+      "categoria": "Tecnología",
+      "tipo": "Tienda de celulares",
+      "descripcion_corta": "Tienda de celulares",
+      "descripcion_larga": "Celulares y tecnología móvil para explorar opciones de comunicación y mantenerte conectado en tu día a día",
+      "catalogo": [
+        "Celulares"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "989796177",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 66,
+          "titulo": "Cable de carga rápida para celular",
+          "descripcion": "Aprovecha Cable de carga rápida para celular y consulta con Johnny Cell Phone los detalles de la oferta.",
+          "condiciones": "Solicita la oferta antes de pagar y confirma con el establecimiento cualquier detalle de atención o entrega.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 99.9,
+          "precio_rebajado": 89.91,
+          "categoria": "Tecnología",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 151,
+          "titulo": "Protector de pantalla universal",
+          "descripcion": "Disfruta Protector de pantalla universal gratis al presentar tu beneficio de canje.",
+          "condiciones": "Requiere reserva previa para servicios. Productos sujetos a disponibilidad del negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Tecnología",
+          "tipo": "Regalo",
+          "modalidad": "Canje",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 67,
+      "nombre": "Bellas Lenceria",
+      "estado": "No verificado",
+      "categoria": "Moda y accesorios",
+      "tipo": "Tienda de ropa para mujeres",
+      "descripcion_corta": "Tienda de ropa para mujeres",
+      "descripcion_larga": "Prendas de vestir para mujeres con opciones para distintos estilos, combinaciones y ocasiones",
+      "catalogo": [
+        "Ropa para mujeres",
+        "prendas de vestir"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 67,
+          "titulo": "Conjunto de lencería suave de dos piezas",
+          "descripcion": "Esta propuesta de Conjunto de lencería suave de dos piezas está disponible en Bellas Lenceria; confirma existencias antes de comprar.",
+          "condiciones": "Válido hasta el 31/12/2026. Presenta esta oferta al solicitar el producto o servicio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 79.9,
+          "precio_rebajado": 71.91,
+          "categoria": "Moda y accesorios",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 152,
+          "titulo": "Pieza básica de lencería",
+          "descripcion": "Participa en el sorteo para ganar Pieza básica de lencería; el negocio anunciará a la persona ganadora.",
+          "condiciones": "Sorteo válido hasta el 31/12/2026; un ganador. Coordinar recojo con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Moda y accesorios",
+          "tipo": "Regalo",
+          "modalidad": "Sorteo",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 68,
+      "nombre": "Toys Vaita",
+      "estado": "No verificado",
+      "categoria": "Juguetes y entretenimiento",
+      "tipo": "Juguetería",
+      "descripcion_corta": "Juguetería",
+      "descripcion_larga": "Juguetes para descubrir, jugar y compartir actividades de entretenimiento en distintos momentos",
+      "catalogo": [
+        "Juguetes"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "993553087",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 68,
+          "titulo": "Set de bloques magnéticos de construcción",
+          "descripcion": "Consulta con Toys Vaita cómo aprovechar Set de bloques magnéticos de construcción.",
+          "condiciones": "Aplica al artículo o servicio indicado en el título; confirmar disponibilidad directamente con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 69.9,
+          "precio_rebajado": 62.91,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 153,
+          "titulo": "Rompecabezas infantil de madera",
+          "descripcion": "Completa la dinámica del negocio; el premio del concurso es Rompecabezas infantil de madera.",
+          "condiciones": "Enviar una sola participación; el establecimiento seleccionará al ganador.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Regalo",
+          "modalidad": "Concurso",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 69,
+      "nombre": "Kaita",
+      "estado": "No verificado",
+      "categoria": "Alimentos y productos naturales",
+      "tipo": "Tienda de alimentos saludables",
+      "descripcion_corta": "Tienda de alimentos saludables",
+      "descripcion_larga": "Alimentos saludables para quienes buscan incorporar alternativas variadas a sus compras y hábitos cotidianos",
+      "catalogo": [
+        "Alimentos saludables"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "4710210",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 69,
+          "titulo": "Pack saludable de frutos secos",
+          "descripcion": "Descubre Pack saludable de frutos secos en Kaita.",
+          "condiciones": "Precio promocional por una unidad o servicio. No acumulable con otros descuentos o cupones.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 59.9,
+          "precio_rebajado": 53.91,
+          "categoria": "Alimentos y productos naturales",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 154,
+          "titulo": "Pack de semillas tostadas de 150 g",
+          "descripcion": "Disfruta Pack de semillas tostadas de 150 g gratis al presentar tu beneficio de canje.",
+          "condiciones": "Requiere reserva previa para servicios. Productos sujetos a disponibilidad del negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Alimentos y productos naturales",
+          "tipo": "Regalo",
+          "modalidad": "Canje",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 70,
+      "nombre": "Ham Sekai Store",
+      "estado": "No verificado",
+      "categoria": "Moda y accesorios",
+      "tipo": "Tienda de accesorios de moda",
+      "descripcion_corta": "Tienda de accesorios de moda",
+      "descripcion_larga": "Accesorios para complementar tu estilo y aportar detalles personales a diferentes combinaciones de ropa",
+      "catalogo": [
+        "Accesorios de moda"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "4711786",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 70,
+          "titulo": "Lentes de lectura con estuche",
+          "descripcion": "Aprovecha Lentes de lectura con estuche y consulta con Ham Sekai Store los detalles de la oferta.",
+          "condiciones": "Para servicios, coordinar cita con anticipación; productos sujetos a disponibilidad del local.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 79.9,
+          "precio_rebajado": 71.91,
+          "categoria": "Moda y accesorios",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 155,
+          "titulo": "Estuche suave para lentes",
+          "descripcion": "Participa en el sorteo para ganar Estuche suave para lentes; el negocio anunciará a la persona ganadora.",
+          "condiciones": "Sorteo válido hasta el 31/12/2026; un ganador. Coordinar recojo con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Moda y accesorios",
+          "tipo": "Regalo",
+          "modalidad": "Sorteo",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 71,
+      "nombre": "Siete Regalos",
+      "estado": "No verificado",
+      "categoria": "Regalos y recuerdos",
+      "tipo": "Tienda de regalos",
+      "descripcion_corta": "Tienda de regalos",
+      "descripcion_larga": "Ideas de regalos para celebrar ocasiones, agradecer o acompañar momentos especiales con un detalle",
+      "catalogo": [
+        "Regalos"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 71,
+          "titulo": "Caja de regalo con taza y chocolates",
+          "descripcion": "Esta propuesta de Caja de regalo con taza y chocolates está disponible en Siete Regalos; confirma existencias antes de comprar.",
+          "condiciones": "Una promoción por cliente durante la vigencia indicada. No canjeable por dinero en efectivo.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 69.9,
+          "precio_rebajado": 62.91,
+          "categoria": "Regalos y recuerdos",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 156,
+          "titulo": "Taza decorativa para regalo",
+          "descripcion": "Completa la dinámica del negocio; el premio del concurso es Taza decorativa para regalo.",
+          "condiciones": "Enviar una sola participación; el establecimiento seleccionará al ganador.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Regalos y recuerdos",
+          "tipo": "Regalo",
+          "modalidad": "Concurso",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 72,
+      "nombre": "Electri LM",
+      "estado": "No verificado",
+      "categoria": "Herramientas e industria",
+      "tipo": "Tienda de motores eléctricos",
+      "descripcion_corta": "Tienda de motores eléctricos",
+      "descripcion_larga": "Motores eléctricos y opciones relacionadas para aplicaciones que requieren soluciones de accionamiento eléctrico",
+      "catalogo": [
+        "Motores eléctricos"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "934992264",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 72,
+          "titulo": "Motor eléctrico monofásico de 1/2 HP",
+          "descripcion": "Consulta con Electri LM cómo aprovechar Motor eléctrico monofásico de 1/2 HP.",
+          "condiciones": "Solicita la oferta antes de pagar y confirma con el establecimiento cualquier detalle de atención o entrega.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 199.9,
+          "precio_rebajado": 179.91,
+          "categoria": "Herramientas e industria",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 157,
+          "titulo": "Condensador para motor eléctrico",
+          "descripcion": "Disfruta Condensador para motor eléctrico gratis al presentar tu beneficio de canje.",
+          "condiciones": "Requiere reserva previa para servicios. Productos sujetos a disponibilidad del negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Herramientas e industria",
+          "tipo": "Regalo",
+          "modalidad": "Canje",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 73,
+      "nombre": "Ponte Tacones y Más",
+      "estado": "No verificado",
+      "categoria": "Moda y accesorios",
+      "tipo": "Tienda de accesorios de moda",
+      "descripcion_corta": "Tienda de accesorios de moda",
+      "descripcion_larga": "Accesorios de moda para completar tus atuendos y encontrar detalles que reflejen tu estilo",
+      "catalogo": [
+        "Accesorios de moda"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 73,
+          "titulo": "Tacones clásicos de punta fina",
+          "descripcion": "Descubre Tacones clásicos de punta fina en Ponte Tacones y Más.",
+          "condiciones": "Válido hasta el 31/12/2026. Presenta esta oferta al solicitar el producto o servicio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 89.9,
+          "precio_rebajado": 80.91,
+          "categoria": "Moda y accesorios",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 158,
+          "titulo": "Accesorio para calzado de tacón",
+          "descripcion": "Participa en el sorteo para ganar Accesorio para calzado de tacón; el negocio anunciará a la persona ganadora.",
+          "condiciones": "Sorteo válido hasta el 31/12/2026; un ganador. Coordinar recojo con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Moda y accesorios",
+          "tipo": "Regalo",
+          "modalidad": "Sorteo",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 74,
+      "nombre": "OG Parfums",
+      "estado": "No verificado",
+      "categoria": "Belleza y cuidado personal",
+      "tipo": "Perfumería",
+      "descripcion_corta": "Perfumería",
+      "descripcion_larga": "Una selección de fragancias para explorar diferentes aromas y encontrar opciones que conecten con tus preferencias",
+      "catalogo": [
+        "Perfumes",
+        "fragancias"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "966432229",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 74,
+          "titulo": "Perfume floral de 60 ml",
+          "descripcion": "Aprovecha Perfume floral de 60 ml y consulta con OG Parfums los detalles de la oferta.",
+          "condiciones": "Aplica al artículo o servicio indicado en el título; confirmar disponibilidad directamente con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 149.9,
+          "precio_rebajado": 134.91,
+          "categoria": "Belleza y cuidado personal",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 159,
+          "titulo": "Muestra de perfume floral",
+          "descripcion": "Completa la dinámica del negocio; el premio del concurso es Muestra de perfume floral.",
+          "condiciones": "Enviar una sola participación; el establecimiento seleccionará al ganador.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Belleza y cuidado personal",
+          "tipo": "Regalo",
+          "modalidad": "Concurso",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 75,
+      "nombre": "Medsi Store",
+      "estado": "No verificado",
+      "categoria": "Juguetes y entretenimiento",
+      "tipo": "Juguetería",
+      "descripcion_corta": "Juguetería",
+      "descripcion_larga": "Juguetes y propuestas de entretenimiento para acompañar el juego, la imaginación y el tiempo libre",
+      "catalogo": [
+        "Juguetes"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "993553087",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 75,
+          "titulo": "Set de juego educativo de madera",
+          "descripcion": "Esta propuesta de Set de juego educativo de madera está disponible en Medsi Store; confirma existencias antes de comprar.",
+          "condiciones": "Precio promocional por una unidad o servicio. No acumulable con otros descuentos o cupones.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 99.9,
+          "precio_rebajado": 89.91,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 160,
+          "titulo": "Set de lápices de colores infantiles",
+          "descripcion": "Disfruta Set de lápices de colores infantiles gratis al presentar tu beneficio de canje.",
+          "condiciones": "Requiere reserva previa para servicios. Productos sujetos a disponibilidad del negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Regalo",
+          "modalidad": "Canje",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 76,
+      "nombre": "Mariana Fashion",
+      "estado": "No verificado",
+      "categoria": "Moda y accesorios",
+      "tipo": "Tienda de vestidos",
+      "descripcion_corta": "Tienda de vestidos",
+      "descripcion_larga": "Vestidos para distintas ocasiones y estilos, con alternativas para crear looks que expresen tu personalidad",
+      "catalogo": [
+        "Vestidos"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "2662458",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 76,
+          "titulo": "Vestido midi floral de temporada",
+          "descripcion": "Consulta con Mariana Fashion cómo aprovechar Vestido midi floral de temporada.",
+          "condiciones": "Para servicios, coordinar cita con anticipación; productos sujetos a disponibilidad del local.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 129.9,
+          "precio_rebajado": 116.91,
+          "categoria": "Moda y accesorios",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 161,
+          "titulo": "Cinturón femenino de vestir",
+          "descripcion": "Participa en el sorteo para ganar Cinturón femenino de vestir; el negocio anunciará a la persona ganadora.",
+          "condiciones": "Sorteo válido hasta el 31/12/2026; un ganador. Coordinar recojo con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Moda y accesorios",
+          "tipo": "Regalo",
+          "modalidad": "Sorteo",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 77,
+      "nombre": "Anima Toons Store",
+      "estado": "No verificado",
+      "categoria": "Juguetes y entretenimiento",
+      "tipo": "Juguetería",
+      "descripcion_corta": "Juguetería",
+      "descripcion_larga": "Opciones de juguetes para disfrutar del juego, despertar la imaginación y compartir momentos entretenidos",
+      "catalogo": [
+        "Juguetes"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "946180581",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 77,
+          "titulo": "Pack de figuras animadas Toon Mini",
+          "descripcion": "Descubre Pack de figuras animadas Toon Mini en Anima Toons Store.",
+          "condiciones": "Una promoción por cliente durante la vigencia indicada. No canjeable por dinero en efectivo.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 79.9,
+          "precio_rebajado": 71.91,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 162,
+          "titulo": "Llavero de personaje animado",
+          "descripcion": "Completa la dinámica del negocio; el premio del concurso es Llavero de personaje animado.",
+          "condiciones": "Enviar una sola participación; el establecimiento seleccionará al ganador.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Regalo",
+          "modalidad": "Concurso",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 78,
+      "nombre": "Datex Store",
+      "estado": "No verificado",
+      "categoria": "Tecnología",
+      "tipo": "Servicio técnico de celulares",
+      "descripcion_corta": "Servicio técnico y reparación de celulares",
+      "descripcion_larga": "Soporte técnico enfocado en celulares para atender necesidades de revisión, mantenimiento y reparación de dispositivos",
+      "catalogo": [
+        "Reparación de celulares",
+        "servicio técnico"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 78,
+          "titulo": "Limpieza y optimización de smartphone",
+          "descripcion": "Aprovecha Limpieza y optimización de smartphone y consulta con Datex Store los detalles de la oferta.",
+          "condiciones": "Solicita la oferta antes de pagar y confirma con el establecimiento cualquier detalle de atención o entrega.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 89.9,
+          "precio_rebajado": 80.91,
+          "categoria": "Tecnología",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 163,
+          "titulo": "Limpieza de puerto de carga de celular",
+          "descripcion": "Disfruta Limpieza de puerto de carga de celular gratis al presentar tu beneficio de canje.",
+          "condiciones": "Requiere reserva previa para servicios. Productos sujetos a disponibilidad del negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Tecnología",
+          "tipo": "Regalo",
+          "modalidad": "Canje",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 79,
+      "nombre": "La Madriguera TCG",
+      "estado": "No verificado",
+      "categoria": "Juguetes y entretenimiento",
+      "tipo": "Club de juegos de mesa",
+      "descripcion_corta": "Club de juegos de mesa",
+      "descripcion_larga": "Un espacio para reunirse alrededor de los juegos de mesa, descubrir dinámicas y compartir partidas",
+      "catalogo": [
+        "Juegos de mesa"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 79,
+          "titulo": "Entrada doble a noche de juegos de mesa",
+          "descripcion": "Esta propuesta de Entrada doble a noche de juegos de mesa está disponible en La Madriguera TCG; confirma existencias antes de comprar.",
+          "condiciones": "Válido hasta el 31/12/2026. Presenta esta oferta al solicitar el producto o servicio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 99.9,
+          "precio_rebajado": 89.91,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 164,
+          "titulo": "Entrada individual a sesión de juegos de mesa",
+          "descripcion": "Participa en el sorteo para ganar Entrada individual a sesión de juegos de mesa; el negocio anunciará a la persona ganadora.",
+          "condiciones": "Sorteo válido hasta el 31/12/2026; un ganador. Coordinar recojo con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Regalo",
+          "modalidad": "Sorteo",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 80,
+      "nombre": "Linduras Studio Nails",
+      "estado": "No verificado",
+      "categoria": "Belleza y cuidado personal",
+      "tipo": "Salón de manicura y uñas",
+      "descripcion_corta": "Salón de manicura y cuidado de uñas",
+      "descripcion_larga": "Servicios enfocados en manicura y cuidado de uñas para quienes desean dedicar tiempo a su presentación personal",
+      "catalogo": [
+        "Manicura",
+        "cuidado de uñas"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 80,
+          "titulo": "Manicure gel con diseño minimalista",
+          "descripcion": "Consulta con Linduras Studio Nails cómo aprovechar Manicure gel con diseño minimalista.",
+          "condiciones": "Aplica al artículo o servicio indicado en el título; confirmar disponibilidad directamente con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 119.9,
+          "precio_rebajado": 107.91,
+          "categoria": "Belleza y cuidado personal",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 165,
+          "titulo": "Decoración sencilla para una uña",
+          "descripcion": "Completa la dinámica del negocio; el premio del concurso es Decoración sencilla para una uña.",
+          "condiciones": "Enviar una sola participación; el establecimiento seleccionará al ganador.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Belleza y cuidado personal",
+          "tipo": "Regalo",
+          "modalidad": "Concurso",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 81,
+      "nombre": "Powerboy Store",
+      "estado": "No verificado",
+      "categoria": "Juguetes y entretenimiento",
+      "tipo": "Tienda de coleccionables",
+      "descripcion_corta": "Tienda de artículos coleccionables",
+      "descripcion_larga": "Artículos coleccionables para descubrir nuevas piezas, expresar tus intereses y seguir completando tu colección",
+      "catalogo": [
+        "Artículos coleccionables"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 81,
+          "titulo": "Figura coleccionable edición limitada",
+          "descripcion": "Descubre Figura coleccionable edición limitada en Powerboy Store.",
+          "condiciones": "Precio promocional por una unidad o servicio. No acumulable con otros descuentos o cupones.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 99.9,
+          "precio_rebajado": 89.91,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 166,
+          "titulo": "Carta coleccionable de edición especial",
+          "descripcion": "Disfruta Carta coleccionable de edición especial gratis al presentar tu beneficio de canje.",
+          "condiciones": "Requiere reserva previa para servicios. Productos sujetos a disponibilidad del negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Regalo",
+          "modalidad": "Canje",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 82,
+      "nombre": "9no Pasajero",
+      "estado": "No verificado",
+      "categoria": "Juguetes y entretenimiento",
+      "tipo": "Juguetería",
+      "descripcion_corta": "Juguetería",
+      "descripcion_larga": "Juguetes y opciones de entretenimiento para disfrutar del juego en casa o compartir con otras personas",
+      "catalogo": [
+        "Juguetes"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "991942844",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 82,
+          "titulo": "Set de pista de autos con lanzador",
+          "descripcion": "Aprovecha Set de pista de autos con lanzador y consulta con 9no Pasajero los detalles de la oferta.",
+          "condiciones": "Para servicios, coordinar cita con anticipación; productos sujetos a disponibilidad del local.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 69.9,
+          "precio_rebajado": 62.91,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 167,
+          "titulo": "Auto miniatura de juguete",
+          "descripcion": "Participa en el sorteo para ganar Auto miniatura de juguete; el negocio anunciará a la persona ganadora.",
+          "condiciones": "Sorteo válido hasta el 31/12/2026; un ganador. Coordinar recojo con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Juguetes y entretenimiento",
+          "tipo": "Regalo",
+          "modalidad": "Sorteo",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 83,
+      "nombre": "San Sebastián",
+      "estado": "No verificado",
+      "categoria": "Salud y bienestar",
+      "tipo": "Servicio de podología",
+      "descripcion_corta": "Servicio de podología",
+      "descripcion_larga": "Atención podológica enfocada en el cuidado de los pies y el bienestar relacionado con la salud podal",
+      "catalogo": [
+        "Podología",
+        "cuidado podológico"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": null,
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 83,
+          "titulo": "Evaluación podológica con cuidado básico",
+          "descripcion": "Esta propuesta de Evaluación podológica con cuidado básico está disponible en San Sebastián; confirma existencias antes de comprar.",
+          "condiciones": "Una promoción por cliente durante la vigencia indicada. No canjeable por dinero en efectivo.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 89.9,
+          "precio_rebajado": 80.91,
+          "categoria": "Salud y bienestar",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 168,
+          "titulo": "Evaluación básica de pisada",
+          "descripcion": "Completa la dinámica del negocio; el premio del concurso es Evaluación básica de pisada.",
+          "condiciones": "Enviar una sola participación; el establecimiento seleccionará al ganador.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Salud y bienestar",
+          "tipo": "Regalo",
+          "modalidad": "Concurso",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 84,
+      "nombre": "Legión Force Sede Lince",
+      "estado": "No verificado",
+      "categoria": "Comercio general",
+      "tipo": "Tienda",
+      "descripcion_corta": "Tienda ubicada en Full Market",
+      "descripcion_larga": "Una propuesta de tienda para explorar productos de comercio general; consulta el catálogo para conocer las opciones disponibles",
+      "catalogo": [],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "977822745",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 84,
+          "titulo": "Pack sorpresa de accesorios para el hogar",
+          "descripcion": "Consulta con Legión Force Sede Lince cómo aprovechar Pack sorpresa de accesorios para el hogar.",
+          "condiciones": "Solicita la oferta antes de pagar y confirma con el establecimiento cualquier detalle de atención o entrega.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 79.9,
+          "precio_rebajado": 71.91,
+          "categoria": "Comercio general",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 169,
+          "titulo": "Organizador pequeño para el hogar",
+          "descripcion": "Disfruta Organizador pequeño para el hogar gratis al presentar tu beneficio de canje.",
+          "condiciones": "Requiere reserva previa para servicios. Productos sujetos a disponibilidad del negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Comercio general",
+          "tipo": "Regalo",
+          "modalidad": "Canje",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": 85,
+      "nombre": "Krasa Boutiques",
+      "estado": "No verificado",
+      "categoria": "Moda y accesorios",
+      "tipo": "Boutique",
+      "descripcion_corta": "Boutique de moda",
+      "descripcion_larga": "Una boutique con propuestas de moda para explorar prendas y crear combinaciones acordes a diferentes estilos",
+      "catalogo": [
+        "Moda",
+        "prendas de vestir"
+      ],
+      "reputacion": {
+        "calificacion": null,
+        "opiniones": null
+      },
+      "ubicacion": {
+        "piso": null,
+        "tienda": null
+      },
+      "contacto": {
+        "whatsapp": "958992917",
+        "redes_sociales": {
+          "instagram": null,
+          "facebook": null,
+          "tiktok": null
+        }
+      },
+      "multimedia": {
+        "logo": null,
+        "banner": null
+      },
+      "promociones": [
+        {
+          "id": 85,
+          "titulo": "Blusa boutique de corte elegante",
+          "descripcion": "Descubre Blusa boutique de corte elegante en Krasa Boutiques.",
+          "condiciones": "Válido hasta el 31/12/2026. Presenta esta oferta al solicitar el producto o servicio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": 129.9,
+          "precio_rebajado": 116.91,
+          "categoria": "Moda y accesorios",
+          "tipo": "Descuento",
+          "modalidad": null,
+          "imagen": null
+        },
+        {
+          "id": 170,
+          "titulo": "Bufanda ligera de boutique",
+          "descripcion": "Participa en el sorteo para ganar Bufanda ligera de boutique; el negocio anunciará a la persona ganadora.",
+          "condiciones": "Sorteo válido hasta el 31/12/2026; un ganador. Coordinar recojo con el negocio.",
+          "vigencia": "2026-12-31",
+          "precio_regular": null,
+          "precio_rebajado": null,
+          "categoria": "Moda y accesorios",
+          "tipo": "Regalo",
+          "modalidad": "Sorteo",
+          "imagen": null
+        }
+      ]
+    }
+  ]
+}
