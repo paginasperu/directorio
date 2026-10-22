@@ -298,6 +298,10 @@
     ui.reset.addEventListener("click", resetFilters);
     ui.resetEmpty.addEventListener("click", resetFilters);
     ui.filterToggle.addEventListener("click", () => toggleDrawer(true));
+    $("#applyFilterDrawer")?.addEventListener("click", () => {
+      render();
+      toggleDrawer(false);
+    });
     $("#closeFilterDrawer")?.addEventListener("click", () => toggleDrawer(false));
     ui.drawerBackdrop?.addEventListener("click", () => toggleDrawer(false));
     ui.grid.addEventListener("click", (event) => {
