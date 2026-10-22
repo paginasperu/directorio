@@ -110,7 +110,7 @@
         <!-- Estado vacío si no hay resultados -->
         <div id="emptyState" class="hidden text-center py-16 bg-white rounded-3xl border border-dashed border-slate-300 my-8">
             <div class="w-16 h-16 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i data-lucide="search-x" class="w-8 h-8"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8"><path d="m13.5 8.5-5 5"/><path d="m8.5 8.5 5 5"/><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
             </div>
             <h3 class="text-lg font-bold text-slate-800">No se encontraron resultados</h3>
             <p class="text-sm text-slate-500 mt-1 max-w-md mx-auto">Prueba con otra palabra, categoría o tipo de negocio.</p>
@@ -122,7 +122,7 @@
 
     <div id="modalDetail" role="dialog" aria-modal="true" aria-labelledby="modalTitle" class="fixed inset-0 z-50 hidden overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-white w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden relative max-h-[90vh] flex flex-col my-auto transition-all transform scale-95 opacity-0 duration-300" id="modalDetailContent">
-            <button type="button" aria-label="Cerrar ficha" class="absolute top-4 right-4 z-20 w-9 h-9 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-full flex items-center justify-center"><i data-lucide="x" class="w-5 h-5"></i></button>
+            <button type="button" aria-label="Cerrar ficha" class="absolute top-4 right-4 z-20 w-9 h-9 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-full flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
             <div class="overflow-y-auto flex-grow">
                 <img id="modalImg" alt="" class="hidden w-full max-h-52 object-cover">
                 <div class="p-5 sm:p-7 space-y-5">
@@ -154,10 +154,10 @@
 
         <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-            <a class="brand-logo" href="./" aria-label="Full Market, inicio"><span class="brand-avatar"><i data-lucide="store" aria-hidden="true"></i></span></a>
+            <a class="brand-logo" href="./" aria-label="Full Market, inicio"><span class="brand-avatar"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/><path d="M22 7v3a2 2 0 0 1-2 2v0a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12v0a2 2 0 0 1-2-2V7"/></svg></span></a>
             
             <p class="directory-disclaimer text-xs text-slate-500 text-center">
-                Â© 2026 Directorio gratuito e independiente. No es la pÃ¡gina oficial ni estÃ¡ afiliado a ningÃºn centro comercial. Datos referenciales, confirma cada dato con el negocio.
+                © 2026 Directorio gratuito e independiente. No es la página oficial ni está afiliado a ningún centro comercial. Datos referenciales, confirma cada dato con el negocio.
             </p>
 
             <div class="flex gap-4 text-xs font-medium">
