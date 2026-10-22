@@ -192,14 +192,12 @@
         ui.drawerBackdrop.classList.add("opacity-100");
         ui.drawer.classList.remove("-translate-x-full");
       });
-      document.body.classList.add("overflow-hidden");
     } else {
       ui.drawer.classList.add("-translate-x-full");
       ui.drawerBackdrop.classList.remove("opacity-100");
       ui.drawerBackdrop.classList.add("opacity-0");
       setTimeout(() => {
         ui.drawerBackdrop.classList.add("hidden");
-        document.body.classList.remove("overflow-hidden");
       }, 300);
     }
   }
