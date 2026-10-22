@@ -162,7 +162,7 @@
         </span>
       </button>
       <div class="provider-footer">
-        <span class="provider-location">${location ? escapeHtml(location) : "Ubicación no informada"}</span>
+        ${location ? `<span class="provider-location">${escapeHtml(location)}</span>` : ""}
         ${whatsapp ? `<a class="provider-whatsapp" href="${whatsapp}" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp de ${escapeHtml(item.name)}">WhatsApp</a>` : '<span class="provider-whatsapp provider-whatsapp-unavailable">Teléfono no informado</span>'}
       </div>
     </article>`;
