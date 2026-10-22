@@ -253,21 +253,17 @@
 
   function bindScrollHeader() {
     const header = $("#siteHeader");
-    let previousY = window.scrollY;
-    let scheduled = false;
-    const update = () => {
-      const currentY = Math.max(0, window.scrollY);
-      const delta = currentY - previousY;
-      if (currentY < 80) header.classList.remove("site-header-hidden");
-      else if (delta > 4) header.classList.add("site-header-hidden");
-      else if (delta < -4) header.classList.remove("site-header-hidden");
-      previousY = currentY;
-      scheduled = false;
-    };
+    let lastScrollY = window.scrollY;
+    let hiddenDistance = 0;
     window.addEventListener("scroll", () => {
-      if (scheduled) return;
-      scheduled = true;
-      requestAnimationFrame(update);
+      const currentScrollY = window.scrollY;
+      const movement = currentScrollY - lastScrollY;
+      const headerHeight = header.offsetHeight;
+      hiddenDistance = currentScrollY < 30
+        ? 0
+        : Math.max(0, Math.min(headerHeight, hiddenDistance + movement * 0.75));
+      header.style.transform = `translateY(-${hiddenDistance}px)`;
+      lastScrollY = currentScrollY;
     }, { passive: true });
   }
 
