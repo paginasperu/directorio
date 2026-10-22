@@ -20,19 +20,17 @@
   const $ = (selector) => document.querySelector(selector);
   const ui = {
     grid: $("#providerGrid"),
-    category: $("#categoryFilter"),
-    mobileCategory: $("#categoryFilterMobile"),
+    categoryList: $("#categoryList"),
     search: $("#businessSearch"),
     mobileSearch: $("#mobileBusinessSearch"),
     floor: $("#floorFilter"),
     rating: $("#ratingFilter"),
     sort: $("#sortSelect"),
-    mobileSort: $("#sortSelectMobile"),
     count: $("#resultsCount"),
     empty: $("#emptyState"),
     filterToggle: $("#filterToggle"),
-    mobileFilterToggle: $("#filterToggleMobile"),
-    moreFilters: $("#moreFilters"),
+    drawer: $("#moreFilters"),
+    drawerBackdrop: $("#filterDrawerBackdrop"),
     reset: $("#resetFilters"),
     resetEmpty: $("#resetFiltersEmpty"),
     modal: $("#modalDetail"),
@@ -115,12 +113,7 @@
   function renderCategories() {
     const categories = ["Todos", ...new Set(state.businesses.map((item) => item.category).filter(Boolean))];
     categories.sort((a, b) => a === "Todos" ? -1 : b === "Todos" ? 1 : a.localeCompare(b, "es-PE"));
-    const options = categories.map((category) => `<option value="${escapeHtml(category)}">${category === "Todos" ? "Todas las categorías" : escapeHtml(category)}</option>`).join("");
-    [ui.category, ui.mobileCategory].forEach((select) => {
-      const placeholder = select === ui.mobileCategory ? "Categorías" : "Todas las categorías";
-      select.innerHTML = `<option value="Todos">${placeholder}</option>` + options.replace('<option value="Todos">Todas las categorías</option>', "");
-      select.value = state.category;
-    });
+    ui.categoryList.innerHTML = categories.map((category) => `<button type="button" class="category-option${category === state.category ? " is-active" : ""}" data-category="${escapeHtml(category)}" aria-pressed="${String(category === state.category)}">${escapeHtml(category)}</button>`).join("");
   }
 
   function renderFloors() {
@@ -190,6 +183,27 @@
     render();
   }
 
+    function toggleDrawer(open) {
+    if (!ui.drawer || !ui.drawerBackdrop) return;
+    if (open) {
+      ui.drawerBackdrop.classList.remove("hidden");
+      requestAnimationFrame(() => {
+        ui.drawerBackdrop.classList.remove("opacity-0");
+        ui.drawerBackdrop.classList.add("opacity-100");
+        ui.drawer.classList.remove("-translate-x-full");
+      });
+      document.body.classList.add("overflow-hidden");
+    } else {
+      ui.drawer.classList.add("-translate-x-full");
+      ui.drawerBackdrop.classList.remove("opacity-100");
+      ui.drawerBackdrop.classList.add("opacity-0");
+      setTimeout(() => {
+        ui.drawerBackdrop.classList.add("hidden");
+        document.body.classList.remove("overflow-hidden");
+      }, 300);
+    }
+  }
+
   function resetFilters() {
     state.category = "Todos";
     state.floor = "Todos";
@@ -200,13 +214,8 @@
     ui.floor.value = "Todos";
     ui.rating.value = "0";
     ui.sort.value = "original";
-    ui.mobileSort.value = "original";
     render();
-    ui.moreFilters.classList.add("hidden");
-    [ui.filterToggle, ui.mobileFilterToggle].forEach((button) => {
-      button.setAttribute("aria-expanded", "false");
-      button.classList.remove("is-active");
-    });
+    toggleDrawer(false);
   }
 
   function showDetail(item) {
@@ -277,27 +286,20 @@
     ui.search.addEventListener("input", () => setSearch(ui.search.value));
     ui.mobileSearch.addEventListener("input", () => setSearch(ui.mobileSearch.value));
     [ui.search, ui.mobileSearch].forEach((input) => input.closest("form")?.addEventListener("submit", (event) => event.preventDefault()));
-    [ui.category, ui.mobileCategory].forEach((select) => select.addEventListener("change", () => {
-      state.category = select.value;
-      ui.category.value = state.category;
-      ui.mobileCategory.value = state.category;
+    ui.categoryList.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-category]");
+      if (!button) return;
+      state.category = button.dataset.category;
       render();
-    }));
+    });
     ui.floor.addEventListener("change", () => { state.floor = ui.floor.value; render(); });
     ui.rating.addEventListener("change", () => { state.minRating = Number(ui.rating.value); render(); });
-    [ui.sort, ui.mobileSort].forEach((select) => select.addEventListener("change", () => {
-      ui.sort.value = select.value;
-      ui.mobileSort.value = select.value;
-      render();
-    }));
+    ui.sort.addEventListener("change", render);
     ui.reset.addEventListener("click", resetFilters);
     ui.resetEmpty.addEventListener("click", resetFilters);
-    [ui.filterToggle, ui.mobileFilterToggle].forEach((button) => button.addEventListener("click", () => {
-      const expanded = ui.moreFilters.classList.contains("hidden");
-      [ui.filterToggle, ui.mobileFilterToggle].forEach((control) => control.setAttribute("aria-expanded", String(expanded)));
-      [ui.filterToggle, ui.mobileFilterToggle].forEach((control) => control.classList.toggle("is-active", expanded));
-      ui.moreFilters.classList.toggle("hidden", !expanded);
-    }));
+    ui.filterToggle.addEventListener("click", () => toggleDrawer(true));
+    $("#closeFilterDrawer")?.addEventListener("click", () => toggleDrawer(false));
+    ui.drawerBackdrop?.addEventListener("click", () => toggleDrawer(false));
     ui.grid.addEventListener("click", (event) => {
       if (event.target.closest(".provider-whatsapp")) return;
       const trigger = event.target.closest("[data-detail-id]");
