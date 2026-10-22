@@ -32,6 +32,7 @@
     mobileFilterToggle: $("#filterToggleMobile"),
     moreFilters: $("#moreFilters"),
     reset: $("#resetFilters"),
+    resetEmpty: $("#resetFiltersEmpty"),
     modal: $("#modalDetail"),
     modalContent: $("#modalDetailContent"),
   };
@@ -195,6 +196,11 @@
     ui.sort.value = "original";
     ui.mobileSort.value = "original";
     render();
+    ui.moreFilters.classList.add("hidden");
+    [ui.filterToggle, ui.mobileFilterToggle].forEach((button) => {
+      button.setAttribute("aria-expanded", "false");
+      button.classList.remove("is-active");
+    });
   }
 
   function showDetail(item) {
@@ -230,8 +236,10 @@
 
     ui.modal.classList.remove("hidden");
     ui.modal.classList.add("flex");
-    ui.modalContent.classList.remove("scale-95", "opacity-0");
-    ui.modalContent.classList.add("scale-100", "opacity-100");
+    requestAnimationFrame(() => {
+      ui.modalContent.classList.remove("scale-95", "opacity-0");
+      ui.modalContent.classList.add("scale-100", "opacity-100");
+    });
     document.body.classList.add("overflow-hidden");
   }
 
@@ -241,6 +249,26 @@
     ui.modalContent.classList.add("scale-95", "opacity-0");
     ui.modalContent.classList.remove("scale-100", "opacity-100");
     document.body.classList.remove("overflow-hidden");
+  }
+
+  function bindScrollHeader() {
+    const header = $("#siteHeader");
+    let previousY = window.scrollY;
+    let scheduled = false;
+    const update = () => {
+      const currentY = Math.max(0, window.scrollY);
+      const delta = currentY - previousY;
+      if (currentY < 80) header.classList.remove("site-header-hidden");
+      else if (delta > 4) header.classList.add("site-header-hidden");
+      else if (delta < -4) header.classList.remove("site-header-hidden");
+      previousY = currentY;
+      scheduled = false;
+    };
+    window.addEventListener("scroll", () => {
+      if (scheduled) return;
+      scheduled = true;
+      requestAnimationFrame(update);
+    }, { passive: true });
   }
 
   function bindEvents() {
@@ -261,6 +289,7 @@
       render();
     }));
     ui.reset.addEventListener("click", resetFilters);
+    ui.resetEmpty.addEventListener("click", resetFilters);
     [ui.filterToggle, ui.mobileFilterToggle].forEach((button) => button.addEventListener("click", () => {
       const expanded = ui.moreFilters.classList.contains("hidden");
       [ui.filterToggle, ui.mobileFilterToggle].forEach((control) => control.setAttribute("aria-expanded", String(expanded)));
@@ -287,6 +316,7 @@
       if (!state.businesses.length) throw new Error("El CSV no contiene negocios o sus encabezados cambiaron.");
       renderFloors();
       bindEvents();
+      bindScrollHeader();
       render();
     } catch (error) {
       console.error(error);
@@ -297,5 +327,4 @@
 
   init();
 })();
-
 

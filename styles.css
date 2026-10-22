@@ -1,4 +1,7 @@
 .site-header { background: #26344d; color: #fff; transition: transform 320ms cubic-bezier(.2,.7,.2,1); }
+.site-header { position: sticky; top: 0; transform: translateY(0); will-change: transform; }
+.site-header.site-header-hidden { transform: translateY(-100%); }
+@media (prefers-reduced-motion: reduce) { .site-header { transition: none; } }
         .card-shadow {
             box-shadow: 0 10px 25px -5px rgba(124, 58, 237, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
         }
@@ -202,4 +205,3 @@
     }
     .subscribe-soft:hover { background:#34445f; color:#fff; text-decoration:none; }
 }
-
