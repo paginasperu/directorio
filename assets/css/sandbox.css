@@ -1,0 +1,439 @@
+/* ============================================================
+   VISTA DE PRUEBA (index2.html)
+   Estilo limpio tipo app: fondo claro, tipografía grande,
+   tarjetas compactas y controles en forma de píldora.
+   ============================================================ */
+
+body.sandbox-page {
+    background: #f5f5f7;
+    color: #1d1d1f;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---------- CABECERA ---------- */
+body.sandbox-page .site-header {
+    background: rgba(255, 255, 255, 0.78);
+    color: #1d1d1f;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    transform: none !important;
+}
+body.sandbox-page .header-layout {
+    max-width: 1120px;
+    height: 52px;
+    padding-top: 0;
+    padding-bottom: 0;
+    gap: 20px;
+}
+body.sandbox-page .header-brand { height: 52px; }
+body.sandbox-page .header-brand-name {
+    color: #1d1d1f;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+body.sandbox-page .header-search { max-width: 420px; margin: 0 auto; }
+body.sandbox-page .header-search input {
+    height: 36px;
+    padding-left: 16px;
+    background: #f5f5f7;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font-size: 13px;
+    color: #1d1d1f;
+    transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
+}
+body.sandbox-page .header-search input:focus {
+    background: #fff;
+    border-color: #d2d2d7;
+    box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.12);
+    outline: none;
+}
+body.sandbox-page .header-search-icon {
+    height: 36px;
+    padding: 0 12px;
+    border-left: 0;
+    background: transparent;
+    color: #6e6e73;
+    border-radius: 999px;
+}
+body.sandbox-page .header-search-icon:hover { background: transparent; color: #1d1d1f; }
+body.sandbox-page .subscribe-soft {
+    padding: 6px 0;
+    background: transparent;
+    border: 0;
+    color: #0071e3;
+    font-size: 13px;
+    font-weight: 600;
+}
+body.sandbox-page .subscribe-soft:hover { background: transparent; text-decoration: underline; }
+body.sandbox-page #mobileSearch input {
+    background: #fff;
+    border-color: #e5e5ea;
+    border-radius: 999px;
+    font-size: 13px;
+}
+
+/* ---------- CONTENIDO ---------- */
+body.sandbox-page .sandbox-main {
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 20px 64px;
+    flex: 1;
+}
+
+/* Portada */
+.sandbox-hero { padding: 44px 0 6px; }
+.sandbox-eyebrow {
+    margin: 0 0 10px;
+    color: #86868b;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+.sandbox-hero h1 {
+    margin: 0;
+    color: #1d1d1f;
+    font-size: clamp(30px, 4.2vw, 44px);
+    line-height: 1.08;
+    font-weight: 700;
+    letter-spacing: -0.035em;
+}
+.sandbox-lead {
+    max-width: 540px;
+    margin: 14px 0 0;
+    color: #6e6e73;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+/* Categorías */
+body.sandbox-page .category-strip {
+    background: transparent;
+    border-bottom: 0;
+    margin-top: 18px;
+}
+body.sandbox-page #categoryList {
+    gap: 8px;
+    padding: 2px 0 14px;
+}
+body.sandbox-page .category-option {
+    padding: 7px 14px;
+    border: 1px solid #e5e5ea;
+    border-radius: 999px;
+    background: #fff;
+    color: #1d1d1f;
+    font-size: 12.5px;
+    font-weight: 600;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+body.sandbox-page .category-option:hover { background: #fafafa; border-color: #d2d2d7; }
+body.sandbox-page .category-option[aria-pressed="true"] {
+    background: #1d1d1f;
+    border-color: #1d1d1f;
+    color: #fff;
+}
+
+/* Barra de resultados */
+body.sandbox-page .results-toolbar { margin: 8px 0 14px; }
+body.sandbox-page .results-count {
+    color: #6e6e73;
+    font-size: 13px;
+    font-weight: 500;
+}
+body.sandbox-page .filter-toggle,
+body.sandbox-page .results-sort {
+    height: 34px;
+    background: #fff;
+    border: 1px solid #e5e5ea;
+    border-radius: 999px;
+    box-shadow: none;
+    color: #1d1d1f;
+    font-size: 13px;
+    font-weight: 500;
+}
+body.sandbox-page .filter-toggle:hover,
+body.sandbox-page .results-sort:hover { background: #fafafa; }
+
+/* ---------- TARJETAS ---------- */
+body.sandbox-page #providerGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+}
+body.sandbox-page .provider-card {
+    background: #fff;
+    border: 1px solid #e8e8ed;
+    border-radius: 18px;
+    box-shadow: none;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+body.sandbox-page .provider-card:hover {
+    transform: translateY(-2px);
+    border-color: #dcdce1;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.07);
+}
+body.sandbox-page .provider-cover { height: 104px; }
+body.sandbox-page .provider-cover::after {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.18), transparent 55%);
+}
+body.sandbox-page .provider-cover-initials {
+    right: 14px;
+    bottom: 8px;
+    font-size: 44px;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    color: rgba(255, 255, 255, 0.6);
+}
+body.sandbox-page .provider-tag {
+    left: 10px;
+    top: 10px;
+    padding: 4px 9px;
+    background: rgba(255, 255, 255, 0.86);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    color: #1d1d1f;
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+}
+body.sandbox-page .provider-body { padding: 12px 14px 10px; }
+body.sandbox-page .provider-name {
+    color: #1d1d1f;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+body.sandbox-page .provider-type {
+    margin-top: 2px;
+    color: #86868b;
+    font-size: 11.5px;
+    font-weight: 500;
+}
+body.sandbox-page .provider-description {
+    margin-top: 6px;
+    min-height: 34px;
+    color: #6e6e73;
+    font-size: 12.5px;
+    line-height: 1.4;
+}
+body.sandbox-page .provider-rating-row { margin-top: 8px; gap: 6px; }
+body.sandbox-page .provider-rating {
+    padding: 0;
+    background: transparent;
+    color: #1d1d1f;
+    font-size: 12px;
+    font-weight: 600;
+}
+body.sandbox-page .provider-reviews { color: #86868b; font-size: 11.5px; font-weight: 400; }
+body.sandbox-page .provider-rating-unavailable { color: #a1a1a6; font-size: 11.5px; }
+body.sandbox-page .provider-footer {
+    padding: 9px 14px;
+    background: #fff;
+    border-top: 1px solid #f2f2f4;
+}
+body.sandbox-page .provider-location { color: #86868b; font-size: 11px; font-weight: 500; }
+body.sandbox-page .provider-whatsapp {
+    min-height: 28px;
+    padding: 0 11px;
+    background: #f5f5f7;
+    color: #0071e3;
+    font-size: 11.5px;
+    font-weight: 600;
+}
+body.sandbox-page .provider-whatsapp:hover { background: #e8f1fd; color: #0071e3; }
+body.sandbox-page .provider-whatsapp-unavailable {
+    background: transparent;
+    border: 0;
+    color: #c7c7cc;
+    font-weight: 400;
+}
+
+/* ---------- ESTADO VACÍO ---------- */
+body.sandbox-page #emptyState {
+    padding: 56px 20px;
+    background: #fff;
+    border: 1px solid #e8e8ed;
+    border-radius: 20px;
+    box-shadow: none;
+}
+
+/* ---------- INVITACIÓN FINAL ---------- */
+.sandbox-cta { margin-top: 40px; scroll-margin-top: 68px; }
+.sandbox-cta-inner {
+    padding: 36px 28px;
+    background: #fff;
+    border: 1px solid #e8e8ed;
+    border-radius: 24px;
+    text-align: center;
+}
+.sandbox-cta h2 {
+    margin: 4px 0 8px;
+    color: #1d1d1f;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+.sandbox-cta p:not(.sandbox-eyebrow) {
+    max-width: 460px;
+    margin: 0 auto;
+    color: #6e6e73;
+    font-size: 14px;
+    line-height: 1.5;
+}
+.sandbox-cta a {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 18px;
+    padding: 10px 22px;
+    background: #1d1d1f;
+    border-radius: 999px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background 0.15s;
+}
+.sandbox-cta a:hover { background: #333336; }
+
+/* ---------- PANEL DE FILTROS ---------- */
+body.sandbox-page #moreFilters {
+    border-radius: 0 20px 20px 0;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.18);
+}
+body.sandbox-page #moreFilters > div:first-child { background: #fff; }
+body.sandbox-page #moreFilters select {
+    background: #f5f5f7;
+    border-color: transparent;
+    border-radius: 12px;
+}
+body.sandbox-page #resetFilters { background: #f5f5f7; border-radius: 999px; }
+body.sandbox-page #resetFilters:hover { background: #e8e8ed; }
+body.sandbox-page #applyFilterDrawer { background: #1d1d1f; border-radius: 999px; }
+body.sandbox-page #applyFilterDrawer:hover { background: #333336; }
+
+/* ---------- FICHA ---------- */
+body.sandbox-page #modalDetail {
+    background: rgba(0, 0, 0, 0.32);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+}
+body.sandbox-page #modalDetailContent {
+    max-width: 600px;
+    border-radius: 24px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+}
+body.sandbox-page .detail-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 18px;
+    font-size: 20px;
+    color: rgba(29, 29, 31, 0.7);
+}
+body.sandbox-page #modalTitle {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+body.sandbox-page .detail-info {
+    padding: 14px 16px;
+    background: #f5f5f7;
+    border: 0;
+    border-radius: 16px;
+}
+body.sandbox-page .detail-info dt {
+    margin-bottom: 3px;
+    color: #86868b;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+body.sandbox-page .detail-info dd { color: #1d1d1f; font-size: 13px; font-weight: 600; }
+body.sandbox-page .detail-rating-reviews { color: #86868b; font-weight: 400; }
+body.sandbox-page .social-link {
+    background: #f5f5f7;
+    border-color: transparent;
+    color: #1d1d1f;
+    font-weight: 600;
+}
+body.sandbox-page .social-link:hover { background: #e8e8ed; border-color: transparent; }
+body.sandbox-page #modalProducts li {
+    padding: 6px 12px;
+    background: #f5f5f7;
+    color: #1d1d1f;
+    font-weight: 500;
+}
+body.sandbox-page #modalDetailContent > div:last-child {
+    background: #fff;
+    border-top: 1px solid #f2f2f4;
+}
+body.sandbox-page #modalCallBtn {
+    background: #1d1d1f;
+    border-radius: 999px;
+    font-weight: 600;
+}
+body.sandbox-page #modalCallBtn:hover { background: #333336; }
+body.sandbox-page #modalWhatsappBtn {
+    background: #0071e3;
+    border-radius: 999px;
+    font-weight: 600;
+}
+body.sandbox-page #modalWhatsappBtn:hover { background: #0077ed; }
+
+/* ---------- PIE ---------- */
+body.sandbox-page .site-footer {
+    background: transparent;
+    border-top: 1px solid #e5e5ea;
+    color: #6e6e73;
+}
+body.sandbox-page .footer-inner {
+    max-width: 1120px;
+    padding: 24px 20px 16px;
+}
+body.sandbox-page .footer-brand .brand-avatar {
+    width: 36px;
+    height: 36px;
+    background: #fff;
+    border-color: #e5e5ea;
+    color: #1d1d1f;
+}
+body.sandbox-page .footer-brand .brand-avatar svg { width: 18px; height: 18px; }
+body.sandbox-page .footer-name { color: #1d1d1f; font-size: 14px; font-weight: 600; }
+body.sandbox-page .footer-tag { color: #86868b; font-size: 12px; }
+body.sandbox-page .footer-links { gap: 18px; }
+body.sandbox-page .footer-links a {
+    padding: 4px 0;
+    background: transparent;
+    border: 0;
+    color: #0071e3;
+    font-size: 12px;
+    font-weight: 500;
+}
+body.sandbox-page .footer-links a:hover { background: transparent; text-decoration: underline; }
+body.sandbox-page .footer-legal { border-top: 1px solid #e5e5ea; }
+body.sandbox-page .footer-legal p {
+    max-width: 1120px;
+    padding: 14px 20px 24px;
+    color: #86868b;
+    font-size: 11px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 1199px) {
+    body.sandbox-page #providerGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 899px) {
+    body.sandbox-page #providerGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .sandbox-hero { padding-top: 32px; }
+}
+@media (max-width: 599px) {
+    body.sandbox-page #providerGrid { grid-template-columns: minmax(0, 1fr); }
+    body.sandbox-page .sandbox-main { padding: 0 16px 48px; }
+    .sandbox-hero h1 { font-size: 30px; }
+    .sandbox-cta-inner { padding: 28px 20px; }
+    body.sandbox-page .footer-inner { gap: 14px; }
+}
