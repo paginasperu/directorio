@@ -38,8 +38,7 @@ body {
     gap: 20px;
     max-width: 1120px;
     height: 52px;
-    padding-top: 0;
-    padding-bottom: 0;
+    padding: 0 20px;
 }
 .header-brand { display: flex; align-items: center; height: 52px; text-align: left; flex-shrink: 0; }
 .header-brand-name {
@@ -243,8 +242,8 @@ body {
 .provider-cover-initials {
     position: absolute;
     right: 14px;
-    bottom: -10px;
-    font-size: 52px;
+    bottom: 8px;
+    font-size: 48px;
     line-height: 1;
     font-weight: 700;
     letter-spacing: -0.04em;
@@ -600,6 +599,7 @@ body {
 }
 @media (max-width: 599px) {
     #providerGrid { grid-template-columns: minmax(0, 1fr); }
+    .header-layout { padding: 0 16px; }
     .fm-main { padding: 0 16px 48px; }
     .fm-hero h1 { font-size: 30px; }
     .fm-cta-inner { padding: 28px 20px; }

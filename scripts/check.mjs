@@ -9,7 +9,7 @@ const checks = [];
 
 const html = read("index.html");
 const app = read("assets/js/app.js");
-const csv = read("data/businesses.csv");
+const csv = read("data/negocios.csv");
 
 // 1. Every local file referenced by the page must exist.
 const localReferences = [...html.matchAll(/(?:href|src)="([^"]+)"/g)]
@@ -34,8 +34,8 @@ for (const id of scriptIds) {
 checks.push(`${scriptIds.size} JavaScript ids`);
 
 // 3. The data file path must match the file that exists.
-if (!app.includes("./data/businesses.csv")) {
-  failures.push("app.js does not load ./data/businesses.csv");
+if (!app.includes("./data/negocios.csv")) {
+  failures.push("app.js does not load ./data/negocios.csv");
 }
 checks.push("data file path");
 

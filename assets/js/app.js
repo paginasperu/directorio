@@ -4,18 +4,18 @@
 
   const columns = {
     id: "id",
-    name: "name",
-    rating: "rating",
-    reviews: "reviews",
-    floor: "floor",
-    unit: "unit",
-    phone: "phone",
-    category: "category",
-    type: "type",
-    description: "description",
-    catalog: "catalog",
-    status: "status",
-    phone2: "phone2",
+    name: "nombre",
+    rating: "calificacion",
+    reviews: "opiniones",
+    floor: "piso",
+    unit: "local",
+    phone: "telefono",
+    category: "categoria",
+    type: "tipo",
+    description: "descripcion",
+    catalog: "catalogo",
+    status: "estado",
+    phone2: "telefono2",
     instagram: "instagram",
     facebook: "facebook",
     tiktok: "tiktok",
@@ -342,8 +342,8 @@
 
   async function init() {
     try {
-      const response = await fetch("./data/businesses.csv", { cache: "no-cache" });
-      if (!response.ok) throw new Error(`No se pudo cargar businesses.csv (${response.status})`);
+      const response = await fetch("./data/negocios.csv", { cache: "no-cache" });
+      if (!response.ok) throw new Error(`No se pudo cargar negocios.csv (${response.status})`);
       state.businesses = parseCsv(await response.text());
       if (!state.businesses.length) throw new Error("El CSV no contiene negocios o sus encabezados cambiaron.");
       renderFloors();
