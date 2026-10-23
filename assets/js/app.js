@@ -3,18 +3,19 @@
 
 
   const columns = {
-    name: "nombre",
-    rating: "calificacion",
-    reviews: "opiniones",
-    floor: "piso",
-    store: "local",
-    phone: "telefono",
-    category: "categoria",
-    type: "tipo",
-    description: "descripcion",
-    catalog: "catalogo",
-    status: "estado",
-    phone2: "telefono2",
+    id: "id",
+    name: "name",
+    rating: "rating",
+    reviews: "reviews",
+    floor: "floor",
+    unit: "unit",
+    phone: "phone",
+    category: "category",
+    type: "type",
+    description: "description",
+    catalog: "catalog",
+    status: "status",
+    phone2: "phone2",
     instagram: "instagram",
     facebook: "facebook",
     tiktok: "tiktok",
@@ -73,13 +74,14 @@
       const rating = Number(get("rating").replace(",", "."));
       const reviews = Number(get("reviews"));
       const status = get("status");
+      const numericId = Number(get("id"));
       return {
-        id: index + 1,
+        id: Number.isInteger(numericId) && numericId > 0 ? numericId : index + 1,
         name: get("name"),
         rating: get("rating") && Number.isFinite(rating) ? rating : null,
         reviews: get("reviews") && Number.isFinite(reviews) ? reviews : null,
         floor: get("floor"),
-        store: get("store"),
+        unit: get("unit"),
         phone: get("phone").replace(/\D/g, ""),
         category: get("category"),
         type: get("type"),
@@ -114,7 +116,7 @@
   }
 
   function searchable(business) {
-    return normalize([business.name, business.category, business.type, business.description, business.catalog, business.products, business.services, business.floor, business.store].join(" "));
+    return normalize([business.name, business.category, business.type, business.description, business.catalog, business.products, business.services, business.floor, business.unit].join(" "));
   }
 
   function renderCategories() {
@@ -147,14 +149,14 @@
   }
 
   const palettes = [
-    ["#eef1f6", "#d7deea"],
-    ["#edf3ef", "#cfe0d6"],
-    ["#f6f1ea", "#e6d8c8"],
-    ["#f7eef1", "#e8d3da"],
-    ["#eef3f8", "#d3e0ee"],
-    ["#f1eef7", "#dcd4ea"],
-    ["#f7f4e8", "#e8dfc2"],
-    ["#eaf3f2", "#cde3e0"],
+    ["#eef2ff", "#c7d2fe"],
+    ["#ecfdf5", "#a7f3d0"],
+    ["#fff7ed", "#fed7aa"],
+    ["#fdf2f8", "#fbcfe8"],
+    ["#eff6ff", "#bfdbfe"],
+    ["#f5f3ff", "#ddd6fe"],
+    ["#fefce8", "#fde68a"],
+    ["#f0fdfa", "#99f6e4"],
   ];
 
   function palette(text) {
@@ -169,7 +171,7 @@
       : `<span class="provider-rating">★ ${item.rating.toFixed(1)}</span>${item.reviews === null ? "" : `<span class="provider-reviews">${item.reviews.toLocaleString("es-PE")} opiniones</span>`}`;
     const location = [
       item.floor ? `Piso ${escapeHtml(item.floor)}` : "",
-      item.store ? `Local ${escapeHtml(item.store)}` : "",
+      item.unit ? `Local ${escapeHtml(item.unit)}` : "",
     ].filter(Boolean).join(" · ");
     const whatsapp = whatsappUrl(item);
     const [coverA, coverB] = palette(item.category);
@@ -255,7 +257,7 @@
     $("#modalRatingReviews").textContent = item.reviews === null ? "" : ` · ${item.reviews.toLocaleString("es-PE")} opiniones`;
     const location = [
       item.floor ? `Piso ${item.floor}` : "",
-      item.store ? `Local ${escapeHtml(item.store)}` : "",
+      item.unit ? `Local ${escapeHtml(item.unit)}` : "",
     ].filter(Boolean).join(" · ");
     $("#modalFloorLocation").textContent = location || "No informado";
     $("#modalPhone").textContent = item.phone || "No informado";
@@ -340,8 +342,8 @@
 
   async function init() {
     try {
-      const response = await fetch("./data/negocios.csv", { cache: "no-cache" });
-      if (!response.ok) throw new Error(`No se pudo cargar negocios.csv (${response.status})`);
+      const response = await fetch("./data/businesses.csv", { cache: "no-cache" });
+      if (!response.ok) throw new Error(`No se pudo cargar businesses.csv (${response.status})`);
       state.businesses = parseCsv(await response.text());
       if (!state.businesses.length) throw new Error("El CSV no contiene negocios o sus encabezados cambiaron.");
       renderFloors();
