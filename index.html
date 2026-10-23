@@ -43,8 +43,8 @@
     }
     </script>
 
-    <link rel="stylesheet" href="assets/css/tailwind.css">
-    <link rel="stylesheet" href="assets/css/estilos.css">
+    <link rel="stylesheet" href="assets/css/tailwind.css?v=20261023">
+    <link rel="stylesheet" href="assets/css/estilos.css?v=20261023">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body class="fm-page min-h-screen flex flex-col">
@@ -58,7 +58,7 @@
 
             <div class="header-search hidden md:flex items-center min-w-0">
                 <form class="relative flex-1 min-w-0" onsubmit="event.preventDefault()">
-                    <input type="search" id="businessSearch" aria-label="Buscar producto, servicio o negocio" placeholder="Buscar producto, servicio o negocio" class="w-full h-9 pl-4 pr-12 bg-white border border-slate-300 rounded-lg text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500">
+                    <input type="search" id="businessSearch" aria-label="Buscar producto, servicio o negocio" placeholder="Buscar producto, servicio o negocio" class="w-full h-9 pl-4 pr-12 bg-white border border-slate-300 rounded-lg text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-300">
                     <button type="submit" aria-label="Ver resultados" title="Ver resultados" class="header-search-icon absolute right-0 top-0 h-9 flex items-center justify-center text-slate-700 border-l border-slate-200 rounded-r-lg hover:bg-slate-50 px-3">
                         <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>
                     </button>
@@ -70,7 +70,7 @@
 
         <div id="mobileSearch" class="md:hidden px-4 pb-2.5">
             <form class="relative flex-1" onsubmit="event.preventDefault()">
-                <input type="search" id="mobileBusinessSearch" aria-label="Buscar producto, servicio o negocio" placeholder="Buscar producto, servicio o negocio" class="w-full h-9 pl-4 pr-10 bg-white text-slate-900 placeholder:text-slate-400 caret-slate-900 border border-slate-300 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500">
+                <input type="search" id="mobileBusinessSearch" aria-label="Buscar producto, servicio o negocio" placeholder="Buscar producto, servicio o negocio" class="w-full h-9 pl-4 pr-10 bg-white text-slate-900 placeholder:text-slate-400 caret-slate-900 border border-slate-300 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-slate-300">
                 <button type="submit" aria-label="Ver resultados" title="Ver resultados" class="absolute right-0 top-0 h-9 w-9 flex items-center justify-center text-slate-600">
                     <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>
                 </button>
@@ -103,7 +103,7 @@
 
             <div class="results-actions flex items-center gap-2">
                 <label for="sortSelect" class="sr-only">Ordenar resultados</label>
-                <select id="sortSelect" aria-label="Ordenar resultados" class="results-sort h-9 px-3 bg-white border border-slate-300 rounded-lg text-xs sm:text-sm font-medium text-slate-700 hover:bg-slate-50 transition shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                <select id="sortSelect" aria-label="Ordenar resultados" class="results-sort h-9 px-3 bg-white border border-slate-300 rounded-lg text-xs sm:text-sm font-medium text-slate-700 hover:bg-slate-50 transition shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-300">
                     <option value="original">Orden original</option>
                     <option value="rating">Mejor calificación</option>
                     <option value="reviews">Más opiniones</option>
@@ -122,7 +122,7 @@
             </div>
             <h3 class="text-lg font-bold text-slate-800">No se encontraron resultados</h3>
             <p class="text-sm text-slate-500 mt-1 max-w-md mx-auto">Prueba con otra palabra, categoría o piso.</p>
-            <button id="resetFiltersEmpty" type="button" class="mt-4 px-4 py-2 bg-brand-50 text-brand-700 text-xs font-bold rounded-xl hover:bg-brand-100 transition">
+            <button id="resetFiltersEmpty" type="button" class="mt-4 px-4 py-2 bg-slate-100 text-slate-700 text-xs font-bold rounded-xl hover:bg-slate-200 transition">
                 Limpiar búsqueda y filtros
             </button>
         </div>
@@ -143,7 +143,7 @@
     <aside id="moreFilters" aria-label="Filtros del directorio" class="fixed top-0 left-0 bottom-0 z-50 w-full max-w-xs sm:max-w-sm bg-white shadow-2xl flex flex-col transform -translate-x-full transition-transform duration-300 ease-in-out">
         <div class="p-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
             <div class="flex items-center gap-2">
-                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-brand-600"><path d="M4 7h16M7 12h10m-7 5h4"/></svg>
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M4 7h16M7 12h10m-7 5h4"/></svg>
                 <h2 class="text-base font-bold text-slate-900">Filtros</h2>
             </div>
             <button id="closeFilterDrawer" type="button" aria-label="Cerrar filtros" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-200 text-slate-600">
@@ -154,14 +154,14 @@
         <div class="p-5 flex-1 overflow-y-auto space-y-6 text-sm">
             <div>
                 <label for="floorFilter" class="block font-bold text-slate-800 mb-1.5">Ubicación / Piso</label>
-                <select id="floorFilter" aria-label="Piso" class="w-full h-10 px-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                <select id="floorFilter" aria-label="Piso" class="w-full h-10 px-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-300">
                     <option value="Todos">Todos los pisos</option>
                 </select>
             </div>
 
             <div>
                 <label for="ratingFilter" class="block font-bold text-slate-800 mb-1.5">Calificación mínima</label>
-                <select id="ratingFilter" aria-label="Calificación mínima" class="w-full h-10 px-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                <select id="ratingFilter" aria-label="Calificación mínima" class="w-full h-10 px-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-300">
                     <option value="0">Cualquier calificación</option>
                     <option value="4.5">★ 4.5 o más</option>
                     <option value="4">★ 4.0 o más</option>
@@ -174,7 +174,7 @@
             <button id="resetFilters" type="button" class="flex-1 py-2.5 px-3 bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold rounded-lg text-xs text-center transition">
                 Restablecer
             </button>
-            <button id="applyFilterDrawer" type="button" class="flex-1 py-2.5 px-3 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-lg text-xs text-center transition">
+            <button id="applyFilterDrawer" type="button" class="flex-1 py-2.5 px-3 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-lg text-xs text-center transition">
                 Ver resultados
             </button>
         </div>
@@ -243,6 +243,6 @@
         </div>
     </footer>
 
-    <script src="assets/js/app.js"></script>
+    <script src="assets/js/app.js?v=20261023"></script>
 </body>
 </html>
