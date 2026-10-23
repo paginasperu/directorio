@@ -453,8 +453,11 @@ body {
 /* ---------- PANEL DE FILTROS ---------- */
 #moreFilters {
     border-radius: 0 20px 20px 0;
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.16);
+    will-change: transform;
+    backface-visibility: hidden;
 }
+#filterDrawerBackdrop { will-change: opacity; }
 #moreFilters > div:first-child { background: #fff; }
 #moreFilters > div:first-child svg { color: var(--fm-ink-2); }
 #moreFilters select {

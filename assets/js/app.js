@@ -21,6 +21,7 @@
     tiktok: "tiktok",
   };
   const state = { businesses: [], category: "Todos", floor: "Todos", minRating: 0, search: "" };
+  let drawerCloseTimer = null;
   const $ = (selector) => document.querySelector(selector);
   const ui = {
     grid: $("#providerGrid"),
@@ -214,19 +215,21 @@
     if (!ui.drawer || !ui.drawerBackdrop) return;
     ui.filterToggle.setAttribute("aria-expanded", String(open));
     if (open) {
+      clearTimeout(drawerCloseTimer);
+      document.body.classList.add("overflow-hidden");
       ui.drawerBackdrop.classList.remove("hidden");
-      requestAnimationFrame(() => {
-        ui.drawerBackdrop.classList.remove("opacity-0");
-        ui.drawerBackdrop.classList.add("opacity-100");
-        ui.drawer.classList.remove("-translate-x-full");
-      });
+      void ui.drawerBackdrop.offsetWidth;
+      ui.drawerBackdrop.classList.remove("opacity-0");
+      ui.drawerBackdrop.classList.add("opacity-100");
+      ui.drawer.classList.remove("-translate-x-full");
     } else {
       ui.drawer.classList.add("-translate-x-full");
       ui.drawerBackdrop.classList.remove("opacity-100");
       ui.drawerBackdrop.classList.add("opacity-0");
-      setTimeout(() => {
+      document.body.classList.remove("overflow-hidden");
+      drawerCloseTimer = setTimeout(() => {
         ui.drawerBackdrop.classList.add("hidden");
-      }, 300);
+      }, 220);
     }
   }
 
