@@ -14,8 +14,12 @@
     description: "descripcion",
     catalog: "catalogo",
     status: "estado",
+    phone2: "telefono2",
+    instagram: "instagram",
+    facebook: "facebook",
+    tiktok: "tiktok",
   };
-  const state = { businesses: [], category: "Todos", floor: "Todos", minRating: 0, search: "" };
+  const state = { businesses: [], category: "Todos", floor: "Todos", type: "Todos", minRating: 0, search: "" };
   const $ = (selector) => document.querySelector(selector);
   const ui = {
     grid: $("#providerGrid"),
@@ -23,6 +27,7 @@
     search: $("#businessSearch"),
     mobileSearch: $("#mobileBusinessSearch"),
     floor: $("#floorFilter"),
+    type: $("#typeFilter"),
     rating: $("#ratingFilter"),
     sort: $("#sortSelect"),
     count: $("#resultsCount"),
@@ -83,6 +88,10 @@
         catalog: get("catalog"),
         status,
         verified: normalize(status) === "verificado",
+        phone2: get("phone2").replace(/\D/g, ""),
+        instagram: get("instagram"),
+        facebook: get("facebook"),
+        tiktok: get("tiktok"),
       };
     }).filter((business) => business.name);
   }
@@ -123,9 +132,18 @@
     ).join("");
   }
 
+  function renderTypes() {
+    const types = [...new Set(state.businesses.map((item) => item.type).filter(Boolean))]
+      .sort((a, b) => a.localeCompare(b, "es-PE"));
+    ui.type.innerHTML = '<option value="Todos">Todos los tipos</option>' + types.map((type) =>
+      `<option value="${escapeHtml(type)}">${escapeHtml(type)}</option>`
+    ).join("");
+  }
+
   function matches(item) {
     if (state.category !== "Todos" && item.category !== state.category) return false;
     if (state.floor !== "Todos" && item.floor !== state.floor) return false;
+    if (state.type !== "Todos" && item.type !== state.type) return false;
     if (state.minRating && (item.rating === null || item.rating < state.minRating)) return false;
     return !state.search || searchable(item).includes(state.search);
   }
@@ -222,11 +240,13 @@
   function resetFilters() {
     state.category = "Todos";
     state.floor = "Todos";
+    state.type = "Todos";
     state.minRating = 0;
     state.search = "";
     ui.search.value = "";
     ui.mobileSearch.value = "";
     ui.floor.value = "Todos";
+    ui.type.value = "Todos";
     ui.rating.value = "0";
     ui.sort.value = "original";
     render();
@@ -251,7 +271,19 @@
     $("#modalFloorLocation").textContent = location || "No informado";
     $("#modalPhone").textContent = item.phone || "No informado";
     $("#modalPhoneRow").classList.toggle("hidden", !item.phone);
+    $("#modalPhone2").textContent = item.phone2 || "No informado";
+    $("#modalPhone2Row").classList.toggle("hidden", !item.phone2);
     $("#modalFloorLocationRow").classList.toggle("hidden", !location);
+
+    const socials = [
+      { label: "Instagram", url: item.instagram },
+      { label: "Facebook", url: item.facebook },
+      { label: "TikTok", url: item.tiktok },
+    ].filter((social) => social.url);
+    $("#modalSocialLinks").innerHTML = socials.map((social) =>
+      `<a class="social-link" href="${escapeHtml(social.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(social.label)}</a>`
+    ).join("");
+    $("#modalSocialSection").classList.toggle("hidden", socials.length === 0);
 
     const catalog = listValues(item.catalog);
     $("#modalProducts").innerHTML = catalog.map((value) => `<li class="px-3 py-1.5 bg-slate-100 rounded-full text-xs text-slate-700">${escapeHtml(value)}</li>`).join("");
@@ -310,6 +342,7 @@
       render();
     });
     ui.floor.addEventListener("change", () => { state.floor = ui.floor.value; render(); });
+    ui.type.addEventListener("change", () => { state.type = ui.type.value; render(); });
     ui.rating.addEventListener("change", () => { state.minRating = Number(ui.rating.value); render(); });
     ui.sort.addEventListener("change", render);
     ui.reset.addEventListener("click", resetFilters);
@@ -340,6 +373,7 @@
       state.businesses = parseCsv(await response.text());
       if (!state.businesses.length) throw new Error("El CSV no contiene negocios o sus encabezados cambiaron.");
       renderFloors();
+      renderTypes();
       bindEvents();
       bindScrollHeader();
       render();
