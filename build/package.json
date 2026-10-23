@@ -2,7 +2,7 @@
   "name": "fullmarket",
   "private": true,
   "scripts": {
-    "build:css": "tailwindcss -i ./src/input.css -o ./tailwind.css --minify"
+    "build:css": "tailwindcss -i ./origen.css -o ../assets/css/tailwind.css --minify"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.17"
