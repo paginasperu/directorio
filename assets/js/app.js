@@ -138,31 +138,49 @@
     return result;
   }
 
+  const palettes = [
+    ["#eef2ff", "#c7d2fe"],
+    ["#ecfdf5", "#a7f3d0"],
+    ["#fff7ed", "#fed7aa"],
+    ["#fdf2f8", "#fbcfe8"],
+    ["#eff6ff", "#bfdbfe"],
+    ["#f5f3ff", "#ddd6fe"],
+    ["#fefce8", "#fde68a"],
+    ["#f0fdfa", "#99f6e4"],
+  ];
+
+  function palette(text) {
+    let hash = 0;
+    for (const character of String(text ?? "")) hash = (hash * 31 + character.charCodeAt(0)) % 997;
+    return palettes[hash % palettes.length];
+  }
+
   function card(item) {
     const rating = item.rating === null
       ? '<span class="provider-rating-unavailable">Sin calificación</span>'
-      : `<span class="provider-rating">★ ${item.rating.toFixed(1)}</span>${item.reviews === null ? "" : `<span>(${item.reviews.toLocaleString("es-PE")} opiniones)</span>`}`;
+      : `<span class="provider-rating">★ ${item.rating.toFixed(1)}</span>${item.reviews === null ? "" : `<span class="provider-reviews">${item.reviews.toLocaleString("es-PE")} opiniones</span>`}`;
     const location = [
       item.floor ? `Piso ${escapeHtml(item.floor)}` : "",
-      item.store ? `Tienda ${escapeHtml(item.store)}` : "",
+      item.store ? `Local ${escapeHtml(item.store)}` : "",
     ].filter(Boolean).join(" · ");
     const whatsapp = whatsappUrl(item);
+    const [coverA, coverB] = palette(item.category);
     return `<article class="provider-card">
       <button type="button" class="provider-primary" data-detail-id="${item.id}" aria-label="Ver ficha de ${escapeHtml(item.name)}">
-        <span class="provider-avatar">${item.logo ? `<img src="${escapeHtml(item.logo)}" alt="" loading="lazy" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span hidden>${escapeHtml(initials(item.name))}</span>` : `<span>${escapeHtml(initials(item.name))}</span>`}</span>
-        <span class="provider-main">
-          <span class="provider-top">
-            <span class="provider-classification">${escapeHtml(item.category)} · ${escapeHtml(item.type)}</span>
-            <span class="verification-badge${item.verified ? " is-verified" : ""}">${escapeHtml(item.status || "Estado no informado")}</span>
-          </span>
+        <span class="provider-cover" style="--cover-a:${coverA};--cover-b:${coverB}" aria-hidden="true">
+          <span class="provider-cover-initials">${escapeHtml(initials(item.name))}</span>
+          <span class="provider-tag">${escapeHtml(item.category)}</span>
+        </span>
+        <span class="provider-body">
           <span class="provider-name">${escapeHtml(item.name)}</span>
+          <span class="provider-type">${escapeHtml(item.type)}</span>
           <span class="provider-description">${escapeHtml(item.description)}</span>
           <span class="provider-rating-row">${rating}</span>
         </span>
       </button>
       <div class="provider-footer">
-        ${location ? `<span class="provider-location">${escapeHtml(location)}</span>` : ""}
-        ${whatsapp ? `<a class="provider-whatsapp" href="${whatsapp}" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp de ${escapeHtml(item.name)}">WhatsApp</a>` : '<span class="provider-whatsapp provider-whatsapp-unavailable">Teléfono no informado</span>'}
+        <span class="provider-location">${escapeHtml(location)}</span>
+        ${whatsapp ? `<a class="provider-whatsapp" href="${whatsapp}" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp de ${escapeHtml(item.name)}">WhatsApp</a>` : '<span class="provider-whatsapp provider-whatsapp-unavailable">Sin teléfono</span>'}
       </div>
     </article>`;
   }
@@ -241,8 +259,9 @@
     wa.href = whatsappUrl(item) || "#";
     wa.classList.toggle("hidden", !item.phone);
     const badge = $("#modalStatus");
-    badge.textContent = item.status || "Estado no informado";
+    badge.textContent = item.status || "Verificado";
     badge.className = `verification-badge${item.verified ? " is-verified" : ""}`;
+    badge.classList.toggle("hidden", !item.verified);
 
     ui.modal.classList.remove("hidden");
     ui.modal.classList.add("flex");
