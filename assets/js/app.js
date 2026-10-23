@@ -7,7 +7,7 @@
     rating: "calificacion",
     reviews: "opiniones",
     floor: "piso",
-    store: "tienda",
+    store: "local",
     phone: "telefono",
     category: "categoria",
     type: "tipo",
@@ -234,6 +234,9 @@
   }
 
   function showDetail(item) {
+    const [coverA, coverB] = palette(item.category);
+    ui.modalContent.style.setProperty("--cover-a", coverA);
+    ui.modalContent.style.setProperty("--cover-b", coverB);
     $("#modalTitle").textContent = item.name;
     $("#modalDescription").textContent = item.description;
     $("#modalCategory").textContent = item.category;
@@ -243,7 +246,7 @@
     $("#modalRatingReviews").textContent = item.reviews === null ? "" : ` · ${item.reviews.toLocaleString("es-PE")} opiniones`;
     const location = [
       item.floor ? `Piso ${item.floor}` : "",
-      item.store ? `Tienda ${item.store}` : "",
+      item.store ? `Local ${escapeHtml(item.store)}` : "",
     ].filter(Boolean).join(" · ");
     $("#modalFloorLocation").textContent = location || "No informado";
     $("#modalPhone").textContent = item.phone || "No informado";
