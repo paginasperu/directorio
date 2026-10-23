@@ -147,14 +147,14 @@
   }
 
   const palettes = [
-    ["#eef2ff", "#c7d2fe"],
-    ["#ecfdf5", "#a7f3d0"],
-    ["#fff7ed", "#fed7aa"],
-    ["#fdf2f8", "#fbcfe8"],
-    ["#eff6ff", "#bfdbfe"],
-    ["#f5f3ff", "#ddd6fe"],
-    ["#fefce8", "#fde68a"],
-    ["#f0fdfa", "#99f6e4"],
+    ["#eef1f6", "#d7deea"],
+    ["#edf3ef", "#cfe0d6"],
+    ["#f6f1ea", "#e6d8c8"],
+    ["#f7eef1", "#e8d3da"],
+    ["#eef3f8", "#d3e0ee"],
+    ["#f1eef7", "#dcd4ea"],
+    ["#f7f4e8", "#e8dfc2"],
+    ["#eaf3f2", "#cde3e0"],
   ];
 
   function palette(text) {
@@ -208,8 +208,9 @@
     render();
   }
 
-    function toggleDrawer(open) {
+  function toggleDrawer(open) {
     if (!ui.drawer || !ui.drawerBackdrop) return;
+    ui.filterToggle.setAttribute("aria-expanded", String(open));
     if (open) {
       ui.drawerBackdrop.classList.remove("hidden");
       requestAnimationFrame(() => {
@@ -303,22 +304,6 @@
     document.body.classList.remove("overflow-hidden");
   }
 
-  function bindScrollHeader() {
-    const header = $("#siteHeader");
-    let lastScrollY = window.scrollY;
-    let hiddenDistance = 0;
-    window.addEventListener("scroll", () => {
-      const currentScrollY = window.scrollY;
-      const movement = currentScrollY - lastScrollY;
-      const headerHeight = header.offsetHeight;
-      hiddenDistance = currentScrollY < 30
-        ? 0
-        : Math.max(0, Math.min(headerHeight, hiddenDistance + movement * 0.75));
-      header.style.transform = `translateY(-${hiddenDistance}px)`;
-      lastScrollY = currentScrollY;
-    }, { passive: true });
-  }
-
   function bindEvents() {
     ui.search.addEventListener("input", () => setSearch(ui.search.value));
     ui.mobileSearch.addEventListener("input", () => setSearch(ui.mobileSearch.value));
@@ -355,13 +340,12 @@
 
   async function init() {
     try {
-      const response = await fetch(window.RUTA_DATOS || "./datos/negocios.csv", { cache: "no-cache" });
+      const response = await fetch("./data/negocios.csv", { cache: "no-cache" });
       if (!response.ok) throw new Error(`No se pudo cargar negocios.csv (${response.status})`);
       state.businesses = parseCsv(await response.text());
       if (!state.businesses.length) throw new Error("El CSV no contiene negocios o sus encabezados cambiaron.");
       renderFloors();
       bindEvents();
-      bindScrollHeader();
       render();
     } catch (error) {
       console.error(error);
