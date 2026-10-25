@@ -2,7 +2,8 @@
   "name": "directorio",
   "private": true,
   "scripts": {
-    "build:css": "tailwindcss -i ./source.css -o ../assets/css/tailwind.css --minify"
+    "build:css": "tailwindcss -i ./source.css -o ../assets/css/tailwind.css --minify",
+    "check": "node check.mjs"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.17"
