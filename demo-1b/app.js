@@ -131,17 +131,6 @@
     ).join("");
   }
 
-  function promoBadge(profile) {
-    if (!profile.promos.length) return "";
-    const first = profile.promos.find((promo) => promo.tipo === "Descuento") || profile.promos[0];
-    const regular = Number(first.precio_regular);
-    const discounted = Number(first.precio_rebajado);
-    let label = first.modalidad || first.tipo || "Promo";
-    if (first.tipo === "Descuento" && regular > 0 && discounted > 0 && discounted < regular) {
-      label = `−${Math.round((1 - discounted / regular) * 100)}%`;
-    }
-    return `<span class="d1-promo">${escapeHtml(label)}</span>`;
-  }
 
   function card(profile) {
     const location = [profile.floor ? `Piso ${profile.floor}` : "", profile.unit ? `Local ${profile.unit}` : ""].filter(Boolean).join(" · ");
@@ -151,7 +140,6 @@
         <span class="d1-cover">
           <img class="d1-banner" src="${escapeHtml(profile.banner)}" alt="${escapeHtml(profile.name)}" width="600" height="300" loading="lazy" decoding="async">
           <span class="d1-cat">${escapeHtml(profile.category)}</span>
-          ${promoBadge(profile)}
           <img class="d1-logo" src="${escapeHtml(profile.logo)}" alt="" width="56" height="56" loading="lazy" decoding="async">
         </span>
         <span class="d1-body">
@@ -202,7 +190,8 @@
       const promos = state.promos.filter((promo) => matchesPromo(promo));
       ui.grid.innerHTML = promos.map(promoCard).join("");
       ui.count.textContent = `${promos.length} ${promos.length === 1 ? "promoción" : "promociones"}`;
-      ui.empty.classList.toggle("hidden", promos.length > 0);
+      ui.empty.querySelector("p").textContent = "Prueba con otra palabra o categor\u00eda.";
+    ui.empty.classList.toggle("hidden", promos.length > 0);
       return;
     }
 
@@ -214,6 +203,7 @@
     const results = sorted(state.profiles.filter((profile) => matches(profile)));
     ui.grid.innerHTML = results.map(card).join("");
     ui.count.textContent = `${results.length} ${results.length === 1 ? "negocio" : "negocios"}`;
+    ui.empty.querySelector("p").textContent = "Prueba con otra palabra, categor\u00eda o piso.";
     ui.empty.classList.toggle("hidden", results.length > 0);
   }
 
@@ -410,6 +400,7 @@
           other.setAttribute("aria-pressed", String(active));
         });
         ui.sort.closest(".results-actions")?.classList.toggle("hidden", state.view === "promos");
+        ui.promo.closest("label")?.classList.toggle("hidden", state.view === "promos");
         render();
       });
     });
@@ -490,6 +481,7 @@
           button.setAttribute("aria-pressed", String(active));
         });
         ui.sort.closest(".results-actions")?.classList.add("hidden");
+        ui.promo.closest("label")?.classList.add("hidden");
         render();
       }
     } catch (error) {
