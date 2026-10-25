@@ -1,260 +1,367 @@
-import { getSaving, loadDirectory, normalize } from "../../shared/data.js";
-import { block, categoryCard, deal, resultRow, sheet } from "./views.js";
+// Orquestador: estado, filtros, orden, render y eventos.
+
+import { loadDirectory, normalize } from "../../shared/data.js";
+import { businessCard, businessDetail, promoCard, promoDetail } from "./views.js";
 
 const state = {
+  view: "negocios",
   category: "Todos",
-  floor: "Todos",
   search: "",
+  floor: "Todos",
+  bizSort: "promos",
+  promoTipo: "Todos",
+  promoModalidad: "Todos",
+  promoPrecio: "Todos",
+  promoSort: "name",
   profiles: [],
   promos: [],
-  byId: new Map(),
-  view: "home",
+  profilesById: new Map(),
+  backPromo: null,
+  currentPromoId: null,
 };
 
 const $ = (selector) => document.querySelector(selector);
 const ui = {
-  head: $("#siteHead"),
-  headNav: $("#headNav"),
-  rail: $("#categoryRail"),
-  dealGrid: $("#dealGrid"),
-  dealCount: $("#dealCount"),
-  blocks: $("#categoryBlocks"),
-  floorSelect: $("#floorSelect"),
-  floorChips: $("#floorChips"),
-  footFloors: $("#footFloors"),
-  searchCategory: $("#searchCategory"),
-  searchInput: $("#searchInput"),
-  home: $("#home"),
-  results: $("#results"),
-  resultsTitle: $("#resultsTitle"),
-  resultList: $("#resultList"),
-  empty: $("#empty"),
-  sheet: $("#sheet"),
-  sheetPanel: $("#sheetPanel"),
+  grid: $("#providerGrid"),
+  categoryList: $("#categoryList"),
+  count: $("#resultsCount"),
+  empty: $("#emptyState"),
+  search: $("#businessSearch"),
+  mobileSearch: $("#mobileBusinessSearch"),
+  sort: $("#sortSelect"),
+  sortMobile: $("#sortMobile"),
+  filterToggle: $("#filterToggle"),
+  drawer: $("#moreFilters"),
+  drawerBackdrop: $("#filterDrawerBackdrop"),
+  reset: $("#resetFilters"),
+  resetEmpty: $("#resetFiltersEmpty"),
+  modal: $("#modalDetail"),
+  modalBody: $("#modalBody"),
+  bizFilters: $("#bizFilters"),
+  promoFilters: $("#promoFilters"),
+  floor: $("#floorFilter"),
+  tipo: $("#tipoFilter"),
+  modalidad: $("#modalidadFilter"),
+  precio: $("#precioFilter"),
+  categoryFilter: $("#categoryFilter"),
 };
 
 const collator = new Intl.Collator("es-PE", { sensitivity: "base" });
 
-/* ---------- cabecera que se oculta gradualmente ---------- */
+const priceBands = [
+  { value: "Todos", label: "Cualquier precio", test: () => true },
+  { value: "hasta50", label: "Hasta S/ 50", test: (price) => price > 0 && price <= 50 },
+  { value: "50-100", label: "S/ 50 a 100", test: (price) => price > 50 && price <= 100 },
+  { value: "100-200", label: "S/ 100 a 200", test: (price) => price > 100 && price <= 200 },
+  { value: "200+", label: "Más de S/ 200", test: (price) => price > 200 },
+];
 
-function initHeader() {
-  let lastY = window.scrollY;
-  let offset = 0;
+const sortOptions = {
+  negocios: [
+    { value: "promos", label: "Con promoción primero" },
+    { value: "name", label: "Nombre A–Z" },
+    { value: "piso", label: "Piso" },
+  ],
+  promos: [
+    { value: "name", label: "Nombre A–Z" },
+    { value: "price-asc", label: "Precio: menor a mayor" },
+    { value: "price-desc", label: "Precio: mayor a menor" },
+    { value: "vigencia", label: "Vigencia" },
+  ],
+};
 
-  const update = () => {
-    const height = ui.head.offsetHeight;
-    const y = window.scrollY;
-    const delta = y - lastY;
-    lastY = y;
-
-    if (y <= 0) {
-      offset = 0;
-    } else if (Math.abs(delta) > 1) {
-      // Se mueve con el scroll, pero nunca más de 30 px por evento: se siente progresivo.
-      const step = Math.max(-60, Math.min(60, delta)) * 0.5;
-      offset = Math.min(height, Math.max(0, offset + step));
-    }
-
-    ui.head.style.transform = offset > 0 ? `translateY(${-offset}px)` : "";
-    ui.head.classList.toggle("is-stuck", offset < 2 && y > 8);
-  };
-
-  window.addEventListener("scroll", update, { passive: true });
-  window.addEventListener("resize", () => { offset = 0; ui.head.style.transform = ""; });
+function fillSelect(select, options, current) {
+  select.innerHTML = options.map((option) =>
+    `<option value="${option.value}"${option.value === current ? " selected" : ""}>${option.label}</option>`
+  ).join("");
 }
 
-/* ---------- datos derivados ---------- */
+function setupFilters() {
+  const floors = [...new Set(state.profiles.map((profile) => profile.floor).filter(Boolean))]
+    .sort((a, b) => Number(a) - Number(b));
+  fillSelect(ui.floor, [{ value: "Todos", label: "Todos los pisos" }, ...floors.map((floor) => ({ value: floor, label: `Piso ${floor}` }))], state.floor);
 
-function categories() {
-  return [...new Set(state.profiles.map((profile) => profile.category).filter(Boolean))].sort(collator.compare);
+  const tipos = [...new Set(state.promos.map((promo) => promo.type).filter(Boolean))].sort(collator.compare);
+  fillSelect(ui.tipo, [{ value: "Todos", label: "Todos los tipos" }, ...tipos.map((tipo) => ({ value: tipo, label: tipo }))], state.promoTipo);
+
+  const modalidades = [...new Set(state.promos.map((promo) => promo.mode).filter(Boolean))].sort(collator.compare);
+  fillSelect(ui.modalidad, [{ value: "Todos", label: "Todas las modalidades" }, ...modalidades.map((mode) => ({ value: mode, label: mode }))], state.promoModalidad);
+
+  fillSelect(ui.precio, priceBands.map(({ value, label }) => ({ value, label })), state.promoPrecio);
+
+  const categories = [...new Set(state.profiles.map((profile) => profile.category).filter(Boolean))].sort(collator.compare);
+  fillSelect(ui.categoryFilter, [{ value: "Todos", label: "Todas las categorías" }, ...categories.map((category) => ({ value: category, label: category }))], state.category);
 }
 
-function imageFor(category) {
-  const withPromo = state.profiles.filter((profile) => profile.category === category && profile.promos.length);
-  return (withPromo[0] || state.profiles.find((profile) => profile.category === category) || {}).banner || "";
+function setupSort() {
+  const options = sortOptions[state.view];
+  const current = state.view === "negocios" ? state.bizSort : state.promoSort;
+  fillSelect(ui.sort, options, current);
+  fillSelect(ui.sortMobile, options, current);
 }
 
-function matches(profile) {
-  if (state.category !== "Todos" && profile.category !== state.category) return false;
+/* ---------- filtros ---------- */
+
+function matchesBusiness(profile, ignoreCategory = false) {
+  if (!ignoreCategory && state.category !== "Todos" && profile.category !== state.category) return false;
   if (state.floor !== "Todos" && profile.floor !== state.floor) return false;
   if (!state.search) return true;
   return normalize([profile.name, profile.category, profile.type, profile.short, profile.catalog, profile.keywords, profile.floor, profile.unit].join(" ")).includes(state.search);
 }
 
+function matchesPromo(promo, ignoreCategory = false) {
+  if (!ignoreCategory && state.category !== "Todos" && promo.category !== state.category) return false;
+  if (state.floor !== "Todos" && promo.profile?.floor !== state.floor) return false;
+  if (state.promoTipo !== "Todos" && promo.type !== state.promoTipo) return false;
+  if (state.promoModalidad !== "Todos" && promo.mode !== state.promoModalidad) return false;
+  if (!priceBands.find((band) => band.value === state.promoPrecio).test(promo.discounted)) return false;
+  if (!state.search) return true;
+  return normalize([promo.title, promo.description, promo.type, promo.mode, promo.profile?.name, promo.category].join(" ")).includes(state.search);
+}
+
+/* ---------- orden ---------- */
+
+function sortedBusinesses(list) {
+  const result = [...list];
+  if (state.bizSort === "name") result.sort((a, b) => collator.compare(a.name, b.name));
+  else if (state.bizSort === "piso") result.sort((a, b) => Number(a.floor) - Number(b.floor) || collator.compare(a.name, b.name));
+  else result.sort((a, b) => b.promos.length - a.promos.length || collator.compare(a.name, b.name));
+  return result;
+}
+
+function sortedPromos(list) {
+  const result = [...list];
+  if (state.promoSort === "price-asc") result.sort((a, b) => (a.discounted || Infinity) - (b.discounted || Infinity));
+  else if (state.promoSort === "price-desc") result.sort((a, b) => (b.discounted || 0) - (a.discounted || 0));
+  else if (state.promoSort === "vigencia") result.sort((a, b) => String(a.until).localeCompare(String(b.until)) || collator.compare(a.title, b.title));
+  else result.sort((a, b) => collator.compare(a.title, b.title));
+  return result;
+}
+
 /* ---------- render ---------- */
 
-function renderNav() {
-  const cats = categories();
-  const html = [`<button type="button" data-category="Todos" class="${state.category === "Todos" ? "is-active" : ""}">Todo</button>`]
-    .concat(cats.map((category) => `<button type="button" data-category="${category}" class="${state.category === category ? "is-active" : ""}">${category}</button>`))
-    .join("");
-  ui.headNav.innerHTML = html;
-}
-
-function renderRail() {
-  ui.rail.innerHTML = categories()
-    .map((category) => categoryCard(category, state.profiles.filter((profile) => profile.category === category).length, state.profiles.find((profile) => profile.category === category)))
-    .join("");
-}
-
-function renderDeals() {
-  const deals = [...state.promos].filter((promo) => getSaving(promo) > 0).sort((a, b) => getSaving(b) - getSaving(a)).slice(0, 8);
-  ui.dealGrid.innerHTML = deals.map(deal).join("");
-  ui.dealCount.textContent = state.promos.length;
-}
-
-function renderBlocks() {
-  ui.blocks.innerHTML = categories().map((category) => {
-    const profiles = state.profiles
-      .filter((profile) => profile.category === category)
-      .sort((a, b) => collator.compare(a.name, b.name))
-      .slice(0, 4);
-    return block(category, profiles);
+function renderCategories(counts) {
+  const categories = ["Todos", ...new Set(state.profiles.map((profile) => profile.category).filter(Boolean))].sort((a, b) => a === "Todos" ? -1 : b === "Todos" ? 1 : collator.compare(a, b));
+  ui.categoryList.innerHTML = categories.map((category) => {
+    const total = category === "Todos" ? counts.total : (counts.byCategory.get(category) || 0);
+    return `<button type="button" class="category-option${category === state.category ? " is-active" : ""}" data-category="${category}" aria-pressed="${String(category === state.category)}">${category}<span class="d1-cat-count">${total}</span></button>`;
   }).join("");
 }
 
-function renderFloors() {
-  const floors = [...new Set(state.profiles.map((profile) => profile.floor).filter(Boolean))].sort((a, b) => Number(a) - Number(b));
-  const options = floors.map((floor) => ({
-    value: floor,
-    count: state.profiles.filter((profile) => profile.floor === floor).length,
-  }));
-
-  ui.floorSelect.innerHTML = `<option value="Todos">Todos los pisos</option>` +
-    options.map((option) => `<option value="${option.value}">Piso ${option.value}</option>`).join("");
-
-  ui.floorChips.innerHTML = options.map((option) =>
-    `<button type="button" class="floor-chip" data-floor="${option.value}">Piso ${option.value}<span>${option.count}</span></button>`
-  ).join("");
-
-  ui.footFloors.innerHTML = options.map((option) =>
-    `<span>Piso ${option.value} · ${option.count} negocios</span>`
-  ).join("");
-
-  ui.searchCategory.innerHTML = `<option value="Todos">Todas</option>` +
-    categories().map((category) => `<option value="${category}">${category}</option>`).join("");
+function countBy(list, key, total) {
+  const byCategory = new Map();
+  list.forEach((item) => byCategory.set(item[key], (byCategory.get(item[key]) || 0) + 1));
+  return { total, byCategory };
 }
 
-function showHome() {
-  state.view = "home";
-  ui.home.classList.remove("hidden");
-  ui.results.classList.add("hidden");
-  renderNav();
-}
+function renderBusinesses() {
+  const base = state.profiles.filter((profile) => matchesBusiness(profile, true));
+  renderCategories(countBy(base, "category", base.length));
 
-function showResults() {
-  state.view = "results";
-  const results = state.profiles.filter(matches).sort((a, b) => collator.compare(a.name, b.name));
-
-  ui.home.classList.add("hidden");
-  ui.results.classList.remove("hidden");
-  renderNav();
-
-  const title = state.search
-    ? `Resultados para “${ui.searchInput.value.trim()}”`
-    : (state.category === "Todos" ? "Todos los negocios" : state.category);
-  ui.resultsTitle.textContent = `${title} · ${results.length}`;
-
-  ui.resultList.innerHTML = results.map(resultRow).join("");
+  const results = sortedBusinesses(state.profiles.filter((profile) => matchesBusiness(profile)));
+  ui.grid.innerHTML = results.map(businessCard).join("");
+  ui.count.textContent = `${results.length} ${results.length === 1 ? "negocio" : "negocios"}`;
+  ui.empty.querySelector("p").textContent = "Prueba con otra palabra, categoría o piso.";
   ui.empty.classList.toggle("hidden", results.length > 0);
-  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-function setCategory(category) {
-  state.category = category;
-  showResults();
+function renderPromos() {
+  const base = state.promos.filter((promo) => matchesPromo(promo, true));
+  renderCategories(countBy(base, "category", base.length));
+
+  const results = sortedPromos(state.promos.filter((promo) => matchesPromo(promo)));
+  ui.grid.innerHTML = results.map(promoCard).join("");
+  ui.count.textContent = `${results.length} ${results.length === 1 ? "promoción" : "promociones"}`;
+  ui.empty.querySelector("p").textContent = "Prueba con otra palabra, categoría o filtro.";
+  ui.empty.classList.toggle("hidden", results.length > 0);
 }
 
-/* ---------- ficha ---------- */
-
-function openSheet(profile) {
-  ui.sheetPanel.innerHTML = sheet(profile);
-  ui.sheet.classList.remove("hidden");
-  document.body.style.overflow = "hidden";
+function render() {
+  if (state.view === "promos") renderPromos();
+  else renderBusinesses();
+  ui.bizFilters.classList.toggle("hidden", state.view !== "negocios");
+  ui.promoFilters.classList.toggle("hidden", state.view !== "promos");
+  ui.categoryFilter.value = state.category;
+  syncUrl();
 }
 
-function closeSheet() {
-  ui.sheet.classList.add("hidden");
-  document.body.style.overflow = "";
+/* ---------- navegación ---------- */
+
+function syncUrl() {
+  const params = new URLSearchParams();
+  if (state.view !== "negocios") params.set("view", state.view);
+  if (state.category !== "Todos") params.set("cat", state.category);
+  const query = params.toString();
+  history.replaceState(null, "", query ? `?${query}` : location.pathname);
 }
 
-/* ---------- eventos ---------- */
+function setView(view) {
+  state.view = view;
+  document.querySelectorAll("[data-view]").forEach((button) => {
+    const active = button.dataset.view === view;
+    button.classList.toggle("is-active", active);
+    button.setAttribute("aria-pressed", String(active));
+  });
+  setupSort();
+  render();
+}
 
-function bind() {
-  document.addEventListener("click", (event) => {
-    const categoryTrigger = event.target.closest("[data-category]");
-    if (categoryTrigger) {
-      setCategory(categoryTrigger.dataset.category);
+/* ---------- detalle ---------- */
+
+function openModal() {
+  ui.modal.classList.remove("hidden");
+  ui.modal.classList.add("flex");
+  document.body.classList.add("overflow-hidden");
+}
+
+function closeModal() {
+  ui.modal.classList.add("hidden");
+  ui.modal.classList.remove("flex");
+  document.body.classList.remove("overflow-hidden");
+}
+
+function showPromo(promo) {
+  state.backPromo = null;
+  state.currentPromoId = promo.id;
+  ui.modalBody.innerHTML = promoDetail(promo);
+  $("#modalCallBtn").classList.add("hidden");
+  const wa = $("#modalWhatsappBtn");
+  wa.href = promo.profile?.whatsapp ? `https://wa.me/${promo.profile.whatsapp}` : "#";
+  wa.classList.toggle("hidden", !promo.profile?.whatsapp);
+  wa.textContent = "WhatsApp del negocio";
+  openModal();
+}
+
+function showBusiness(profile, backPromoId = null) {
+  state.backPromo = backPromoId;
+  ui.modalBody.innerHTML = businessDetail(profile, backPromoId);
+  const call = $("#modalCallBtn");
+  call.href = profile.fixed ? `tel:${profile.fixed}` : "#";
+  call.classList.toggle("hidden", !profile.fixed);
+  const wa = $("#modalWhatsappBtn");
+  wa.href = profile.whatsapp ? `https://wa.me/${profile.whatsapp}` : "#";
+  wa.classList.toggle("hidden", !profile.whatsapp);
+  wa.textContent = "Contactar por WhatsApp";
+  openModal();
+}
+
+/* ---------- drawer y eventos ---------- */
+
+function toggleDrawer(open) {
+  ui.filterToggle.setAttribute("aria-expanded", String(open));
+  if (open) {
+    document.body.classList.add("overflow-hidden");
+    ui.drawerBackdrop.classList.remove("hidden");
+    void ui.drawerBackdrop.offsetWidth;
+    ui.drawerBackdrop.classList.remove("opacity-0");
+    ui.drawerBackdrop.classList.add("opacity-100");
+    ui.drawer.classList.remove("-translate-x-full");
+  } else {
+    ui.drawer.classList.add("-translate-x-full");
+    ui.drawerBackdrop.classList.remove("opacity-100");
+    ui.drawerBackdrop.classList.add("opacity-0");
+    document.body.classList.remove("overflow-hidden");
+    setTimeout(() => ui.drawerBackdrop.classList.add("hidden"), 220);
+  }
+}
+
+function resetFilters() {
+  state.category = "Todos";
+  state.search = "";
+  state.floor = "Todos";
+  state.bizSort = "promos";
+  state.promoTipo = "Todos";
+  state.promoModalidad = "Todos";
+  state.promoPrecio = "Todos";
+  state.promoSort = "name";
+  ui.search.value = "";
+  ui.mobileSearch.value = "";
+  ui.floor.value = "Todos";
+  ui.tipo.value = "Todos";
+  ui.modalidad.value = "Todos";
+  ui.precio.value = "Todos";
+  setupSort();
+  render();
+  toggleDrawer(false);
+}
+
+function setSearch(value) {
+  state.search = normalize(value);
+  ui.search.value = value;
+  ui.mobileSearch.value = value;
+  render();
+}
+
+function bindEvents() {
+  ui.search.addEventListener("input", () => setSearch(ui.search.value));
+  ui.mobileSearch.addEventListener("input", () => setSearch(ui.mobileSearch.value));
+
+  document.querySelectorAll("[data-view]").forEach((button) => {
+    button.addEventListener("click", () => setView(button.dataset.view));
+  });
+
+  ui.categoryList.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-category]");
+    if (!button) return;
+    state.category = button.dataset.category;
+    render();
+  });
+
+  ui.categoryFilter.addEventListener("change", () => { state.category = ui.categoryFilter.value; render(); });
+  ui.floor.addEventListener("change", () => { state.floor = ui.floor.value; render(); });
+  ui.tipo.addEventListener("change", () => { state.promoTipo = ui.tipo.value; render(); });
+  ui.modalidad.addEventListener("change", () => { state.promoModalidad = ui.modalidad.value; render(); });
+  ui.precio.addEventListener("change", () => { state.promoPrecio = ui.precio.value; render(); });
+
+  function applySort(value) {
+    if (state.view === "negocios") state.bizSort = value;
+    else state.promoSort = value;
+    ui.sort.value = value;
+    ui.sortMobile.value = value;
+    render();
+  }
+
+  ui.sort.addEventListener("change", () => applySort(ui.sort.value));
+  ui.sortMobile.addEventListener("change", () => applySort(ui.sortMobile.value));
+
+  ui.reset.addEventListener("click", resetFilters);
+  ui.resetEmpty.addEventListener("click", resetFilters);
+  ui.filterToggle.addEventListener("click", () => toggleDrawer(true));
+  $("#applyFilterDrawer").addEventListener("click", () => toggleDrawer(false));
+  $("#closeFilterDrawer").addEventListener("click", () => toggleDrawer(false));
+  ui.drawerBackdrop.addEventListener("click", () => toggleDrawer(false));
+
+  ui.grid.addEventListener("click", (event) => {
+    if (event.target.closest(".provider-whatsapp")) return;
+    const promoTrigger = event.target.closest("[data-promo]");
+    if (promoTrigger) {
+      const promo = state.promos.find((item) => item.id === promoTrigger.dataset.promo);
+      if (promo) showPromo(promo);
       return;
     }
+    const trigger = event.target.closest("[data-detail]");
+    if (!trigger) return;
+    const profile = state.profilesById.get(Number(trigger.dataset.detail));
+    if (profile) showBusiness(profile);
+  });
 
-    const floorTrigger = event.target.closest("[data-floor]");
-    if (floorTrigger) {
-      state.floor = floorTrigger.dataset.floor;
-      ui.floorSelect.value = state.floor;
-      showResults();
+  ui.modalBody.addEventListener("click", (event) => {
+    const business = event.target.closest("[data-business]");
+    if (business) {
+      const profile = state.profilesById.get(Number(business.dataset.business));
+      if (profile) showBusiness(profile, state.currentPromoId);
       return;
     }
-
-    const card = event.target.closest("[data-id]");
-    if (card) {
-      const profile = state.byId.get(Number(card.dataset.id));
-      if (profile) openSheet(profile);
-      return;
-    }
-
-    if (event.target.closest("[data-close]")) closeSheet();
-  });
-
-  $("#searchForm").addEventListener("submit", (event) => {
-    event.preventDefault();
-    state.search = normalize(ui.searchInput.value);
-    state.category = ui.searchCategory.value;
-    showResults();
-  });
-
-  $("#searchInput").addEventListener("input", () => {
-    if (!ui.searchInput.value.trim() && state.view === "results") {
-      state.search = "";
-      showHome();
+    const back = event.target.closest("[data-back-promo]");
+    if (back) {
+      const promo = state.promos.find((item) => item.id === back.dataset.backPromo);
+      if (promo) showPromo(promo);
     }
   });
 
-  ui.searchCategory.addEventListener("change", () => {
-    state.category = ui.searchCategory.value;
-    if (state.view === "results") showResults();
-  });
-
-  ui.floorSelect.addEventListener("change", () => {
-    state.floor = ui.floorSelect.value;
-    if (state.view === "results") showResults();
-    else showResults();
-  });
-
-  $("#dealsBtn").addEventListener("click", () => {
-    document.querySelector(".deals").scrollIntoView({ behavior: "smooth", block: "start" });
-  });
-
-  $("#allDeals").addEventListener("click", () => {
-    state.search = "";
-    state.category = "Todos";
-    ui.searchInput.value = "";
-    showResults();
-  });
-
-  $("#clearFilters").addEventListener("click", () => {
-    state.category = "Todos";
-    state.floor = "Todos";
-    state.search = "";
-    ui.searchInput.value = "";
-    ui.searchCategory.value = "Todos";
-    ui.floorSelect.value = "Todos";
-    showHome();
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && !ui.sheet.classList.contains("hidden")) closeSheet();
-  });
+  $("#closeDetail").addEventListener("click", closeModal);
+  ui.modal.addEventListener("click", (event) => { if (event.target === ui.modal) closeModal(); });
+  document.addEventListener("keydown", (event) => { if (event.key === "Escape" && !ui.modal.classList.contains("hidden")) closeModal(); });
 }
 
 async function init() {
@@ -262,34 +369,36 @@ async function init() {
     const { profiles, promos, profilesById } = await loadDirectory();
     state.profiles = profiles;
     state.promos = promos;
-    state.byId = profilesById;
+    state.profilesById = profilesById;
 
-    renderFloors();
-    renderRail();
-    renderDeals();
-    renderBlocks();
-    renderNav();
-    initHeader();
-    bind();
+    const countNegocios = document.getElementById("countNegocios");
+    const countPromos = document.getElementById("countPromos");
+    if (countNegocios) countNegocios.textContent = profiles.length;
+    if (countPromos) countPromos.textContent = promos.length;
+
+    setupFilters();
+    setupSort();
+    bindEvents();
 
     const params = new URLSearchParams(location.search);
-    const openId = Number(params.get("open"));
-    const cat = params.get("cat");
-    const query = params.get("q");
+    if (params.get("cat")) state.category = params.get("cat");
+    setView(params.get("view") === "promos" ? "promos" : "negocios");
 
-    if (cat || query) {
-      if (cat) { state.category = cat; ui.searchCategory.value = cat; }
-      if (query) { state.search = normalize(query); ui.searchInput.value = query; }
-      showResults();
+    const openId = Number(params.get("open"));
+    if (openId) {
+      const profile = state.profilesById.get(openId);
+      if (profile) showBusiness(profile);
     }
 
-    if (openId) {
-      const profile = state.byId.get(openId);
-      if (profile) openSheet(profile);
+    const promoId = params.get("promo");
+    if (promoId) {
+      const promo = state.promos.find((item) => item.id === promoId);
+      if (promo) showPromo(promo);
     }
   } catch (error) {
     console.error(error);
-    ui.resultsTitle.textContent = "No se pudieron cargar los datos";
+    ui.count.textContent = "No se pudieron cargar los datos";
+    ui.empty.classList.remove("hidden");
   }
 }
 
