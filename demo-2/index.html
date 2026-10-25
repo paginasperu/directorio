@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directorio · Escaparate</title>
+    <meta name="description" content="Directorio de negocios con ofertas por categoría y piso.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="demo-2.css">
+</head>
+<body>
+    <div class="demo-bar">
+        <div class="demo-bar-inner">
+            <a href="../">← Demos</a>
+            <span>Demo 2 · Escaparate</span>
+        </div>
+    </div>
+
+    <header class="site-head" id="siteHead">
+        <div class="head-main">
+            <a class="brand" href="./">Directorio</a>
+
+            <label class="floor-pick">
+                <span>Estás en</span>
+                <select id="floorSelect" aria-label="Filtrar por piso"></select>
+            </label>
+
+            <form class="search" id="searchForm" role="search">
+                <select id="searchCategory" aria-label="Categoría de búsqueda"></select>
+                <input type="search" id="searchInput" placeholder="Buscar negocios, productos o servicios" aria-label="Buscar">
+                <button type="submit" aria-label="Buscar">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>
+                </button>
+            </form>
+
+            <nav class="head-actions" aria-label="Accesos">
+                <button type="button" id="dealsBtn" class="head-link">Ofertas <span id="dealCount" class="pill-count"></span></button>
+                <a class="head-link" href="#suscribete">Publica tu negocio</a>
+            </nav>
+        </div>
+
+        <nav class="head-nav" id="headNav" aria-label="Categorías"></nav>
+    </header>
+
+    <main class="wrap">
+        <section id="home">
+            <div class="hero-rail" id="categoryRail" aria-label="Categorías"></div>
+
+            <section class="deals" aria-label="Ofertas del día">
+                <div class="section-head">
+                    <h2>Ofertas del día</h2>
+                    <button type="button" class="link-btn" id="allDeals">Ver todas</button>
+                </div>
+                <div class="deal-grid" id="dealGrid"></div>
+            </section>
+
+            <section class="blocks" id="categoryBlocks" aria-label="Por categoría"></section>
+
+            <section class="floor-band">
+                <div class="section-head"><h2>Explora por piso</h2></div>
+                <div class="floor-chips" id="floorChips"></div>
+            </section>
+        </section>
+
+        <section id="results" class="results hidden" aria-label="Resultados">
+            <div class="section-head">
+                <h2 id="resultsTitle">Resultados</h2>
+                <button type="button" class="link-btn" id="clearFilters">Limpiar</button>
+            </div>
+            <div id="resultList" class="result-list"></div>
+            <p id="empty" class="empty hidden">Sin resultados. Prueba con otra palabra o categoría.</p>
+        </section>
+
+        <section class="subscribe" id="suscribete">
+            <div>
+                <h2>Publica tu negocio en el directorio</h2>
+                <p>Aparece con tu ubicación, contacto, redes y promociones. Es gratis.</p>
+            </div>
+            <a href="https://wa.me/51950141414?text=Hola%2C%20quiero%20publicar%20mi%20negocio%20en%20el%20directorio" target="_blank" rel="noopener noreferrer">Empezar</a>
+        </section>
+    </main>
+
+    <footer class="foot">
+        <div class="foot-cols">
+            <div>
+                <h3>Directorio</h3>
+                <a href="#home">Inicio</a>
+                <a href="#home">Ofertas</a>
+                <a href="#home">Categorías</a>
+            </div>
+            <div>
+                <h3>Pisos</h3>
+                <div id="footFloors" class="foot-floors"></div>
+            </div>
+            <div>
+                <h3>Ayuda</h3>
+                <a href="https://wa.me/51950141414" target="_blank" rel="noopener noreferrer">Contacto</a>
+                <a href="https://wa.me/51950141414?text=Hola%2C%20quiero%20publicar%20mi%20negocio" target="_blank" rel="noopener noreferrer">Publicar negocio</a>
+            </div>
+        </div>
+        <p class="legal">Directorio gratuito e independiente · 85 negocios y 170 promociones referenciales · Confirma cada dato con el negocio.</p>
+    </footer>
+
+    <div id="sheet" class="sheet hidden" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+        <div class="sheet-backdrop" data-close></div>
+        <div class="sheet-panel" id="sheetPanel"></div>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
