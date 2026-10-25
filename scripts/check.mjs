@@ -9,7 +9,7 @@ const problems = [];
 
 function walk(directory) {
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
-    if (["node_modules", ".git", "build"].includes(entry.name)) return [];
+    if (["node_modules", ".git", "tools"].includes(entry.name)) return [];
     const full = join(directory, entry.name);
     return entry.isDirectory() ? walk(full) : [full];
   });
