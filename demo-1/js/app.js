@@ -371,6 +371,11 @@ async function init() {
     state.promos = promos;
     state.profilesById = profilesById;
 
+    const countNegocios = document.getElementById("countNegocios");
+    const countPromos = document.getElementById("countPromos");
+    if (countNegocios) countNegocios.textContent = profiles.length;
+    if (countPromos) countPromos.textContent = promos.length;
+
     setupFilters();
     setupSort();
     bindEvents();

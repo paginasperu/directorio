@@ -50,10 +50,15 @@
     </header>
 
     <main class="fm-main">
-        <section class="fm-hero">
-            <p class="fm-eyebrow">Directorio de negocios</p>
-            <h1>Todo lo que buscas,<br>en un solo lugar.</h1>
-            <p class="fm-lead">Compara tiendas y servicios por categoría o piso, y aprovecha sus promociones vigentes.</p>
+
+
+        <section class="sections" aria-label="Secciones">
+            <button type="button" class="section-tab is-active" data-view="negocios" aria-pressed="true">
+                Negocios<span id="countNegocios"></span>
+            </button>
+            <button type="button" class="section-tab" data-view="promos" aria-pressed="false">
+                Promociones<span id="countPromos"></span>
+            </button>
         </section>
 
         <div class="category-strip">
@@ -62,10 +67,6 @@
 
         <div id="resultsToolbar" class="results-toolbar flex items-center justify-between gap-3 mb-4 flex-wrap" aria-label="Orden y filtros de resultados">
             <div class="flex items-center gap-2.5 flex-wrap">
-                <div class="d1-views" role="group" aria-label="Vista de resultados">
-                    <button type="button" class="d1-view is-active" data-view="negocios" aria-pressed="true">Negocios</button>
-                    <button type="button" class="d1-view" data-view="promos" aria-pressed="false">Promociones</button>
-                </div>
                 <button id="filterToggle" type="button" aria-controls="moreFilters" aria-expanded="false" class="filter-toggle inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-300 rounded-lg text-xs sm:text-sm font-bold text-slate-800 hover:bg-slate-50 transition shadow-sm">
                     <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M4 7h16M7 12h10m-7 5h4"/></svg>
                     <span>Filtros</span>
