@@ -415,3 +415,12 @@
   border-color: #c9c9cf;
   background: #fafafa;
 }
+
+
+/* El boton de cerrar no depende de utilidades compiladas */
+#closeDetail {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  left: auto;
+}

@@ -490,3 +490,112 @@
   border-color: #c9c9cf;
   background: #fafafa;
 }
+
+
+/* Detalle de promoción */
+
+.d1-promo-hero {
+  margin-top: 10px;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: 1.15;
+  color: #1d1d1f;
+}
+
+.d1-promo-hero-text {
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #6e6e73;
+}
+
+.d1-price-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: #f7f7f9;
+}
+
+.d1-price-block strong {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -.03em;
+  color: #1d1d1f;
+}
+
+.d1-price-block s {
+  margin-left: 8px;
+  font-size: 13px;
+  color: #8a8a90;
+}
+
+.d1-cond-text {
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: #6e6e73;
+}
+
+.d1-offered-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #e5e5ea;
+  border-radius: 14px;
+  background: #fff;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color .15s, background .15s;
+}
+
+.d1-offered-card:hover {
+  border-color: #c9c9cf;
+  background: #fafafa;
+}
+
+.d1-offered-card img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: none;
+}
+
+.d1-offered-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.d1-offered-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1d1d1f;
+}
+
+.d1-offered-meta {
+  font-size: 11.5px;
+  color: #86868b;
+}
+
+.d1-offered-link {
+  margin-left: auto;
+  flex: none;
+  font-size: 12px;
+  font-weight: 600;
+  color: #0071e3;
+}
+
+
+/* El boton de cerrar no depende de utilidades compiladas */
+#closeDetail {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  left: auto;
+}

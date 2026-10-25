@@ -175,7 +175,7 @@
     const hasPrice = promo.tipo === "Descuento" && discounted > 0;
     const saving = hasPrice && regular > discounted ? regular - discounted : 0;
     return `<article class="d1-pcard">
-      <button type="button" class="d1-hit" data-detail="${profile.id}" aria-label="Ver ficha de ${escapeHtml(profile.name || "")}">
+      <button type="button" class="d1-hit" data-promo="${promo.id}" aria-label="Ver promoción ${escapeHtml(promo.titulo)}">
         <span class="d1-cover">
           <img class="d1-banner" src="${escapeHtml(imageUrl(promo.imagen))}" alt="" width="600" height="300" loading="lazy" decoding="async">
           <span class="d1-cat">${escapeHtml(promo.categoria)}</span>
@@ -183,7 +183,7 @@
         </span>
         <span class="d1-body">
           <span class="d1-name">${escapeHtml(promo.titulo)}</span>
-          <span class="d1-desc">${escapeHtml(profile.name || "")}${profile.floor ? ` · Piso ${escapeHtml(profile.floor)}` : ""}</span>
+          <span class="d1-desc">Ofrecido por ${escapeHtml(profile.name || "")}</span>
         </span>
       </button>
       <div class="d1-footer">
@@ -286,6 +286,60 @@
     </li>`;
   }
 
+  function showPromoDetail(promo) {
+    const profile = state.promosById.get(Number(promo.perfil_id)) || {};
+    const regular = Number(promo.precio_regular);
+    const discounted = Number(promo.precio_rebajado);
+    const hasPrice = promo.tipo === "Descuento" && discounted > 0;
+    const saving = hasPrice && regular > discounted ? regular - discounted : 0;
+
+    $("#modalBody").innerHTML = `
+      <div class="d1-modal-cover">
+        <img src="${escapeHtml(imageUrl(promo.imagen))}" alt="" width="600" height="300">
+        <span class="d1-cat">${escapeHtml(promo.categoria)}</span>
+      </div>
+      <div class="d1-modal-body p-5 sm:p-7 space-y-5">
+        <div>
+          <div class="d1-tags">
+            <span class="d1-tag">${escapeHtml(promo.tipo)}</span>
+            ${promo.modalidad ? `<span class="d1-tag is-soft">${escapeHtml(promo.modalidad)}</span>` : ""}
+          </div>
+          <h2 id="modalTitle" class="d1-promo-hero">${escapeHtml(promo.titulo)}</h2>
+          <p class="d1-promo-hero-text">${escapeHtml(promo.descripcion)}</p>
+        </div>
+        ${hasPrice ? `<div class="d1-price-block">
+          <div><strong>${money(discounted)}</strong><s>${money(regular)}</s></div>
+          ${saving ? `<span class="d1-save">Ahorras ${money(saving)}</span>` : ""}
+        </div>` : ""}
+        <dl class="detail-info">
+          ${promo["vigencia_hasta"] ? `<div><dt>Vigente hasta</dt><dd>${escapeHtml(formatDate(promo["vigencia_hasta"]))}</dd></div>` : ""}
+          <div><dt>Categoría</dt><dd>${escapeHtml(promo.categoria)}</dd></div>
+        </dl>
+        ${promo.condiciones ? `<section><h3 class="d1-section-title">Condiciones</h3><p class="d1-cond-text">${escapeHtml(promo.condiciones)}</p></section>` : ""}
+        <section class="d1-offered">
+          <h3 class="d1-section-title">Ofrecido por</h3>
+          <button type="button" class="d1-offered-card" data-business="${profile.id}">
+            <img src="${escapeHtml(profile.logo || "")}" alt="" width="44" height="44">
+            <span class="d1-offered-info">
+              <span class="d1-offered-name">${escapeHtml(profile.name || "")}</span>
+              <span class="d1-offered-meta">${escapeHtml(profile.type || "")}${profile.floor ? ` · Piso ${escapeHtml(profile.floor)}` : ""}</span>
+            </span>
+            <span class="d1-offered-link">Ver ficha</span>
+          </button>
+        </section>
+      </div>`;
+
+    $("#modalCallBtn").classList.add("hidden");
+    const wa = $("#modalWhatsappBtn");
+    wa.href = profile.whatsapp ? `https://wa.me/${profile.whatsapp}` : "#";
+    wa.classList.toggle("hidden", !profile.whatsapp);
+    wa.textContent = profile.whatsapp ? "WhatsApp del negocio" : "WhatsApp";
+
+    ui.modal.classList.remove("hidden");
+    ui.modal.classList.add("flex");
+    document.body.classList.add("overflow-hidden");
+  }
+
   function showDetail(profile) {
     const socials = [
       { label: "Instagram", url: profile.instagram },
@@ -322,6 +376,7 @@
     call.classList.toggle("hidden", !profile.fixed);
     wa.href = profile.whatsapp ? `https://wa.me/${profile.whatsapp}` : "#";
     wa.classList.toggle("hidden", !profile.whatsapp);
+    wa.textContent = "Contactar por WhatsApp";
 
     ui.modal.classList.remove("hidden");
     ui.modal.classList.add("flex");
@@ -366,9 +421,22 @@
     ui.drawerBackdrop.addEventListener("click", () => toggleDrawer(false));
     ui.grid.addEventListener("click", (event) => {
       if (event.target.closest(".provider-whatsapp")) return;
+      const promoTrigger = event.target.closest("[data-promo]");
+      if (promoTrigger) {
+        const promo = state.promos.find((item) => item.id === promoTrigger.dataset.promo);
+        if (promo) showPromoDetail(promo);
+        return;
+      }
       const trigger = event.target.closest("[data-detail]");
       if (!trigger) return;
       const profile = state.profiles.find((item) => item.id === Number(trigger.dataset.detail));
+      if (profile) showDetail(profile);
+    });
+
+    $("#modalBody").addEventListener("click", (event) => {
+      const trigger = event.target.closest("[data-business]");
+      if (!trigger) return;
+      const profile = state.profiles.find((item) => item.id === Number(trigger.dataset.business));
       if (profile) showDetail(profile);
     });
     $("#closeDetail").addEventListener("click", closeDetail);
@@ -406,6 +474,12 @@
       if (openId) {
         const profile = state.profiles.find((item) => item.id === openId);
         if (profile) showDetail(profile);
+      }
+
+      const promoId = new URLSearchParams(location.search).get("promo");
+      if (promoId) {
+        const promo = state.promos.find((item) => item.id === promoId);
+        if (promo) showPromoDetail(promo);
       }
 
       if (new URLSearchParams(location.search).get("view") === "promos") {
