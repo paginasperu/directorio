@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directorio de negocios, tiendas y servicios</title>
+    <meta name="description" content="Directorio de negocios, tiendas y servicios. Encuentra tiendas por categoría y piso, con promociones vigentes. Contacta directo por WhatsApp.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+    <link rel="stylesheet" href="../assets/css/tailwind.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="demo-1b.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="fm-page min-h-screen flex flex-col">
+
+    <header id="siteHeader" class="site-header sticky top-0 z-40">
+        <div class="header-layout max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 items-center">
+            <a class="header-brand" href="./" aria-label="Directorio, inicio">
+                <span class="header-brand-name">Directorio</span>
+            </a>
+
+            <div class="header-search hidden md:flex items-center min-w-0">
+                <form class="relative flex-1 min-w-0" onsubmit="event.preventDefault()">
+                    <input type="search" id="businessSearch" aria-label="Buscar producto, servicio o negocio" placeholder="Buscar producto, servicio o negocio" class="w-full h-9 pl-4 pr-12 bg-white border border-slate-300 rounded-lg text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-300">
+                    <button type="submit" aria-label="Ver resultados" title="Ver resultados" class="header-search-icon absolute right-0 top-0 h-9 flex items-center justify-center text-slate-700 border-l border-slate-200 rounded-r-lg hover:bg-slate-50 px-3">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>
+                    </button>
+                </form>
+            </div>
+
+            <a href="https://wa.me/51950141414?text=Hola%2C%20quiero%20suscribirme%20al%20directorio" target="_blank" rel="noopener noreferrer" class="subscribe-soft ml-auto shrink-0 px-3 py-1.5 text-xs sm:text-sm font-semibold transition">Suscríbete</a>
+        </div>
+
+        <div id="mobileSearch" class="md:hidden px-4 pb-2.5">
+            <form class="relative flex-1" onsubmit="event.preventDefault()">
+                <input type="search" id="mobileBusinessSearch" aria-label="Buscar producto, servicio o negocio" placeholder="Buscar producto, servicio o negocio" class="w-full h-9 pl-4 pr-10 bg-white text-slate-900 placeholder:text-slate-400 caret-slate-900 border border-slate-300 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-slate-300">
+                <button type="submit" aria-label="Ver resultados" title="Ver resultados" class="absolute right-0 top-0 h-9 w-9 flex items-center justify-center text-slate-600">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>
+                </button>
+            </form>
+        </div>
+    </header>
+
+    <main class="fm-main">
+        <section class="fm-hero">
+            <p class="fm-eyebrow">Directorio de negocios</p>
+            <h1>Todo lo que buscas,<br>en un solo lugar.</h1>
+            <p class="fm-lead">Compara tiendas y servicios por categoría o piso, y aprovecha sus promociones vigentes.</p>
+        </section>
+
+        <div class="category-strip">
+            <nav id="categoryList" aria-label="Categorías"></nav>
+        </div>
+
+        <div id="resultsToolbar" class="results-toolbar flex items-center justify-between gap-3 mb-4 flex-wrap" aria-label="Orden y filtros de resultados">
+            <div class="flex items-center gap-2.5 flex-wrap">
+                <div class="d1-views" role="group" aria-label="Vista de resultados">
+                    <button type="button" class="d1-view is-active" data-view="negocios" aria-pressed="true">Negocios</button>
+                    <button type="button" class="d1-view" data-view="promos" aria-pressed="false">Promociones</button>
+                </div>
+                <button id="filterToggle" type="button" aria-controls="moreFilters" aria-expanded="false" class="filter-toggle inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-300 rounded-lg text-xs sm:text-sm font-bold text-slate-800 hover:bg-slate-50 transition shadow-sm">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M4 7h16M7 12h10m-7 5h4"/></svg>
+                    <span>Filtros</span>
+                </button>
+                <p id="resultsCount" class="results-count text-xs sm:text-sm font-bold text-slate-600 m-0" aria-live="polite">Cargando...</p>
+            </div>
+
+            <div class="results-actions flex items-center gap-2">
+                <label for="sortSelect" class="sr-only">Ordenar resultados</label>
+                <select id="sortSelect" aria-label="Ordenar resultados" class="results-sort h-9 px-3 bg-white border border-slate-300 rounded-lg text-xs sm:text-sm font-medium text-slate-700 hover:bg-slate-50 transition shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-300">
+                    <option value="original">Orden original</option>
+                    <option value="promo">Con promoción primero</option>
+                    <option value="piso">Piso (menor a mayor)</option>
+                    <option value="name">Nombre A–Z</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="providerGrid"></div>
+
+        <div id="emptyState" class="hidden text-center py-16 bg-white rounded-3xl border border-dashed border-slate-300 my-8">
+            <h3 class="text-lg font-bold text-slate-800">No se encontraron resultados</h3>
+            <p class="text-sm text-slate-500 mt-1 max-w-md mx-auto">Prueba con otra palabra, categoría o piso.</p>
+            <button id="resetFiltersEmpty" type="button" class="mt-4 px-4 py-2 bg-slate-100 text-slate-700 text-xs font-bold rounded-xl hover:bg-slate-200 transition">Limpiar búsqueda y filtros</button>
+        </div>
+
+        <section id="suscripcion" class="fm-cta">
+            <div class="fm-cta-inner">
+                <p class="fm-eyebrow">¿Tienes un negocio en el directorio?</p>
+                <h2>Aparece en el directorio.</h2>
+                <p>Publicamos tu tienda o servicio con su ubicación, contacto y redes. Es gratis.</p>
+                <a href="https://wa.me/51950141414?text=Hola%2C%20quiero%20suscribirme%20al%20directorio" target="_blank" rel="noopener noreferrer">Suscríbete</a>
+            </div>
+        </section>
+    </main>
+
+    <div id="filterDrawerBackdrop" class="fixed inset-0 z-50 bg-slate-900/50 hidden transition-opacity duration-200 opacity-0"></div>
+    <aside id="moreFilters" aria-label="Filtros del directorio" class="fixed top-0 left-0 bottom-0 z-50 w-full max-w-xs sm:max-w-sm bg-white shadow-2xl flex flex-col transform -translate-x-full transition-transform duration-200 ease-out">
+        <div class="p-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+            <h2 class="text-base font-bold text-slate-900">Filtros</h2>
+            <button id="closeFilterDrawer" type="button" aria-label="Cerrar filtros" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-200 text-slate-600">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+        </div>
+
+        <div class="p-5 flex-1 overflow-y-auto space-y-6 text-sm">
+            <div>
+                <label for="floorFilter" class="block font-bold text-slate-800 mb-1.5">Piso</label>
+                <select id="floorFilter" class="w-full h-10 px-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-300">
+                    <option value="Todos">Todos los pisos</option>
+                </select>
+            </div>
+            <div>
+                <label class="flex items-center gap-2 font-bold text-slate-800">
+                    <input id="promoFilter" type="checkbox" class="w-4 h-4 rounded border-slate-300">
+                    Solo con promoción
+                </label>
+            </div>
+        </div>
+
+        <div class="p-4 border-t border-slate-200 bg-slate-50 flex items-center gap-2">
+            <button id="resetFilters" type="button" class="flex-1 py-2.5 px-3 bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold rounded-lg text-xs text-center transition">Restablecer</button>
+            <button id="applyFilterDrawer" type="button" class="flex-1 py-2.5 px-3 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-lg text-xs text-center transition">Ver resultados</button>
+        </div>
+    </aside>
+
+    <div id="modalDetail" role="dialog" aria-modal="true" aria-labelledby="modalTitle" class="fixed inset-0 z-50 hidden overflow-y-auto bg-slate-900/60 backdrop-blur-sm items-center justify-center p-4">
+        <div class="bg-white w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden relative max-h-[90vh] flex flex-col my-auto" id="modalDetailContent">
+            <button type="button" id="closeDetail" aria-label="Cerrar ficha" class="absolute top-3 right-3 z-20 w-9 h-9 bg-white/90 hover:bg-white text-slate-700 rounded-full flex items-center justify-center shadow">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+            <div class="overflow-y-auto flex-grow" id="modalBody"></div>
+            <div class="p-4 sm:px-7 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row justify-end gap-2.5">
+                <a id="modalCallBtn" href="#" class="w-full sm:w-auto px-5 py-3 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-xl text-sm text-center">Llamar</a>
+                <a id="modalWhatsappBtn" href="#" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-5 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-sm text-center">Contactar por WhatsApp</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div>
+                    <p class="footer-name">Directorio</p>
+                    <p class="footer-tag">Directorio de negocios, tiendas y servicios</p>
+                </div>
+            </div>
+            <div class="footer-links">
+                <a href="https://wa.me/51950141414?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20directorio" target="_blank" rel="noopener noreferrer">Contacto</a>
+            </div>
+        </div>
+        <div class="footer-legal">
+            <p>© 2026 · Directorio gratuito e independiente. Datos referenciales: confirma cada dato con el negocio.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,492 @@
+/* Demo 1 · tarjetas con banner y logo */
+
+#providerGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+@media (max-width: 1199px) {
+  #providerGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 899px) {
+  #providerGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 599px) {
+  #providerGrid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Selector de vista */
+
+.d1-views {
+  display: inline-flex;
+  padding: 3px;
+  border-radius: 10px;
+  background: #ececef;
+}
+
+.d1-view {
+  padding: 5px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #5b5b62;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+
+.d1-view.is-active {
+  background: #fff;
+  color: #1d1d1f;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .08);
+}
+
+.d1-cat-count {
+  margin-left: 6px;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #a1a1a6;
+}
+
+.category-option[aria-pressed="true"] .d1-cat-count {
+  color: rgba(255, 255, 255, .65);
+}
+
+/* Tarjeta de promoción */
+
+.d1-pcard {
+  background: #fff;
+  border: 1px solid #e8e8ed;
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.d1-pcard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .07);
+}
+
+.d1-pcard .d1-name {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.7em;
+}
+
+.d1-pcard-price {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1d1d1f;
+}
+
+.d1-pcard-price s {
+  font-size: 11px;
+  font-weight: 400;
+  color: #8a8a90;
+}
+
+/* Categorías: en desktop entran completas en dos líneas; en móvil siguen con scroll */
+@media (min-width: 900px) {
+  #categoryList {
+    flex-wrap: wrap;
+    overflow-x: visible;
+    row-gap: 8px;
+    padding-bottom: 10px;
+  }
+}
+
+.d1-card {
+  background: #fff;
+  border: 1px solid #e8e8ed;
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.d1-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .07);
+}
+
+.d1-hit {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.d1-hit:focus-visible {
+  outline: 2px solid #0071e3;
+  outline-offset: -2px;
+}
+
+.d1-cover {
+  position: relative;
+  display: block;
+  aspect-ratio: 2 / 1;
+  background: #f5f5f7;
+}
+
+.d1-banner {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.d1-logo {
+  position: absolute;
+  left: 14px;
+  bottom: -22px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  background: #fff;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .14);
+}
+
+.d1-cat {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .94);
+  color: #1d1d1f;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.d1-promo {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: #0071e3;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.d1-body {
+  display: block;
+  padding: 30px 14px 10px;
+}
+
+.d1-name {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1d1d1f;
+  letter-spacing: -.01em;
+}
+
+.d1-type {
+  display: block;
+  margin-top: 3px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #86868b;
+}
+
+.d1-desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-top: 7px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: #4b4b52;
+}
+
+.d1-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: auto;
+  padding: 9px 14px;
+  border-top: 1px solid #f0f0f2;
+}
+
+.d1-loc {
+  font-size: 11.5px;
+  color: #86868b;
+}
+
+/* Ficha */
+
+.d1-modal-cover {
+  position: relative;
+  aspect-ratio: 16 / 7;
+  background: #f5f5f7;
+}
+
+.d1-modal-cover > img:first-child {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.d1-modal-logo {
+  position: absolute;
+  left: 20px;
+  bottom: -22px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  background: #fff;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+}
+
+.d1-modal-body {
+  padding-top: 38px;
+}
+
+/* Promociones */
+
+.d1-promos {
+  display: grid;
+  gap: 10px;
+}
+
+.d1-promo-card {
+  padding: 14px 16px 12px;
+  border: 1px solid #ececf0;
+  border-radius: 14px;
+  background: #fff;
+}
+
+.d1-promo-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: start;
+}
+
+.d1-promo-info {
+  min-width: 0;
+}
+
+.d1-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.d1-tag {
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: #e9f1fd;
+  color: #0062c4;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.d1-tag.is-soft {
+  background: #f2f2f5;
+  color: #6e6e73;
+}
+
+.d1-promo-title {
+  margin-top: 9px;
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  color: #1d1d1f;
+}
+
+.d1-promo-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-top: 3px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: #6e6e73;
+}
+
+.d1-promo-price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.d1-promo-price strong {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  color: #1d1d1f;
+}
+
+.d1-promo-price s {
+  font-size: 11.5px;
+  color: #8a8a90;
+}
+
+.d1-save {
+  margin-top: 5px;
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: #e8f7ee;
+  color: #0a7d32;
+  font-size: 10.5px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.d1-promo-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #f0f0f3;
+  font-size: 11px;
+  color: #86868b;
+}
+
+.d1-more {
+  flex: none;
+}
+
+.d1-more summary {
+  cursor: pointer;
+  color: #0071e3;
+  font-size: 11px;
+  font-weight: 500;
+  list-style: none;
+}
+
+.d1-more summary::-webkit-details-marker {
+  display: none;
+}
+
+.d1-more summary::after {
+  content: " +";
+}
+
+.d1-more[open] summary::after {
+  content: " −";
+}
+
+.d1-more p {
+  max-width: 46ch;
+  margin-top: 8px;
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: #6e6e73;
+  text-align: left;
+}
+
+@media (max-width: 560px) {
+  .d1-promo-main {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .d1-promo-price {
+    align-items: flex-start;
+    text-align: left;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+}
+
+/* Chips unificados */
+
+.d1-section-title {
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1d1d1f;
+}
+
+.d1-promos-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.d1-promos-head .d1-section-title {
+  margin-bottom: 0;
+}
+
+.d1-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: #f0f0f3;
+  color: #6e6e73;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.d1-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.d1-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 11px;
+  border-radius: 999px;
+  border: 1px solid #e5e5ea;
+  background: #fff;
+  color: #3a3a3f;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.3;
+  text-decoration: none;
+}
+
+.d1-chip.is-filled {
+  border-color: transparent;
+  background: #f2f2f5;
+}
+
+.d1-chip.is-social:hover {
+  border-color: #c9c9cf;
+  background: #fafafa;
+}
