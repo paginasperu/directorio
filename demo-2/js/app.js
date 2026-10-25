@@ -47,8 +47,13 @@ function initHeader() {
     const delta = y - lastY;
     lastY = y;
 
-    if (y <= 0) offset = 0;
-    else offset = Math.min(height, Math.max(0, offset + delta));
+    if (y <= 0) {
+      offset = 0;
+    } else if (Math.abs(delta) > 1) {
+      // Se mueve con el scroll, pero nunca más de 30 px por evento: se siente progresivo.
+      const step = Math.max(-60, Math.min(60, delta)) * 0.5;
+      offset = Math.min(height, Math.max(0, offset + step));
+    }
 
     ui.head.style.transform = offset > 0 ? `translateY(${-offset}px)` : "";
     ui.head.classList.toggle("is-stuck", offset < 2 && y > 8);
