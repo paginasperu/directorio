@@ -323,7 +323,8 @@ a { color: inherit; text-decoration: none; }
     padding: 10px 0;
   }
   .rubro, .cell-promo { display: none; }
-  .ubi { grid-column: 1; font-size: 11px; }
-  .action { grid-row: 1 / span 2; align-self: center; }
+  .cell-name { grid-column: 1; grid-row: 1; }
+  .ubi { grid-column: 1; grid-row: 2; font-size: 11px; }
+  .action { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
   .m-cover { aspect-ratio: 2 / 1; }
 }
