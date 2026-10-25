@@ -18,6 +18,16 @@
   #providerGrid { grid-template-columns: minmax(0, 1fr); }
 }
 
+/* Categorías: en desktop entran completas en dos líneas; en móvil siguen con scroll */
+@media (min-width: 900px) {
+  #categoryList {
+    flex-wrap: wrap;
+    overflow-x: visible;
+    row-gap: 8px;
+    padding-bottom: 10px;
+  }
+}
+
 .d1-card {
   background: #fff;
   border: 1px solid #e8e8ed;
