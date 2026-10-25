@@ -45,8 +45,8 @@
     <main class="fm-main">
         <section class="fm-hero">
             <p class="fm-eyebrow">Directorio de negocios</p>
-            <h1>Todo el centro comercial,<br>en un solo lugar.</h1>
-            <p class="fm-lead">Encuentra tiendas y servicios por categoría o piso, y mira sus promociones vigentes.</p>
+            <h1>Todo lo que buscas,<br>en un solo lugar.</h1>
+            <p class="fm-lead">Compara tiendas y servicios por categoría o piso, y aprovecha sus promociones vigentes.</p>
         </section>
 
         <div class="category-strip">
@@ -54,7 +54,11 @@
         </div>
 
         <div id="resultsToolbar" class="results-toolbar flex items-center justify-between gap-3 mb-4 flex-wrap" aria-label="Orden y filtros de resultados">
-            <div class="flex items-center gap-2.5">
+            <div class="flex items-center gap-2.5 flex-wrap">
+                <div class="d1-views" role="group" aria-label="Vista de resultados">
+                    <button type="button" class="d1-view is-active" data-view="negocios" aria-pressed="true">Negocios</button>
+                    <button type="button" class="d1-view" data-view="promos" aria-pressed="false">Promociones</button>
+                </div>
                 <button id="filterToggle" type="button" aria-controls="moreFilters" aria-expanded="false" class="filter-toggle inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-300 rounded-lg text-xs sm:text-sm font-bold text-slate-800 hover:bg-slate-50 transition shadow-sm">
                     <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M4 7h16M7 12h10m-7 5h4"/></svg>
                     <span>Filtros</span>
@@ -67,7 +71,8 @@
                 <select id="sortSelect" aria-label="Ordenar resultados" class="results-sort h-9 px-3 bg-white border border-slate-300 rounded-lg text-xs sm:text-sm font-medium text-slate-700 hover:bg-slate-50 transition shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-300">
                     <option value="original">Orden original</option>
                     <option value="promo">Con promoción primero</option>
-                    <option value="name">Nombre A–Z</option>
+                    <option value="piso">Piso (menor a mayor)</option>
+                    <option value="name">Nombre AZ</option>
                 </select>
             </div>
         </div>
@@ -100,17 +105,35 @@
         </div>
 
         <div class="p-5 flex-1 overflow-y-auto space-y-6 text-sm">
-            <div>
-                <label for="floorFilter" class="block font-bold text-slate-800 mb-1.5">Piso</label>
-                <select id="floorFilter" class="w-full h-10 px-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-300">
-                    <option value="Todos">Todos los pisos</option>
-                </select>
+            <div class="d1-mobile-only">
+                <label for="sortMobile" class="block font-bold text-slate-800 mb-1.5">Orden</label>
+                <select id="sortMobile" class="w-full h-10 px-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-300"></select>
             </div>
             <div>
-                <label class="flex items-center gap-2 font-bold text-slate-800">
-                    <input id="promoFilter" type="checkbox" class="w-4 h-4 rounded border-slate-300">
-                    Solo con promoción
-                </label>
+                <label for="categoryFilter" class="block font-bold text-slate-800 mb-1.5">Categoría</label>
+                <select id="categoryFilter" class="w-full h-10 px-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-300"></select>
+            </div>
+
+            <div id="bizFilters" class="space-y-6">
+                <div>
+                    <label for="floorFilter" class="block font-bold text-slate-800 mb-1.5">Piso</label>
+                    <select id="floorFilter" class="w-full h-10 px-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-300"></select>
+                </div>
+            </div>
+
+            <div id="promoFilters" class="space-y-6 hidden">
+                <div>
+                    <label for="tipoFilter" class="block font-bold text-slate-800 mb-1.5">Tipo de promoción</label>
+                    <select id="tipoFilter" class="w-full h-10 px-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-300"></select>
+                </div>
+                <div>
+                    <label for="modalidadFilter" class="block font-bold text-slate-800 mb-1.5">Modalidad</label>
+                    <select id="modalidadFilter" class="w-full h-10 px-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-300"></select>
+                </div>
+                <div>
+                    <label for="precioFilter" class="block font-bold text-slate-800 mb-1.5">Precio</label>
+                    <select id="precioFilter" class="w-full h-10 px-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-300"></select>
+                </div>
             </div>
         </div>
 
@@ -150,6 +173,6 @@
         </div>
     </footer>
 
-    <script src="app.js"></script>
+    <script type="module" src="js/app.js"></script>
 </body>
 </html>

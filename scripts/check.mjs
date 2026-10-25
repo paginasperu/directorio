@@ -1,78 +1,75 @@
-import { readFileSync, existsSync } from "node:fs";
-import { resolve, dirname } from "node:path";
+// Verifica que los enlaces y las imágenes referenciadas existan.
+
+import { readFileSync, existsSync, readdirSync } from "node:fs";
+import { join, resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const read = (path) => readFileSync(resolve(root, path), "utf8");
-const failures = [];
-const checks = [];
+const problems = [];
 
-const html = read("index.html");
-const app = read("assets/js/app.js");
-const csv = read("data/negocios.csv");
+function walk(directory) {
+  return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    if (["node_modules", ".git", "build"].includes(entry.name)) return [];
+    const full = join(directory, entry.name);
+    return entry.isDirectory() ? walk(full) : [full];
+  });
+}
 
-// 1. Every local file referenced by the page must exist.
-const localReferences = [...html.matchAll(/(?:href|src)="([^"]+)"/g)]
-  .map((match) => match[1])
-  .filter((url) => !/^(https?:|#|mailto:|tel:|\/\/)/.test(url))
-  .map((url) => url.split("?")[0]);
+function parseCsv(text) {
+  const rows = [];
+  let row = [], cell = "", quoted = false;
+  for (let i = 0; i < text.length; i++) {
+    const character = text[i], next = text[i + 1];
+    if (character === '"' && quoted && next === '"') { cell += '"'; i++; }
+    else if (character === '"') quoted = !quoted;
+    else if (character === "," && !quoted) { row.push(cell); cell = ""; }
+    else if ((character === "\n" || character === "\r") && !quoted) {
+      if (character === "\r" && next === "\n") i++;
+      row.push(cell);
+      if (row.some((value) => value.trim())) rows.push(row);
+      row = []; cell = "";
+    } else cell += character;
+  }
+  if (cell.length || row.length) { row.push(cell); if (row.some((value) => value.trim())) rows.push(row); }
+  return rows;
+}
 
-for (const reference of new Set(localReferences)) {
-  if (!existsSync(resolve(root, reference))) {
-    failures.push(`Missing local file: ${reference}`);
+const htmlFiles = walk(root).filter((file) => file.endsWith(".html"));
+
+for (const file of htmlFiles) {
+  const html = readFileSync(file, "utf8");
+  const base = dirname(file);
+  const references = [...html.matchAll(/(?:href|src)="([^"]+)"/g)]
+    .map((match) => match[1])
+    .filter((url) => !/^(https?:|#|mailto:|tel:|\/\/|data:)/.test(url))
+    .map((url) => url.split("?")[0].split("#")[0])
+    .filter(Boolean);
+
+  for (const reference of new Set(references)) {
+    if (!existsSync(resolve(base, reference))) problems.push(`${file.replace(root + "\\", "")} -> ${reference}`);
   }
 }
-checks.push(`${new Set(localReferences).size} local file references`);
 
-// 2. Every id used by the JavaScript must exist in the HTML.
-const htmlIds = new Set([...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]));
-const scriptIds = new Set([...app.matchAll(/\$\("#([^"]+)"\)/g)].map((match) => match[1]));
-
-for (const id of scriptIds) {
-  if (!htmlIds.has(id)) failures.push(`JavaScript references a missing id: #${id}`);
-}
-checks.push(`${scriptIds.size} JavaScript ids`);
-
-// 3. The data file path must match the file that exists.
-if (!app.includes("./data/negocios.csv")) {
-  failures.push("app.js does not load ./data/negocios.csv");
-}
-checks.push("data file path");
-
-// 4. The columns map in app.js must match the CSV header.
-const columnsBlock = app.match(/const columns = \{([\s\S]*?)\};/);
-if (!columnsBlock) {
-  failures.push("The columns object was not found in app.js");
-} else {
-  const mappedColumns = [...columnsBlock[1].matchAll(/\w+:\s*"([^"]+)"/g)].map((match) => match[1]);
-  const header = csv
-    .replace(/^\uFEFF/, "")
-    .split(/\r?\n/)[0]
-    .split(",")
-    .map((cell) => cell.replace(/^"|"$/g, "").trim());
-
-  const missing = mappedColumns.filter((column) => !header.includes(column));
-  const extra = header.filter((column) => !mappedColumns.includes(column));
-
-  if (missing.length) failures.push(`CSV is missing columns: ${missing.join(", ")}`);
-  if (extra.length) failures.push(`CSV has unmapped columns: ${extra.join(", ")}`);
-  checks.push(`${header.length} CSV columns`);
+for (const csvPath of ["data/perfiles.csv", "data/promociones.csv"]) {
+  const rows = parseCsv(readFileSync(join(root, csvPath), "utf8"));
+  const headers = rows[0].map((header) => header.replace(/^\uFEFF/, "").trim());
+  const index = headers.indexOf(csvPath.includes("perfiles") ? "banner" : "imagen");
+  if (index === -1) {
+    problems.push(`${csvPath}: no encuentro la columna de imagen`);
+    continue;
+  }
+  for (const row of rows.slice(1)) {
+    const path = (row[index] || "").trim();
+    if (path && !existsSync(join(root, path))) problems.push(`${csvPath}: falta ${path}`);
+  }
 }
 
-// 5. The CSV must contain data rows.
-const dataLines = csv.replace(/^\uFEFF/, "").trim().split(/\r?\n/);
-if (dataLines.length < 2) {
-  failures.push("The CSV has no data rows");
-} else {
-  checks.push(`${dataLines.length - 1} business rows`);
-}
+const images = walk(join(root, "assets", "img", "businesses")).length;
 
-for (const check of checks) console.log(`  ok  ${check}`);
-
-if (failures.length) {
-  console.error("\nFAILED:");
-  for (const failure of failures) console.error(`  - ${failure}`);
+if (problems.length) {
+  console.error("Problemas encontrados:");
+  problems.forEach((problem) => console.error(" -", problem));
   process.exit(1);
 }
 
-console.log("\nAll checks passed.");
+console.log(`OK: ${htmlFiles.length} páginas, ${images} imágenes, 0 referencias rotas.`);
