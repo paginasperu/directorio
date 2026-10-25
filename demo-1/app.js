@@ -30,6 +30,11 @@
     const number = Number(String(value ?? "").replace(",", "."));
     return Number.isFinite(number) && number > 0 ? `S/ ${number.toFixed(number % 1 === 0 ? 0 : 2)}` : "";
   };
+  const MONTHS = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+  const formatDate = (value) => {
+    const [year, month, day] = String(value ?? "").split("-").map(Number);
+    return year && month && day ? `${day} ${MONTHS[month - 1]} ${year}` : String(value ?? "");
+  };
   const imageUrl = (path) => (path ? `../${path}` : "");
   const phoneDigits = (value) => String(value ?? "").replace(/\D/g, "");
 
@@ -142,7 +147,6 @@
         </span>
         <span class="d1-body">
           <span class="d1-name">${escapeHtml(profile.name)}</span>
-          <span class="d1-type">${escapeHtml(profile.type)}</span>
           <span class="d1-desc">${escapeHtml(profile.short)}</span>
         </span>
       </button>
@@ -203,18 +207,32 @@
   }
 
   function promoBlock(promo) {
-    const regular = money(promo["precio_regular"]);
-    const discounted = money(promo["precio_rebajado"]);
-    const price = discounted
-      ? `<p class="d1-price"><strong>${discounted}</strong>${regular ? `<s>${regular}</s>` : ""}</p>`
-      : "";
-    return `<li class="d1-promo-item">
-      <p class="d1-promo-tags"><span>${escapeHtml(promo.tipo)}</span>${promo.modalidad ? `<span>${escapeHtml(promo.modalidad)}</span>` : ""}</p>
-      <p class="d1-promo-title">${escapeHtml(promo.titulo)}</p>
-      <p class="d1-promo-text">${escapeHtml(promo.descripcion)}</p>
-      ${price}
-      ${promo.condiciones ? `<p class="d1-promo-cond">${escapeHtml(promo.condiciones)}</p>` : ""}
-      ${promo["vigencia_hasta"] ? `<p class="d1-promo-until">Vigente hasta ${escapeHtml(promo["vigencia_hasta"])}</p>` : ""}
+    const isGift = promo.tipo !== "Descuento";
+    const regular = Number(promo["precio_regular"]);
+    const discounted = Number(promo["precio_rebajado"]);
+    const hasPrice = !isGift && discounted > 0;
+    const saving = hasPrice && regular > discounted ? regular - discounted : 0;
+
+    return `<li class="d1-promo-card">
+      <div class="d1-promo-main">
+        <div class="d1-promo-info">
+          <div class="d1-tags">
+            <span class="d1-tag">${escapeHtml(promo.tipo)}</span>
+            ${promo.modalidad ? `<span class="d1-tag is-soft">${escapeHtml(promo.modalidad)}</span>` : ""}
+          </div>
+          <p class="d1-promo-title">${escapeHtml(promo.titulo)}</p>
+          <p class="d1-promo-text">${escapeHtml(promo.descripcion)}</p>
+        </div>
+        ${hasPrice ? `<div class="d1-promo-price">
+          <strong>${money(discounted)}</strong>
+          ${regular > discounted ? `<s>${money(regular)}</s>` : ""}
+          ${saving ? `<span class="d1-save">Ahorras ${money(saving)}</span>` : ""}
+        </div>` : ""}
+      </div>
+      <div class="d1-promo-foot">
+        <span>${promo["vigencia_hasta"] ? `Hasta ${escapeHtml(formatDate(promo["vigencia_hasta"]))}` : ""}</span>
+        ${promo.condiciones ? `<details class="d1-more"><summary>Ver condiciones</summary><p>${escapeHtml(promo.condiciones)}</p></details>` : ""}
+      </div>
     </li>`;
   }
 
@@ -243,9 +261,9 @@
           ${profile.fixed ? `<div><dt>Teléfono</dt><dd>${escapeHtml(profile.fixed)}</dd></div>` : ""}
           ${profile.whatsapp ? `<div><dt>WhatsApp</dt><dd>${escapeHtml(profile.whatsapp)}</dd></div>` : ""}
         </dl>
-        ${profile.promos.length ? `<section><h3 class="text-sm font-bold text-slate-900 mb-2">Promociones</h3><ul class="d1-promos">${profile.promos.map(promoBlock).join("")}</ul></section>` : ""}
-        ${catalog.length ? `<section><h3 class="text-sm font-bold text-slate-900 mb-2">Productos y servicios</h3><ul class="flex flex-wrap gap-2">${catalog.map((value) => `<li class="px-3 py-1.5 bg-slate-100 rounded-full text-xs text-slate-700">${escapeHtml(value)}</li>`).join("")}</ul></section>` : ""}
-        ${socials.length ? `<section><h3 class="text-sm font-bold text-slate-900 mb-2">Redes sociales</h3><div class="flex flex-wrap gap-2">${socials.map((social) => `<a class="social-link" href="${escapeHtml(social.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(social.label)}</a>`).join("")}</div></section>` : ""}
+        ${profile.promos.length ? `<section><div class="d1-promos-head"><h3 class="d1-section-title">Promociones</h3><span class="d1-count">${profile.promos.length}</span></div><ul class="d1-promos">${profile.promos.map(promoBlock).join("")}</ul></section>` : ""}
+        ${catalog.length ? `<section><h3 class="d1-section-title">Productos y servicios</h3><ul class="d1-chips">${catalog.map((value) => `<li class="d1-chip is-filled">${escapeHtml(value)}</li>`).join("")}</ul></section>` : ""}
+        ${socials.length ? `<section><h3 class="d1-section-title">Redes sociales</h3><div class="d1-chips">${socials.map((social) => `<a class="d1-chip is-social" href="${escapeHtml(social.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(social.label)}</a>`).join("")}</div></section>` : ""}
       </div>`;
 
     const call = $("#modalCallBtn");
