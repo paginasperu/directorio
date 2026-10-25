@@ -1,6 +1,6 @@
 // Capa de datos: carga, parseo y normalización.
 
-const FILES = { profiles: "../data/perfiles.csv", promos: "../data/promociones.csv" };
+const FILES = { profiles: "../data/negocios.csv", promos: "../data/promociones.csv" };
 const ROOT = "../";
 
 export const normalize = (value) =>
@@ -77,7 +77,7 @@ function decorateProfile(row) {
 function decoratePromo(row) {
   return {
     id: String(row.id),
-    profileId: Number(row.perfil_id),
+    profileId: Number(row.negocio_id || row.perfil_id),
     title: row.titulo,
     description: row.descripcion,
     conditions: row.condiciones,
@@ -102,7 +102,7 @@ export async function loadDirectory() {
     fetch(FILES.profiles, { cache: "no-cache" }),
     fetch(FILES.promos, { cache: "no-cache" }),
   ]);
-  if (!profilesResponse.ok) throw new Error(`perfiles.csv (${profilesResponse.status})`);
+  if (!profilesResponse.ok) throw new Error(`negocios.csv (${profilesResponse.status})`);
   if (!promosResponse.ok) throw new Error(`promociones.csv (${promosResponse.status})`);
 
   const profiles = parseCsv(await profilesResponse.text()).map(decorateProfile);

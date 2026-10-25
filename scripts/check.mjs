@@ -50,10 +50,10 @@ for (const file of htmlFiles) {
   }
 }
 
-for (const csvPath of ["data/perfiles.csv", "data/promociones.csv"]) {
+for (const csvPath of ["data/negocios.csv", "data/promociones.csv"]) {
   const rows = parseCsv(readFileSync(join(root, csvPath), "utf8"));
   const headers = rows[0].map((header) => header.replace(/^\uFEFF/, "").trim());
-  const index = headers.indexOf(csvPath.includes("perfiles") ? "banner" : "imagen");
+  const index = headers.indexOf(csvPath.includes("negocios") ? "banner" : "imagen");
   if (index === -1) {
     problems.push(`${csvPath}: no encuentro la columna de imagen`);
     continue;
