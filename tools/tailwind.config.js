@@ -3,7 +3,7 @@
  *    npm run build:css
  */
 module.exports = {
-  content: ["../*.html", "../assets/js/app.js"],
+  content: ["../*.html", "../demos/**/*.html", "../demos/**/*.js", "../assets/js/**/*.js"],
   theme: {
     extend: {
       fontFamily: {

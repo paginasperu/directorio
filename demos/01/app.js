@@ -1,6 +1,6 @@
 // Orquestador: estado, filtros, orden, render y eventos.
 
-import { loadDirectory, normalize } from "../assets/js/data.js";
+import { loadDirectory, normalize } from "../../assets/js/data.js";
 import { businessCard, businessDetail, promoCard, promoDetail } from "./views.js";
 
 const state = {

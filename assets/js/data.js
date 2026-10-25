@@ -1,7 +1,7 @@
 // Capa de datos: carga, parseo y normalización.
 
-const FILES = { profiles: "../data/negocios.csv", promos: "../data/promociones.csv" };
-const ROOT = "../";
+const FILES = { profiles: "../../data/negocios.csv", promos: "../../data/promociones.csv" };
+const ROOT = "../../";
 
 export const normalize = (value) =>
   String(value ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLocaleLowerCase("es-PE");
