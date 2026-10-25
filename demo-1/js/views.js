@@ -1,6 +1,6 @@
 // Capa de vistas: solo HTML. No conoce el estado ni los eventos.
 
-import { escapeHtml, formatDate, getSaving, listValues, money } from "./data.js";
+import { escapeHtml, formatDate, getSaving, listValues, money } from "../../shared/data.js";
 
 export function businessCard(profile) {
   const location = [

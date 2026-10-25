@@ -675,3 +675,34 @@
 @media (max-width: 640px) {
   .d1-mobile-only { display: block; }
 }
+
+/* Barra de demo */
+
+.demo-bar {
+  background: #fff;
+  border-bottom: 1px solid #e8e8ed;
+  position: relative;
+  z-index: 45;
+}
+
+.demo-bar-inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 34px;
+  font-size: 12px;
+}
+
+.demo-bar a {
+  color: #0071e3;
+  font-weight: 600;
+}
+
+.demo-bar span { color: #86868b; }
+
+@media (max-width: 640px) {
+  .demo-bar-inner { padding: 0 16px; }
+}
