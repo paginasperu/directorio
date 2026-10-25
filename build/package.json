@@ -1,5 +1,5 @@
 {
-  "name": "fullmarket",
+  "name": "directorio",
   "private": true,
   "scripts": {
     "build:css": "tailwindcss -i ./source.css -o ../assets/css/tailwind.css --minify"

@@ -1,4 +1,4 @@
-/** Configuración de Tailwind para Full Market.
+/** Configuración de Tailwind para Directorio.
  *  Para regenerar el CSS después de cambiar clases o colores:
  *    npm run build:css
  */
