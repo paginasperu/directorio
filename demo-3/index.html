@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directorio · Edición impresa</title>
+    <meta name="description" content="Directorio de negocios con formato editorial.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="demo-3.css">
+</head>
+<body>
+    <div class="demo-bar">
+        <div class="demo-bar-inner">
+            <a href="../">← Demos</a>
+            <span>Demo 3 · Editorial</span>
+        </div>
+    </div>
+
+    <header class="masthead">
+        <div class="masthead-top">
+            <span>Edición 01</span>
+            <span id="issueDate"></span>
+            <span>Lima, Perú</span>
+        </div>
+        <h1>El Directorio</h1>
+        <p class="masthead-sub">Negocios, oficios y ofertas del centro comercial</p>
+        <div class="masthead-tools">
+            <input type="search" id="search" placeholder="Buscar en esta edición" aria-label="Buscar negocio">
+            <span id="count" class="issue-count"></span>
+        </div>
+    </header>
+
+    <nav class="sections" id="sections" aria-label="Secciones"></nav>
+
+    <main class="wrap">
+        <section id="feature" class="feature" aria-label="Portada"></section>
+
+        <section class="ofertas" aria-label="Ofertas de la edición">
+            <div class="ofertas-head">
+                <h2>Ofertas de la edición</h2>
+                <span>Precios finales</span>
+            </div>
+            <div class="ofertas-list" id="offers"></div>
+        </section>
+
+        <section class="entries-head">
+            <h2 id="entriesTitle">Todos los negocios</h2>
+            <span class="rule"></span>
+        </section>
+        <div id="entries" class="entries"></div>
+        <p id="empty" class="empty hidden">Sin resultados en esta edición.</p>
+    </main>
+
+    <footer class="colophon">
+        <p>Directorio gratuito e independiente · Datos referenciales: 85 negocios y 170 promociones · Confirma cada dato con el negocio.</p>
+    </footer>
+
+    <div id="modal" class="modal hidden">
+        <div class="modal-card" id="modalCard"></div>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
