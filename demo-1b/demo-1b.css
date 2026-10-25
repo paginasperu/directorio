@@ -599,3 +599,47 @@
   right: 12px;
   left: auto;
 }
+
+
+/* Ficha de negocio */
+
+.d1-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 12px 0 -4px 16px;
+  padding: 6px 10px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #0071e3;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.d1-back:hover { background: #eff5fd; }
+
+.d1-kicker {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #86868b;
+}
+
+.d1-title {
+  margin-top: 6px;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: 1.15;
+  color: #1d1d1f;
+}
+
+.d1-lead {
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #6e6e73;
+}
