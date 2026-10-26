@@ -30,7 +30,7 @@ La marca es genérica a propósito: **Directorio**. Los nombres creativos se res
 
 ## 4. Las dos demos
 
-### Demo 01 · `demos/01/`
+### Demo 01 · Noche · `demos/01/`
 
 Enfoque editorial y comercial.
 
@@ -45,7 +45,7 @@ Enfoque editorial y comercial.
 - Ficha y promoción en modal; en móvil, a pantalla completa.
 - CTA de suscripción y footer compacto.
 
-### Demo 02 · `demos/02/`
+### Demo 02 · Día · `demos/02/`
 
 Enfoque clásico y minimalista, más cercano a una app Apple.
 

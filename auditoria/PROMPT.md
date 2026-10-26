@@ -12,10 +12,10 @@ https://raw.githubusercontent.com/paginasperu/directorio/main/auditoria/BRIEF.md
 **Repositorio:**
 https://github.com/paginasperu/directorio
 
-**Demo 01 (oscura, editorial):**
+**Demo 01 · Noche (oscura, editorial):**
 https://directorio.oficial.pe/demos/01/
 
-**Demo 02 (clara, minimalista):**
+**Demo 02 · Día (clara, minimalista):**
 https://directorio.oficial.pe/demos/02/
 
 **Capturas resumen:**
