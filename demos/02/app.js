@@ -603,8 +603,10 @@ function bindEvents() {
 }
 
 function renderHeroFeature() {
-  const preferred = state.profilesById.get(70)?.promos.find((promo) => promo.type === "Descuento");
-  const promo = preferred || state.promos.find((item) => item.type === "Descuento" && item.profile?.banner) || state.promos[0];
+  const candidates = state.promos
+    .filter((promo) => promo.type === "Descuento" && promo.profile?.banner)
+    .sort((a, b) => getSaving(b) - getSaving(a) || String(a.id).localeCompare(String(b.id)));
+  const promo = candidates[0] || state.promos[0];
   if (!promo?.profile) {
     ui.heroFeature.innerHTML = "";
     return;

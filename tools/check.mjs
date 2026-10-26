@@ -3,6 +3,7 @@
 import { readFileSync, existsSync, readdirSync } from "node:fs";
 import { join, resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { parseRows } from "../assets/js/csv.js";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const problems = [];
@@ -15,23 +16,11 @@ function walk(directory) {
   });
 }
 
-function parseCsv(text) {
-  const rows = [];
-  let row = [], cell = "", quoted = false;
-  for (let i = 0; i < text.length; i++) {
-    const character = text[i], next = text[i + 1];
-    if (character === '"' && quoted && next === '"') { cell += '"'; i++; }
-    else if (character === '"') quoted = !quoted;
-    else if (character === "," && !quoted) { row.push(cell); cell = ""; }
-    else if ((character === "\n" || character === "\r") && !quoted) {
-      if (character === "\r" && next === "\n") i++;
-      row.push(cell);
-      if (row.some((value) => value.trim())) rows.push(row);
-      row = []; cell = "";
-    } else cell += character;
-  }
-  if (cell.length || row.length) { row.push(cell); if (row.some((value) => value.trim())) rows.push(row); }
-  return rows;
+function readCsv(path) {
+  const rows = parseRows(readFileSync(join(root, path), "utf8"));
+  if (rows.length < 2) return [];
+  const headers = rows.shift().map((header) => header.replace(/^\uFEFF/, "").trim());
+  return rows.map((values) => Object.fromEntries(headers.map((header, index) => [header, String(values[index] ?? "").trim()])));
 }
 
 const htmlFiles = walk(root).filter((file) => file.endsWith(".html"));
@@ -50,17 +39,29 @@ for (const file of htmlFiles) {
   }
 }
 
-for (const csvPath of ["data/negocios.csv", "data/promociones.csv"]) {
-  const rows = parseCsv(readFileSync(join(root, csvPath), "utf8"));
-  const headers = rows[0].map((header) => header.replace(/^\uFEFF/, "").trim());
-  const index = headers.indexOf(csvPath.includes("negocios") ? "banner" : "imagen");
-  if (index === -1) {
-    problems.push(`${csvPath}: no encuentro la columna de imagen`);
-    continue;
+const negocios = readCsv("data/negocios.csv");
+const promos = readCsv("data/promociones.csv");
+
+const negociosIds = new Set(negocios.map((row) => row.id));
+for (const promo of promos) {
+  if (!negociosIds.has(promo.negocio_id)) {
+    problems.push(`promociones.csv: id ${promo.id} apunta a negocio_id ${promo.negocio_id} inexistente`);
   }
-  for (const row of rows.slice(1)) {
-    const path = (row[index] || "").trim();
-    if (path && !existsSync(join(root, path))) problems.push(`${csvPath}: falta ${path}`);
+}
+
+for (const [file, rows, columns] of [
+  ["data/negocios.csv", negocios, ["logo", "banner"]],
+  ["data/promociones.csv", promos, ["imagen"]],
+]) {
+  for (const column of columns) {
+    if (!rows.length || !(column in rows[0])) {
+      problems.push(`${file}: no encuentro la columna ${column}`);
+      continue;
+    }
+    for (const row of rows) {
+      const path = row[column];
+      if (path && !existsSync(join(root, path))) problems.push(`${file}: falta ${path}`);
+    }
   }
 }
 
@@ -72,4 +73,4 @@ if (problems.length) {
   process.exit(1);
 }
 
-console.log(`OK: ${htmlFiles.length} páginas, ${images} imágenes, 0 referencias rotas.`);
+console.log(`OK: ${htmlFiles.length} páginas, ${negocios.length} negocios, ${promos.length} promociones, ${images} imágenes, 0 referencias rotas.`);

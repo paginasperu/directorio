@@ -1,10 +1,16 @@
 // Capa de datos: carga, parseo y normalización.
 
-const FILES = { profiles: "../../data/negocios.csv", promos: "../../data/promociones.csv" };
-const ROOT = "../../";
+import { normalize, parseCsv } from "./csv.js";
 
-export const normalize = (value) =>
-  String(value ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLocaleLowerCase("es-PE");
+export { normalize, parseCsv };
+
+// Raíz del sitio resuelta desde este archivo, no desde la página que lo importa.
+const ROOT = new URL("../../", import.meta.url);
+
+export const FILES = {
+  profiles: new URL("data/negocios.csv", ROOT).href,
+  promos: new URL("data/promociones.csv", ROOT).href,
+};
 
 export const escapeHtml = (value) =>
   String(value ?? "").replace(/[&<>"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]);
@@ -23,37 +29,19 @@ export function money(value) {
 
 export const listValues = (value) => String(value ?? "").split(/[,|;]+/).map((part) => part.trim()).filter(Boolean);
 export const phoneDigits = (value) => String(value ?? "").replace(/\D/g, "");
-export const imageUrl = (path) => (path ? `${ROOT}${path}` : "");
+export const imageUrl = (path) => (path ? new URL(path, ROOT).href : "");
 
-export function parseCsv(text) {
-  const rows = [];
-  let row = [], cell = "", quoted = false;
-  for (let i = 0; i < text.length; i++) {
-    const character = text[i], next = text[i + 1];
-    if (character === '"' && quoted && next === '"') { cell += '"'; i++; }
-    else if (character === '"') quoted = !quoted;
-    else if (character === "," && !quoted) { row.push(cell); cell = ""; }
-    else if ((character === "\n" || character === "\r") && !quoted) {
-      if (character === "\r" && next === "\n") i++;
-      row.push(cell);
-      if (row.some((value) => value.trim())) rows.push(row);
-      row = []; cell = "";
-    } else cell += character;
-  }
-  if (cell.length || row.length) { row.push(cell); if (row.some((value) => value.trim())) rows.push(row); }
-  if (rows.length < 2) return [];
-
-  const headers = rows.shift().map((header) => normalize(header).replace(/\uFEFF/g, ""));
-  return rows.map((values) => {
-    const item = {};
-    headers.forEach((header, index) => { item[header] = String(values[index] ?? "").trim(); });
-    return item;
-  });
-}
+// Acepta "79.90" y "79,90"; devuelve null si no hay número.
+export const toNumber = (value) => {
+  const text = String(value ?? "").trim().replace(",", ".");
+  if (!text) return null;
+  const number = Number(text);
+  return Number.isFinite(number) ? number : null;
+};
 
 function decorateProfile(row) {
   return {
-    id: Number(row.id),
+    id: toNumber(row.id),
     name: row.nombre,
     floor: row.piso,
     unit: row.tienda,
@@ -77,13 +65,13 @@ function decorateProfile(row) {
 function decoratePromo(row) {
   return {
     id: String(row.id),
-    profileId: Number(row.negocio_id || row.perfil_id),
+    profileId: toNumber(row.negocio_id),
     title: row.titulo,
     description: row.descripcion,
     conditions: row.condiciones,
     until: row["vigencia_hasta"],
-    regular: Number(row.precio_regular),
-    discounted: Number(row.precio_rebajado),
+    regular: toNumber(row.precio_regular) ?? 0,
+    discounted: toNumber(row.precio_rebajado) ?? 0,
     category: row.categoria,
     type: row.tipo,
     mode: row.modalidad,

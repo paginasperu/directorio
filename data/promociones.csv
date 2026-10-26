@@ -1,4 +1,4 @@
-id,perfil_id,titulo,descripcion,condiciones,vigencia_hasta,precio_regular,precio_rebajado,categoria,tipo,modalidad,imagen
+id,negocio_id,titulo,descripcion,condiciones,vigencia_hasta,precio_regular,precio_rebajado,categoria,tipo,modalidad,imagen
 1,1,Vestido urbano Aurora,Descubre Vestido urbano Aurora en Fashion Outlet Perú.,Presenta esta oferta al solicitar el producto o servicio.,2026-12-31,79.9,71.91,Moda,Descuento,,assets/img/businesses/1-banner.jpg
 2,2,Kit de mantenimiento para moto 150 cc,Aprovecha Kit de mantenimiento para moto 150 cc y consulta con JG Motos los detalles de la oferta.,Aplica al artículo o servicio indicado en el título; confirmar disponibilidad directamente con el negocio.,2026-12-31,249.9,224.91,Motos,Descuento,,assets/img/businesses/2-banner.jpg
 3,3,Diagnóstico y limpieza de laptop,Esta propuesta de Diagnóstico y limpieza de laptop está disponible en DMAX; confirma existencias antes de comprar.,Precio promocional por una unidad o servicio. No acumulable con otros descuentos o cupones.,2026-12-31,149.9,134.91,Tecnología,Descuento,,assets/img/businesses/3-banner.jpg
