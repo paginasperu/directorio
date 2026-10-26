@@ -1,4 +1,4 @@
-# Genera data.json anidado a partir de los CSV.
+# Genera data/data.json anidado a partir de los CSV.
 # Determinista: misma data + mismo SQL = mismo JSON.
 
 import duckdb
@@ -10,7 +10,7 @@ COPY (
   LEFT JOIN read_csv_auto('data/promociones.csv', header = true) p ON p.negocio_id = n.id
   GROUP BY ALL
   ORDER BY n.id
-) TO 'data.json' (ARRAY true)
+) TO 'data/data.json' (ARRAY true)
 """
 
 HUERFANAS = """
@@ -32,4 +32,4 @@ else:
     print("valida: 0 promociones huérfanas")
 
 con.sql(SQL)
-print("ok: data.json")
+print("ok: data/data.json")
