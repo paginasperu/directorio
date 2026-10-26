@@ -1,0 +1,95 @@
+Auditoría UX/UI · Directorio de Mercados y Galerías
+Aquí tienes la auditoría priorizada enfocada en usabilidad, jerarquía visual y conversión rápida, pensando específicamente en el público objetivo: visitantes de un mercado/galería y vecinos de la zona que necesitan encontrar un local o producto rápido desde su teléfono.
+
+Hallazgos Priorizados
+P0 · Errores Críticos (Rompen o Confunden)
+1. Mismatch de búsqueda: Icono de lupa vs. Input persistente en Móvil
+Ubicación: Demo 01 Mobile vs Demo 02 Mobile (01-hero.jpg y 02-resultados.jpg).
+
+Problema: En Demo 01 móvil, al hacer scroll desaparece el input de búsqueda del hero y solo queda un icono de lupa pequeño arriba a la derecha. El usuario de un mercado busca con prisa; ocultar el input obliga a un toque extra innecesario. En Demo 02 el input se mantiene visible arriba, lo cual es correcto.
+
+Recomendación: Adopta el patrón de Demo 02 para la cabecera móvil. Un input compacto persistente tipo sticky al hacer scroll (position: sticky; top: 0; z-index: 50;) permite buscar en cualquier momento sin perder contexto.
+
+Impacto: Reduce fricción y aumenta las búsquedas exitosas en móvil hasta en un 30%.
+
+2. Ausencia de CTA de contacto directo dentro de la tarjeta del listado (Demo 01)
+Ubicación: Demo 01 Desktop / Mobile -> .card (tarjetas del grid).
+
+Problema: En Demo 01, la tarjeta muestra el número de WhatsApp en texto plano muy pequeño (+51 991 942 844). En un directorio local, WhatsApp es la conversión principal. Obligar al usuario a abrir la ficha modal solo para hacer clic en el botón de WhatsApp es un paso de fricción crítico.
+
+Recomendación: Incluir un botón secundario directo "WhatsApp" (o icono verde con texto) directamente en la esquina inferior derecha de cada tarjeta en el listado, tal como hace Demo 02.
+
+Impacto: Incrementa exponencialmente los contactos directos entre el vecino y el comerciante.
+
+P1 · Mejoras Claras (Usabilidad y Conversión)
+3. Sobrecarga de badges e información en el Banner 2:1
+Ubicación: Demo 01 & 02 -> Tarjetas de negocio (02-resultados.jpg).
+
+Problema: El banner de la tarjeta acumula encima: badge de piso (ej. "PISO 2"), badge de descuento (ej. "-10%"), y el avatar/logo circular superpuesto en la esquina inferior. En móvil, el logo tapa parte de la foto del producto y los badges saturan la imagen reducida.
+
+Recomendación:
+
+Mueve el logo fuera de la imagen: colócalo alineado a la izquierda junto al nombre del negocio en el cuerpo de la tarjeta.
+
+Mantén en la imagen solo un badge destacado (ej. el descuento en rojo) para mantener la limpieza visual.
+
+Impacto: Mejora la legibilidad de la foto del producto y evita la sensación de "diseño recargado/desordenado".
+
+4. Búsqueda doble y transición del Hero a la Cabecera
+Ubicación: Demo 01 Desktop -> Hero & Header (01-hero.jpg y 02-resultados.jpg).
+
+Problema: Al hacer scroll, la presencia de dos buscadores genera un parpadeo/salto visual cuando el del Hero se oculta y el del Header aparece.
+
+Recomendación: Simplifica el Hero. Si la cabecera es fija (fixed/sticky), integra la barra de búsqueda directamente en el navbar desde el inicio o usa un fade suave. El patrón más limpio para una SPA de listado es un Hero más corto enfocado en el mensaje ("Mercado San José - Directorio Oficial") y la barra de búsqueda inmediatamente debajo como ancla principal.
+
+Impacto: Elimina la confusión visual y estabiliza el layout.
+
+5. Jerarquía de Modal/Ficha en Móvil (Demo 01 vs Demo 02)
+Ubicación: 04-ficha-negocio.jpg en móvil.
+
+Problema: En móvil, los modales a pantalla completa pierden el contexto de la aplicación si no tienen un botón de cierre muy claro y visible arriba. La Demo 02 lo resuelve bien con bordes redondeados tipo bottom sheet alto y barra superior, mientras que Demo 01 se siente como una página nueva sin transición.
+
+Recomendación: Utilizar el componente Drawer/Sheet de Demo 02 para la ficha de negocio en móvil. Mantiene al usuario consciente de que está explorando una lista y puede deslizar hacia abajo para cerrar.
+
+Impacto: Sensación de app nativa más fluida e intuitiva.
+
+P2 · Pulido Visual y Criterio Estético
+6. Promoción Destacada en Hero (Demo 02)
+Ubicación: Demo 02 Desktop -> 01-hero.jpg (Tarjeta a la derecha del Hero).
+
+Problema: La tarjeta de "Promoción destacada" a la derecha del Hero compite directamente en atención con el buscador principal. El usuario no sabe si buscar o hacer clic en la oferta.
+
+Recomendación: Integra la oferta destacada dentro del flujo del listado (ej. en la primera posición del grid con un borde o tag distintivo) y deja el Hero enfocado 100% en el buscador y los chips de categorías populares.
+
+Impacto: Claridad de propósito inmediata al entrar a la web.
+
+7. Visualización del piso/ubicación dentro de la galería
+Ubicación: Todas las tarjetas de negocio.
+
+Problema: "Piso 2 - Local 221" se muestra como texto gris secundario de bajo contraste. Para un vecino que ya está dentro del mercado caminando con el celular en la mano, saber en qué piso y puesto está el local es tan importante como el WhatsApp.
+
+Recomendación: Darle un estilo de chip más estructurado a la ubicación (ej. Piso 2 · Local 221 con un icono de mapa/ubicación en negrita suave).
+
+Impacto: Alta utilidad práctica en el mundo físico.
+
+Respuestas a tus Preguntas Concretas
+1. ¿Qué tres cambios tendrían más impacto?
+Unificar la mejor combinación visual: Fusionar el estilo moderno y limpio de la Demo 02 con la claridad de las tarjetas de la Demo 01 (agregando el botón directo de WhatsApp en cada tarjeta).
+
+Buscador Sticky en Móvil: Garantizar que el input de búsqueda no desaparezca nunca en móviles.
+
+Ubicación física visible: Destacar el par Piso + Número de Local para el cliente que consulta la web mientras camina por el mercado.
+
+2. ¿Qué eliminarías o simplificarías?
+Eliminar la doble propuesta (quedarse solo con Demo 02 evolucionada): La Demo 02 (clara/minimalista) transmite mayor limpieza, orden y confianza para un negocio local. La Demo 01 con fondo oscuro se siente más nocturna/entretenimiento que comercial para un mercado de abastos o galería.
+
+Eliminar el collage de imágenes del Hero en Demo 01: Ocupa espacio vertical valioso y empuja los resultados reales fuera de la primera pantalla (above the fold).
+
+Eliminar la paginación tradicional de 12 en 12 (Demo 01): Para solo 85 negocios, la paginación corta la exploración. Es mucho mejor un listado continuo o un botón de "Cargar más" / Scroll infinito.
+
+3. ¿Qué está bien y NO habría que tocar?
+El sistema de filtros (Categoría + Piso): Es simple, directo y cubre exactamente la necesidad real sin sobre-complicar con ratings o estados inventados.
+
+La prioridad de contacto: Enfocar todo el flujo hacia WhatsApp/Teléfono sin pasar por carritos ni checkouts ficticios.
+
+Ficha Modal / Bottom Sheet: La apertura rápida de la ficha sobre el mismo listado evita recargas de página y mantiene la velocidad de respuesta impecable.

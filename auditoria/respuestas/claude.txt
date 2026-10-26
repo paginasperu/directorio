@@ -1,0 +1,61 @@
+Sigo con la revisión: ya vi Demo 01 (escritorio y móvil), ahora reviso Demo 02 y ubico los selectores CSS exactos en el repo.
+
+Revisé las 4 capturas resumen, las capturas de detalle y el código de demos/01, demos/02 y assets/. No ejecuté la web renderizada, así que teclado y scroll real los juzgo por el código.
+
+P0: arreglar antes de mostrar la demo
+
+1. Fotos de Sexshop en una vitrina para vecinos y familias (ambas demos, 02-resultados y 06-promociones)
+
+Problema: el banner de Alexa Disfraces (primer plano de lencería) sale como 2ª tarjeta, junto a juguetes. En Demo 02 móvil, la promo “Accesorio de disfraz infantil” se muestra sobre esa misma foto, lo que además destruye la confianza.
+Cambio: para la categoría Sexshop, mostrar un fondo neutro con el logo y una etiqueta “+18” en lugar del banner. Sacarla del mosaico y de la promo destacada, y mostrar la foto solo dentro de la ficha. Las promos de ese negocio usan el mismo tratamiento.
+Impacto: es lo primero que verá un administrador de galería.
+
+2. Badges sobre la imagen (Demo 01, .biz-card__badges, app.js ~423)
+
+Problema: en la lista móvil (la vista por defecto) el corazón .fav-btn pisa el badge “PISO 2” y lo corta. Además, el piso aparece dos veces (badge y línea “Piso 2 · Local 221”), y el “−10%” también dos veces (badge y chip). Como las 85 tarjetas tienen −10%, el badge no ayuda a elegir.
+Cambio: eliminar .biz-card__badges en ambos layouts. La ubicación queda en .meta y la promo en .promo-strip. La imagen queda limpia, solo con el corazón.
+P1: mejora clara
+
+3. El contacto no se lee como acción (.biz-card__meta; en Demo 02, el pill azul de WhatsApp)
+
+Problema: el número va como texto en un pill beige, igual que “Piso 2”. El pie de la tarjeta (.biz-card__foot) lo ocupan la categoría y “Ver ficha”, que no son acciones útiles.
+Cambio: reemplazar .cat-tag por un botón con etiqueta: “WhatsApp” (verde, con icono), “Llamar” o “Instagram” según la prioridad ya definida. Quitar el número de la tarjeta, que ya está en la ficha. Usar stopPropagation para no abrir el modal.
+Impacto: es tu objetivo nº 2 del brief y hoy es el cambio de más impacto.
+
+4. “Suscríbete” mezcla dos públicos (index.html:82 .head-cta, :109 .nav-link--cta)
+
+Problema: es el único botón relleno de la cabecera y compite con buscar. Un vecino no sabe a qué se suscribe, y en móvil parece una pestaña más. Si el mensaje de WhatsApp es para negocios, el visitante no tiene nada que hacer ahí.
+Cambio: para visitantes, “Recibir promos por WhatsApp” como botón secundario. Para negocios, “Registra tu negocio” en el footer, donde ya existe el bloque “Para negocios”.
+
+5. Taxonomía confusa (Demo 01 03-filtros; .biz-card__type vs .cat-tag)
+
+Problema: hay “Categoría” y “Tipo de negocio”, y la tarjeta muestra ambas (“Juguetería” arriba, “Entretenimiento” abajo). Entretenimiento concentra 23 de 85 negocios, así que el chip filtra poco. Además, la categoría se puede elegir en 3 sitios (chips del hero, grilla y select del filtro).
+Cambio: quitar el select de Categoría del filtro y dejar Piso, Orden y Rubro. Mostrar solo el rubro en la tarjeta. Partir Entretenimiento en el CSV, por ejemplo “Juguetes y hobbies”.
+
+6. Móvil Demo 01: el listado llega tarde (.site-head, controles de resultados)
+
+Problema: la cabecera ocupa 2 filas, con pestañas y un corazón duplicado con “Favoritos”. Después hay 3 filas de controles (Filtros, Orden, toggle grilla/lista) antes del primer negocio.
+Cambio: cabecera de 1 fila (logo, corazón, lupa). Usar tabs “Negocios | Promociones” en el contenido, como ya hace Demo 02. Dejar una sola fila [Filtros (n)] [Orden]. Quitar el toggle grilla/lista en móvil, porque ya arranca en lista.
+
+7. Demo 02: accesibilidad del modal (#modalDetail; .header-search input:focus, .filter-toggle:focus-visible)
+
+Problema: el modal tiene role="dialog", pero app.js solo maneja Escape: no mueve el foco al abrir, no lo atrapa ni lo devuelve. El anillo de foco es un box-shadow al 12% de opacidad, prácticamente invisible.
+Cambio: copiar la lógica de foco de demos/01/app.js (~1324–1352). Usar outline: 2px solid #0071e3; outline-offset: 2px en el foco.
+P2: pulido
+
+8. Demo 02 móvil: una tarjeta por pantalla (02-resultados). Con 85 negocios sin paginar, el scroll es larguísimo. Usar grilla de 2 columnas o banner más bajo, y “Cargar más” de 24 en 24. Para Demo 01, “Cargar más” también funciona mejor que páginas numeradas en móvil.
+
+9. Hero Demo 01 (#heroMosaic). Los rótulos MODA, COMIDA y REGALOS parecen enlaces, pero es decoración aria-hidden. Conviértelos en enlaces a la categoría. El badge “170 promociones activas” repite el stat de abajo: quita uno.
+
+10. Consistencia y toques. Demo 02 combina el monograma D rojo con acento azul: elige un acento. Los controles táctiles miden 30–38 px (.fav-btn 38, toggle de vista 33×30): súbelos a 44 en móvil.
+
+Respuestas rápidas
+Tres cambios de mayor impacto: (a) tarjeta limpia con botón de contacto, (b) neutralizar las imágenes de Sexshop, (c) cabecera y controles móviles más cortos, con el CTA dirigido al visitante.
+¿Demo 01 es más vendedora o más cargada? Las dos cosas. El hero vende, pero las tarjetas tienen 6 capas de información. Demo 02 se escanea mejor en escritorio.
+Una oferta o dos: me quedaría con una sola base, y mi criterio es Demo 01. Tiene favoritos, vista lista, paginación y promos separadas. Tu premisa de que comparten funcionalidad es solo parcial: Demo 02 no tiene favoritos, lista ni paginación, y app.js pesa 61 KB frente a 27 KB. Para personalizar por mercado conviene una base con variables de color, tema oscuro y tema claro, no dos código distintos.
+Tarjeta de promoción destacada de Demo 02: aporta, porque es lo único del hero que muestra una oferta real. Mantenerla.
+Búsqueda progresiva: se entiende sin explicación. No tocar.
+Eliminaría: el select de categoría del filtro, los badges de imagen, .cat-tag, el toggle de vista en móvil y el badge duplicado del hero.
+Está bien: bottom sheet con “Ver resultados”, chips con conteo, modal de promoción con precio y ahorro, botón fijo “Contactar por WhatsApp” de Demo 02, y el foco visible y la trampa de foco de Demo 01.
+
+Si quieres, convierto los hallazgos 1 a 7 en un prompt listo para pasarle a DeepSeek en OpenCode.

@@ -18,7 +18,7 @@
     --crimson-soft: #fdecee;
     --amber: #8a5200;
     --amber-soft: #fff4dd;
-    --green: #1f9d55;
+    --green: #157347;
     --green-soft: #e8f7ee;
     --shadow: 0 18px 40px rgba(52, 28, 14, 0.1);
     --shadow-soft: 0 8px 24px rgba(52, 28, 14, 0.07);
@@ -1295,6 +1295,45 @@ img {
     color: var(--ink);
 }
 
+.badge--adult {
+    background: var(--ink);
+    color: #f2b84b;
+}
+
+.biz-card__shot--adult,
+.promo-card__shot--adult {
+    display: grid;
+    place-items: center;
+    background:
+        radial-gradient(circle at 30% 20%, rgba(199, 31, 55, 0.24), transparent 45%),
+        #1c1713;
+}
+
+.adult-cover {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.adult-cover__age {
+    color: #f2b84b;
+    font-family: var(--font-display);
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+}
+
+.adult-cover__label {
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
 .fav-btn {
     position: absolute;
     top: 12px;
@@ -1335,24 +1374,32 @@ img {
 }
 
 .biz-card__logo {
-    position: absolute;
-    left: 16px;
-    bottom: -24px;
-    z-index: 2;
-    width: 56px;
-    height: 56px;
-    border: 3px solid #fff;
+    width: 44px;
+    height: 44px;
+    border: 2px solid #fff;
     border-radius: 50%;
     background: #fff;
     object-fit: cover;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16);
+    flex: none;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.14);
 }
 
 .biz-card__body {
     display: flex;
     flex: 1;
     flex-direction: column;
-    padding: 36px 18px 10px;
+    padding: 16px 18px 12px;
+}
+
+.biz-card__heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.biz-card__heading-text {
+    min-width: 0;
 }
 
 .biz-card__type {
@@ -1432,12 +1479,8 @@ img {
 
 .biz-card__meta {
     display: flex;
-    flex-direction: column;
     align-items: flex-start;
-    gap: 6px;
-    margin-top: 12px;
-    padding-top: 10px;
-    border-top: 1px dashed #f0e7df;
+    margin-top: 10px;
 }
 
 .meta {
@@ -1498,10 +1541,64 @@ img {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
+    gap: 8px;
     margin-top: auto;
     padding: 10px 18px 12px;
     border-top: 1px solid #f4ece5;
+}
+
+.card-contact {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: 32px;
+    padding: 0 11px;
+    border-radius: 999px;
+    font-family: var(--font-body);
+    font-size: 10.5px;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+    transition: background 0.18s, color 0.18s;
+}
+
+.card-contact .icon {
+    width: 13px;
+    height: 13px;
+}
+
+.card-contact--whatsapp {
+    background: var(--green);
+    color: #fff;
+}
+
+.card-contact--whatsapp:hover {
+    background: #115c38;
+}
+
+.card-contact--phone {
+    background: var(--ink);
+    color: #fff;
+}
+
+.card-contact--phone:hover {
+    background: #342b24;
+}
+
+.card-contact--social {
+    background: var(--crimson-soft);
+    color: var(--crimson-dark);
+}
+
+.card-contact--social:hover {
+    background: #f9dce0;
+}
+
+.card-contact--muted {
+    padding: 0;
+    color: var(--ink-3);
+    font-weight: 500;
 }
 
 .cat-tag {
@@ -1773,7 +1870,9 @@ img {
 }
 
 .grid[data-layout="list"] .biz-card__logo {
-    bottom: 16px;
+    width: 40px;
+    height: 40px;
+    border-width: 2px;
 }
 
 .grid[data-layout="list"] .biz-card__body {
@@ -2538,7 +2637,7 @@ img {
 }
 
 .contact-btn--wa:hover {
-    background: #188347;
+    background: #115c38;
 }
 
 .contact-btn--phone {
@@ -3135,8 +3234,13 @@ img {
     }
 
     .view-btn {
-        width: 31px;
-        height: 28px;
+        width: 34px;
+        height: 32px;
+    }
+
+    .fav-btn {
+        width: 40px;
+        height: 40px;
     }
 
     .filter-btn {
@@ -3169,10 +3273,8 @@ img {
     }
 
     .grid[data-layout="list"] .biz-card__logo {
-        left: 9px;
-        bottom: 10px;
-        width: 40px;
-        height: 40px;
+        width: 36px;
+        height: 36px;
         border-width: 2px;
     }
 
@@ -3196,7 +3298,7 @@ img {
     }
 
     .grid[data-layout="list"] .promo-strip {
-        display: none;
+        display: flex;
     }
 
     .grid[data-layout="list"] .biz-card__meta {
@@ -3228,7 +3330,12 @@ img {
     }
 
     .biz-card__body {
-        padding: 36px 16px 10px;
+        padding: 14px 16px 10px;
+    }
+
+    .card-contact {
+        height: 36px;
+        font-size: 11px;
     }
 
     .biz-card__foot {
@@ -3384,19 +3491,6 @@ img {
         font-size: 8px;
     }
 
-    .toolbar__right {
-        width: 100%;
-        justify-content: space-between;
-    }
-
-    .sort {
-        flex: 1;
-    }
-
-    .sort select {
-        width: 100%;
-        max-width: none;
-    }
 }
 
 @media (prefers-reduced-motion: reduce) {

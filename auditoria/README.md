@@ -82,6 +82,8 @@ También hay una captura del portal: `capturas/portal/01-portal-desktop.jpg`.
 
 Leer [`BRIEF.md`](BRIEF.md) antes de puntuar. Ahí están el objetivo, los datos reales, las restricciones y las preguntas concretas para la auditoría.
 
+La síntesis de la primera ronda de auditoría, con lo aceptado, lo descartado y los cambios aplicados, está en [`CONCLUSION.md`](CONCLUSION.md). Los reportes originales están en [`respuestas/`](respuestas/).
+
 ## Código relevante
 
 - `demos/01/index.html`, `demos/01/style.css`, `demos/01/app.js`

@@ -5,20 +5,42 @@ import { escapeHtml, formatDate, getSaving, listValues, loadDirectory, money, no
 
 /* ---------- Vistas ---------- */
 
+function primaryContact(profile) {
+  if (profile.whatsapp) {
+    return { href: `https://wa.me/${profile.whatsapp}`, label: "WhatsApp", external: true };
+  }
+  if (profile.fixed) {
+    return { href: `tel:${profile.fixed}`, label: "Llamar", external: false };
+  }
+  if (profile.instagram) return { href: profile.instagram, label: "Instagram", external: true };
+  if (profile.facebook) return { href: profile.facebook, label: "Facebook", external: true };
+  if (profile.tiktok) return { href: profile.tiktok, label: "TikTok", external: true };
+  return null;
+}
+
 function businessCard(profile) {
   const location = [
     profile.floor ? `Piso ${profile.floor}` : "",
     profile.unit ? `Local ${profile.unit}` : "",
   ].filter(Boolean).join(" · ");
-  const whatsapp = profile.whatsapp ? `https://wa.me/${profile.whatsapp}` : "";
-
-  return `<article class="d1-card">
-    <button type="button" class="d1-hit" data-detail="${profile.id}">
-      <span class="d1-cover">
+  const contact = primaryContact(profile);
+  const adult = profile.category === "Sexshop";
+  const cover = adult
+    ? `<span class="d1-cover d1-cover--adult">
+        <span class="d1-adult">+18</span>
+        <span class="d1-adult-label">Sexshop</span>
+        <span class="d1-cat">${escapeHtml(profile.category)}</span>
+        <img class="d1-logo" src="${escapeHtml(profile.logo)}" alt="" width="56" height="56" loading="lazy" decoding="async">
+      </span>`
+    : `<span class="d1-cover">
         <img class="d1-banner" src="${escapeHtml(profile.banner)}" alt="" width="600" height="300" loading="lazy" decoding="async">
         <span class="d1-cat">${escapeHtml(profile.category)}</span>
         <img class="d1-logo" src="${escapeHtml(profile.logo)}" alt="" width="56" height="56" loading="lazy" decoding="async">
-      </span>
+      </span>`;
+
+  return `<article class="d1-card">
+    <button type="button" class="d1-hit" data-detail="${profile.id}">
+      ${cover}
       <span class="d1-body">
         <span class="d1-name">${escapeHtml(profile.name)}</span>
         <span class="d1-desc">${escapeHtml(profile.short)}</span>
@@ -26,9 +48,9 @@ function businessCard(profile) {
     </button>
     <div class="d1-footer">
       <span class="d1-loc">${escapeHtml(location || "Ubicación no informada")}</span>
-      ${whatsapp
-        ? `<a class="provider-whatsapp" href="${whatsapp}" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp de ${escapeHtml(profile.name)}">WhatsApp</a>`
-        : '<span class="provider-whatsapp provider-whatsapp-unavailable">Sin WhatsApp</span>'}
+      ${contact
+        ? `<a class="provider-whatsapp" href="${escapeHtml(contact.href)}" ${contact.external ? 'target="_blank" rel="noopener noreferrer"' : ""} aria-label="${escapeHtml(contact.label)} de ${escapeHtml(profile.name)}">${escapeHtml(contact.label)}</a>`
+        : '<span class="provider-whatsapp provider-whatsapp-unavailable">Sin contacto</span>'}
     </div>
   </article>`;
 }
@@ -37,14 +59,23 @@ function promoCard(promo) {
   const saving = getSaving(promo);
   const discount = saving ? Math.round((saving / promo.regular) * 100) : 0;
   const badge = discount ? `−${discount}%` : (promo.mode || promo.type);
-
-  return `<article class="d1-pcard">
-    <button type="button" class="d1-hit" data-promo="${promo.id}">
-      <span class="d1-cover">
+  const adult = promo.category === "Sexshop" || promo.profile?.category === "Sexshop";
+  const cover = adult
+    ? `<span class="d1-cover d1-cover--adult">
+        <span class="d1-adult">+18</span>
+        <span class="d1-adult-label">Sexshop</span>
+        <span class="d1-cat">${escapeHtml(promo.category)}</span>
+        <span class="d1-promo">${escapeHtml(badge)}</span>
+      </span>`
+    : `<span class="d1-cover">
         <img class="d1-banner" src="${escapeHtml(promo.image)}" alt="" width="600" height="300" loading="lazy" decoding="async">
         <span class="d1-cat">${escapeHtml(promo.category)}</span>
         <span class="d1-promo">${escapeHtml(badge)}</span>
-      </span>
+      </span>`;
+
+  return `<article class="d1-pcard">
+    <button type="button" class="d1-hit" data-promo="${promo.id}">
+      ${cover}
       <span class="d1-body">
         <span class="d1-name">${escapeHtml(promo.title)}</span>
         <span class="d1-desc">Ofrecido por ${escapeHtml(promo.profile?.name || "")}</span>
@@ -379,16 +410,22 @@ function setView(view) {
 
 /* ---------- detalle ---------- */
 
+let modalLastFocus = null;
+
 function openModal() {
+  modalLastFocus = document.activeElement;
   ui.modal.classList.remove("hidden");
   ui.modal.classList.add("flex");
   document.body.classList.add("overflow-hidden");
+  setTimeout(() => $("#closeDetail")?.focus(), 0);
 }
 
 function closeModal() {
   ui.modal.classList.add("hidden");
   ui.modal.classList.remove("flex");
   document.body.classList.remove("overflow-hidden");
+  if (modalLastFocus && modalLastFocus.isConnected) modalLastFocus.focus({ preventScroll: true });
+  modalLastFocus = null;
 }
 
 function showPromo(promo) {
@@ -542,7 +579,27 @@ function bindEvents() {
 
   $("#closeDetail").addEventListener("click", closeModal);
   ui.modal.addEventListener("click", (event) => { if (event.target === ui.modal) closeModal(); });
-  document.addEventListener("keydown", (event) => { if (event.key === "Escape" && !ui.modal.classList.contains("hidden")) closeModal(); });
+  document.addEventListener("keydown", (event) => {
+    if (ui.modal.classList.contains("hidden")) return;
+    if (event.key === "Escape") {
+      closeModal();
+      return;
+    }
+    if (event.key !== "Tab") return;
+
+    const focusable = [...ui.modal.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])')]
+      .filter((element) => element.getClientRects().length > 0);
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
 }
 
 function renderHeroFeature() {

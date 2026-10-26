@@ -70,6 +70,13 @@ No hace falta proponerlas como “errores”, pero sí se puede evaluar su ejecu
 - **Logo de marca D** unificado en favicon, portal y cabeceras.
 - **Banner de ficha a ancho completo** y logo del negocio dentro del banner.
 - **Cursor pointer** en toda la tarjeta clickeable.
+- **Demo 01 · tarjetas limpias**: banner sin badges duplicados, logo del negocio en el cuerpo, tipo + nombre, descripción, promociones, ubicación y CTA de contacto. La categoría vive en chips/filtros, no se repite en la tarjeta.
+- **Demo 01 · contacto como acción**: WhatsApp, Llamar o red social como botón en el pie de la tarjeta, sin repetir el número. El número completo queda en la ficha.
+- **Contenido para adultos**: en ambas demos, las tarjetas y promociones de Sexshop usan una portada neutra con “+18”; la imagen real solo aparece al abrir la ficha.
+- **Demo 02**: contacto con fallback a teléfono/redes en la tarjeta y foco atrapado en el modal. Conserva su tarjeta clásica.
+- **Una sola búsqueda visible a la vez**: el buscador de cabecera aparece al hacer scroll cuando el buscador del hero sale de pantalla.
+
+Estas decisiones se tomaron después de la primera ronda de auditoría; los reportes originales están en `respuestas/` y la síntesis en `CONCLUSION.md`.
 
 ## 6. Restricciones
 

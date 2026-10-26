@@ -406,40 +406,42 @@ function businessCard(profile, index = 0) {
   const prize = promos.find((promo) => promo.type === "Premio");
   const percent = discount ? discountPercent(discount) : 0;
   const contact = primaryContact(profile);
-  const contactClass = contact && contact.kind !== "whatsapp" && contact.kind !== "phone" ? " meta--social" : contact?.kind === "phone" ? " meta--phone" : "";
+  const adult = profile.category === "Sexshop";
   const promoStrip = [
     discount ? `<span class="promo-chip promo-chip--discount">${icon("tag", "icon--sm")} −${percent}%</span>` : "",
     prize ? `<span class="promo-chip promo-chip--prize">${icon("gift", "icon--sm")} ${escapeHtml(prize.mode || "Premio")}</span>` : "",
   ].join("");
+  const contactLabel = contact?.kind === "whatsapp" ? "WhatsApp" : contact?.kind === "phone" ? "Llamar" : contact?.label || "";
+  const contactModifier = contact?.kind === "whatsapp" ? "whatsapp" : contact?.kind === "phone" ? "phone" : "social";
   const contactHtml = contact
-    ? `<a class="meta meta--contact${contactClass}" href="${escapeHtml(contact.href)}" ${contact.external ? 'target="_blank" rel="noopener noreferrer"' : ""} aria-label="${escapeHtml(contact.label)} de ${escapeHtml(profile.name)}: ${escapeHtml(contact.display)}">${icon(contact.icon)}<span>${escapeHtml(contact.display)}</span></a>`
-    : `<span class="meta meta--muted">${icon("call")} Contacto no disponible</span>`;
+    ? `<a class="card-contact card-contact--${contactModifier}" href="${escapeHtml(contact.href)}" ${contact.external ? 'target="_blank" rel="noopener noreferrer"' : ""} aria-label="${escapeHtml(contact.label)} de ${escapeHtml(profile.name)}: ${escapeHtml(contact.display)}">${icon(contact.icon)}<span>${escapeHtml(contactLabel)}</span></a>`
+    : `<span class="card-contact card-contact--muted">Sin contacto</span>`;
+  const media = adult
+    ? `<div class="biz-card__shot biz-card__shot--adult"><div class="adult-cover"><span class="adult-cover__age">+18</span><span class="adult-cover__label">Sexshop</span></div></div>`
+    : `<div class="biz-card__shot"><img class="biz-card__banner" src="${escapeHtml(profile.banner)}" alt="" width="600" height="300" loading="${index < 3 ? "eager" : "lazy"}" decoding="async"${index < 3 ? ' fetchpriority="high"' : ""}></div>`;
 
   return `<article class="biz-card" data-card-business="${profile.id}">
     <div class="biz-card__media">
-      <div class="biz-card__shot">
-        <img class="biz-card__banner" src="${escapeHtml(profile.banner)}" alt="" width="600" height="300" loading="${index < 3 ? "eager" : "lazy"}" decoding="async"${index < 3 ? ' fetchpriority="high"' : ""}>
-      </div>
-      <div class="biz-card__badges">
-        ${profile.floor ? `<span class="badge badge--floor">${icon("pin")} Piso ${escapeHtml(profile.floor)}</span>` : ""}
-        ${discount ? `<span class="badge badge--promo">−${percent}%</span>` : ""}
-      </div>
+      ${media}
       ${favoriteButton(profile, "fav-btn")}
-      <img class="biz-card__logo" src="${escapeHtml(profile.logo)}" alt="" width="56" height="56" loading="lazy" decoding="async">
     </div>
     <div class="biz-card__body">
-      <p class="biz-card__type">${escapeHtml(profile.type)}</p>
-      <h3 class="biz-card__name"><button type="button" data-business="${profile.id}">${escapeHtml(profile.name)}</button></h3>
+      <div class="biz-card__heading">
+        <img class="biz-card__logo" src="${escapeHtml(profile.logo)}" alt="" width="44" height="44" loading="lazy" decoding="async">
+        <div class="biz-card__heading-text">
+          <p class="biz-card__type">${escapeHtml(profile.type)}</p>
+          <h3 class="biz-card__name"><button type="button" data-business="${profile.id}">${escapeHtml(profile.name)}</button></h3>
+        </div>
+      </div>
       <p class="biz-card__desc">${escapeHtml(profile.short)}</p>
       ${promoStrip ? `<div class="promo-strip">${promoStrip}</div>` : ""}
       <div class="biz-card__meta">
         <span class="meta">${icon("pin")}<span>${escapeHtml(profileLocation(profile))}</span></span>
-        ${contactHtml}
       </div>
     </div>
     <div class="biz-card__foot">
-      <span class="cat-tag" style="--cat-color:${categoryStyle(profile.category).color}"><span class="cat-tag__dot"></span><span>${escapeHtml(profile.category)}</span></span>
       <button type="button" class="card-link" data-business="${profile.id}">Ver ficha ${icon("arrow-right")}</button>
+      ${contactHtml}
     </div>
   </article>`;
 }
@@ -450,6 +452,10 @@ function promoCard(promo, index = 0) {
   const saving = getSaving(promo);
   const badge = isPrize ? (promo.mode || "Premio") : percent ? `−${percent}%` : "Descuento";
   const business = promo.profile;
+  const adult = promo.category === "Sexshop" || business?.category === "Sexshop";
+  const media = adult
+    ? `<div class="promo-card__shot promo-card__shot--adult"><div class="adult-cover"><span class="adult-cover__age">+18</span><span class="adult-cover__label">Sexshop</span></div></div>`
+    : `<div class="promo-card__shot"><img class="promo-card__banner" src="${escapeHtml(promo.image)}" alt="" width="600" height="300" loading="${index < 3 ? "eager" : "lazy"}" decoding="async"${index < 3 ? ' fetchpriority="high"' : ""}></div>`;
   const priceBlock = !isPrize && promo.discounted > 0
     ? `<div class="promo-card__price">
         <strong>${money(promo.discounted)}</strong>
@@ -459,9 +465,7 @@ function promoCard(promo, index = 0) {
     : `<div class="promo-card__prize">${icon("gift")} ${escapeHtml(promo.mode || "Premio")} · ${escapeHtml(formatDate(promo.until))}</div>`;
 
   return `<article class="promo-card promo-card--${isPrize ? "premio" : "descuento"}" data-card-promo="${escapeHtml(promo.id)}">
-    <div class="promo-card__shot">
-      <img class="promo-card__banner" src="${escapeHtml(promo.image)}" alt="" width="600" height="300" loading="${index < 3 ? "eager" : "lazy"}" decoding="async"${index < 3 ? ' fetchpriority="high"' : ""}>
-    </div>
+    ${media}
     <div class="promo-card__badges"><span class="badge ${isPrize ? "badge--prize" : "badge--promo"}">${escapeHtml(badge)}</span></div>
     <div class="promo-card__body">
       <p class="promo-card__kind">${isPrize ? "Premio" : "Descuento"}</p>
@@ -521,6 +525,7 @@ function businessDetail(profile) {
       <div class="detail-hero__badges">
         <span class="badge badge--soft">${escapeHtml(profile.category)}</span>
         ${profile.floor ? `<span class="badge badge--floor">${icon("pin")} Piso ${escapeHtml(profile.floor)}</span>` : ""}
+        ${profile.category === "Sexshop" ? `<span class="badge badge--adult">+18</span>` : ""}
       </div>
       <img class="detail-hero__logo" src="${escapeHtml(profile.logo)}" alt="" width="76" height="76">
     </div>
@@ -577,6 +582,7 @@ function promoDetail(promo) {
       <div class="detail-hero__badges">
         <span class="badge ${isPrize ? "badge--prize" : "badge--promo"}">${escapeHtml(isPrize ? (promo.mode || "Premio") : percent ? `−${percent}%` : "Descuento")}</span>
         <span class="badge badge--soft">${escapeHtml(promo.category)}</span>
+        ${promo.category === "Sexshop" ? `<span class="badge badge--adult">+18</span>` : ""}
       </div>
     </div>
     <div class="detail-body detail-body--promo">
@@ -624,6 +630,7 @@ function renderSkeletons() {
   ui.empty.hidden = true;
   ui.pagination.innerHTML = "";
   ui.activeFilters.innerHTML = "";
+  ui.activeFilters.hidden = true;
   ui.filterCount.hidden = true;
   ui.promoTabs.hidden = true;
 }
@@ -881,6 +888,7 @@ function renderActiveFilters() {
     if (band) add(band.label, "price");
   }
 
+  ui.activeFilters.hidden = chips.length === 0;
   ui.activeFilters.innerHTML = chips.length
     ? `${chips.join("")}<button type="button" class="filter-clear-all" data-clear="all">Limpiar todo</button>`
     : "";
@@ -1230,7 +1238,7 @@ function populateHero() {
     <figcaption>${escapeHtml(profile.category)}</figcaption>
   </figure>`).join("");
 
-  ui.heroMosaic.innerHTML = `<div class="hero__sticker"><strong>${state.promos.length}</strong><span>promociones<br>activas</span></div>${figures}`;
+  ui.heroMosaic.innerHTML = figures;
   ui.catNote.textContent = `${categories.length} categorías · ${floors.length} pisos para explorar.`;
 
   const counts = new Map();
@@ -1280,6 +1288,7 @@ async function loadData() {
     ui.promoTabs.hidden = true;
     ui.categoryList.innerHTML = "";
     ui.activeFilters.innerHTML = "";
+    ui.activeFilters.hidden = true;
     ui.filterCount.hidden = true;
     renderEmpty(0);
   }

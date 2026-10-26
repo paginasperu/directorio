@@ -1,0 +1,226 @@
+Auditoría UX/UI — Directorio para mercados y galerías
+Mi criterio principal será este: una persona debe encontrar un negocio, entender qué ofrece y contactarlo con el mínimo esfuerzo, incluso desde un celular y sin conocer previamente el mercado.
+
+El proyecto no necesita parecer una aplicación tecnológica sofisticada. Necesita parecer un directorio comercial atractivo, confiable, fácil de recorrer y útil para los vecinos y visitantes. También debe dar visibilidad a los negocios sin convertir cada tarjeta en un anuncio saturado.
+
+He revisado tu brief, las dos demos y las capturas de escritorio y móvil. La evaluación se limita a UX/UI; no voy a proponer funciones ajenas al alcance ni una reconstrucción completa por defecto. 
+
+GitHub
++1
+
+
+
+1. Veredicto: cuál conservaría
+
+
+
+
+
+
+
+
+
+Demo 01 — cálida y comercial
+Reducir saturación visual
+Tiene más personalidad y comunica mejor la idea de un mercado. Sin embargo, acumula demasiados estímulos: hero oscuro, collage, chips, iconos, estadísticas, tarjetas y acentos de color. La personalidad se convierte en ruido.
+
+
+
+
+
+
+
+
+
+
+
+
+Demo 02 — clara y funcional
+Mejor punto de partida
+Tiene una estructura más limpia y permite recorrer el listado con menos distracciones. Pero se acerca demasiado a una plantilla SaaS o a un directorio genérico: le falta identidad comercial y calidez.
+
+
+
+Mi decisión: usaría la Demo 02 como base estructural y rescataría de la Demo 01 su calidez y personalidad. No mezclaría todos sus componentes; diseñaría un único sistema visual coherente.
+
+Las dos demos no necesitan convertirse en dos productos distintos. Si comparten funciones, conviene elegir una dirección visual y perfeccionarla.
+2. Hallazgos priorizados
+Máximo diez cambios, ordenados por impacto. Las prioridades indican mi evaluación, no errores confirmados mediante pruebas con usuarios.
+P1
+1. El hero ocupa demasiado protagonismo en la Demo 01.
+
+Referencia: Demo 01, 01-hero.jpg, escritorio y móvil.
+
+El fondo oscuro, el titular grande, el collage y las estadísticas compiten con la tarea principal: encontrar un negocio. En móvil, el usuario debe recorrer bastante contenido antes de llegar al listado.
+
+Cambiar: reducir la altura del hero, eliminar elementos decorativos redundantes y priorizar un titular breve junto al buscador. Las categorías populares pueden permanecer, pero como acceso secundario.
+
+Resultado esperado: llegar antes a los negocios y reducir la competencia visual.
+
+
+
+P1
+2. La Demo 02 necesita personalidad propia, no más decoración.
+
+Referencia: Demo 02, 01-hero.jpg y 02-resultados.jpg.
+
+La limpieza funciona, pero el azul, los fondos claros y las tarjetas redondeadas recuerdan a una plantilla genérica. No transmiten claramente la identidad de un mercado o galería.
+
+Cambiar: adoptar una paleta cálida y contenida —marfil, tinta oscura y un color comercial de acento—, con una sola familia tipográfica bien utilizada. Mantener fondos limpios y bordes discretos.
+
+Resultado esperado: una interfaz más reconocible y con mejor criterio estético, sin perder legibilidad.
+
+
+
+P1
+3. Las tarjetas necesitan una jerarquía más clara.
+
+Referencia: 02-resultados.jpg, ambas demos.
+
+Banner, logo circular, categoría, nombre, descripción, piso, promoción y contacto aparecen juntos. La acumulación de etiquetas y elementos superpuestos resta claridad, especialmente cuando las imágenes tienen muchos colores.
+
+Cambiar: ordenar el contenido así:
+1. Nombre del negocio.
+2. Qué vende o qué servicio ofrece.
+3. Piso y número de local, si existen.
+4. Promoción destacada, si tiene.
+5. Acción de contacto.
+Limitar las etiquetas superpuestas a las estrictamente necesarias. El logo puede mantenerse si ayuda a reconocer el negocio.
+
+Resultado esperado: tarjetas más fáciles de escanear y comparar.
+
+
+
+P1
+4. El listado móvil de la Demo 02 puede hacerse demasiado largo.
+
+Referencia: 02-resultados.jpg, móvil.
+
+Las tarjetas de una sola columna, con imágenes grandes, consumen mucho espacio. Para 85 negocios, la exploración puede volverse pesada.
+
+Cambiar: probar tarjetas compactas con imagen más baja y contenido mejor distribuido. Mantener la imagen suficientemente grande para identificar el negocio, pero no dedicarle la mitad de cada tarjeta.
+
+Resultado esperado: comparar más negocios por pantalla sin sacrificar reconocimiento visual.
+
+
+
+P1
+5. La promoción destacada de la Demo 02 compite con el directorio.
+
+Referencia: 01-hero.jpg, móvil y escritorio.
+
+La promoción aparece en una posición privilegiada antes de explorar el conjunto de negocios. Esto puede funcionar comercialmente, pero desplaza el objetivo principal del visitante.
+
+Cambiar: hacerla más compacta y colocarla después del buscador y de los accesos principales, o integrarla en una franja discreta. Debe destacar por su oferta real, no por ocupar demasiado espacio.
+
+Resultado esperado: conservar el valor promocional sin distraer de la búsqueda.
+
+
+
+P1
+6. El contacto debe tener un protagonismo consistente.
+
+Referencia: tarjetas y fichas de ambas demos.
+
+En la Demo 01 hay varias señales de contacto y redes sociales; en la Demo 02 el contacto parece más secundario en las tarjetas. El usuario debe distinguir inmediatamente entre abrir la ficha y contactar al negocio.
+
+Cambiar: usar un botón de WhatsApp claro cuando exista ese canal. En la ficha, mostrar las demás opciones disponibles sin darles el mismo peso visual. Para negocios sin WhatsApp, ofrecer el canal real disponible.
+
+Resultado esperado: menos dudas y contacto más directo.
+
+
+
+P1
+7. La búsqueda y los filtros necesitan comunicar mejor su estado.
+
+Referencia: 02-resultados.jpg, 03-filtros.jpg, ambas demos.
+
+Tener una búsqueda en el hero y otra en la cabecera puede ser correcto si se sincronizan, pero el cambio de ubicación debe resultar natural. En las capturas, el panel de filtros es funcional, aunque el usuario necesita entender fácilmente qué filtros están aplicados.
+
+Cambiar: conservar un único buscador visible a la vez, mostrar el número de filtros activos y ofrecer una forma clara de quitarlos individualmente o restablecerlos. En móvil, mostrar el resumen de filtros seleccionados antes de confirmar.
+
+Resultado esperado: menos confusión y menos búsquedas que parecen no devolver resultados.
+
+
+
+P1
+8. La ficha del negocio debe priorizar información práctica.
+
+Referencia: 04-ficha-negocio.jpg, ambas demos.
+
+El banner y el logo ayudan a identificar el local, pero el contacto, la ubicación interna y las promociones son los datos que hacen útil la ficha. La Demo 01 muestra más elementos de contacto; la Demo 02 presenta una acción inferior más marcada.
+
+Cambiar: mantener una estructura común: nombre y categoría, ubicación, contacto principal, promociones y catálogo. En móvil, mantener accesible la acción de contacto sin tapar información ni generar dos llamadas a la acción equivalentes.
+
+Resultado esperado: fichas prácticas, fáciles de recorrer y consistentes.
+
+
+
+P1
+9. La diferencia entre descuentos y premios debe ser inequívoca.
+
+Referencia: 05-promoción.jpg y 06-promociones.jpg.
+
+Un descuento con precio regular y rebajado se entiende de forma distinta a un sorteo, concurso o canje. Ambos tipos no deberían compartir una jerarquía visual que haga pensar que ofrecen el mismo beneficio.
+
+Cambiar: en descuentos, priorizar precio final y ahorro. En premios, priorizar el tipo de premio y cómo participar o canjearlo, con condiciones disponibles en la ficha. Evitar adornos y etiquetas que no aporten información.
+
+Resultado esperado: ofertas más comprensibles y creíbles.
+
+
+
+P2
+10. Hace falta unificar detalles de calidad y accesibilidad.
+
+Referencia: ambas demos, cabecera, tarjetas, modales y filtros.
+
+Los estilos difieren en tipografía, acentos, botones y tratamientos visuales. También hay que comprobar tamaños de toque, contraste, foco de teclado, cierre de modales y lectura de etiquetas pequeñas.
+
+Cambiar: definir reglas comunes para tipografía, espaciado, botones, etiquetas y estados activos. Mantener controles táctiles cómodos —idealmente de unos 44 px de alto cuando sea viable— y verificar el contraste y el uso completo con teclado.
+
+Resultado esperado: una experiencia más profesional y consistente en ambas pantallas.
+
+
+
+3. Qué eliminaría o simplificaría
+- Demo 01: reducir el collage del hero, las etiquetas redundantes y las decoraciones que compiten con las tarjetas.
+- Demo 02: reducir la altura de las imágenes y el espacio dedicado a la promoción destacada.
+- Ambas: evitar duplicar información entre tarjetas y fichas; conservar en cada nivel solo lo necesario para decidir el siguiente paso.
+- Ambas: no mostrar demasiados colores, pastillas y botones con igual importancia.
+- No eliminaría: promociones, filtros por categoría y piso, favoritos, catálogo ni contacto directo. Son útiles para este producto.
+4. Qué está bien y conservaría
+Elemento	Decisión
+Categorías visibles	Conservar; facilitan descubrir negocios.
+Filtros por categoría y piso	Conservar; corresponden a cómo se recorre una galería física.
+Logo y banner del negocio	Conservar si las imágenes ayudan a identificarlo.
+Modal de ficha	Conservar; evita navegar fuera del listado para consultar un negocio.
+Descuentos y premios separados	Conservar; son beneficios distintos.
+Favoritos sin registro	Conservar; añade utilidad sin obligar a crear una cuenta.
+Contacto directo	Priorizar; es una de las funciones centrales.
+
+5. Los tres cambios con mayor impacto
+
+1. Rediseñar las tarjetas
+
+La mayor parte de la experiencia ocurre en el listado. Una buena tarjeta mejora simultáneamente la estética, la lectura y la facilidad para contactar.
+
+
+
+2. Definir una identidad visual única
+
+Tomar la limpieza de la Demo 02 y darle calidez comercial. No copiar Apple ni conservar toda la estética oscura de la Demo 01.
+
+
+
+3. Acortar el camino hacia un negocio
+
+Hero compacto, buscador claro, categorías útiles, tarjetas legibles y contacto evidente. La promoción destacada debe complementar esa tarea.
+
+
+
+Conclusión
+La Demo 01 tiene más carácter, pero se acerca a la saturación. La Demo 02 es más ordenada, pero visualmente demasiado genérica. Ninguna necesita más funciones: necesitan una mejor dirección de diseño.
+
+Mi recomendación es trabajar una tercera iteración visual basada en la estructura de la Demo 02, con una paleta cálida, tarjetas compactas, jerarquía comercial y menos elementos decorativos.
+
+Una limitación importante: esta auditoría se basa en las capturas, el brief y el código CSS/HTML accesible. No he podido verificar mediante una sesión interactiva todos los estados de teclado, errores de carga, sincronización real de filtros ni comportamiento de los modales; esos puntos deben validarse antes de considerarlos errores confirmados.
