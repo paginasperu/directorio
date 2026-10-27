@@ -1,4 +1,4 @@
-// Verifica que los enlaces y las imágenes referenciadas existan.
+﻿// Verifica que los enlaces y las imágenes referenciadas existan.
 
 import { readFileSync, existsSync, readdirSync } from "node:fs";
 import { join, resolve, dirname } from "node:path";
@@ -65,7 +65,7 @@ for (const [file, rows, columns] of [
   }
 }
 
-const images = walk(join(root, "assets", "img", "businesses")).length;
+const images = walk(join(root, "data", "images")).length;
 
 if (problems.length) {
   console.error("Problemas encontrados:");

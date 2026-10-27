@@ -8,8 +8,8 @@
     "tipo": "Tienda de ropa",
     "whatsapp": "51955012834",
     "descripcion_corta": "Ropa y prendas para renovar tu estilo",
-    "logo": "https://directorio.oficial.pe/assets/img/businesses/1-logo.jpg",
-    "banner": "https://directorio.oficial.pe/assets/img/businesses/1-banner.jpg",
+    "logo": "https://directorio.oficial.pe/data/images/1-logo.jpg",
+    "banner": "https://directorio.oficial.pe/data/images/1-banner.jpg",
     "promociones": [
       {
         "id": 1,
@@ -19,7 +19,7 @@
         "precio_regular": 79.9,
         "precio_rebajado": 71.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/1-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/1-banner.jpg"
       },
       {
         "id": 86,
@@ -29,7 +29,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/1-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/1-banner.jpg"
       }
     ]
   },
@@ -42,8 +42,8 @@
     "tipo": "Repuestos para motos",
     "whatsapp": "51986037168",
     "descripcion_corta": "Repuestos y partes para tu moto",
-    "logo": "https://directorio.oficial.pe/assets/img/businesses/2-logo.jpg",
-    "banner": "https://directorio.oficial.pe/assets/img/businesses/2-banner.jpg",
+    "logo": "https://directorio.oficial.pe/data/images/2-logo.jpg",
+    "banner": "https://directorio.oficial.pe/data/images/2-banner.jpg",
     "promociones": [
       {
         "id": 2,
@@ -53,7 +53,7 @@
         "precio_regular": 249.9,
         "precio_rebajado": 224.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/2-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/2-banner.jpg"
       },
       {
         "id": 87,
@@ -63,7 +63,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/2-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/2-banner.jpg"
       }
     ]
   },
@@ -76,8 +76,8 @@
     "tipo": "Servicio técnico de celulares y laptops",
     "whatsapp": null,
     "descripcion_corta": "Reparación de celulares y laptops",
-    "logo": "https://directorio.oficial.pe/assets/img/businesses/3-logo.jpg",
-    "banner": "https://directorio.oficial.pe/assets/img/businesses/3-banner.jpg",
+    "logo": "https://directorio.oficial.pe/data/images/3-logo.jpg",
+    "banner": "https://directorio.oficial.pe/data/images/3-banner.jpg",
     "promociones": [
       {
         "id": 3,
@@ -87,7 +87,7 @@
         "precio_regular": 149.9,
         "precio_rebajado": 134.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/3-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/3-banner.jpg"
       },
       {
         "id": 88,
@@ -97,7 +97,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/3-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/3-banner.jpg"
       }
     ]
   },
@@ -110,8 +110,8 @@
     "tipo": "Tienda de cómics",
     "whatsapp": "51955071104",
     "descripcion_corta": "Cómics e historietas para coleccionar",
-    "logo": "https://directorio.oficial.pe/assets/img/businesses/4-logo.jpg",
-    "banner": "https://directorio.oficial.pe/assets/img/businesses/4-banner.jpg",
+    "logo": "https://directorio.oficial.pe/data/images/4-logo.jpg",
+    "banner": "https://directorio.oficial.pe/data/images/4-banner.jpg",
     "promociones": [
       {
         "id": 4,
@@ -121,7 +121,7 @@
         "precio_regular": 59.9,
         "precio_rebajado": 53.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/4-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/4-banner.jpg"
       },
       {
         "id": 89,
@@ -131,7 +131,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/4-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/4-banner.jpg"
       }
     ]
   },
@@ -144,8 +144,8 @@
     "tipo": "Restaurante",
     "whatsapp": null,
     "descripcion_corta": "Ramen, combos y comida japonesa",
-    "logo": "https://directorio.oficial.pe/assets/img/businesses/6-logo.jpg",
-    "banner": "https://directorio.oficial.pe/assets/img/businesses/6-banner.jpg",
+    "logo": "https://directorio.oficial.pe/data/images/6-logo.jpg",
+    "banner": "https://directorio.oficial.pe/data/images/6-banner.jpg",
     "promociones": [
       {
         "id": 6,
@@ -155,7 +155,7 @@
         "precio_regular": 69.9,
         "precio_rebajado": 62.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/6-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/6-banner.jpg"
       },
       {
         "id": 91,
@@ -165,7 +165,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/6-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/6-banner.jpg"
       }
     ]
   },
@@ -178,8 +178,8 @@
     "tipo": "Sistemas de seguridad",
     "whatsapp": null,
     "descripcion_corta": "Cámaras y sistemas de seguridad",
-    "logo": "https://directorio.oficial.pe/assets/img/businesses/7-logo.jpg",
-    "banner": "https://directorio.oficial.pe/assets/img/businesses/7-banner.jpg",
+    "logo": "https://directorio.oficial.pe/data/images/7-logo.jpg",
+    "banner": "https://directorio.oficial.pe/data/images/7-banner.jpg",
     "promociones": [
       {
         "id": 7,
@@ -189,7 +189,7 @@
         "precio_regular": 199.9,
         "precio_rebajado": 179.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/7-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/7-banner.jpg"
       },
       {
         "id": 92,
@@ -199,7 +199,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/7-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/7-banner.jpg"
       }
     ]
   },
@@ -212,8 +212,8 @@
     "tipo": "Salón de belleza",
     "whatsapp": null,
     "descripcion_corta": "Cortes, peinados y cuidado personal",
-    "logo": "https://directorio.oficial.pe/assets/img/businesses/10-logo.jpg",
-    "banner": "https://directorio.oficial.pe/assets/img/businesses/10-banner.jpg",
+    "logo": "https://directorio.oficial.pe/data/images/10-logo.jpg",
+    "banner": "https://directorio.oficial.pe/data/images/10-banner.jpg",
     "promociones": [
       {
         "id": 10,
@@ -223,7 +223,7 @@
         "precio_regular": 89.9,
         "precio_rebajado": 80.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/10-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/10-banner.jpg"
       },
       {
         "id": 95,
@@ -233,7 +233,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/10-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/10-banner.jpg"
       }
     ]
   },
@@ -246,8 +246,8 @@
     "tipo": "Spa",
     "whatsapp": null,
     "descripcion_corta": "Masajes y tratamientos para relajarte",
-    "logo": "https://directorio.oficial.pe/assets/img/businesses/14-logo.jpg",
-    "banner": "https://directorio.oficial.pe/assets/img/businesses/14-banner.jpg",
+    "logo": "https://directorio.oficial.pe/data/images/14-logo.jpg",
+    "banner": "https://directorio.oficial.pe/data/images/14-banner.jpg",
     "promociones": [
       {
         "id": 14,
@@ -257,7 +257,7 @@
         "precio_regular": 159.9,
         "precio_rebajado": 143.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/14-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/14-banner.jpg"
       },
       {
         "id": 99,
@@ -267,7 +267,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/14-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/14-banner.jpg"
       }
     ]
   },
@@ -280,8 +280,8 @@
     "tipo": "Tienda de regalos",
     "whatsapp": "51922910754",
     "descripcion_corta": "Poleras y regalos para parejas",
-    "logo": "https://directorio.oficial.pe/assets/img/businesses/18-logo.jpg",
-    "banner": "https://directorio.oficial.pe/assets/img/businesses/18-banner.jpg",
+    "logo": "https://directorio.oficial.pe/data/images/18-logo.jpg",
+    "banner": "https://directorio.oficial.pe/data/images/18-banner.jpg",
     "promociones": [
       {
         "id": 18,
@@ -291,7 +291,7 @@
         "precio_regular": 69.9,
         "precio_rebajado": 62.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/18-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/18-banner.jpg"
       },
       {
         "id": 103,
@@ -301,7 +301,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/18-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/18-banner.jpg"
       }
     ]
   },
@@ -314,8 +314,8 @@
     "tipo": "Masajes",
     "whatsapp": null,
     "descripcion_corta": "Masajes para relajarte y aliviar tensiones",
-    "logo": "https://directorio.oficial.pe/assets/img/businesses/28-logo.jpg",
-    "banner": "https://directorio.oficial.pe/assets/img/businesses/28-banner.jpg",
+    "logo": "https://directorio.oficial.pe/data/images/28-logo.jpg",
+    "banner": "https://directorio.oficial.pe/data/images/28-banner.jpg",
     "promociones": [
       {
         "id": 28,
@@ -325,7 +325,7 @@
         "precio_regular": 59.9,
         "precio_rebajado": 53.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/28-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/28-banner.jpg"
       },
       {
         "id": 113,
@@ -335,7 +335,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/28-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/28-banner.jpg"
       }
     ]
   },
@@ -348,8 +348,8 @@
     "tipo": "Masajes",
     "whatsapp": null,
     "descripcion_corta": "Masajes para soltar el estrés y descansar",
-    "logo": "https://directorio.oficial.pe/assets/img/businesses/29-logo.jpg",
-    "banner": "https://directorio.oficial.pe/assets/img/businesses/29-banner.jpg",
+    "logo": "https://directorio.oficial.pe/data/images/29-logo.jpg",
+    "banner": "https://directorio.oficial.pe/data/images/29-banner.jpg",
     "promociones": [
       {
         "id": 29,
@@ -359,7 +359,7 @@
         "precio_regular": 59.9,
         "precio_rebajado": 53.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/29-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/29-banner.jpg"
       },
       {
         "id": 114,
@@ -369,7 +369,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/29-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/29-banner.jpg"
       }
     ]
   },
@@ -382,8 +382,8 @@
     "tipo": "Farmacia",
     "whatsapp": null,
     "descripcion_corta": "Medicamentos y cuidado personal",
-    "logo": "https://directorio.oficial.pe/assets/img/businesses/35-logo.jpg",
-    "banner": "https://directorio.oficial.pe/assets/img/businesses/35-banner.jpg",
+    "logo": "https://directorio.oficial.pe/data/images/35-logo.jpg",
+    "banner": "https://directorio.oficial.pe/data/images/35-banner.jpg",
     "promociones": [
       {
         "id": 35,
@@ -393,7 +393,7 @@
         "precio_regular": 49.9,
         "precio_rebajado": 44.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/35-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/35-banner.jpg"
       },
       {
         "id": 120,
@@ -403,7 +403,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/35-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/35-banner.jpg"
       }
     ]
   },
@@ -416,8 +416,8 @@
     "tipo": "Sexshop",
     "whatsapp": null,
     "descripcion_corta": "Productos para adultos y bienestar íntimo",
-    "logo": "https://directorio.oficial.pe/assets/img/businesses/37-logo.jpg",
-    "banner": "https://directorio.oficial.pe/assets/img/businesses/37-banner.jpg",
+    "logo": "https://directorio.oficial.pe/data/images/37-logo.jpg",
+    "banner": "https://directorio.oficial.pe/data/images/37-banner.jpg",
     "promociones": [
       {
         "id": 37,
@@ -427,7 +427,7 @@
         "precio_regular": 99.9,
         "precio_rebajado": 89.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/37-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/37-banner.jpg"
       },
       {
         "id": 122,
@@ -437,7 +437,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/37-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/37-banner.jpg"
       }
     ]
   },
@@ -450,8 +450,8 @@
     "tipo": "Sexshop",
     "whatsapp": null,
     "descripcion_corta": "Productos para el bienestar íntimo",
-    "logo": "https://directorio.oficial.pe/assets/img/businesses/55-logo.jpg",
-    "banner": "https://directorio.oficial.pe/assets/img/businesses/55-banner.jpg",
+    "logo": "https://directorio.oficial.pe/data/images/55-logo.jpg",
+    "banner": "https://directorio.oficial.pe/data/images/55-banner.jpg",
     "promociones": [
       {
         "id": 55,
@@ -461,7 +461,7 @@
         "precio_regular": 129.9,
         "precio_rebajado": 116.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/55-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/55-banner.jpg"
       },
       {
         "id": 140,
@@ -471,7 +471,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/55-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/55-banner.jpg"
       }
     ]
   },
@@ -484,8 +484,8 @@
     "tipo": "Ferretería industrial",
     "whatsapp": null,
     "descripcion_corta": "Herramientas y equipos de medición",
-    "logo": "https://directorio.oficial.pe/assets/img/businesses/57-logo.jpg",
-    "banner": "https://directorio.oficial.pe/assets/img/businesses/57-banner.jpg",
+    "logo": "https://directorio.oficial.pe/data/images/57-logo.jpg",
+    "banner": "https://directorio.oficial.pe/data/images/57-banner.jpg",
     "promociones": [
       {
         "id": 57,
@@ -495,7 +495,7 @@
         "precio_regular": 149.9,
         "precio_rebajado": 134.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/57-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/57-banner.jpg"
       },
       {
         "id": 142,
@@ -505,7 +505,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/57-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/57-banner.jpg"
       }
     ]
   },
@@ -518,8 +518,8 @@
     "tipo": "Tienda de tabaco",
     "whatsapp": null,
     "descripcion_corta": "Productos de tabaco y accesorios",
-    "logo": "https://directorio.oficial.pe/assets/img/businesses/59-logo.jpg",
-    "banner": "https://directorio.oficial.pe/assets/img/businesses/59-banner.jpg",
+    "logo": "https://directorio.oficial.pe/data/images/59-logo.jpg",
+    "banner": "https://directorio.oficial.pe/data/images/59-banner.jpg",
     "promociones": [
       {
         "id": 59,
@@ -529,7 +529,7 @@
         "precio_regular": 59.9,
         "precio_rebajado": 53.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/59-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/59-banner.jpg"
       },
       {
         "id": 144,
@@ -539,7 +539,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/59-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/59-banner.jpg"
       }
     ]
   },
@@ -552,8 +552,8 @@
     "tipo": "Accesorios de moda",
     "whatsapp": null,
     "descripcion_corta": "Tacones y accesorios de moda para tu look",
-    "logo": "https://directorio.oficial.pe/assets/img/businesses/73-logo.jpg",
-    "banner": "https://directorio.oficial.pe/assets/img/businesses/73-banner.jpg",
+    "logo": "https://directorio.oficial.pe/data/images/73-logo.jpg",
+    "banner": "https://directorio.oficial.pe/data/images/73-banner.jpg",
     "promociones": [
       {
         "id": 73,
@@ -563,7 +563,7 @@
         "precio_regular": 89.9,
         "precio_rebajado": 80.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/73-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/73-banner.jpg"
       },
       {
         "id": 158,
@@ -573,7 +573,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/73-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/73-banner.jpg"
       }
     ]
   },
@@ -586,8 +586,8 @@
     "tipo": "Manicura y uñas",
     "whatsapp": null,
     "descripcion_corta": "Manicura, uñas y cuidado de manos",
-    "logo": "https://directorio.oficial.pe/assets/img/businesses/80-logo.jpg",
-    "banner": "https://directorio.oficial.pe/assets/img/businesses/80-banner.jpg",
+    "logo": "https://directorio.oficial.pe/data/images/80-logo.jpg",
+    "banner": "https://directorio.oficial.pe/data/images/80-banner.jpg",
     "promociones": [
       {
         "id": 80,
@@ -597,7 +597,7 @@
         "precio_regular": 119.9,
         "precio_rebajado": 107.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/80-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/80-banner.jpg"
       },
       {
         "id": 165,
@@ -607,7 +607,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/assets/img/businesses/80-banner.jpg"
+        "imagen": "https://directorio.oficial.pe/data/images/80-banner.jpg"
       }
     ]
   }
