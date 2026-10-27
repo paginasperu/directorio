@@ -1,7 +1,6 @@
-Proyecto: Directorio
-Mercado: galería en Perú
+Proyecto: directorio web
 Data: data-demo.txt
-Vistas: inicio y ficha
-Funciones: buscar, filtrar por categoría y piso, ordenar, favoritos, WhatsApp
-Tecnología: SPA, mobile first
-Condiciones: no inventar otra data ni funciones fuera de la lista
+Vistas: negocios, promociones, ficha negocio, ficha promoción
+Funciones: buscar, filtrar (categoría, tipo, piso, precio, modalidad), ordenar, cambiar vista (grilla, lista), guardar favoritos, contactar WhatsApp, llamar
+Tecnología: SPA, UX/UI, mobile first
+Condiciones: no inventar otra data ni funciones
