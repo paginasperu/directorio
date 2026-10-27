@@ -1,4 +1,4 @@
-// Capa de datos: carga, parseo y normalización.
+﻿// Capa de datos: carga, parseo y normalización.
 
 import { normalize, parseCsv } from "./csv.js";
 
@@ -75,7 +75,7 @@ function decoratePromo(row) {
     category: row.categoria,
     type: row.tipo,
     mode: row.modalidad,
-    image: imageUrl(row.imagen),
+    image: imageUrl(row.banner),
     profile: null,
   };
 }

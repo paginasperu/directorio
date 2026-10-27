@@ -19,7 +19,7 @@
         "precio_regular": 79.9,
         "precio_rebajado": 71.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/1-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/1-banner.jpg"
       },
       {
         "id": 86,
@@ -29,7 +29,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/1-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/1-banner.jpg"
       }
     ]
   },
@@ -53,7 +53,7 @@
         "precio_regular": 249.9,
         "precio_rebajado": 224.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/2-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/2-banner.jpg"
       },
       {
         "id": 87,
@@ -63,7 +63,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/2-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/2-banner.jpg"
       }
     ]
   },
@@ -87,7 +87,7 @@
         "precio_regular": 149.9,
         "precio_rebajado": 134.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/3-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/3-banner.jpg"
       },
       {
         "id": 88,
@@ -97,7 +97,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/3-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/3-banner.jpg"
       }
     ]
   },
@@ -121,7 +121,7 @@
         "precio_regular": 59.9,
         "precio_rebajado": 53.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/4-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/4-banner.jpg"
       },
       {
         "id": 89,
@@ -131,7 +131,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/4-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/4-banner.jpg"
       }
     ]
   },
@@ -155,7 +155,7 @@
         "precio_regular": 69.9,
         "precio_rebajado": 62.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/6-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/6-banner.jpg"
       },
       {
         "id": 91,
@@ -165,7 +165,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/6-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/6-banner.jpg"
       }
     ]
   },
@@ -189,7 +189,7 @@
         "precio_regular": 199.9,
         "precio_rebajado": 179.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/7-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/7-banner.jpg"
       },
       {
         "id": 92,
@@ -199,7 +199,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/7-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/7-banner.jpg"
       }
     ]
   },
@@ -223,7 +223,7 @@
         "precio_regular": 89.9,
         "precio_rebajado": 80.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/10-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/10-banner.jpg"
       },
       {
         "id": 95,
@@ -233,7 +233,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/10-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/10-banner.jpg"
       }
     ]
   },
@@ -257,7 +257,7 @@
         "precio_regular": 159.9,
         "precio_rebajado": 143.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/14-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/14-banner.jpg"
       },
       {
         "id": 99,
@@ -267,7 +267,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/14-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/14-banner.jpg"
       }
     ]
   },
@@ -291,7 +291,7 @@
         "precio_regular": 69.9,
         "precio_rebajado": 62.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/18-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/18-banner.jpg"
       },
       {
         "id": 103,
@@ -301,7 +301,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/18-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/18-banner.jpg"
       }
     ]
   },
@@ -325,7 +325,7 @@
         "precio_regular": 59.9,
         "precio_rebajado": 53.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/28-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/28-banner.jpg"
       },
       {
         "id": 113,
@@ -335,7 +335,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/28-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/28-banner.jpg"
       }
     ]
   },
@@ -359,7 +359,7 @@
         "precio_regular": 59.9,
         "precio_rebajado": 53.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/29-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/29-banner.jpg"
       },
       {
         "id": 114,
@@ -369,7 +369,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/29-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/29-banner.jpg"
       }
     ]
   },
@@ -393,7 +393,7 @@
         "precio_regular": 49.9,
         "precio_rebajado": 44.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/35-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/35-banner.jpg"
       },
       {
         "id": 120,
@@ -403,7 +403,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/35-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/35-banner.jpg"
       }
     ]
   },
@@ -427,7 +427,7 @@
         "precio_regular": 99.9,
         "precio_rebajado": 89.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/37-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/37-banner.jpg"
       },
       {
         "id": 122,
@@ -437,7 +437,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/37-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/37-banner.jpg"
       }
     ]
   },
@@ -461,7 +461,7 @@
         "precio_regular": 129.9,
         "precio_rebajado": 116.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/55-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/55-banner.jpg"
       },
       {
         "id": 140,
@@ -471,7 +471,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/55-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/55-banner.jpg"
       }
     ]
   },
@@ -495,7 +495,7 @@
         "precio_regular": 149.9,
         "precio_rebajado": 134.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/57-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/57-banner.jpg"
       },
       {
         "id": 142,
@@ -505,7 +505,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/57-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/57-banner.jpg"
       }
     ]
   },
@@ -529,7 +529,7 @@
         "precio_regular": 59.9,
         "precio_rebajado": 53.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/59-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/59-banner.jpg"
       },
       {
         "id": 144,
@@ -539,7 +539,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/59-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/59-banner.jpg"
       }
     ]
   },
@@ -563,7 +563,7 @@
         "precio_regular": 89.9,
         "precio_rebajado": 80.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/73-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/73-banner.jpg"
       },
       {
         "id": 158,
@@ -573,7 +573,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/73-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/73-banner.jpg"
       }
     ]
   },
@@ -597,7 +597,7 @@
         "precio_regular": 119.9,
         "precio_rebajado": 107.91,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/80-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/80-banner.jpg"
       },
       {
         "id": 165,
@@ -607,7 +607,7 @@
         "precio_regular": null,
         "precio_rebajado": null,
         "vigencia_hasta": "2026-12-31",
-        "imagen": "https://directorio.oficial.pe/data/images/80-banner.jpg"
+        "banner": "https://directorio.oficial.pe/data/images/80-banner.jpg"
       }
     ]
   }

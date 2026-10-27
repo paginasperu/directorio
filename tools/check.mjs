@@ -51,7 +51,7 @@ for (const promo of promos) {
 
 for (const [file, rows, columns] of [
   ["data/negocios.csv", negocios, ["logo", "banner"]],
-  ["data/promociones.csv", promos, ["imagen"]],
+  ["data/promociones.csv", promos, ["banner"]],
 ]) {
   for (const column of columns) {
     if (!rows.length || !(column in rows[0])) {

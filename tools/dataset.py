@@ -45,7 +45,7 @@ COPY (
       categoria,
       tipo,
       modalidad,
-      imagen
+      banner
     FROM read_csv('data/promociones.csv', header = true, all_varchar = true)
   )
   SELECT n.*, coalesce(list(p ORDER BY p.id) FILTER (WHERE p.id IS NOT NULL), []) AS promociones
@@ -118,7 +118,7 @@ if "--demo" in sys.argv:
                     "precio_regular": promo["precio_regular"],
                     "precio_rebajado": promo["precio_rebajado"],
                     "vigencia_hasta": promo["vigencia_hasta"],
-                    "imagen": base + promo["imagen"],
+                    "banner": base + promo["banner"],
                 }
                 for promo in negocio["promociones"]
             ],
