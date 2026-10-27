@@ -77,27 +77,46 @@ else:
 con.sql(SQL)
 print("ok: data/data.json")
 
-# Muestra reducida para generadores de UI: pocos negocios, URLs absolutas.
+# Muestra reducida para generadores de UI: 10 negocios, URLs absolutas y dos CSV.
 # Uso: python tools/dataset.py --demo
 if "--demo" in sys.argv:
+    import csv
+
     data = json.loads(Path("data/data.json").read_text(encoding="utf-8"))
     base = "https://directorio.oficial.pe/"
+    LIMITE = 10
 
-    muestra, categorias = [], set()
+    seleccion = []
+
+    def agregar(negocio):
+        if negocio and all(x["id"] != negocio["id"] for x in seleccion):
+            seleccion.append(negocio)
+
+    # Casos raros primero, luego variedad de categorías.
+    agregar(max(data, key=lambda n: len(n["nombre"])))
+    agregar(next((n for n in data if not n["whatsapp"] and n["telefono_fijo"]), None))
+
+    categorias = set()
     for negocio in data:
-        if negocio["categoria"] not in categorias:
-            categorias.add(negocio["categoria"])
-            muestra.append(negocio)
-
-    extras = sorted(data, key=lambda n: (n["whatsapp"] is not None, -len(n["nombre"])))
-    for negocio in extras:
-        if len(muestra) >= 18:
+        if len(seleccion) >= LIMITE:
             break
-        if negocio not in muestra:
-            muestra.append(negocio)
+        if negocio["categoria"] in categorias:
+            continue
+        sin_whatsapp = sum(1 for x in seleccion if not x["whatsapp"])
+        if not negocio["whatsapp"] and sin_whatsapp >= 4:
+            continue
+        categorias.add(negocio["categoria"])
+        agregar(negocio)
+
+    for negocio in data:
+        if len(seleccion) >= LIMITE:
+            break
+        agregar(negocio)
+
+    muestra = sorted(seleccion[:LIMITE], key=lambda n: n["id"])
 
     recorte = []
-    for negocio in sorted(muestra, key=lambda n: n["id"]):
+    for negocio in muestra:
         recorte.append({
             "id": negocio["id"],
             "nombre": negocio["nombre"],
@@ -106,6 +125,7 @@ if "--demo" in sys.argv:
             "categoria": negocio["categoria"],
             "tipo": negocio["tipo"],
             "whatsapp": negocio["whatsapp"],
+            "telefono_fijo": negocio["telefono_fijo"],
             "descripcion_corta": negocio["descripcion_corta"],
             "logo": base + negocio["logo"],
             "banner": base + negocio["banner"],
@@ -127,5 +147,21 @@ if "--demo" in sys.argv:
     Path("data/muestra.txt").write_text(
         json.dumps(recorte, ensure_ascii=False, indent=2), encoding="utf-8"
     )
-    print(f"ok: data/muestra.txt ({len(recorte)} negocios, muestra)")
 
+    ids = {str(n["id"]) for n in muestra}
+    for origen, destino, clave in [
+        ("data/negocios.csv", "data/negocios-muestra.csv", "id"),
+        ("data/promociones.csv", "data/promociones-muestra.csv", "negocio_id"),
+    ]:
+        filas = [
+            f for f in csv.DictReader(open(origen, encoding="utf-8-sig", newline=""))
+            if f[clave] in ids
+        ]
+        with open(destino, "w", encoding="utf-8", newline="") as salida:
+            escritor = csv.DictWriter(salida, fieldnames=list(filas[0].keys()), lineterminator="\r\n")
+            escritor.writeheader()
+            escritor.writerows(filas)
+
+    print(f"ok: data/muestra.txt ({len(recorte)} negocios)")
+    print(f"ok: data/negocios-muestra.csv ({len(muestra)} filas)")
+    print(f"ok: data/promociones-muestra.csv ({sum(len(n['promociones']) for n in recorte)} filas)")
