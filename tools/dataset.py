@@ -1,4 +1,4 @@
-# Genera data/data.json anidado a partir de los CSV.
+﻿# Genera data/data.json anidado a partir de los CSV.
 # Determinista: misma data + mismo SQL = mismo JSON.
 # Tipos explícitos: el CSV entra todo como texto y aquí se decide qué es número.
 # whatsapp, telefono_fijo y tienda se quedan texto: son identificadores.
@@ -124,8 +124,8 @@ if "--demo" in sys.argv:
             ],
         })
 
-    Path("data/data-demo.txt").write_text(
+    Path("data/muestra.txt").write_text(
         json.dumps(recorte, ensure_ascii=False, indent=2), encoding="utf-8"
     )
-    print(f"ok: data/data-demo.txt ({len(recorte)} negocios, muestra)")
+    print(f"ok: data/muestra.txt ({len(recorte)} negocios, muestra)")
 

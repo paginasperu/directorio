@@ -1,6 +1,0 @@
-Proyecto: directorio web
-Data: data-demo.txt
-Vistas: negocios, promociones, ficha negocio, ficha promoción
-Funciones: buscar, filtrar (categoría, tipo, piso, precio, modalidad), ordenar, cambiar vista (grilla, lista), guardar favoritos, contactar WhatsApp, llamar
-Tecnología: SPA, UX/UI, adaptable
-Condiciones: no inventar otra data ni funciones
