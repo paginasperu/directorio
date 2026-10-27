@@ -3,6 +3,10 @@
 # Tipos explícitos: el CSV entra todo como texto y aquí se decide qué es número.
 # whatsapp, telefono_fijo y tienda se quedan texto: son identificadores.
 
+import json
+import sys
+from pathlib import Path
+
 import duckdb
 
 SQL = """
@@ -72,3 +76,56 @@ else:
 
 con.sql(SQL)
 print("ok: data/data.json")
+
+# Muestra reducida para generadores de UI: pocos negocios, URLs absolutas.
+# Uso: python tools/dataset.py --demo
+if "--demo" in sys.argv:
+    data = json.loads(Path("data/data.json").read_text(encoding="utf-8"))
+    base = "https://directorio.oficial.pe/"
+
+    muestra, categorias = [], set()
+    for negocio in data:
+        if negocio["categoria"] not in categorias:
+            categorias.add(negocio["categoria"])
+            muestra.append(negocio)
+
+    extras = sorted(data, key=lambda n: (n["whatsapp"] is not None, -len(n["nombre"])))
+    for negocio in extras:
+        if len(muestra) >= 18:
+            break
+        if negocio not in muestra:
+            muestra.append(negocio)
+
+    recorte = []
+    for negocio in sorted(muestra, key=lambda n: n["id"]):
+        recorte.append({
+            "id": negocio["id"],
+            "nombre": negocio["nombre"],
+            "piso": negocio["piso"],
+            "tienda": negocio["tienda"],
+            "categoria": negocio["categoria"],
+            "tipo": negocio["tipo"],
+            "whatsapp": negocio["whatsapp"],
+            "descripcion_corta": negocio["descripcion_corta"],
+            "logo": base + negocio["logo"],
+            "banner": base + negocio["banner"],
+            "promociones": [
+                {
+                    "id": promo["id"],
+                    "titulo": promo["titulo"],
+                    "tipo": promo["tipo"],
+                    "modalidad": promo["modalidad"],
+                    "precio_regular": promo["precio_regular"],
+                    "precio_rebajado": promo["precio_rebajado"],
+                    "vigencia_hasta": promo["vigencia_hasta"],
+                    "imagen": base + promo["imagen"],
+                }
+                for promo in negocio["promociones"]
+            ],
+        })
+
+    Path("data/data-demo.txt").write_text(
+        json.dumps(recorte, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+    print(f"ok: data/data-demo.txt ({len(recorte)} negocios, muestra)")
+

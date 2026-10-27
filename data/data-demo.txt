@@ -1,0 +1,614 @@
+[
+  {
+    "id": 1,
+    "nombre": "Fashion Outlet Perú",
+    "piso": 1,
+    "tienda": "101",
+    "categoria": "Moda",
+    "tipo": "Tienda de ropa",
+    "whatsapp": "51955012834",
+    "descripcion_corta": "Ropa y prendas para renovar tu estilo",
+    "logo": "https://directorio.oficial.pe/assets/img/businesses/1-logo.jpg",
+    "banner": "https://directorio.oficial.pe/assets/img/businesses/1-banner.jpg",
+    "promociones": [
+      {
+        "id": 1,
+        "titulo": "Vestido urbano Aurora",
+        "tipo": "Descuento",
+        "modalidad": null,
+        "precio_regular": 79.9,
+        "precio_rebajado": 71.91,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/1-banner.jpg"
+      },
+      {
+        "id": 86,
+        "titulo": "Polo básico de algodón",
+        "tipo": "Premio",
+        "modalidad": "Sorteo",
+        "precio_regular": null,
+        "precio_rebajado": null,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/1-banner.jpg"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "nombre": "JG Motos",
+    "piso": 2,
+    "tienda": "201",
+    "categoria": "Motos",
+    "tipo": "Repuestos para motos",
+    "whatsapp": "51986037168",
+    "descripcion_corta": "Repuestos y partes para tu moto",
+    "logo": "https://directorio.oficial.pe/assets/img/businesses/2-logo.jpg",
+    "banner": "https://directorio.oficial.pe/assets/img/businesses/2-banner.jpg",
+    "promociones": [
+      {
+        "id": 2,
+        "titulo": "Kit de mantenimiento para moto 150 cc",
+        "tipo": "Descuento",
+        "modalidad": null,
+        "precio_regular": 249.9,
+        "precio_rebajado": 224.91,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/2-banner.jpg"
+      },
+      {
+        "id": 87,
+        "titulo": "Cambio de aceite para motocicleta",
+        "tipo": "Premio",
+        "modalidad": "Concurso",
+        "precio_regular": null,
+        "precio_rebajado": null,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/2-banner.jpg"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "nombre": "DMAX",
+    "piso": 3,
+    "tienda": "301",
+    "categoria": "Tecnología",
+    "tipo": "Servicio técnico de celulares y laptops",
+    "whatsapp": null,
+    "descripcion_corta": "Reparación de celulares y laptops",
+    "logo": "https://directorio.oficial.pe/assets/img/businesses/3-logo.jpg",
+    "banner": "https://directorio.oficial.pe/assets/img/businesses/3-banner.jpg",
+    "promociones": [
+      {
+        "id": 3,
+        "titulo": "Diagnóstico y limpieza de laptop",
+        "tipo": "Descuento",
+        "modalidad": null,
+        "precio_regular": 149.9,
+        "precio_rebajado": 134.91,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/3-banner.jpg"
+      },
+      {
+        "id": 88,
+        "titulo": "Limpieza interna de laptop",
+        "tipo": "Premio",
+        "modalidad": "Canje",
+        "precio_regular": null,
+        "precio_rebajado": null,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/3-banner.jpg"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "nombre": "Gekko Bookstore",
+    "piso": 4,
+    "tienda": "401",
+    "categoria": "Entretenimiento",
+    "tipo": "Tienda de cómics",
+    "whatsapp": "51955071104",
+    "descripcion_corta": "Cómics e historietas para coleccionar",
+    "logo": "https://directorio.oficial.pe/assets/img/businesses/4-logo.jpg",
+    "banner": "https://directorio.oficial.pe/assets/img/businesses/4-banner.jpg",
+    "promociones": [
+      {
+        "id": 4,
+        "titulo": "Pack de 3 cómics de aventura",
+        "tipo": "Descuento",
+        "modalidad": null,
+        "precio_regular": 59.9,
+        "precio_rebajado": 53.91,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/4-banner.jpg"
+      },
+      {
+        "id": 89,
+        "titulo": "Cómic de aventura, edición regular",
+        "tipo": "Premio",
+        "modalidad": "Sorteo",
+        "precio_regular": null,
+        "precio_rebajado": null,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/4-banner.jpg"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "nombre": "Kuro Kuma",
+    "piso": 2,
+    "tienda": "202",
+    "categoria": "Comida",
+    "tipo": "Restaurante",
+    "whatsapp": null,
+    "descripcion_corta": "Ramen, combos y comida japonesa",
+    "logo": "https://directorio.oficial.pe/assets/img/businesses/6-logo.jpg",
+    "banner": "https://directorio.oficial.pe/assets/img/businesses/6-banner.jpg",
+    "promociones": [
+      {
+        "id": 6,
+        "titulo": "Combo ramen clásico con bebida",
+        "tipo": "Descuento",
+        "modalidad": null,
+        "precio_regular": 69.9,
+        "precio_rebajado": 62.91,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/6-banner.jpg"
+      },
+      {
+        "id": 91,
+        "titulo": "Postre de la casa para compartir",
+        "tipo": "Premio",
+        "modalidad": "Canje",
+        "precio_regular": null,
+        "precio_rebajado": null,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/6-banner.jpg"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "nombre": "Latino Seguridad",
+    "piso": 3,
+    "tienda": "302",
+    "categoria": "Servicios",
+    "tipo": "Sistemas de seguridad",
+    "whatsapp": null,
+    "descripcion_corta": "Cámaras y sistemas de seguridad",
+    "logo": "https://directorio.oficial.pe/assets/img/businesses/7-logo.jpg",
+    "banner": "https://directorio.oficial.pe/assets/img/businesses/7-banner.jpg",
+    "promociones": [
+      {
+        "id": 7,
+        "titulo": "Kit de videovigilancia de 4 cámaras",
+        "tipo": "Descuento",
+        "modalidad": null,
+        "precio_regular": 199.9,
+        "precio_rebajado": 179.91,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/7-banner.jpg"
+      },
+      {
+        "id": 92,
+        "titulo": "Instalación de cámara de seguridad interior",
+        "tipo": "Premio",
+        "modalidad": "Sorteo",
+        "precio_regular": null,
+        "precio_rebajado": null,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/7-banner.jpg"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "nombre": "Nasareth",
+    "piso": 2,
+    "tienda": "203",
+    "categoria": "Belleza",
+    "tipo": "Salón de belleza",
+    "whatsapp": null,
+    "descripcion_corta": "Cortes, peinados y cuidado personal",
+    "logo": "https://directorio.oficial.pe/assets/img/businesses/10-logo.jpg",
+    "banner": "https://directorio.oficial.pe/assets/img/businesses/10-banner.jpg",
+    "promociones": [
+      {
+        "id": 10,
+        "titulo": "Manicure semipermanente con diseño",
+        "tipo": "Descuento",
+        "modalidad": null,
+        "precio_regular": 89.9,
+        "precio_rebajado": 80.91,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/10-banner.jpg"
+      },
+      {
+        "id": 95,
+        "titulo": "Tratamiento capilar nutritivo",
+        "tipo": "Premio",
+        "modalidad": "Sorteo",
+        "precio_regular": null,
+        "precio_rebajado": null,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/10-banner.jpg"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "nombre": "Marabu Spa",
+    "piso": 2,
+    "tienda": "204",
+    "categoria": "Spa",
+    "tipo": "Spa",
+    "whatsapp": null,
+    "descripcion_corta": "Masajes y tratamientos para relajarte",
+    "logo": "https://directorio.oficial.pe/assets/img/businesses/14-logo.jpg",
+    "banner": "https://directorio.oficial.pe/assets/img/businesses/14-banner.jpg",
+    "promociones": [
+      {
+        "id": 14,
+        "titulo": "Ritual facial hidratante de 60 minutos",
+        "tipo": "Descuento",
+        "modalidad": null,
+        "precio_regular": 159.9,
+        "precio_rebajado": 143.91,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/14-banner.jpg"
+      },
+      {
+        "id": 99,
+        "titulo": "Mascarilla facial hidratante",
+        "tipo": "Premio",
+        "modalidad": "Concurso",
+        "precio_regular": null,
+        "precio_rebajado": null,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/14-banner.jpg"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "nombre": "Poleras para Enamorados",
+    "piso": 2,
+    "tienda": "205",
+    "categoria": "Regalos",
+    "tipo": "Tienda de regalos",
+    "whatsapp": "51922910754",
+    "descripcion_corta": "Poleras y regalos para parejas",
+    "logo": "https://directorio.oficial.pe/assets/img/businesses/18-logo.jpg",
+    "banner": "https://directorio.oficial.pe/assets/img/businesses/18-banner.jpg",
+    "promociones": [
+      {
+        "id": 18,
+        "titulo": "Pack de dos poleras estampadas",
+        "tipo": "Descuento",
+        "modalidad": null,
+        "precio_regular": 69.9,
+        "precio_rebajado": 62.91,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/18-banner.jpg"
+      },
+      {
+        "id": 103,
+        "titulo": "Polo estampado para pareja",
+        "tipo": "Premio",
+        "modalidad": "Canje",
+        "precio_regular": null,
+        "precio_rebajado": null,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/18-banner.jpg"
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "nombre": "Masajes Antiestrés 1",
+    "piso": 4,
+    "tienda": "407",
+    "categoria": "Spa",
+    "tipo": "Masajes",
+    "whatsapp": null,
+    "descripcion_corta": "Masajes para relajarte y aliviar tensiones",
+    "logo": "https://directorio.oficial.pe/assets/img/businesses/28-logo.jpg",
+    "banner": "https://directorio.oficial.pe/assets/img/businesses/28-banner.jpg",
+    "promociones": [
+      {
+        "id": 28,
+        "titulo": "Masaje descontracturante de espalda",
+        "tipo": "Descuento",
+        "modalidad": null,
+        "precio_regular": 59.9,
+        "precio_rebajado": 53.91,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/28-banner.jpg"
+      },
+      {
+        "id": 113,
+        "titulo": "Masaje localizado de espalda",
+        "tipo": "Premio",
+        "modalidad": "Sorteo",
+        "precio_regular": null,
+        "precio_rebajado": null,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/28-banner.jpg"
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "nombre": "Masajes Antiestrés 2",
+    "piso": 1,
+    "tienda": "108",
+    "categoria": "Spa",
+    "tipo": "Masajes",
+    "whatsapp": null,
+    "descripcion_corta": "Masajes para soltar el estrés y descansar",
+    "logo": "https://directorio.oficial.pe/assets/img/businesses/29-logo.jpg",
+    "banner": "https://directorio.oficial.pe/assets/img/businesses/29-banner.jpg",
+    "promociones": [
+      {
+        "id": 29,
+        "titulo": "Masaje antiestrés de cuerpo completo",
+        "tipo": "Descuento",
+        "modalidad": null,
+        "precio_regular": 59.9,
+        "precio_rebajado": 53.91,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/29-banner.jpg"
+      },
+      {
+        "id": 114,
+        "titulo": "Masaje relajante de cuello y hombros",
+        "tipo": "Premio",
+        "modalidad": "Concurso",
+        "precio_regular": null,
+        "precio_rebajado": null,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/29-banner.jpg"
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "nombre": "BCJ",
+    "piso": 3,
+    "tienda": "309",
+    "categoria": "Salud",
+    "tipo": "Farmacia",
+    "whatsapp": null,
+    "descripcion_corta": "Medicamentos y cuidado personal",
+    "logo": "https://directorio.oficial.pe/assets/img/businesses/35-logo.jpg",
+    "banner": "https://directorio.oficial.pe/assets/img/businesses/35-banner.jpg",
+    "promociones": [
+      {
+        "id": 35,
+        "titulo": "Botiquín básico de primeros auxilios",
+        "tipo": "Descuento",
+        "modalidad": null,
+        "precio_regular": 49.9,
+        "precio_rebajado": 44.91,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/35-banner.jpg"
+      },
+      {
+        "id": 120,
+        "titulo": "Alcohol en gel de bolsillo",
+        "tipo": "Premio",
+        "modalidad": "Concurso",
+        "precio_regular": null,
+        "precio_rebajado": null,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/35-banner.jpg"
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "nombre": "Sexshop Vip Lince",
+    "piso": 1,
+    "tienda": "110",
+    "categoria": "Sexshop",
+    "tipo": "Sexshop",
+    "whatsapp": null,
+    "descripcion_corta": "Productos para adultos y bienestar íntimo",
+    "logo": "https://directorio.oficial.pe/assets/img/businesses/37-logo.jpg",
+    "banner": "https://directorio.oficial.pe/assets/img/businesses/37-banner.jpg",
+    "promociones": [
+      {
+        "id": 37,
+        "titulo": "Kit de bienestar íntimo esencial",
+        "tipo": "Descuento",
+        "modalidad": null,
+        "precio_regular": 99.9,
+        "precio_rebajado": 89.91,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/37-banner.jpg"
+      },
+      {
+        "id": 122,
+        "titulo": "Lubricante íntimo base agua, 50 ml",
+        "tipo": "Premio",
+        "modalidad": "Sorteo",
+        "precio_regular": null,
+        "precio_rebajado": null,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/37-banner.jpg"
+      }
+    ]
+  },
+  {
+    "id": 55,
+    "nombre": "Bathmate Hydromax Peru",
+    "piso": 3,
+    "tienda": "314",
+    "categoria": "Sexshop",
+    "tipo": "Sexshop",
+    "whatsapp": null,
+    "descripcion_corta": "Productos para el bienestar íntimo",
+    "logo": "https://directorio.oficial.pe/assets/img/businesses/55-logo.jpg",
+    "banner": "https://directorio.oficial.pe/assets/img/businesses/55-banner.jpg",
+    "promociones": [
+      {
+        "id": 55,
+        "titulo": "Set de cuidado íntimo Hydromax",
+        "tipo": "Descuento",
+        "modalidad": null,
+        "precio_regular": 129.9,
+        "precio_rebajado": 116.91,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/55-banner.jpg"
+      },
+      {
+        "id": 140,
+        "titulo": "Estuche de viaje Hydromax",
+        "tipo": "Premio",
+        "modalidad": "Sorteo",
+        "precio_regular": null,
+        "precio_rebajado": null,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/55-banner.jpg"
+      }
+    ]
+  },
+  {
+    "id": 57,
+    "nombre": "Dertel Peru",
+    "piso": 1,
+    "tienda": "115",
+    "categoria": "Herramientas",
+    "tipo": "Ferretería industrial",
+    "whatsapp": null,
+    "descripcion_corta": "Herramientas y equipos de medición",
+    "logo": "https://directorio.oficial.pe/assets/img/businesses/57-logo.jpg",
+    "banner": "https://directorio.oficial.pe/assets/img/businesses/57-banner.jpg",
+    "promociones": [
+      {
+        "id": 57,
+        "titulo": "Multímetro digital con puntas de prueba",
+        "tipo": "Descuento",
+        "modalidad": null,
+        "precio_regular": 149.9,
+        "precio_rebajado": 134.91,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/57-banner.jpg"
+      },
+      {
+        "id": 142,
+        "titulo": "Juego de puntas para destornillador",
+        "tipo": "Premio",
+        "modalidad": "Canje",
+        "precio_regular": null,
+        "precio_rebajado": null,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/57-banner.jpg"
+      }
+    ]
+  },
+  {
+    "id": 59,
+    "nombre": "Burning Toys",
+    "piso": 3,
+    "tienda": "315",
+    "categoria": "Otros",
+    "tipo": "Tienda de tabaco",
+    "whatsapp": null,
+    "descripcion_corta": "Productos de tabaco y accesorios",
+    "logo": "https://directorio.oficial.pe/assets/img/businesses/59-logo.jpg",
+    "banner": "https://directorio.oficial.pe/assets/img/businesses/59-banner.jpg",
+    "promociones": [
+      {
+        "id": 59,
+        "titulo": "Kit de accesorios para fumador adulto",
+        "tipo": "Descuento",
+        "modalidad": null,
+        "precio_regular": 59.9,
+        "precio_rebajado": 53.91,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/59-banner.jpg"
+      },
+      {
+        "id": 144,
+        "titulo": "Encendedor recargable para adulto",
+        "tipo": "Premio",
+        "modalidad": "Concurso",
+        "precio_regular": null,
+        "precio_rebajado": null,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/59-banner.jpg"
+      }
+    ]
+  },
+  {
+    "id": 73,
+    "nombre": "Ponte Tacones y Más",
+    "piso": 1,
+    "tienda": "119",
+    "categoria": "Moda",
+    "tipo": "Accesorios de moda",
+    "whatsapp": null,
+    "descripcion_corta": "Tacones y accesorios de moda para tu look",
+    "logo": "https://directorio.oficial.pe/assets/img/businesses/73-logo.jpg",
+    "banner": "https://directorio.oficial.pe/assets/img/businesses/73-banner.jpg",
+    "promociones": [
+      {
+        "id": 73,
+        "titulo": "Tacones clásicos de punta fina",
+        "tipo": "Descuento",
+        "modalidad": null,
+        "precio_regular": 89.9,
+        "precio_rebajado": 80.91,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/73-banner.jpg"
+      },
+      {
+        "id": 158,
+        "titulo": "Accesorio para calzado de tacón",
+        "tipo": "Premio",
+        "modalidad": "Sorteo",
+        "precio_regular": null,
+        "precio_rebajado": null,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/73-banner.jpg"
+      }
+    ]
+  },
+  {
+    "id": 80,
+    "nombre": "Linduras Studio Nails",
+    "piso": 4,
+    "tienda": "420",
+    "categoria": "Belleza",
+    "tipo": "Manicura y uñas",
+    "whatsapp": null,
+    "descripcion_corta": "Manicura, uñas y cuidado de manos",
+    "logo": "https://directorio.oficial.pe/assets/img/businesses/80-logo.jpg",
+    "banner": "https://directorio.oficial.pe/assets/img/businesses/80-banner.jpg",
+    "promociones": [
+      {
+        "id": 80,
+        "titulo": "Manicure gel con diseño minimalista",
+        "tipo": "Descuento",
+        "modalidad": null,
+        "precio_regular": 119.9,
+        "precio_rebajado": 107.91,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/80-banner.jpg"
+      },
+      {
+        "id": 165,
+        "titulo": "Decoración sencilla para una uña",
+        "tipo": "Premio",
+        "modalidad": "Concurso",
+        "precio_regular": null,
+        "precio_rebajado": null,
+        "vigencia_hasta": "2026-12-31",
+        "imagen": "https://directorio.oficial.pe/assets/img/businesses/80-banner.jpg"
+      }
+    ]
+  }
+]
