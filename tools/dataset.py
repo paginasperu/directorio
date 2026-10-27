@@ -150,8 +150,8 @@ if "--demo" in sys.argv:
 
     ids = {str(n["id"]) for n in muestra}
     for origen, destino, clave in [
-        ("data/negocios.csv", "data/negocios-muestra.csv", "id"),
-        ("data/promociones.csv", "data/promociones-muestra.csv", "negocio_id"),
+        ("data/negocios.csv", "data/muestra-negocios.csv", "id"),
+        ("data/promociones.csv", "data/muestra-promociones.csv", "negocio_id"),
     ]:
         filas = [
             f for f in csv.DictReader(open(origen, encoding="utf-8-sig", newline=""))
@@ -163,5 +163,5 @@ if "--demo" in sys.argv:
             escritor.writerows(filas)
 
     print(f"ok: data/muestra.txt ({len(recorte)} negocios)")
-    print(f"ok: data/negocios-muestra.csv ({len(muestra)} filas)")
-    print(f"ok: data/promociones-muestra.csv ({sum(len(n['promociones']) for n in recorte)} filas)")
+    print(f"ok: data/muestra-negocios.csv ({len(muestra)} filas)")
+    print(f"ok: data/muestra-promociones.csv ({sum(len(n['promociones']) for n in recorte)} filas)")
