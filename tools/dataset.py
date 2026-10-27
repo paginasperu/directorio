@@ -149,14 +149,18 @@ if "--demo" in sys.argv:
     )
 
     ids = {str(n["id"]) for n in muestra}
-    for origen, destino, clave in [
-        ("data/negocios.csv", "data/muestra-negocios.csv", "id"),
-        ("data/promociones.csv", "data/muestra-promociones.csv", "negocio_id"),
+    for origen, destino, clave, columnas in [
+        ("data/negocios.csv", "data/muestra-negocios.csv", "id", ["logo", "banner"]),
+        ("data/promociones.csv", "data/muestra-promociones.csv", "negocio_id", ["banner"]),
     ]:
         filas = [
             f for f in csv.DictReader(open(origen, encoding="utf-8-sig", newline=""))
             if f[clave] in ids
         ]
+        for fila in filas:
+            for columna in columnas:
+                if fila.get(columna) and not fila[columna].startswith("http"):
+                    fila[columna] = base + fila[columna]
         with open(destino, "w", encoding="utf-8", newline="") as salida:
             escritor = csv.DictWriter(salida, fieldnames=list(filas[0].keys()), lineterminator="\r\n")
             escritor.writeheader()
