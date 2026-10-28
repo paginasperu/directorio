@@ -11,8 +11,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../../assets/css/tailwind.css">
     <link rel="stylesheet" href="../../assets/css/styles.css">
-    <link rel="stylesheet" href="style.css?v=18">
+    <link rel="stylesheet" href="style.css?v=19">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        /* Variantes de diseño para comparar sin tocar la versión principal.
+           Uso: ?cats=b&promos=b (a = actual, b = propuesta B, c = propuesta C) */
+        (() => {
+            const params = new URLSearchParams(location.search);
+            const root = document.documentElement;
+            const cats = params.get("cats");
+            const promos = params.get("promos");
+            if (cats && /^[a-z]$/.test(cats)) root.dataset.vcats = cats;
+            if (promos && /^[a-z]$/.test(promos)) root.dataset.vpromos = promos;
+        })();
+    </script>
 </head>
 <body class="fm-page min-h-screen flex flex-col">
 
@@ -103,31 +115,33 @@
 
     <main class="fm-main">
 
-        <div id="resultsToolbar" class="results-toolbar flex items-center justify-between gap-3 mb-4 flex-wrap" aria-label="Orden y filtros de resultados">
-            <p id="resultsCount" class="results-count text-xs sm:text-sm font-bold text-slate-600 m-0" aria-live="polite">Cargando...</p>
+        <div class="results-panel" id="resultsPanel">
+            <div id="resultsToolbar" class="results-toolbar flex items-center justify-between gap-3 mb-4 flex-wrap" aria-label="Orden y filtros de resultados">
+                <p id="resultsCount" class="results-count text-xs sm:text-sm font-bold text-slate-600 m-0" aria-live="polite">Cargando...</p>
 
-            <div class="results-actions flex items-center gap-2">
-                <label for="sortSelect" class="sr-only">Ordenar resultados</label>
-                <select id="sortSelect" aria-label="Ordenar resultados" class="results-sort h-9 px-3 bg-white border border-slate-300 rounded-lg text-xs sm:text-sm font-medium text-slate-700 hover:bg-slate-50 transition shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-300">
-                    <option value="original">Orden original</option>
-                    <option value="promo">Con promoción primero</option>
-                    <option value="piso">Piso (menor a mayor)</option>
-                    <option value="name">Nombre AZ</option>
-                </select>
+                <div class="results-actions flex items-center gap-2">
+                    <label for="sortSelect" class="sr-only">Ordenar resultados</label>
+                    <select id="sortSelect" aria-label="Ordenar resultados" class="results-sort h-9 px-3 bg-white border border-slate-300 rounded-lg text-xs sm:text-sm font-medium text-slate-700 hover:bg-slate-50 transition shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-300">
+                        <option value="original">Orden original</option>
+                        <option value="promo">Con promoción primero</option>
+                        <option value="piso">Piso (menor a mayor)</option>
+                        <option value="name">Nombre AZ</option>
+                    </select>
+                </div>
             </div>
-        </div>
 
-        <div id="providerGrid"></div>
+            <div id="providerGrid"></div>
 
-        <div id="loadMoreWrap" hidden>
-            <button id="loadMore" type="button" class="d2-load-more">Cargar más</button>
-            <p id="loadMoreNote" class="d2-load-more__note"></p>
-        </div>
+            <div id="loadMoreWrap" hidden>
+                <button id="loadMore" type="button" class="d2-load-more">Cargar más</button>
+                <p id="loadMoreNote" class="d2-load-more__note"></p>
+            </div>
 
-        <div id="emptyState" class="hidden text-center py-16 bg-white rounded-3xl border border-dashed border-slate-300 my-8">
-            <h3 class="text-lg font-bold text-slate-800">No se encontraron resultados</h3>
-            <p class="text-sm text-slate-500 mt-1 max-w-md mx-auto">Prueba con otra palabra, categoría o piso.</p>
-            <button id="resetFiltersEmpty" type="button" class="mt-4 px-4 py-2 bg-slate-100 text-slate-700 text-xs font-bold rounded-xl hover:bg-slate-200 transition">Limpiar búsqueda y filtros</button>
+            <div id="emptyState" class="hidden text-center py-16 bg-white rounded-3xl border border-dashed border-slate-300 my-8">
+                <h3 class="text-lg font-bold text-slate-800">No se encontraron resultados</h3>
+                <p class="text-sm text-slate-500 mt-1 max-w-md mx-auto">Prueba con otra palabra, categoría o piso.</p>
+                <button id="resetFiltersEmpty" type="button" class="mt-4 px-4 py-2 bg-slate-100 text-slate-700 text-xs font-bold rounded-xl hover:bg-slate-200 transition">Limpiar búsqueda y filtros</button>
+            </div>
         </div>
 
         <section id="suscripcion" class="fm-cta">
@@ -212,7 +226,7 @@
         </div>
     </footer>
 
-    <script type="module" src="app.js?v=19"></script>
+    <script type="module" src="app.js?v=20"></script>
 </body>
 </html>
 

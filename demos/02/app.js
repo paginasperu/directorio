@@ -83,20 +83,21 @@ function promoCard(promo) {
   const discount = saving ? Math.round((saving / promo.regular) * 100) : 0;
   const badge = discount ? `−${discount}%` : (promo.mode || promo.type);
   const adult = promo.category === "Sexshop" || promo.profile?.category === "Sexshop";
+  const badgeClass = discount ? "d1-promo is-discount" : "d1-promo";
   const cover = adult
     ? `<span class="d1-cover d1-cover--adult">
         <span class="d1-adult">+18</span>
         <span class="d1-adult-label">Sexshop</span>
         <span class="d1-cat">${escapeHtml(promo.category)}</span>
-        <span class="d1-promo">${escapeHtml(badge)}</span>
+        <span class="${badgeClass}">${escapeHtml(badge)}</span>
       </span>`
     : `<span class="d1-cover">
         <img class="d1-banner" src="${escapeHtml(promo.image)}" alt="" width="600" height="300" loading="lazy" decoding="async">
         <span class="d1-cat">${escapeHtml(promo.category)}</span>
-        <span class="d1-promo">${escapeHtml(badge)}</span>
+        <span class="${badgeClass}">${escapeHtml(badge)}</span>
       </span>`;
 
-  return `<article class="d1-pcard">
+  return `<article class="d1-pcard${promo.discounted > 0 ? "" : " d1-pcard--free"}">
     <button type="button" class="d1-hit" data-promo="${promo.id}">
       ${cover}
       <span class="d1-body">
@@ -476,12 +477,19 @@ function syncUrl() {
   const params = new URLSearchParams();
   if (state.view !== "negocios") params.set("view", state.view);
   if (state.category !== "Todos") params.set("cat", state.category);
+  // Conserva las variantes de diseño si se abrió el comparador.
+  const current = new URLSearchParams(location.search);
+  ["cats", "promos"].forEach((key) => {
+    const value = current.get(key);
+    if (value) params.set(key, value);
+  });
   const query = params.toString();
   history.replaceState(null, "", query ? `?${query}` : location.pathname);
 }
 
 function setView(view) {
   state.view = view;
+  document.body.dataset.view = view;
   document.querySelectorAll("[data-view]").forEach((button) => {
     const active = button.dataset.view === view;
     button.classList.toggle("is-active", active);

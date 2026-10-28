@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variantes · Demo 02</title>
+    <meta name="robots" content="noindex, nofollow">
+    <style>
+        * { box-sizing: border-box; }
+
+        :root {
+            --ink: #1d1d1f;
+            --muted: #6e6e73;
+            --line: #e3e4e8;
+            --bg: #eef0f4;
+            --green: #0a7d32;
+        }
+
+        html, body { height: 100%; }
+
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            overflow: hidden;
+        }
+
+        /* ---------- barra de control ---------- */
+
+        .bar {
+            flex: none;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px 14px;
+            padding: 8px 14px;
+            background: #fff;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .bar__title {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            flex: none;
+        }
+
+        .back {
+            display: grid;
+            place-items: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            color: var(--ink);
+        }
+
+        .back:hover { background: #f2f3f6; }
+
+        .back svg { width: 17px; height: 17px; }
+
+        .bar__title strong {
+            display: block;
+            font-size: 13px;
+            letter-spacing: -.01em;
+            white-space: nowrap;
+        }
+
+        .bar__title span {
+            display: block;
+            color: var(--muted);
+            font-size: 10.5px;
+            white-space: nowrap;
+        }
+
+        .group {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex: none;
+        }
+
+        .group > span {
+            color: var(--muted);
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+        }
+
+        .seg {
+            display: flex;
+            gap: 2px;
+            padding: 3px;
+            border-radius: 10px;
+            background: #f1f2f5;
+        }
+
+        .seg button {
+            height: 28px;
+            padding: 0 10px;
+            border: 0;
+            border-radius: 7px;
+            background: transparent;
+            color: #4b5058;
+            font: inherit;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        .seg button:hover { color: var(--ink); }
+
+        .seg button[aria-pressed="true"] {
+            background: #fff;
+            color: var(--ink);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .14);
+        }
+
+        .spacer { flex: 1 1 auto; }
+
+        .open {
+            flex: none;
+            margin-left: 8px;
+            padding: 3px 7px;
+            border-radius: 6px;
+            color: #4b5058;
+            font-size: 10.5px;
+            font-weight: 600;
+            text-decoration: none;
+            white-space: nowrap;
+            letter-spacing: 0;
+            text-transform: none;
+        }
+
+        .open:hover { background: #f2f3f6; color: var(--ink); }
+
+        .sync {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            flex: none;
+            color: #4b5058;
+            font-size: 11.5px;
+            font-weight: 500;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .sync input { accent-color: var(--ink); }
+
+        /* ---------- paneles ---------- */
+
+        main {
+            flex: 1;
+            min-height: 0;
+            display: flex;
+            gap: 12px;
+            padding: 12px;
+        }
+
+        .pane {
+            flex: 1 1 0;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            border-radius: 14px;
+            background: #f7f8fa;
+            border: 1px solid #e4e6ea;
+            overflow: hidden;
+        }
+
+        .pane__head {
+            flex: none;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            height: 32px;
+            padding: 0 12px;
+            border-bottom: 1px solid #e8eaee;
+            color: #4b5058;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .03em;
+            text-transform: uppercase;
+        }
+
+        .pane__head i {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #b6bac2;
+        }
+
+        .pane--new .pane__head i { background: var(--green); }
+
+        .pane__head em {
+            margin-left: auto;
+            color: #8b9099;
+            font-size: 10.5px;
+            font-style: normal;
+            font-weight: 500;
+            letter-spacing: 0;
+            text-transform: none;
+        }
+
+        .pane__frame {
+            position: relative;
+            flex: 1;
+            min-height: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            overflow: hidden;
+            background: #eceef2;
+        }
+
+        .pane__frame iframe {
+            flex: none;
+            display: block;
+            width: 390px;
+            height: 100%;
+            border: 0;
+            background: #fff;
+            transform-origin: top center;
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, .05);
+        }
+
+        .hint {
+            flex: none;
+            padding: 5px 14px 7px;
+            color: #8b9099;
+            font-size: 10.5px;
+            text-align: center;
+        }
+
+        @media (max-width: 900px) {
+            .spacer { display: none; }
+            main { flex-direction: column; }
+            .pane { flex: 1 1 0; }
+            .pane__frame iframe { height: 100%; }
+        }
+
+        @media (max-width: 700px) {
+            .pane__head em { display: none; }
+        }
+
+        @media (max-width: 560px) {
+            .bar__title span { display: none; }
+            .seg button { padding: 0 8px; font-size: 11.5px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="bar">
+        <div class="bar__title">
+            <a class="back" href="../../preview.html" title="Volver al visor" aria-label="Volver al visor">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </a>
+            <div>
+                <strong>Variantes · Demo 02</strong>
+                <span>La izquierda siempre es la versión actual</span>
+            </div>
+        </div>
+
+        <div class="group">
+            <span>Vista</span>
+            <div class="seg" id="segView">
+                <button type="button" data-value="negocios" aria-pressed="false">Negocios</button>
+                <button type="button" data-value="promos" aria-pressed="true">Promociones</button>
+            </div>
+        </div>
+
+        <div class="group">
+            <span>Categorías</span>
+            <div class="seg" id="segCats">
+                <button type="button" data-value="a" aria-pressed="false">Actual</button>
+                <button type="button" data-value="b" aria-pressed="true">Blanco + color</button>
+                <button type="button" data-value="c" aria-pressed="false">Pills</button>
+            </div>
+        </div>
+
+        <div class="group">
+            <span>Promociones</span>
+            <div class="seg" id="segPromos">
+                <button type="button" data-value="a" aria-pressed="false">Actual</button>
+                <button type="button" data-value="b" aria-pressed="true">Banda</button>
+                <button type="button" data-value="c" aria-pressed="false">Cupón</button>
+            </div>
+        </div>
+
+        <div class="group">
+            <span>Ancho</span>
+            <div class="seg" id="segWidth">
+                <button type="button" data-value="390" aria-pressed="true">390</button>
+                <button type="button" data-value="768" aria-pressed="false">768</button>
+            </div>
+        </div>
+
+        <span class="spacer"></span>
+
+        <label class="sync"><input type="checkbox" id="sync" checked> Scroll juntos</label>
+    </header>
+
+    <main>
+        <section class="pane">
+            <div class="pane__head"><i></i> Actual <em id="labelA">Promociones</em></div>
+            <div class="pane__frame"><iframe id="frameA" src="./?view=promos" title="Versión actual"></iframe></div>
+        </section>
+
+        <section class="pane pane--new">
+            <div class="pane__head"><i></i> Propuesta <em id="labelB">Promociones · Categorías B · Promos B</em>
+                <a class="open" id="openVariant" href="./?view=promos&amp;cats=b&amp;promos=b" target="_blank" rel="noopener">Abrir ↗</a>
+            </div>
+            <div class="pane__frame"><iframe id="frameB" src="./?view=promos&amp;cats=b&amp;promos=b" title="Propuesta"></iframe></div>
+        </section>
+    </main>
+
+    <p class="hint">Desliza dentro de un panel: el otro sigue el mismo punto. Cambia la propuesta arriba sin perder la versión actual.</p>
+
+    <script>
+        const state = { view: "promos", cats: "b", promos: "b", width: 390, sync: true };
+        const frameA = document.getElementById("frameA");
+        const frameB = document.getElementById("frameB");
+        const openVariant = document.getElementById("openVariant");
+        const labelA = document.getElementById("labelA");
+        const labelB = document.getElementById("labelB");
+
+        const names = {
+            view: { negocios: "Negocios", promos: "Promociones" },
+            cats: { a: "actual", b: "blanco + color", c: "pills" },
+            promos: { a: "actual", b: "banda", c: "cupón" }
+        };
+
+        function urlFor(variant) {
+            const params = new URLSearchParams();
+            if (state.view === "promos") params.set("view", "promos");
+            if (variant) {
+                if (state.cats !== "a") params.set("cats", state.cats);
+                if (state.promos !== "a") params.set("promos", state.promos);
+            }
+            const query = params.toString();
+            return `./${query ? `?${query}` : ""}`;
+        }
+
+        function scrollTop(frame) {
+            try { return frame.contentWindow.scrollY; } catch (error) { return 0; }
+        }
+
+        function scrollTo(frame, y) {
+            try { frame.contentWindow.scrollTo({ top: y, behavior: "instant" }); } catch (error) { /* nada */ }
+        }
+
+        function restoreScroll(frame, y) {
+            let tries = 0;
+            const tick = () => {
+                const win = frame.contentWindow;
+                const max = win.document.documentElement.scrollHeight - win.innerHeight;
+                const target = Math.min(y, Math.max(0, max));
+                win.scrollTo({ top: target, behavior: "instant" });
+                tries += 1;
+                if (tries < 16 && (target < y || Math.abs(win.scrollY - target) > 2)) {
+                    setTimeout(tick, 120);
+                }
+            };
+            setTimeout(tick, 60);
+        }
+
+        function reload(frame, url, keepY) {
+            if (!keepY) { frame.src = url; return; }
+            const y = scrollTop(frame);
+            frame.addEventListener("load", () => restoreScroll(frame, y), { once: true });
+            frame.src = url;
+        }
+
+        function bindSync() {
+            let lastA = 0;
+            let lastB = 0;
+            setInterval(() => {
+                if (!state.sync) {
+                    lastA = frameA.contentWindow.scrollY;
+                    lastB = frameB.contentWindow.scrollY;
+                    return;
+                }
+                const a = frameA.contentWindow.scrollY;
+                const b = frameB.contentWindow.scrollY;
+                const movedA = Math.abs(a - lastA) > 1;
+                const movedB = Math.abs(b - lastB) > 1;
+                if (movedA && !movedB) {
+                    frameB.contentWindow.scrollTo({ top: a, behavior: "instant" });
+                } else if (movedB && !movedA) {
+                    frameA.contentWindow.scrollTo({ top: b, behavior: "instant" });
+                }
+                lastA = frameA.contentWindow.scrollY;
+                lastB = frameB.contentWindow.scrollY;
+            }, 60);
+        }
+
+        function fit() {
+            const pane = frameA.parentElement;
+            const availW = pane.clientWidth - 10;
+            const availH = pane.clientHeight;
+            const scale = Math.min(1, availW / state.width);
+            [frameA, frameB].forEach((frame) => {
+                frame.style.width = `${state.width}px`;
+                frame.style.height = `${availH / scale}px`;
+                frame.style.transform = `scale(${scale})`;
+            });
+        }
+
+        function paint() {
+            labelA.textContent = names.view[state.view];
+            labelB.textContent = `${names.view[state.view]} · cat ${names.cats[state.cats]} · promo ${names.promos[state.promos]}`;
+            openVariant.href = urlFor(true);
+        }
+
+        function bindGroup(id, key, cast = (value) => value) {
+            const group = document.getElementById(id);
+            group.addEventListener("click", (event) => {
+                const button = event.target.closest("button[data-value]");
+                if (!button) return;
+                state[key] = cast(button.dataset.value);
+                group.querySelectorAll("button").forEach((item) => {
+                    item.setAttribute("aria-pressed", String(item === button));
+                });
+                if (key === "width") fit();
+                else {
+                    reload(frameA, urlFor(false), true);
+                    reload(frameB, urlFor(true), true);
+                }
+                paint();
+            });
+        }
+
+        bindGroup("segView", "view");
+        bindGroup("segCats", "cats");
+        bindGroup("segPromos", "promos");
+        bindGroup("segWidth", "width", Number);
+
+        document.getElementById("sync").addEventListener("change", (event) => {
+            state.sync = event.target.checked;
+        });
+
+        bindSync();
+
+        window.addEventListener("resize", fit);
+        fit();
+        paint();
+    </script>
+</body>
+</html>
