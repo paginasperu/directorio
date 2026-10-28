@@ -477,12 +477,6 @@ function syncUrl() {
   const params = new URLSearchParams();
   if (state.view !== "negocios") params.set("view", state.view);
   if (state.category !== "Todos") params.set("cat", state.category);
-  // Conserva las variantes de diseño si se abrió el comparador.
-  const current = new URLSearchParams(location.search);
-  ["cats", "promos"].forEach((key) => {
-    const value = current.get(key);
-    if (value) params.set(key, value);
-  });
   const query = params.toString();
   history.replaceState(null, "", query ? `?${query}` : location.pathname);
 }

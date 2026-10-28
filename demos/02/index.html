@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth" data-vcats="b" data-vpromos="b">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,21 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../../assets/css/tailwind.css">
     <link rel="stylesheet" href="../../assets/css/styles.css">
-    <link rel="stylesheet" href="style.css?v=20">
+    <link rel="stylesheet" href="style.css?v=21">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script>
-        /* Variantes de diseño: por defecto van B (blanco + color / banda).
-           Para ver una alternativa: ?cats=a|b|c y ?promos=a|b|c
-           (a = versión anterior, b = actual, c = propuesta C) */
-        (() => {
-            const params = new URLSearchParams(location.search);
-            const root = document.documentElement;
-            const cats = params.get("cats");
-            const promos = params.get("promos");
-            if (cats && /^[a-z]$/.test(cats)) root.dataset.vcats = cats;
-            if (promos && /^[a-z]$/.test(promos)) root.dataset.vpromos = promos;
-        })();
-    </script>
 </head>
 <body class="fm-page min-h-screen flex flex-col">
 
@@ -227,7 +214,7 @@
         </div>
     </footer>
 
-    <script type="module" src="app.js?v=20"></script>
+    <script type="module" src="app.js?v=21"></script>
 </body>
 </html>
 
