@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../../assets/css/tailwind.css">
     <link rel="stylesheet" href="../../assets/css/styles.css">
-    <link rel="stylesheet" href="style.css?v=17">
+    <link rel="stylesheet" href="style.css?v=18">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body class="fm-page min-h-screen flex flex-col">
@@ -29,6 +29,11 @@
 
     <header id="siteHeader" class="site-header app-header sticky top-0 z-40">
         <div class="app-search-row">
+            <a class="header-brand app-brand-inline" href="./" aria-label="Directorio, inicio">
+                <img class="d2-brand-mark" src="../../assets/img/favicon.svg" alt="" width="28" height="28">
+                <span class="header-brand-name">Directorio</span>
+            </a>
+
             <div class="header-search hidden md:flex items-center min-w-0">
                 <form class="relative flex-1 min-w-0" onsubmit="event.preventDefault()">
                     <input type="search" id="businessSearch" aria-label="Buscar negocios o promociones" placeholder="Buscar negocios o promociones" class="app-input w-full pr-12" autocomplete="off">
@@ -51,6 +56,8 @@
                 <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 5h17l-6.5 7.5V18l-4 2v-7.5L3.5 5Z"/></svg>
                 <span>Filtros</span>
             </button>
+
+            <a href="https://wa.me/51950141414?text=Hola%2C%20quiero%20registrarme%20en%20el%20directorio..." target="_blank" rel="noopener noreferrer" class="subscribe-soft app-subscribe-inline">Regístrate</a>
         </div>
 
         <div class="app-tabs" role="tablist" aria-label="Secciones">
@@ -126,7 +133,7 @@
         <section id="suscripcion" class="fm-cta">
             <div class="fm-cta-inner">
                 <p class="fm-eyebrow">¿Tienes un negocio en el directorio?</p>
-                <h2>Regístrate al directorio</h2>
+                <h2>Regístrate en el directorio</h2>
                 <p>Publicamos tu tienda con su ubicación, contacto y redes. Es gratis.</p>
                 <a href="https://wa.me/51950141414?text=Hola%2C%20quiero%20registrarme%20en%20el%20directorio..." target="_blank" rel="noopener noreferrer">Regístrate</a>
             </div>
@@ -205,7 +212,7 @@
         </div>
     </footer>
 
-    <script type="module" src="app.js?v=18"></script>
+    <script type="module" src="app.js?v=19"></script>
 </body>
 </html>
 

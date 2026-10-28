@@ -1738,3 +1738,229 @@
   line-height: 1.5;
   color: #5b5b62;
 }
+
+/* ============================================================
+   Ajustes de composición (Demo 02)
+   ============================================================ */
+
+/* Cabecera de escritorio: marca + buscador + filtros en una fila */
+
+.app-brand-inline,
+.app-subscribe-inline {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .app-brandbar {
+    display: none;
+  }
+
+  .app-search-row {
+    gap: 14px;
+    padding: 12px 20px 10px;
+  }
+
+  .app-brand-inline {
+    display: inline-flex;
+    height: 44px;
+    text-decoration: none;
+  }
+
+  .app-search-row .header-search {
+    flex: 1 1 auto;
+    max-width: 560px;
+  }
+
+  .app-subscribe-inline {
+    display: inline-flex;
+    margin-left: auto;
+    flex: none;
+  }
+}
+
+/* Categorías: círculos blancos sobre banda gris, con contraste real */
+
+.app-cats {
+  background: #efeff3;
+  border-bottom: 1px solid #e3e3e9;
+}
+
+.app-cats .category-option__icon {
+  background: #fff;
+  border-color: #dcdce4;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+}
+
+.app-cats .category-option:hover .category-option__icon {
+  border-color: #c7c7d1;
+}
+
+.app-cats .category-option[aria-pressed="true"] {
+  color: #111;
+}
+
+.app-cats .category-option[aria-pressed="true"] .category-option__icon {
+  background: #1d1d1f;
+  border-color: #1d1d1f;
+  color: #fff;
+  box-shadow: none;
+}
+
+/* Aire entre secciones */
+
+@media (min-width: 641px) {
+  .app-cats__inner {
+    padding: 20px 20px 22px;
+  }
+
+  .results-toolbar {
+    margin: 30px 0 18px;
+  }
+
+  #providerGrid {
+    gap: 18px;
+  }
+
+  #loadMoreWrap {
+    margin: 30px 0 8px;
+  }
+
+  #loadMoreWrap:not([hidden]) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .d2-load-more {
+    max-width: 340px;
+    height: 46px;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-cats__inner {
+    padding: 14px 16px 15px;
+  }
+
+  .results-toolbar {
+    margin: 16px 0 14px;
+    gap: 10px;
+  }
+
+  .results-actions {
+    display: flex;
+    margin-left: auto;
+  }
+
+  .results-sort {
+    height: 34px;
+    max-width: 176px;
+    padding: 0 8px;
+    border-radius: 10px;
+    font-size: 12px;
+  }
+
+  #providerGrid {
+    gap: 14px;
+  }
+}
+
+/* Tarjeta de promoción: precio protagonista y enlace a la ficha */
+
+.d1-pcard .d1-body {
+  padding: 14px 15px 0;
+}
+
+.d1-pcard-biz {
+  margin: 6px 0 0;
+  padding: 0 15px 12px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #6e6e73;
+}
+
+.d1-pcard-biz button {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-weight: 600;
+  color: #1d1d1f;
+  text-decoration: underline;
+  text-decoration-color: #d2d2d9;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.d1-pcard-biz button:hover {
+  color: #0066cc;
+  text-decoration-color: currentColor;
+}
+
+.d1-pcard .d1-footer {
+  padding: 11px 15px 12px;
+  flex-wrap: wrap;
+  row-gap: 7px;
+}
+
+.d1-pcard-price {
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  color: #111;
+}
+
+.d1-pcard-price s {
+  margin-left: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #8a8a90;
+}
+
+.d1-save {
+  background: #0a7d32;
+  color: #fff;
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 3px 7px;
+  border-radius: 6px;
+}
+
+/* Promos dentro de la ficha: toda la tarjeta abre la promoción */
+
+.d1-promo-card[data-promo] {
+  cursor: pointer;
+}
+
+.d1-promo-card[data-promo]:hover {
+  border-color: #cfd2dc;
+}
+
+.d1-promo-title {
+  margin-top: 8px;
+}
+
+.d1-promo-title-btn {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.d1-promo-chevron {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  margin-left: auto;
+  color: #b0b0b6;
+}

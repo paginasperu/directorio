@@ -101,9 +101,11 @@ function promoCard(promo) {
       ${cover}
       <span class="d1-body">
         <span class="d1-name">${escapeHtml(promo.title)}</span>
-        <span class="d1-desc">Ofrecido por ${escapeHtml(promo.profile?.name || "")}</span>
       </span>
     </button>
+    ${promo.profile ? `<p class="d1-pcard-biz">Ofrecido por
+      <button type="button" data-business="${escapeHtml(promo.profile.id)}" aria-label="Ver ficha de ${escapeHtml(promo.profile.name)}">${escapeHtml(promo.profile.name)}</button>
+    </p>` : ""}
     <div class="d1-footer">
       ${promo.discounted > 0
         ? `<span class="d1-pcard-price">${money(promo.discounted)}${promo.regular > promo.discounted ? ` <s>${money(promo.regular)}</s>` : ""}</span>`
@@ -115,14 +117,19 @@ function promoCard(promo) {
 
 function promoRow(promo) {
   const saving = getSaving(promo);
-  return `<li class="d1-promo-card">
+  return `<li class="d1-promo-card" data-promo="${promo.id}">
     <div class="d1-promo-main">
       <div class="d1-promo-info">
         <div class="d1-tags">
           <span class="d1-tag">${escapeHtml(promo.type)}</span>
           ${promo.mode ? `<span class="d1-tag is-soft">${escapeHtml(promo.mode)}</span>` : ""}
         </div>
-        <p class="d1-promo-title">${escapeHtml(promo.title)}</p>
+        <p class="d1-promo-title">
+          <button type="button" class="d1-promo-title-btn" data-promo="${promo.id}">
+            <span>${escapeHtml(promo.title)}</span>
+            <svg class="d1-promo-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </p>
         <p class="d1-promo-text">${escapeHtml(promo.description)}</p>
       </div>
     </div>
@@ -179,11 +186,12 @@ function businessDetail(profile, backPromoId) {
     </div>`;
 }
 
-function promoDetail(promo) {
+function promoDetail(promo, backBusinessId) {
   const profile = promo.profile || {};
   const saving = getSaving(promo);
 
   return `
+    ${backBusinessId ? `<button type="button" class="d1-back" data-back-business="${escapeHtml(backBusinessId)}">← Volver al negocio</button>` : ""}
     <div class="d1-modal-cover">
       <img src="${escapeHtml(promo.image)}" alt="" width="600" height="300">
       <span class="d1-cat">${escapeHtml(promo.category)}</span>
@@ -240,6 +248,7 @@ const state = {
   profilesById: new Map(),
   backPromo: null,
   currentPromoId: null,
+  currentBusinessId: null,
 };
 
 const PAGE_SIZE = 12;
@@ -515,10 +524,10 @@ function closeModal() {
   modalLastFocus = null;
 }
 
-function showPromo(promo) {
+function showPromo(promo, backBusinessId = null) {
   state.backPromo = null;
   state.currentPromoId = promo.id;
-  ui.modalBody.innerHTML = promoDetail(promo);
+  ui.modalBody.innerHTML = promoDetail(promo, backBusinessId);
   $("#modalCallBtn").classList.add("hidden");
   const wa = $("#modalWhatsappBtn");
   wa.href = promo.profile?.whatsapp ? `https://wa.me/${promo.profile.whatsapp}` : "#";
@@ -529,6 +538,7 @@ function showPromo(promo) {
 
 function showBusiness(profile, backPromoId = null) {
   state.backPromo = backPromoId;
+  state.currentBusinessId = profile.id;
   ui.modalBody.innerHTML = businessDetail(profile, backPromoId);
   const call = $("#modalCallBtn");
   call.href = profile.fixed ? `tel:${profile.fixed}` : "#";
@@ -646,6 +656,13 @@ function bindEvents() {
   ui.grid.addEventListener("click", (event) => {
     if (event.target.closest(".provider-whatsapp, a.d1-cta")) return;
 
+    const bizTrigger = event.target.closest("[data-business]");
+    if (bizTrigger) {
+      const profile = state.profilesById.get(Number(bizTrigger.dataset.business));
+      if (profile) showBusiness(profile);
+      return;
+    }
+
     const card = event.target.closest(".d1-card, .d1-pcard");
     const promoTrigger = event.target.closest("[data-promo]") || card?.querySelector("[data-promo]");
     if (promoTrigger) {
@@ -670,7 +687,21 @@ function bindEvents() {
     const back = event.target.closest("[data-back-promo]");
     if (back) {
       const promo = state.promos.find((item) => item.id === back.dataset.backPromo);
-      if (promo) showPromo(promo);
+      if (promo) showPromo(promo, state.currentBusinessId);
+      return;
+    }
+    const backBusiness = event.target.closest("[data-back-business]");
+    if (backBusiness) {
+      const profile = state.profilesById.get(Number(backBusiness.dataset.backBusiness));
+      if (profile) showBusiness(profile, state.currentPromoId);
+      return;
+    }
+    if (event.target.closest(".d1-more")) return;
+
+    const promoTrigger = event.target.closest("[data-promo]");
+    if (promoTrigger) {
+      const promo = state.promos.find((item) => item.id === promoTrigger.dataset.promo);
+      if (promo) showPromo(promo, state.currentBusinessId);
     }
   });
 
