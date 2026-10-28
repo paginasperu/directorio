@@ -1887,15 +1887,12 @@
   font: inherit;
   font-weight: 600;
   color: #1d1d1f;
-  text-decoration: underline;
-  text-decoration-color: #d2d2d9;
-  text-underline-offset: 3px;
+  text-decoration: none;
   cursor: pointer;
 }
 
 .d1-pcard-biz button:hover {
   color: #0066cc;
-  text-decoration-color: currentColor;
 }
 
 .d1-pcard .d1-footer {
@@ -1967,8 +1964,8 @@
 
 /* ============================================================
    Variantes de diseño · comparador variantes.html
-   Activas solo con ?cats=b|c y ?promos=b|c.
-   Sin parámetro se ve la versión actual (sin cambios).
+   Por defecto: categorías B + promos B (data-vcats/data-vpromos
+   en <html>). Con ?cats=a|c y ?promos=a|c se ven las alternativas.
    ============================================================ */
 
 /* ---------- Categorías · variante B: blanco + íconos a color ---------- */
@@ -2090,22 +2087,14 @@ html[data-vcats="c"] .app-cats .category-option[aria-pressed="true"] .category-o
 /* ---------- Promociones · variante B: banda de ofertas + ficha limpia ---------- */
 
 html[data-vpromos="b"] body[data-view="promos"] .results-panel {
-  padding: 18px;
-  border-radius: 24px;
-  background: #eceef2;
-  box-shadow: inset 0 0 0 1px rgba(17, 24, 39, .03);
-}
-
-@media (max-width: 640px) {
-  html[data-vpromos="b"] body[data-view="promos"] .results-panel {
-    margin: 0 -8px;
-    padding: 12px;
-    border-radius: 18px;
-  }
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
 }
 
 html[data-vpromos="b"] body[data-view="promos"] .results-toolbar {
-  margin: 0 0 14px;
+  margin: 0 0 16px;
 }
 
 html[data-vpromos="b"] body[data-view="promos"] #loadMoreWrap {
@@ -2148,7 +2137,8 @@ html[data-vpromos="b"] .d1-pcard-biz button {
 }
 
 html[data-vpromos="b"] .d1-pcard-biz button:hover {
-  text-decoration: underline;
+  color: #0066cc;
+  text-decoration: none;
 }
 
 html[data-vpromos="b"] .d1-pcard .d1-footer {
@@ -2157,6 +2147,7 @@ html[data-vpromos="b"] .d1-pcard .d1-footer {
   background: none;
   gap: 6px;
   row-gap: 2px;
+  min-height: 35px;
 }
 
 html[data-vpromos="b"] .d1-pcard-price {
@@ -2181,7 +2172,7 @@ html[data-vpromos="b"] .d1-pcard .d1-save {
 }
 
 html[data-vpromos="b"] .d1-pcard--free .d1-footer {
-  padding-top: 1px;
+  padding-top: 0;
 }
 
 html[data-vpromos="b"] .d1-pcard--free .d1-loc {
@@ -2232,17 +2223,20 @@ html[data-vpromos="c"] .d1-pcard-biz button {
 }
 
 html[data-vpromos="c"] .d1-pcard-biz button:hover {
-  text-decoration: underline;
+  color: #0066cc;
+  text-decoration: none;
 }
 
 html[data-vpromos="c"] .d1-pcard .d1-footer {
-  margin-top: 2px;
+  margin-top: auto;
   padding: 10px 14px;
   border-top: 1px dashed #cfe6d8;
   background: #f2faf5;
-  gap: 6px 8px;
+  gap: 6px;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: center;
+  min-height: 42px;
+  line-height: 1.2;
 }
 
 html[data-vpromos="c"] .d1-pcard-price {
@@ -2255,17 +2249,17 @@ html[data-vpromos="c"] .d1-pcard-price {
 }
 
 html[data-vpromos="c"] .d1-pcard-price s {
-  margin-left: 4px;
-  font-size: 11px;
+  margin-left: 3px;
+  font-size: 10.5px;
   color: #6d8b7a;
 }
 
 html[data-vpromos="c"] .d1-pcard .d1-save {
   margin-left: auto;
-  padding: 2px 7px;
+  padding: 2px 6px;
   background: #0a7d32;
   color: #fff;
-  font-size: 10px;
+  font-size: 9.5px;
   border-radius: 999px;
   white-space: nowrap;
 }

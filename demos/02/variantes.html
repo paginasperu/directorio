@@ -264,7 +264,7 @@
             </a>
             <div>
                 <strong>Variantes · Demo 02</strong>
-                <span>La izquierda siempre es la versión actual</span>
+                <span>Izquierda: versión anterior · Derecha: actual</span>
             </div>
         </div>
 
@@ -279,7 +279,7 @@
         <div class="group">
             <span>Categorías</span>
             <div class="seg" id="segCats">
-                <button type="button" data-value="a" aria-pressed="false">Actual</button>
+                <button type="button" data-value="a" aria-pressed="false">Gris</button>
                 <button type="button" data-value="b" aria-pressed="true">Blanco + color</button>
                 <button type="button" data-value="c" aria-pressed="false">Pills</button>
             </div>
@@ -288,7 +288,7 @@
         <div class="group">
             <span>Promociones</span>
             <div class="seg" id="segPromos">
-                <button type="button" data-value="a" aria-pressed="false">Actual</button>
+                <button type="button" data-value="a" aria-pressed="false">Panel</button>
                 <button type="button" data-value="b" aria-pressed="true">Banda</button>
                 <button type="button" data-value="c" aria-pressed="false">Cupón</button>
             </div>
@@ -309,19 +309,19 @@
 
     <main>
         <section class="pane">
-            <div class="pane__head"><i></i> Actual <em id="labelA">Promociones</em></div>
-            <div class="pane__frame"><iframe id="frameA" src="./?view=promos" title="Versión actual"></iframe></div>
+            <div class="pane__head"><i></i> Anterior <em id="labelA">Promociones</em></div>
+            <div class="pane__frame"><iframe id="frameA" src="./?view=promos&amp;cats=a&amp;promos=a" title="Versión anterior"></iframe></div>
         </section>
 
         <section class="pane pane--new">
-            <div class="pane__head"><i></i> Propuesta <em id="labelB">Promociones · Categorías B · Promos B</em>
-                <a class="open" id="openVariant" href="./?view=promos&amp;cats=b&amp;promos=b" target="_blank" rel="noopener">Abrir ↗</a>
+            <div class="pane__head"><i></i> Actual <em id="labelB">Promociones · Categorías B · Promos B</em>
+                <a class="open" id="openVariant" href="./?view=promos" target="_blank" rel="noopener">Abrir ↗</a>
             </div>
-            <div class="pane__frame"><iframe id="frameB" src="./?view=promos&amp;cats=b&amp;promos=b" title="Propuesta"></iframe></div>
+            <div class="pane__frame"><iframe id="frameB" src="./?view=promos" title="Versión actual"></iframe></div>
         </section>
     </main>
 
-    <p class="hint">Desliza dentro de un panel: el otro sigue el mismo punto. Cambia la propuesta arriba sin perder la versión actual.</p>
+    <p class="hint">Desliza dentro de un panel: el otro sigue el mismo punto. Cambia la versión de la derecha sin perder la de referencia.</p>
 
     <script>
         const state = { view: "promos", cats: "b", promos: "b", width: 390, sync: true };
@@ -333,19 +333,16 @@
 
         const names = {
             view: { negocios: "Negocios", promos: "Promociones" },
-            cats: { a: "actual", b: "blanco + color", c: "pills" },
-            promos: { a: "actual", b: "banda", c: "cupón" }
+            cats: { a: "gris", b: "blanco + color", c: "pills" },
+            promos: { a: "panel", b: "banda", c: "cupón" }
         };
 
         function urlFor(variant) {
             const params = new URLSearchParams();
             if (state.view === "promos") params.set("view", "promos");
-            if (variant) {
-                if (state.cats !== "a") params.set("cats", state.cats);
-                if (state.promos !== "a") params.set("promos", state.promos);
-            }
-            const query = params.toString();
-            return `./${query ? `?${query}` : ""}`;
+            params.set("cats", variant ? state.cats : "a");
+            params.set("promos", variant ? state.promos : "a");
+            return `./${params.toString()}`;
         }
 
         function scrollTop(frame) {

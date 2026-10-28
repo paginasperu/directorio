@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es" class="scroll-smooth" data-vcats="b" data-vpromos="b">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,11 +11,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../../assets/css/tailwind.css">
     <link rel="stylesheet" href="../../assets/css/styles.css">
-    <link rel="stylesheet" href="style.css?v=19">
+    <link rel="stylesheet" href="style.css?v=20">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
-        /* Variantes de diseño para comparar sin tocar la versión principal.
-           Uso: ?cats=b&promos=b (a = actual, b = propuesta B, c = propuesta C) */
+        /* Variantes de diseño: por defecto van B (blanco + color / banda).
+           Para ver una alternativa: ?cats=a|b|c y ?promos=a|b|c
+           (a = versión anterior, b = actual, c = propuesta C) */
         (() => {
             const params = new URLSearchParams(location.search);
             const root = document.documentElement;
