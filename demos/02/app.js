@@ -18,6 +18,23 @@ function primaryContact(profile) {
   return null;
 }
 
+const ICON_WHATSAPP = `<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M13.6 2.33A7.85 7.85 0 0 0 7.99 0C3.63 0 .07 3.56.06 7.93c0 1.4.37 2.76 1.06 3.96L0 16l4.23-1.11a7.92 7.92 0 0 0 3.75.96h.01c4.36 0 7.92-3.56 7.93-7.93a7.9 7.9 0 0 0-2.32-5.59Zm-5.6 12.2a6.57 6.57 0 0 1-3.36-.92l-.24-.15-2.5.66.67-2.44-.16-.25a6.56 6.56 0 0 1-1-3.5c0-3.63 2.96-6.59 6.59-6.59a6.56 6.56 0 0 1 4.66 1.93 6.56 6.56 0 0 1 1.93 4.66c0 3.64-2.96 6.6-6.6 6.6Zm3.62-4.93c-.2-.1-1.17-.58-1.36-.65-.18-.06-.31-.1-.44.1-.14.2-.52.65-.63.78-.12.13-.23.15-.43.05-.2-.1-.84-.31-1.6-.99-.59-.52-.98-1.17-1.1-1.37-.11-.2-.01-.3.09-.4.09-.09.2-.24.3-.35.1-.12.13-.2.2-.33.06-.14.03-.25-.02-.35-.05-.1-.44-1.08-.6-1.47-.16-.39-.33-.34-.45-.34h-.38a.73.73 0 0 0-.53.25c-.18.2-.69.67-.69 1.65s.71 1.92.81 2.05c.1.13 1.4 2.13 3.38 2.99.47.2.84.33 1.13.42.48.15.9.13 1.25.08.38-.06 1.17-.48 1.34-.94.16-.47.16-.86.11-.95-.05-.08-.18-.13-.38-.23Z"/></svg>`;
+const ICON_PHONE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>`;
+const ICON_LINK = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>`;
+
+function contactIcon(label) {
+  if (label === "WhatsApp") return ICON_WHATSAPP;
+  if (label === "Llamar") return ICON_PHONE;
+  return ICON_LINK;
+}
+
+function formatPhone(value) {
+  let digits = String(value || "").replace(/\D/g, "");
+  if (digits.startsWith("51") && digits.length > 9) digits = digits.slice(2);
+  if (digits.length === 9) return `${digits.slice(0, 3)} ${digits.slice(3, 6)} ${digits.slice(6)}`;
+  return digits.replace(/(\d{3})(?=\d)/g, "$1 ").trim();
+}
+
 function businessCard(profile) {
   const location = [
     profile.floor ? `Piso ${profile.floor}` : "",
@@ -44,13 +61,19 @@ function businessCard(profile) {
       <span class="d1-body">
         <span class="d1-name">${escapeHtml(profile.name)}</span>
         <span class="d1-desc">${escapeHtml(profile.short)}</span>
+        <span class="d1-meta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-5.4-6.5-10.5a6.5 6.5 0 1 1 13 0C18.5 15.6 12 21 12 21Z"/><circle cx="12" cy="10.5" r="2.4"/></svg>
+          <span>${escapeHtml(location || "Ubicación no informada")}</span>
+        </span>
       </span>
     </button>
     <div class="d1-footer">
-      <span class="d1-loc">${escapeHtml(location || "Ubicación no informada")}</span>
       ${contact
-        ? `<a class="provider-whatsapp" href="${escapeHtml(contact.href)}" ${contact.external ? 'target="_blank" rel="noopener noreferrer"' : ""} aria-label="${escapeHtml(contact.label)} de ${escapeHtml(profile.name)}">${escapeHtml(contact.label)}</a>`
-        : '<span class="provider-whatsapp provider-whatsapp-unavailable">Sin contacto</span>'}
+        ? `<a class="d1-cta${contact.label === "WhatsApp" ? "" : " d1-cta--alt"}" href="${escapeHtml(contact.href)}" ${contact.external ? 'target="_blank" rel="noopener noreferrer"' : ""} aria-label="${escapeHtml(contact.label)} de ${escapeHtml(profile.name)}">${contactIcon(contact.label)}<span>${escapeHtml(contact.label)}</span></a>`
+        : '<span class="d1-cta d1-cta--off">Sin contacto</span>'}
+      <span class="d1-open" aria-hidden="true">Ver ficha
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      </span>
     </div>
   </article>`;
 }
@@ -102,12 +125,12 @@ function promoRow(promo) {
         <p class="d1-promo-title">${escapeHtml(promo.title)}</p>
         <p class="d1-promo-text">${escapeHtml(promo.description)}</p>
       </div>
-      ${promo.discounted > 0 ? `<div class="d1-promo-price">
-        <strong>${money(promo.discounted)}</strong>
-        ${promo.regular > promo.discounted ? `<s>${money(promo.regular)}</s>` : ""}
-        ${saving ? `<span class="d1-save">Ahorras ${money(saving)}</span>` : ""}
-      </div>` : ""}
     </div>
+    ${promo.discounted > 0 ? `<div class="d1-promo-price">
+      <strong>${money(promo.discounted)}</strong>
+      ${promo.regular > promo.discounted ? `<s>${money(promo.regular)}</s>` : ""}
+      ${saving ? `<span class="d1-save">Ahorras ${money(saving)}</span>` : ""}
+    </div>` : ""}
     <div class="d1-promo-foot">
       <span>${promo.until ? `Hasta ${escapeHtml(formatDate(promo.until))}` : ""}</span>
       ${promo.conditions ? `<details class="d1-more"><summary>Ver condiciones</summary><p>${escapeHtml(promo.conditions)}</p></details>` : ""}
@@ -135,14 +158,17 @@ function businessDetail(profile, backPromoId) {
     </div>
     <div class="d1-modal-body p-5 sm:p-7 space-y-5">
       <div>
-        <p class="d1-kicker">${escapeHtml(profile.category)} · ${escapeHtml(profile.type)}</p>
+        <div class="d1-tags">
+          <span class="d1-tag">${escapeHtml(profile.category)}</span>
+          ${profile.type ? `<span class="d1-tag is-soft">${escapeHtml(profile.type)}</span>` : ""}
+        </div>
         <h2 id="modalTitle" class="d1-title">${escapeHtml(profile.name)}</h2>
         <p class="d1-lead">${escapeHtml(profile.long || profile.short)}</p>
       </div>
       <dl class="detail-info">
         ${location ? `<div><dt>Ubicación</dt><dd>${escapeHtml(location)}</dd></div>` : ""}
         ${profile.fixed ? `<div><dt>Teléfono</dt><dd>${escapeHtml(profile.fixed)}</dd></div>` : ""}
-        ${profile.whatsapp ? `<div><dt>WhatsApp</dt><dd>${escapeHtml(profile.whatsapp)}</dd></div>` : ""}
+        ${profile.whatsapp ? `<div><dt>WhatsApp</dt><dd>${escapeHtml(formatPhone(profile.whatsapp))}</dd></div>` : ""}
       </dl>
       ${profile.promos.length ? `<section>
         <div class="d1-promos-head"><h3 class="d1-section-title">Promociones</h3><span class="d1-count">${profile.promos.length}</span></div>
@@ -208,12 +234,15 @@ const state = {
   promoModalidad: "Todos",
   promoPrecio: "Todos",
   promoSort: "name",
+  page: 12,
   profiles: [],
   promos: [],
   profilesById: new Map(),
   backPromo: null,
   currentPromoId: null,
 };
+
+const PAGE_SIZE = 12;
 
 const $ = (selector) => document.querySelector(selector);
 const ui = {
@@ -222,6 +251,9 @@ const ui = {
   grid: $("#providerGrid"),
   categoryList: $("#categoryList"),
   count: $("#resultsCount"),
+  loadMore: $("#loadMore"),
+  loadMoreWrap: $("#loadMoreWrap"),
+  loadMoreNote: $("#loadMoreNote"),
   empty: $("#emptyState"),
   search: $("#businessSearch"),
   mobileSearch: $("#mobileBusinessSearch"),
@@ -342,11 +374,34 @@ function sortedPromos(list) {
 
 /* ---------- render ---------- */
 
+const categoryMenuIcons = {
+  Todos: '<rect x="4" y="4" width="6" height="6" rx="1.2"/><rect x="14" y="4" width="6" height="6" rx="1.2"/><rect x="4" y="14" width="6" height="6" rx="1.2"/><rect x="14" y="14" width="6" height="6" rx="1.2"/>',
+  Moda: '<path d="m8.5 4-4 2.5 2 3.2 2-1.1V20h7V8.6l2 1.1 2-3.2-4-2.5-1.6 1.5h-3.8L8.5 4Z"/>',
+  Motos: '<circle cx="6" cy="17" r="2.6"/><circle cx="18" cy="17" r="2.6"/><path d="M6 17h5l3-6h4M9 17l2.5-6"/>',
+  "Tecnología": '<rect x="7" y="3" width="10" height="18" rx="2.2"/><path d="M10.5 18h3"/>',
+  Entretenimiento: '<path d="M7 8h10a5 5 0 0 1 5 5v2a3 3 0 0 1-5 2l-2-2H9l-2 2a3 3 0 0 1-5-2v-2a5 5 0 0 1 5-5Z"/><path d="M8 12v3M6.5 13.5h3M16 12h.01M18 14h.01"/>',
+  Comida: '<path d="M5 8h11v6a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V8Z"/><path d="M16 9h2a3 3 0 0 1 0 6h-2M4 22h14"/>',
+  Servicios: '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"/>',
+  Belleza: '<path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z"/><path d="m19 16 .7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7.7-2Z"/>',
+  Spa: '<path d="M5 19C5 11 10 6 19 5c0 9-5 14-14 14Z"/><path d="M7 17c2.5-3.5 5.5-6 9-7.5"/>',
+  Regalos: '<rect x="4" y="9" width="16" height="11" rx="1.5"/><path d="M3 9h18M12 9v11M12 9c-2 0-4-1-4-3 0-1.5 2-2 4 3Zm0 0c2 0 4-1 4-3 0-1.5-2-2-4 3Z"/>',
+  Salud: '<path d="M12 5v14M5 12h14"/>',
+  Sexshop: '<path d="M12 20s-7-4.3-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.7-7 9-7 9Z"/>',
+  Herramientas: '<path d="M14.5 6.5a4 4 0 0 0-5.4 5.4L4 17l3 3 5.1-5.1a4 4 0 0 0 5.4-5.4l-3 3-3-3 3-3Z"/>',
+  Otros: '<path d="M3 12 12 3h7v7l-9 9-7-7Z"/><circle cx="15.5" cy="7.5" r="1.3"/>'
+};
+
+function categoryIcon(name) {
+  const body = categoryMenuIcons[name] || categoryMenuIcons.Otros;
+  return `<span class="category-option__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${body}</svg></span>`;
+}
+
 function renderCategories(counts) {
   const categories = ["Todos", ...new Set(state.profiles.map((profile) => profile.category).filter(Boolean))].sort((a, b) => a === "Todos" ? -1 : b === "Todos" ? 1 : collator.compare(a, b));
   ui.categoryList.innerHTML = categories.map((category) => {
     const total = category === "Todos" ? counts.total : (counts.byCategory.get(category) || 0);
-    return `<button type="button" class="category-option${category === state.category ? " is-active" : ""}" data-category="${category}" aria-pressed="${String(category === state.category)}">${category}<span class="d1-cat-count">${total}</span></button>`;
+    const label = category === "Todos" ? "Todas" : category;
+    return `<button type="button" class="category-option${category === state.category ? " is-active" : ""}" data-category="${category}" aria-pressed="${String(category === state.category)}">${categoryIcon(category)}<span class="category-option__name">${label}</span><span class="d1-cat-count">${total}</span></button>`;
   }).join("");
 }
 
@@ -356,12 +411,28 @@ function countBy(list, key, total) {
   return { total, byCategory };
 }
 
+function renderLoadMore(total, shown) {
+  if (!ui.loadMore || !ui.loadMoreWrap) return;
+  const rest = total - shown;
+  ui.loadMoreWrap.hidden = rest <= 0;
+  if (ui.loadMoreNote) ui.loadMoreNote.textContent = `Mostrando ${shown} de ${total}`;
+  if (rest <= 0) return;
+  const next = Math.min(PAGE_SIZE, rest);
+  ui.loadMore.textContent = rest === 1
+    ? "Cargar 1 más"
+    : next === rest
+      ? `Cargar los ${rest} restantes`
+      : `Cargar ${next} más`;
+}
+
 function renderBusinesses() {
   const base = state.profiles.filter((profile) => matchesBusiness(profile, true));
   renderCategories(countBy(base, "category", base.length));
 
   const results = sortedBusinesses(state.profiles.filter((profile) => matchesBusiness(profile)));
-  ui.grid.innerHTML = results.map(businessCard).join("");
+  const shown = results.slice(0, state.page);
+  ui.grid.innerHTML = shown.map(businessCard).join("");
+  renderLoadMore(results.length, shown.length);
   ui.count.textContent = `${results.length} ${results.length === 1 ? "negocio" : "negocios"}`;
   ui.empty.querySelector("p").textContent = "Prueba con otra palabra, categoría o piso.";
   ui.empty.classList.toggle("hidden", results.length > 0);
@@ -372,13 +443,16 @@ function renderPromos() {
   renderCategories(countBy(base, "category", base.length));
 
   const results = sortedPromos(state.promos.filter((promo) => matchesPromo(promo)));
-  ui.grid.innerHTML = results.map(promoCard).join("");
+  const shown = results.slice(0, state.page);
+  ui.grid.innerHTML = shown.map(promoCard).join("");
+  renderLoadMore(results.length, shown.length);
   ui.count.textContent = `${results.length} ${results.length === 1 ? "promoción" : "promociones"}`;
   ui.empty.querySelector("p").textContent = "Prueba con otra palabra, categoría o filtro.";
   ui.empty.classList.toggle("hidden", results.length > 0);
 }
 
-function render() {
+function render({ keepPage = false } = {}) {
+  if (!keepPage) state.page = PAGE_SIZE;
   if (state.view === "promos") renderPromos();
   else renderBusinesses();
   ui.bizFilters.classList.toggle("hidden", state.view !== "negocios");
@@ -406,6 +480,19 @@ function setView(view) {
   });
   setupSort();
   render();
+  alignListToHeader();
+}
+
+/* Al cambiar de vista estando abajo, deja el listado justo debajo de la cabecera */
+function alignListToHeader() {
+  const toolbar = document.getElementById("resultsToolbar");
+  if (!toolbar) return;
+  const align = () => {
+    const offset = toolbar.getBoundingClientRect().top - ui.header.offsetHeight - 12;
+    if (offset < 0) window.scrollBy({ top: offset, behavior: "instant" });
+  };
+  align();
+  requestAnimationFrame(() => requestAnimationFrame(align));
 }
 
 /* ---------- detalle ---------- */
@@ -507,6 +594,13 @@ function bindEvents() {
   ui.mobileSearch.addEventListener("input", () => setSearch(ui.mobileSearch.value));
   ui.heroSearch.addEventListener("input", () => setSearch(ui.heroSearch.value));
 
+  if (ui.loadMore) {
+    ui.loadMore.addEventListener("click", () => {
+      state.page += PAGE_SIZE;
+      render({ keepPage: true });
+    });
+  }
+
   ui.heroFeature.addEventListener("click", (event) => {
     const trigger = event.target.closest("[data-hero-promo]");
     if (!trigger) return;
@@ -550,14 +644,17 @@ function bindEvents() {
   ui.drawerBackdrop.addEventListener("click", () => toggleDrawer(false));
 
   ui.grid.addEventListener("click", (event) => {
-    if (event.target.closest(".provider-whatsapp")) return;
-    const promoTrigger = event.target.closest("[data-promo]");
+    if (event.target.closest(".provider-whatsapp, a.d1-cta")) return;
+
+    const card = event.target.closest(".d1-card, .d1-pcard");
+    const promoTrigger = event.target.closest("[data-promo]") || card?.querySelector("[data-promo]");
     if (promoTrigger) {
       const promo = state.promos.find((item) => item.id === promoTrigger.dataset.promo);
       if (promo) showPromo(promo);
       return;
     }
-    const trigger = event.target.closest("[data-detail]");
+
+    const trigger = event.target.closest("[data-detail]") || card?.querySelector("[data-detail]");
     if (!trigger) return;
     const profile = state.profilesById.get(Number(trigger.dataset.detail));
     if (profile) showBusiness(profile);
@@ -643,6 +740,52 @@ function setupHeroSearchVisibility() {
   observer.observe(ui.heroSearchForm);
 }
 
+function setupHeaderScroll() {
+  const header = ui.header;
+  const brandbar = document.querySelector(".app-brandbar");
+  let hidden = 0;      // px que la cabecera está fuera de la pantalla
+  let target = 0;      // px que debería estar según el scroll
+  let lastY = window.scrollY;
+  let frame = 0;
+
+  const paint = () => {
+    hidden += (target - hidden) * 0.3;
+    if (Math.abs(target - hidden) < 0.4) hidden = target;
+    header.style.transform = hidden > 0.4 ? `translate3d(0, ${(-hidden).toFixed(2)}px, 0)` : "";
+    frame = hidden === target ? 0 : requestAnimationFrame(paint);
+  };
+
+  const schedule = () => {
+    if (!frame) frame = requestAnimationFrame(paint);
+  };
+
+  const pinAt = () => (brandbar ? brandbar.offsetHeight : 0);
+
+  const onScroll = () => {
+    const y = window.scrollY;
+    const delta = y - lastY;
+    const height = header.offsetHeight;
+    lastY = y;
+
+    if (y <= pinAt()) target = 0;
+    else if (Math.abs(delta) > 0.5) {
+      target = Math.max(0, Math.min(height, target + delta));
+    }
+
+    schedule();
+  };
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  window.addEventListener("resize", () => {
+    const height = header.offsetHeight;
+    target = window.scrollY <= pinAt() ? 0 : Math.max(0, Math.min(height, target));
+    hidden = Math.max(0, Math.min(height, hidden));
+    lastY = window.scrollY;
+    schedule();
+  });
+}
+
 async function init() {
   try {
     const { profiles, promos, profilesById } = await loadDirectory();
@@ -662,6 +805,7 @@ async function init() {
     setupFilters();
     setupSort();
     setupHeroSearchVisibility();
+    setupHeaderScroll();
     bindEvents();
 
     const params = new URLSearchParams(location.search);

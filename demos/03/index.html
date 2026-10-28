@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Envato · Kit de recursos creativos</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#fff5ed">
+    <style>
+        @font-face {
+            font-family: "PolySans";
+            font-weight: 400;
+            font-display: swap;
+            src: url("fonts/PolySans-Neutral.woff2") format("woff2");
+        }
+
+        @font-face {
+            font-family: "PolySans";
+            font-weight: 600 700;
+            font-display: swap;
+            src: url("fonts/PolySans-Median.woff2") format("woff2");
+        }
+
+        :root {
+            --cream: #fff5ed;
+            --ink: #191919;
+            --green: #87e64b;
+            --line: #ccc;
+            --muted: #ccc;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            background: var(--cream);
+            color: var(--ink);
+            font-family: "PolySans", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        button, input { font: inherit; color: inherit; }
+
+        .app {
+            width: 100%;
+            max-width: 366px;
+            min-height: 100vh;
+            min-height: 100dvh;
+            margin: 0 auto;
+        }
+
+        .icon { display: block; width: 100%; height: 100%; }
+
+        .sprite {
+            position: absolute;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+        }
+
+        /* Cabecera */
+        .head {
+            padding: 16px 16px 8px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .head__bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 24px;
+        }
+
+        .logo {
+            display: block;
+            width: 105px;
+            height: 24px;
+        }
+
+        .logo svg { display: block; width: 100%; height: 100%; }
+
+        .menu {
+            display: grid;
+            place-items: center;
+            width: 24px;
+            height: 24px;
+            margin-right: 6px;
+            padding: 0;
+            border: 0;
+            background: none;
+            color: var(--ink);
+            cursor: pointer;
+        }
+
+        .menu .icon { width: 17px; height: 17px; }
+
+        .search {
+            display: flex;
+            align-items: center;
+            height: 50px;
+            margin-top: 16px;
+            padding: 0 19px 0 16px;
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 25px;
+        }
+
+        .search__cat {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            flex: none;
+            padding: 0;
+            border: 0;
+            background: none;
+            font-size: 14px;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        .search__cat .icon { width: 14px; height: 14px; }
+
+        .search__divider {
+            flex: none;
+            width: 1px;
+            height: 22px;
+            margin: 0 12px;
+            background: var(--line);
+        }
+
+        .search__glass {
+            flex: none;
+            width: 20px;
+            height: 20px;
+        }
+
+        .search input {
+            flex: 1;
+            min-width: 0;
+            height: 100%;
+            padding: 0 6px 0 10px;
+            border: 0;
+            background: none;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .search input::placeholder { color: #9a9a9a; opacity: 1; }
+
+        .search__tools {
+            display: flex;
+            flex: none;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .search__tool {
+            display: grid;
+            place-items: center;
+            width: 20px;
+            height: 20px;
+            padding: 0;
+            border: 0;
+            background: none;
+            cursor: pointer;
+        }
+
+        /* Contenido */
+        main { padding: 32px 16px 88px; }
+
+        .hero {
+            padding: 24px;
+            border-radius: 16px;
+            background: var(--ink);
+            color: #fff;
+        }
+
+        .hero__kicker {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 27px;
+        }
+
+        .hero__title {
+            margin: 16px 0 0;
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 36px;
+        }
+
+        .hero__title span { color: var(--green); }
+
+        .value {
+            margin-top: 24px;
+            padding: 32px;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            background: #fff;
+        }
+
+        .value__title {
+            margin: 0;
+            font-size: 30px;
+            font-weight: 600;
+            line-height: 30px;
+        }
+
+        .value__list {
+            margin: 24px 0 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .value__list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            font-size: 16px;
+            line-height: 24px;
+        }
+
+        .value__list .icon {
+            flex: none;
+            width: 16px;
+            height: 16px;
+            margin-top: 4px;
+        }
+
+        .value__list p { margin: 0; }
+
+        /* Barra inferior */
+        .tabbar {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            z-index: 10;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            width: 100%;
+            max-width: 366px;
+            padding: 8px 0 calc(8px + env(safe-area-inset-bottom));
+            background: var(--ink);
+            transform: translateX(-50%);
+        }
+
+        .tabbar a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 0 6px;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 18px;
+            letter-spacing: 0.24px;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .tabbar a .icon { flex: none; width: 20px; height: 20px; }
+
+        .tabbar a[aria-current="page"] { color: #fff; }
+
+        :focus-visible {
+            outline: 2px solid var(--green);
+            outline-offset: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <symbol id="i-search" viewBox="0 0 24 24"><path fill="currentColor" d="m20.875 19.46-4-4.005a2.443 2.443 0 0 0-.43-.35l-1-.69a7.015 7.015 0 0 0 .046-8.754A6.995 6.995 0 0 0 6.973 3.69a7.011 7.011 0 0 0 3.052 13.327c1.588 0 3.13-.54 4.37-1.531l.75 1c.089.13.19.25.3.361l4 4.005a.498.498 0 0 0 .71 0l.7-.7a.501.501 0 0 0 .02-.692Zm-10.85-4.445a5.003 5.003 0 0 1-4.62-6.92 5.003 5.003 0 0 1 4.62-3.092c2.761 0 5 2.241 5 5.006a5.01 5.01 0 0 1-3.087 4.625 4.996 4.996 0 0 1-1.913.381"/></symbol>
+        <symbol id="i-chevron" viewBox="0 0 24 24"><path fill="currentColor" d="M12.72 15.78a.75.75 0 0 1-.53.22h-.38a.77.77 0 0 1-.53-.22l-5.13-5.14a.5.5 0 0 1 0-.71l.71-.71a.49.49 0 0 1 .7 0L12 13.67l4.44-4.45a.5.5 0 0 1 .71 0l.7.71a.5.5 0 0 1 0 .71l-5.13 5.14Z"/></symbol>
+        <symbol id="i-sound" viewBox="0 0 24 24"><path fill="currentColor" d="M16 10.825v.84c0 .183-.15.333-.333.333H15a.333.333 0 0 1-.333-.334v-.18a1.81 1.81 0 0 0-1-1.572c-.12-.067-.227-.147-.334-.22v5.997a2.52 2.52 0 0 1-2.666 2.306A2.52 2.52 0 0 1 8 15.663a2.52 2.52 0 0 1 2.667-2.333 2.86 2.86 0 0 1 1.333.327V6.333c0-.184.15-.333.333-.333H13c.184 0 .333.15.333.333v.113a1.78 1.78 0 0 0 .954 1.613A3.08 3.08 0 0 1 16 10.825"/><path fill="currentColor" fill-rule="evenodd" d="M2 5a3 3 0 0 1 3-3h4v2H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h4v2H5a3 3 0 0 1-3-3zm20 0a3 3 0 0 0-3-3h-4v2h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-4v2h4a3 3 0 0 0 3-3z" clip-rule="evenodd"/></symbol>
+        <symbol id="i-image" viewBox="0 0 24 24"><path fill="currentColor" d="M8.536 9.143a1.143 1.143 0 1 1 2.285 0 1.143 1.143 0 0 1-2.285 0m9.028 5.56-3.428-4.572a.434.434 0 0 0-.686 0l-2.286 2.955a.286.286 0 0 1-.445 0l-1.252-1.52a.43.43 0 0 0-.668 0L6.37 14.703a.57.57 0 0 0-.12.348v.52a.434.434 0 0 0 .429.429H17.25a.434.434 0 0 0 .429-.429v-.525a.57.57 0 0 0-.115-.343"/><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M2 5a3 3 0 0 1 3-3h4v2H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h4v2H5a3 3 0 0 1-3-3zm20 0a3 3 0 0 0-3-3h-4v2h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-4v2h4a3 3 0 0 0 3-3z"/></symbol>
+        <symbol id="i-menu" viewBox="0 0 24 24"><path fill="currentColor" d="M2 5.3h20v1.9H2zM2 11.05h20v1.9H2zM2 16.8h20v1.9H2z"/></symbol>
+        <symbol id="i-download" viewBox="0 0 24 24"><path fill="currentColor" d="M19 18.5v1a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5Zm-7.35-2.65a.48.48 0 0 0 .7 0l5.79-5.79a.5.5 0 0 0 0-.71l-.2-.2a.49.49 0 0 0-.36-.15H15V3.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0-.5.5V9H6.42a.49.49 0 0 0-.36.15l-.2.2a.5.5 0 0 0 0 .71l5.79 5.79Z"/></symbol>
+        <symbol id="i-ai" viewBox="0 0 24 24"><path fill="currentColor" d="M13.388 12.25a.84.84 0 0 1-.638.638l-3.347.744c-.877.195-.877 1.444 0 1.639l3.347.744c.319.07.567.32.638.637L14.132 20c.195.877 1.444.877 1.64 0l.743-3.347a.84.84 0 0 1 .637-.638l3.348-.744c.877-.195.877-1.444 0-1.64l-3.347-.743a.84.84 0 0 1-.638-.638l-.744-3.347c-.195-.877-1.444-.877-1.64 0zM5.268 4.696A1.42 1.42 0 0 1 4.193 5.77l-1.728.383c-.62.138-.62 1.022 0 1.16l1.728.383c.537.119.956.538 1.075 1.075l.384 1.728c.138.62 1.021.62 1.159 0l.384-1.728A1.42 1.42 0 0 1 8.27 7.697l1.728-.384c.62-.137.62-1.021 0-1.159L8.27 5.771a1.42 1.42 0 0 1-1.075-1.075L6.81 2.968c-.138-.62-1.021-.62-1.159 0z"/></symbol>
+        <symbol id="i-license" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M19.694 11.076a2.56 2.56 0 0 0 0 1.856l.136.392a2.615 2.615 0 0 1-1.368 3.32l-.36.16a2.65 2.65 0 0 0-1.345 1.295l-.16.36a2.617 2.617 0 0 1-3.32 1.368l-.368-.136a2.56 2.56 0 0 0-1.856 0l-.369.136a2.617 2.617 0 0 1-3.32-1.368l-.16-.36a2.65 2.65 0 0 0-1.296-1.344l-.36-.16a2.615 2.615 0 0 1-1.368-3.32l.136-.367a2.56 2.56 0 0 0 0-1.856l-.136-.368a2.615 2.615 0 0 1 1.368-3.32l.36-.16A2.65 2.65 0 0 0 7.204 5.91l.184-.36a2.617 2.617 0 0 1 3.345-1.368l.368.136c.597.232 1.259.232 1.856 0l.368-.136a2.617 2.617 0 0 1 3.32 1.368l.16.36a2.65 2.65 0 0 0 1.297 1.296l.36.184a2.615 2.615 0 0 1 1.368 3.32zm-8.706 3.607 4.497-4.495a.4.4 0 0 0 0-.552l-.424-.424a.4.4 0 0 0-.56 0l-3.793 3.792-1.2-1.192a.384.384 0 0 0-.56 0l-.424.424a.4.4 0 0 0 0 .568l1.904 1.88a.384.384 0 0 0 .56 0"/></symbol>
+        <symbol id="i-home" viewBox="0 0 24 24"><path fill="currentColor" d="M21 12.24V20a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-5.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0-.5.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-7.76a3 3 0 0 1 .88-2.12l6.83-6.83a1 1 0 0 1 .7-.29h1.18a1 1 0 0 1 .7.29l6.83 6.83a3 3 0 0 1 .88 2.12Z"/></symbol>
+        <symbol id="i-categories" viewBox="0 0 24 24"><g fill="currentColor" transform="skewX(-4) translate(1.2 0)"><rect x="1.2" y="2.6" width="5.5" height="19" rx=".7"/><rect x="10.1" y="6.2" width="5.5" height="15.4" rx=".7"/><rect x="19" y="2.6" width="5.5" height="19" rx=".7"/></g></symbol>
+        <symbol id="i-bookmark" viewBox="0 0 24 24"><path fill="currentColor" d="M19 20.098c0 .328-.172.63-.45.789a.855.855 0 0 1-.889-.024l-5.197-3.348a.855.855 0 0 0-.928 0L6.34 20.863a.854.854 0 0 1-.889.024.905.905 0 0 1-.45-.789V4.8C5 3.806 5.784 3 6.75 3h10.5c.966 0 1.75.806 1.75 1.8v15.298Z"/></symbol>
+        <symbol id="i-account" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10A10 10 0 0 0 12 2Zm0 3a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm5.62 11.16a7 7 0 0 1-11.24 0 1 1 0 0 1-.07-1l.21-.44A3 3 0 0 1 9.23 13h5.54a3 3 0 0 1 2.69 1.68l.23.47a1 1 0 0 1-.07 1.01Z"/></symbol>
+    </svg>
+
+    <div class="app">
+        <header class="head">
+            <div class="head__bar">
+                <a class="logo" href="#" aria-label="Envato">
+                    <svg viewBox="0 0 280.28 64" aria-hidden="true" focusable="false">
+                        <g fill="#191919">
+                            <path d="M76.34,12.52c9.59,0,18.97,5.65,18.97,18.25,0,1-.05,2.55-.16,3.64-.03.25-.24.44-.49.44h-26.9c.79,4.51,3.94,7.44,8.88,7.44,3.28,0,5.37-1.81,6.5-3.97.14-.27.45-.41.75-.35l10.06,2.19c.31.07.47.4.34.69-2.35,5.33-7.7,10.61-17.73,10.61-13.17,0-20.19-8.59-20.19-19.47s7.3-19.47,19.97-19.47ZM84.07,27.98c-.5-4.29-3.36-6.59-7.52-6.59-5.44,0-7.73,2.79-8.59,6.59h16.11Z"/>
+                            <path d="M98.75,49.82V14.16c0-.27.22-.49.49-.49h10.47c.27,0,.49.22.49.49v4.23c2.51-3.94,6.23-5.87,11.02-5.87,7.01,0,13.03,4.8,13.03,15.53v21.77c0,.27-.22.49-.49.49h-10.47c-.27,0-.49-.22-.49-.49v-20.12c0-4.8-2.51-7.44-6.16-7.44-3.94,0-6.44,2.58-6.44,8.45v19.12c0,.27-.22.49-.49.49h-10.47c-.27,0-.49-.22-.49-.49Z"/>
+                            <path d="M134.95,13.66h11.1c.22,0,.41.14.47.35l8.34,27.64,8.34-27.64c.06-.21.25-.35.47-.35h11.1c.34,0,.58.34.46.66l-12.77,35.53c-.1.27-.36.46-.65.46h-13.92c-.29,0-.55-.18-.65-.46l-12.77-35.53c-.12-.32.12-.66.46-.66Z"/>
+                            <path d="M199.53,49.82v-5.59c-1.79,3.72-5.8,7.23-12.03,7.23-7.23,0-12.6-4.58-12.6-11.02,0-6.8,4.51-11.88,14.39-11.88h5.73c3.15,0,4.01-2.29,3.72-3.79-.43-2.58-2.72-3.94-5.94-3.94-4.07,0-6.53,2.25-6.84,5.34-.03.28-.29.48-.57.44l-9.71-1.62c-.27-.04-.46-.3-.41-.57,1.58-8.45,9.59-11.89,17.81-11.89s17.32,2,17.32,17.18v20.12c0,.27-.22.49-.49.49h-9.9c-.27,0-.49-.22-.49-.49ZM190.87,43.16c4.58,0,7.73-3.44,8.09-7.73h-6.94c-4.22,0-5.73,1.72-5.65,4.08.07,2.51,2.08,3.65,4.51,3.65Z"/>
+                            <path d="M212.13,22.33v-8.18c0-.27.22-.49.49-.49h4.09c1.9,0,3.44-1.54,3.44-3.44V3.85c0-.27.22-.49.49-.49h9.32c.27,0,.49.22.49.49v9.81h7.52c.27,0,.49.22.49.49v8.18c0,.27-.22.49-.49.49h-7.52v13.24c0,4.31,3.67,6.07,7.5,4.71.25-.09.52.1.52.37v8.63c0,.32-.21.6-.52.67-.99.23-2.36.44-3.99.44-8.88,0-14.96-3.01-14.96-15.89v-12.17h-6.38c-.27,0-.49-.22-.49-.49Z"/>
+                            <path d="M280.28,31.99c0,10.74-7.59,19.47-20.04,19.47s-20.04-8.73-20.04-19.47,7.59-19.47,20.04-19.47,20.04,8.73,20.04,19.47ZM268.82,31.99c0-5.3-2.93-9.73-8.59-9.73s-8.59,4.44-8.59,9.73,2.93,9.73,8.59,9.73,8.59-4.44,8.59-9.73Z"/>
+                        </g>
+                        <g fill="#87e64b">
+                            <circle cx="25.56" cy="61.14" r="2.86"/>
+                            <path d="M42,41.64l-16.13,1.73c-.3.03-.45-.34-.21-.53l15.78-12.29c1.02-.84,1.68-2.14,1.4-3.54-.28-2.14-2.05-3.54-4.29-3.26l-17.15,2.51c-.3.04-.46-.34-.22-.53l17-12.98c3.35-2.61,3.63-7.73.56-10.71-2.79-2.79-7.27-2.7-10.06.09L1.29,30c-1.02,1.12-1.49,2.61-1.21,4.19.47,2.52,2.98,4.19,5.5,3.73l14.77-3.01c.32-.07.49.36.22.54l-16.38,10.49c-2.05,1.3-2.98,3.63-2.33,5.96.65,3.07,3.73,4.84,6.71,4.1l24.49-6.03c.28-.07.48.25.3.47l-3.82,4.72c-1.02,1.3.65,3.07,2.05,2.05l12.58-10.34c2.24-1.86.75-5.5-2.14-5.22Z"/>
+                        </g>
+                    </svg>
+                </a>
+                <button class="menu" type="button" aria-label="Abrir menú">
+                    <svg class="icon" aria-hidden="true"><use href="#i-menu"></use></svg>
+                </button>
+            </div>
+
+            <form class="search" role="search" onsubmit="return false">
+                <button class="search__cat" type="button" aria-label="Categoría: Todos">
+                    Todos
+                    <svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg>
+                </button>
+                <span class="search__divider" aria-hidden="true"></span>
+                <svg class="search__glass" aria-hidden="true"><use href="#i-search"></use></svg>
+                <input type="search" placeholder="Buscar" aria-label="Buscar" autocomplete="off">
+                <div class="search__tools">
+                    <button class="search__tool" type="button" aria-label="Buscar por sonido">
+                        <svg class="icon" aria-hidden="true"><use href="#i-sound"></use></svg>
+                    </button>
+                    <button class="search__tool" type="button" aria-label="Buscar por imagen">
+                        <svg class="icon" aria-hidden="true"><use href="#i-image"></use></svg>
+                    </button>
+                </div>
+            </form>
+        </header>
+
+        <main>
+            <section class="hero">
+                <p class="hero__kicker">Riff until it's right con tu</p>
+                <h1 class="hero__title">Kit de recursos creativos <span>todo en uno</span></h1>
+            </section>
+
+            <section class="value">
+                <h2 class="value__title">Una suscripción con un valor increíble.</h2>
+                <ul class="value__list">
+                    <li>
+                        <svg class="icon" aria-hidden="true"><use href="#i-download"></use></svg>
+                        <p>Descargas ilimitadas de más de 30+ millones de recursos creativos</p>
+                    </li>
+                    <li>
+                        <svg class="icon" aria-hidden="true"><use href="#i-ai"></use></svg>
+                        <p>Herramientas de IA: video, imagen, audio</p>
+                    </li>
+                    <li>
+                        <svg class="icon" aria-hidden="true"><use href="#i-license"></use></svg>
+                        <p>Licencia comercial de por vida</p>
+                    </li>
+                </ul>
+            </section>
+        </main>
+
+        <nav class="tabbar" aria-label="Principal">
+            <a href="#" aria-current="page">
+                <svg class="icon" aria-hidden="true"><use href="#i-home"></use></svg>
+                <span>Inicio</span>
+            </a>
+            <a href="#">
+                <svg class="icon" aria-hidden="true"><use href="#i-categories"></use></svg>
+                <span>Categorías</span>
+            </a>
+            <a href="#">
+                <svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg>
+                <span>Mis colecciones</span>
+            </a>
+            <a href="#">
+                <svg class="icon" aria-hidden="true"><use href="#i-account"></use></svg>
+                <span>Iniciar sesión</span>
+            </a>
+        </nav>
+    </div>
+
+</body>
+</html>
