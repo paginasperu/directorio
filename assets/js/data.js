@@ -68,7 +68,8 @@ function decoratePromo(row) {
   let kind = rawType;
   if (rawType === "Regalo") {
     if (mode === "Canje") kind = "Canje";
-    else if (mode === "Sorteo" || mode === "Concurso") kind = "Sorteo";
+    else if (mode === "Sorteo") kind = "Sorteo";
+    else if (mode === "Concurso") kind = "Concurso";
   }
 
   return {

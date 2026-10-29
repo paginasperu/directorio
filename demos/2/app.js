@@ -10,7 +10,7 @@ import {
   money,
   normalize,
   phoneDigits,
-} from "../../assets/js/data.js?v=29";
+} from "../../assets/js/data.js?v=31";
 
 const PAGE_SIZE = 12;
 const FAV_KEY = "directorio:favoritos:negocios";
@@ -45,7 +45,7 @@ const PRICE_BANDS = [
   { value: "200+", label: "Más de S/ 200", test: (price) => price > 200 },
 ];
 
-const MODALITIES = ["Todos", "Canje", "Sorteo"];
+const MODALITIES = ["Todos", "Canje", "Sorteo", "Concurso"];
 const collator = new Intl.Collator("es-PE", { sensitivity: "base" });
 
 const state = {

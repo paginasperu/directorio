@@ -1,7 +1,7 @@
 // Demo 02: vistas y comportamiento en un solo archivo.
 // Los datos viven en assets/js/data.js y son compartidos por todas las demos.
 
-import { escapeHtml, formatDate, getSaving, listValues, loadDirectory, money, normalize } from "../../assets/js/data.js?v=29";
+import { escapeHtml, formatDate, getSaving, listValues, loadDirectory, money, normalize } from "../../assets/js/data.js?v=31";
 
 /* ---------- Vistas ---------- */
 
@@ -524,6 +524,8 @@ function openModal() {
   modalLastFocus = document.activeElement;
   ui.modal.classList.remove("hidden");
   ui.modal.classList.add("flex");
+  ui.modal.scrollTop = 0;
+  ui.modalBody.scrollTop = 0;
   document.body.classList.add("overflow-hidden");
   setTimeout(() => $("#closeDetail")?.focus(), 0);
 }
@@ -774,10 +776,6 @@ function setupHeaderScroll() {
 
 async function init() {
   try {
-    // Solo para probar el esqueleto: ?slow=2000
-    const slow = Number(new URLSearchParams(location.search).get("slow"));
-    if (slow > 0) await new Promise((resolve) => setTimeout(resolve, slow));
-
     const { profiles, promos, profilesById } = await loadDirectory();
     state.profiles = profiles;
     state.promos = promos;

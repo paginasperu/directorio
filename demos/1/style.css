@@ -239,13 +239,18 @@
 
 .d1-promo-card {
   padding: 13px 14px 12px;
-  border: 1px solid #bfe0cb;
+  border: 1px solid #e5e5ea;
+  border-left: 3px solid #0071e3;
   border-radius: 14px;
-  background: #e6f5ec;
+  background: #fff;
 }
 
 .d1-promo-card:hover {
-  background: #ddf0e5;
+  background: #fafafc;
+}
+
+.d1-promos-head .d1-section-title {
+  color: #0071e3;
 }
 
 .d1-promo-main {
