@@ -23,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../../assets/css/tailwind.css">
     <link rel="stylesheet" href="../../assets/css/styles.css">
-    <link rel="stylesheet" href="style.css?v=28">
+    <link rel="stylesheet" href="style.css?v=30">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body class="fm-page min-h-screen flex flex-col">
@@ -79,6 +79,12 @@
             <div class="category-strip">
                 <nav id="categoryList" aria-label="Categorías"></nav>
             </div>
+            <button type="button" class="cat-nav cat-nav--prev" aria-label="Ver categorías anteriores">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <button type="button" class="cat-nav cat-nav--next" aria-label="Ver más categorías">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
         </div>
     </section>
 
@@ -165,10 +171,6 @@
                     <select id="tipoFilter" class="w-full h-10 px-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-300"></select>
                 </div>
                 <div>
-                    <label for="modalidadFilter" class="block font-bold text-slate-800 mb-1.5">Modalidad</label>
-                    <select id="modalidadFilter" class="w-full h-10 px-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-300"></select>
-                </div>
-                <div>
                     <label for="precioFilter" class="block font-bold text-slate-800 mb-1.5">Precio</label>
                     <select id="precioFilter" class="w-full h-10 px-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-300"></select>
                 </div>
@@ -205,7 +207,7 @@
         </div>
     </footer>
 
-    <script type="module" src="app.js?v=27"></script>
+    <script type="module" src="app.js?v=30"></script>
 </body>
 </html>
 

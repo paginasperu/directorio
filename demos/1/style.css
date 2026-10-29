@@ -239,13 +239,13 @@
 
 .d1-promo-card {
   padding: 13px 14px 12px;
-  border: 0;
+  border: 1px solid #bfe0cb;
   border-radius: 14px;
-  background: #f5f8f6;
+  background: #e6f5ec;
 }
 
 .d1-promo-card:hover {
-  background: #eef4f1;
+  background: #ddf0e5;
 }
 
 .d1-promo-main {
@@ -872,10 +872,34 @@
 /* Menú de categorías */
 
 .app-cats__inner {
+  position: relative;
   max-width: 1120px;
   margin: 0 auto;
   padding: 14px 20px 14px;
 }
+
+.cat-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: none;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid #e1e3e9;
+  border-radius: 50%;
+  background: #fff;
+  color: #1d1d1f;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .12);
+  cursor: pointer;
+}
+
+.cat-nav--prev { left: 8px; }
+.cat-nav--next { right: 8px; }
+.cat-nav[disabled] { opacity: 0; pointer-events: none; }
+.cat-nav svg { width: 16px; height: 16px; }
 
 .app-cats .category-strip { margin: 0; }
 
@@ -953,12 +977,23 @@
   .app-tabs .section-tab span { display: inline; }
 
   .app-cats #categoryList {
-    display: grid;
-    grid-template-columns: repeat(7, minmax(0, 1fr));
-    gap: 16px 8px;
-    overflow: visible;
-    justify-items: center;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 18px;
+    padding: 0 44px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
   }
+
+  .app-cats #categoryList .category-option {
+    flex: 0 0 auto;
+    width: auto;
+    min-width: 88px;
+    padding: 0 6px;
+  }
+
+  .cat-nav { display: grid; }
 }
 
 @media (max-width: 767px) {
@@ -1730,7 +1765,7 @@ body[data-view="promos"] #loadMoreWrap {
 
 @media (min-width: 768px) {
   .app-cats__inner {
-    min-height: 193px;
+    min-height: 112px;
   }
 }
 

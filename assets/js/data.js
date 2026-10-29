@@ -63,6 +63,14 @@ function decorateProfile(row) {
 }
 
 function decoratePromo(row) {
+  const rawType = String(row.tipo || "").trim();
+  const mode = String(row.modalidad || "").trim();
+  let kind = rawType;
+  if (rawType === "Regalo") {
+    if (mode === "Canje") kind = "Canje";
+    else if (mode === "Sorteo" || mode === "Concurso") kind = "Sorteo";
+  }
+
   return {
     id: String(row.id),
     profileId: toNumber(row.negocio_id),
@@ -73,8 +81,9 @@ function decoratePromo(row) {
     regular: toNumber(row.precio_regular) ?? 0,
     discounted: toNumber(row.precio_rebajado) ?? 0,
     category: row.categoria,
-    type: row.tipo,
-    mode: row.modalidad,
+    type: rawType,
+    kind,
+    mode,
     image: imageUrl(row.banner),
     profile: null,
   };

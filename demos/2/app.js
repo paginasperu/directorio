@@ -10,7 +10,7 @@ import {
   money,
   normalize,
   phoneDigits,
-} from "../../assets/js/data.js";
+} from "../../assets/js/data.js?v=29";
 
 const PAGE_SIZE = 12;
 const FAV_KEY = "directorio:favoritos:negocios";
@@ -45,7 +45,7 @@ const PRICE_BANDS = [
   { value: "200+", label: "Más de S/ 200", test: (price) => price > 200 },
 ];
 
-const MODALITIES = ["Todos", "Sorteo", "Concurso", "Canje"];
+const MODALITIES = ["Todos", "Canje", "Sorteo"];
 const collator = new Intl.Collator("es-PE", { sensitivity: "base" });
 
 const state = {
@@ -159,7 +159,7 @@ function profileLocation(profile) {
 }
 
 function discountPercent(promo) {
-  if (promo.type !== "Descuento" || !(promo.regular > 0)) return 0;
+  if (promo.kind !== "Descuento" || !(promo.regular > 0)) return 0;
   const saving = getSaving(promo);
   return saving > 0 ? Math.round((saving / promo.regular) * 100) : 0;
 }
@@ -322,11 +322,12 @@ function currentList() {
 function matches(item, ignoreCategory = false) {
   if (state.view === "promos") {
     const promo = item;
-    if (promo.type !== state.promoKind) return false;
+    if (state.promoKind === "Descuento" && promo.kind !== "Descuento") return false;
+    if (state.promoKind === "Regalo" && promo.kind === "Descuento") return false;
     if (!ignoreCategory && state.category !== "Todos" && promo.category !== state.category) return false;
     if (state.floor !== "Todos" && String(promo.profile?.floor || "") !== state.floor) return false;
 
-    if (state.promoKind === "Regalo" && state.modality !== "Todos" && promo.mode !== state.modality) return false;
+    if (state.promoKind === "Regalo" && state.modality !== "Todos" && promo.kind !== state.modality) return false;
     if (state.promoKind === "Descuento") {
       const band = PRICE_BANDS.find((entry) => entry.value === state.price) || PRICE_BANDS[0];
       if (!band.test(promo.discounted)) return false;
@@ -336,8 +337,7 @@ function matches(item, ignoreCategory = false) {
     return normalize([
       promo.title,
       promo.description,
-      promo.type,
-      promo.mode,
+      promo.kind,
       promo.category,
       promo.profile?.name,
       promo.profile?.type,
@@ -377,7 +377,7 @@ function sortList(list) {
     } else if (state.sort === "business") {
       result.sort((a, b) => collator.compare(a.profile?.name || "", b.profile?.name || "") || collator.compare(a.title, b.title));
     } else if (state.sort === "modality") {
-      result.sort((a, b) => collator.compare(a.mode || "", b.mode || "") || collator.compare(a.title, b.title));
+      result.sort((a, b) => collator.compare(a.kind || "", b.kind || "") || collator.compare(a.title, b.title));
     } else {
       result.sort((a, b) => collator.compare(a.title, b.title));
     }
@@ -398,14 +398,14 @@ function sortList(list) {
 
 function businessCard(profile, index = 0) {
   const promos = sortedPromos(profile);
-  const discount = promos.find((promo) => promo.type === "Descuento");
-  const prize = promos.find((promo) => promo.type === "Regalo");
+  const discount = promos.find((promo) => promo.kind === "Descuento");
+  const prize = promos.find((promo) => promo.kind !== "Descuento");
   const percent = discount ? discountPercent(discount) : 0;
   const contact = primaryContact(profile);
   const adult = profile.category === "Sexshop";
   const promoStrip = [
     discount ? `<span class="promo-chip promo-chip--discount">${icon("tag", "icon--sm")} −${percent}%</span>` : "",
-    prize ? `<span class="promo-chip promo-chip--prize">${icon("gift", "icon--sm")} ${escapeHtml(prize.mode || "Regalo")}</span>` : "",
+    prize ? `<span class="promo-chip promo-chip--prize">${icon("gift", "icon--sm")} ${escapeHtml(prize.kind)}</span>` : "",
   ].join("");
   const contactLabel = contact?.kind === "whatsapp" ? "WhatsApp" : contact?.kind === "phone" ? "Llamar" : contact?.label || "";
   const contactModifier = contact?.kind === "whatsapp" ? "whatsapp" : contact?.kind === "phone" ? "phone" : "social";
@@ -443,10 +443,10 @@ function businessCard(profile, index = 0) {
 }
 
 function promoCard(promo, index = 0) {
-  const isPrize = promo.type === "Regalo";
+  const isPrize = promo.kind !== "Descuento";
   const percent = discountPercent(promo);
   const saving = getSaving(promo);
-  const badge = isPrize ? (promo.mode || "Regalo") : percent ? `−${percent}%` : "Descuento";
+  const badge = isPrize ? (promo.kind) : percent ? `−${percent}%` : "Descuento";
   const business = promo.profile;
   const adult = promo.category === "Sexshop" || business?.category === "Sexshop";
   const media = adult
@@ -458,13 +458,13 @@ function promoCard(promo, index = 0) {
         ${promo.regular > promo.discounted ? `<s>${money(promo.regular)}</s>` : ""}
         ${saving ? `<span class="save-tag">Ahorras ${money(saving)}</span>` : ""}
       </div>`
-    : `<div class="promo-card__prize">${icon("gift")} ${escapeHtml(promo.mode || "Regalo")} · ${escapeHtml(formatDate(promo.until))}</div>`;
+    : `<div class="promo-card__prize">${icon("gift")} ${escapeHtml(promo.kind)} · ${escapeHtml(formatDate(promo.until))}</div>`;
 
   return `<article class="promo-card promo-card--${isPrize ? "premio" : "descuento"}" data-card-promo="${escapeHtml(promo.id)}">
     ${media}
     <div class="promo-card__badges"><span class="badge ${isPrize ? "badge--prize" : "badge--promo"}">${escapeHtml(badge)}</span></div>
     <div class="promo-card__body">
-      <p class="promo-card__kind">${isPrize ? "Regalo" : "Descuento"}</p>
+      ${isPrize ? "" : `<p class="promo-card__kind">Descuento</p>`}
       <h3 class="promo-card__title"><button type="button" data-promo="${escapeHtml(promo.id)}">${escapeHtml(promo.title)}</button></h3>
       ${business ? `<p class="promo-card__biz">En <button type="button" data-business="${business.id}">${escapeHtml(business.name)}</button></p>` : ""}
       <p class="promo-card__desc">${escapeHtml(promo.description)}</p>
@@ -478,15 +478,15 @@ function promoCard(promo, index = 0) {
 }
 
 function detailPromoRow(promo, profile) {
-  const isPrize = promo.type === "Regalo";
+  const isPrize = promo.kind !== "Descuento";
   const percent = discountPercent(promo);
   const price = isPrize
-    ? `<span class="prize-label">${escapeHtml(promo.mode || "Regalo")}</span>`
+    ? `<span class="prize-label">${escapeHtml(promo.kind)}</span>`
     : `${money(promo.discounted)}${promo.regular > promo.discounted ? `<s>${money(promo.regular)}</s>` : ""}`;
   return `<button type="button" class="detail-promo" data-promo="${escapeHtml(promo.id)}" data-back-business="${profile.id}">
     <span>
       <span class="detail-promo__title">${escapeHtml(promo.title)}</span>
-      <span class="detail-promo__meta">${isPrize ? "Regalo" : "Descuento"}${!isPrize && percent ? ` · −${percent}%` : ""} · ${escapeHtml(promo.category)}</span>
+      <span class="detail-promo__meta">${promo.kind}${!isPrize && percent ? ` · −${percent}%` : ""} · ${escapeHtml(promo.category)}</span>
     </span>
     <span class="detail-promo__price">${price}</span>
   </button>`;
@@ -547,7 +547,7 @@ function businessDetail(profile) {
 
 function promoDetail(promo) {
   const business = promo.profile;
-  const isPrize = promo.type === "Regalo";
+  const isPrize = promo.kind !== "Descuento";
   const percent = discountPercent(promo);
   const saving = getSaving(promo);
   const primary = business ? primaryContact(business) : null;
@@ -568,7 +568,7 @@ function promoDetail(promo) {
         ${saving ? `<span class="save-tag">Ahorras ${money(saving)}</span>` : ""}
       </div>`
     : `<div class="detail-price-block">
-        <div><strong>${escapeHtml(promo.mode || "Regalo")}</strong></div>
+        <div><strong>${escapeHtml(promo.kind)}</strong></div>
         <span class="save-tag" style="background:var(--amber-soft);color:var(--amber)">${escapeHtml(formatDate(promo.until))}</span>
       </div>`;
 
@@ -576,13 +576,13 @@ function promoDetail(promo) {
     <div class="detail-hero">
       <img src="${escapeHtml(promo.image)}" alt="" width="600" height="300">
       <div class="detail-hero__badges">
-        <span class="badge ${isPrize ? "badge--prize" : "badge--promo"}">${escapeHtml(isPrize ? (promo.mode || "Regalo") : percent ? `−${percent}%` : "Descuento")}</span>
+        <span class="badge ${isPrize ? "badge--prize" : "badge--promo"}">${escapeHtml(isPrize ? (promo.kind) : percent ? `−${percent}%` : "Descuento")}</span>
         <span class="badge badge--soft">${escapeHtml(promo.category)}</span>
         ${promo.category === "Sexshop" ? `<span class="badge badge--adult">+18</span>` : ""}
       </div>
     </div>
     <div class="detail-body detail-body--promo">
-      <p class="detail-kicker">${isPrize ? "Regalo" : "Descuento"} · ${escapeHtml(promo.category)}</p>
+      <p class="detail-kicker">${promo.kind} · ${escapeHtml(promo.category)}</p>
       <div class="detail-title-row">
         <h2 class="detail-title detail-title--promo" id="modalTitle">${escapeHtml(promo.title)}</h2>
       </div>
@@ -592,7 +592,7 @@ function promoDetail(promo) {
       <dl class="detail-info">
         <div><dt>Vigente hasta</dt><dd>${escapeHtml(formatDate(promo.until))}</dd></div>
         <div><dt>Categoría</dt><dd>${escapeHtml(promo.category)}</dd></div>
-        ${promo.mode ? `<div><dt>Modalidad</dt><dd>${escapeHtml(promo.mode)}</dd></div>` : ""}
+        <div><dt>Tipo</dt><dd>${escapeHtml(promo.kind)}</dd></div>
       </dl>
       ${promo.conditions ? `<section class="detail-section"><h3>Condiciones</h3><p class="detail-note">${escapeHtml(promo.conditions)}</p></section>` : ""}
       ${business ? `<section class="detail-section">
@@ -764,8 +764,8 @@ function syncControls() {
 }
 
 function updatePromoTabs() {
-  const discounts = state.promos.filter((promo) => promo.type === "Descuento").length;
-  const prizes = state.promos.filter((promo) => promo.type === "Regalo").length;
+  const discounts = state.promos.filter((promo) => promo.kind === "Descuento").length;
+  const prizes = state.promos.filter((promo) => promo.kind !== "Descuento").length;
   ui.countDesc.textContent = discounts;
   ui.countPrem.textContent = prizes;
   $$("[data-promo-kind]", ui.promoTabs).forEach((button) => {

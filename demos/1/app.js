@@ -1,7 +1,7 @@
 // Demo 02: vistas y comportamiento en un solo archivo.
 // Los datos viven en assets/js/data.js y son compartidos por todas las demos.
 
-import { escapeHtml, formatDate, getSaving, listValues, loadDirectory, money, normalize } from "../../assets/js/data.js";
+import { escapeHtml, formatDate, getSaving, listValues, loadDirectory, money, normalize } from "../../assets/js/data.js?v=29";
 
 /* ---------- Vistas ---------- */
 
@@ -81,7 +81,7 @@ function businessCard(profile) {
 function promoCard(promo) {
   const saving = getSaving(promo);
   const discount = saving ? Math.round((saving / promo.regular) * 100) : 0;
-  const badge = discount ? `−${discount}%` : (promo.mode || promo.type);
+  const badge = discount ? `-${discount}%` : promo.kind;
   const adult = promo.category === "Sexshop" || promo.profile?.category === "Sexshop";
   const badgeClass = discount ? "d1-promo is-discount" : "d1-promo";
   const cover = adult
@@ -122,8 +122,7 @@ function promoRow(promo) {
     <div class="d1-promo-main">
       <div class="d1-promo-info">
         <div class="d1-tags">
-          <span class="d1-tag">${escapeHtml(promo.type)}</span>
-          ${promo.mode ? `<span class="d1-tag is-soft">${escapeHtml(promo.mode)}</span>` : ""}
+          <span class="d1-tag">${escapeHtml(promo.kind)}</span>
         </div>
         <p class="d1-promo-title">
           <button type="button" class="d1-promo-title-btn" data-promo="${promo.id}">
@@ -200,8 +199,7 @@ function promoDetail(promo, backBusinessId) {
     <div class="d1-modal-body p-5 sm:p-7 space-y-5">
       <div>
         <div class="d1-tags">
-          <span class="d1-tag">${escapeHtml(promo.type)}</span>
-          ${promo.mode ? `<span class="d1-tag is-soft">${escapeHtml(promo.mode)}</span>` : ""}
+          <span class="d1-tag">${escapeHtml(promo.kind)}</span>
         </div>
         <h2 id="modalTitle" class="d1-promo-hero">${escapeHtml(promo.title)}</h2>
         <p class="d1-promo-hero-text">${escapeHtml(promo.description)}</p>
@@ -240,7 +238,6 @@ const state = {
   floor: "Todos",
   bizSort: "destacados",
   promoTipo: "Todos",
-  promoModalidad: "Todos",
   promoPrecio: "Todos",
   promoSort: "price-asc",
   page: 12,
@@ -278,7 +275,6 @@ const ui = {
   promoFilters: $("#promoFilters"),
   floor: $("#floorFilter"),
   tipo: $("#tipoFilter"),
-  modalidad: $("#modalidadFilter"),
   precio: $("#precioFilter"),
   categoryFilter: $("#categoryFilter"),
 };
@@ -317,11 +313,8 @@ function setupFilters() {
     .sort((a, b) => Number(a) - Number(b));
   fillSelect(ui.floor, [{ value: "Todos", label: "Todos los pisos" }, ...floors.map((floor) => ({ value: floor, label: `Piso ${floor}` }))], state.floor);
 
-  const tipos = [...new Set(state.promos.map((promo) => promo.type).filter(Boolean))].sort(collator.compare);
+  const tipos = [...new Set(state.promos.map((promo) => promo.kind).filter(Boolean))].sort(collator.compare);
   fillSelect(ui.tipo, [{ value: "Todos", label: "Todos los tipos" }, ...tipos.map((tipo) => ({ value: tipo, label: tipo }))], state.promoTipo);
-
-  const modalidades = [...new Set(state.promos.map((promo) => promo.mode).filter(Boolean))].sort(collator.compare);
-  fillSelect(ui.modalidad, [{ value: "Todos", label: "Todas las modalidades" }, ...modalidades.map((mode) => ({ value: mode, label: mode }))], state.promoModalidad);
 
   fillSelect(ui.precio, priceBands.map(({ value, label }) => ({ value, label })), state.promoPrecio);
 
@@ -347,11 +340,10 @@ function matchesBusiness(profile, ignoreCategory = false) {
 function matchesPromo(promo, ignoreCategory = false) {
   if (!ignoreCategory && state.category !== "Todos" && promo.category !== state.category) return false;
   if (state.floor !== "Todos" && promo.profile?.floor !== state.floor) return false;
-  if (state.promoTipo !== "Todos" && promo.type !== state.promoTipo) return false;
-  if (state.promoModalidad !== "Todos" && promo.mode !== state.promoModalidad) return false;
+  if (state.promoTipo !== "Todos" && promo.kind !== state.promoTipo) return false;
   if (!priceBands.find((band) => band.value === state.promoPrecio).test(promo.discounted)) return false;
   if (!state.search) return true;
-  return normalize([promo.title, promo.description, promo.type, promo.mode, promo.profile?.name, promo.category].join(" ")).includes(state.search);
+  return normalize([promo.title, promo.description, promo.kind, promo.profile?.name, promo.category].join(" ")).includes(state.search);
 }
 
 /* ---------- orden ---------- */
@@ -401,12 +393,35 @@ function categoryIcon(name) {
 }
 
 function renderCategories(counts) {
+  const left = ui.categoryList.scrollLeft;
   const categories = ["Todos", ...new Set(state.profiles.map((profile) => profile.category).filter(Boolean))].sort((a, b) => a === "Todos" ? -1 : b === "Todos" ? 1 : collator.compare(a, b));
   ui.categoryList.innerHTML = categories.map((category) => {
     const total = category === "Todos" ? counts.total : (counts.byCategory.get(category) || 0);
     const label = category === "Todos" ? "Todas" : category;
     return `<button type="button" class="category-option${category === state.category ? " is-active" : ""}" data-category="${category}" aria-pressed="${String(category === state.category)}">${categoryIcon(category)}<span class="category-option__name">${label}</span><span class="d1-cat-count">${total}</span></button>`;
   }).join("");
+  ui.categoryList.scrollLeft = left;
+  updateCategoryNav();
+}
+
+function updateCategoryNav() {
+  const prev = $(".cat-nav--prev");
+  const next = $(".cat-nav--next");
+  if (!prev || !next || !ui.categoryList) return;
+  const max = ui.categoryList.scrollWidth - ui.categoryList.clientWidth;
+  prev.disabled = ui.categoryList.scrollLeft <= 2;
+  next.disabled = ui.categoryList.scrollLeft >= max - 2;
+}
+
+function setupCategoryNav() {
+  const prev = $(".cat-nav--prev");
+  const next = $(".cat-nav--next");
+  if (!prev || !next) return;
+  prev.addEventListener("click", () => ui.categoryList.scrollBy({ left: -320, behavior: "smooth" }));
+  next.addEventListener("click", () => ui.categoryList.scrollBy({ left: 320, behavior: "smooth" }));
+  ui.categoryList.addEventListener("scroll", updateCategoryNav, { passive: true });
+  window.addEventListener("resize", updateCategoryNav);
+  updateCategoryNav();
 }
 
 function countBy(list, key, total) {
@@ -573,14 +588,12 @@ function resetFilters() {
   state.floor = "Todos";
   state.bizSort = "destacados";
   state.promoTipo = "Todos";
-  state.promoModalidad = "Todos";
   state.promoPrecio = "Todos";
   state.promoSort = "price-asc";
   ui.search.value = "";
   ui.mobileSearch.value = "";
   ui.floor.value = "Todos";
   ui.tipo.value = "Todos";
-  ui.modalidad.value = "Todos";
   ui.precio.value = "Todos";
   setupSort();
   render();
@@ -619,7 +632,6 @@ function bindEvents() {
   ui.categoryFilter.addEventListener("change", () => { state.category = ui.categoryFilter.value; render(); });
   ui.floor.addEventListener("change", () => { state.floor = ui.floor.value; render(); });
   ui.tipo.addEventListener("change", () => { state.promoTipo = ui.tipo.value; render(); });
-  ui.modalidad.addEventListener("change", () => { state.promoModalidad = ui.modalidad.value; render(); });
   ui.precio.addEventListener("change", () => { state.promoPrecio = ui.precio.value; render(); });
 
   function applySort(value) {
@@ -762,6 +774,10 @@ function setupHeaderScroll() {
 
 async function init() {
   try {
+    // Solo para probar el esqueleto: ?slow=2000
+    const slow = Number(new URLSearchParams(location.search).get("slow"));
+    if (slow > 0) await new Promise((resolve) => setTimeout(resolve, slow));
+
     const { profiles, promos, profilesById } = await loadDirectory();
     state.profiles = profiles;
     state.promos = promos;
@@ -774,6 +790,7 @@ async function init() {
 
     setupFilters();
     setupSort();
+    setupCategoryNav();
     setupHeaderScroll();
     bindEvents();
 
