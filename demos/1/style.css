@@ -605,15 +605,6 @@
 /* Densidad: menos presentacion, mas resultados */
 
 @media (max-width: 640px) {
-  .fm-lead {
-    margin-top: 8px;
-    font-size: 13px;
-    line-height: 1.45;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
   .fm-eyebrow { display: none; }
   .category-strip { margin-top: 12px; }
   #categoryList { gap: 6px; padding-bottom: 8px; }
@@ -680,14 +671,6 @@
 .d1-promo-foot,
 .d1-offered-meta {
   color: #6e6e73;
-}
-
-.provider-whatsapp {
-  color: #0062c4;
-}
-
-.provider-whatsapp:hover {
-  color: #0062c4;
 }
 
 .footer-links a {
@@ -757,7 +740,6 @@
 
 .filter-toggle:focus-visible,
 .results-sort:focus-visible,
-.provider-whatsapp:focus-visible,
 .d1-hit:focus-visible {
   outline: 2px solid var(--fm-blue);
   outline-offset: 2px;
@@ -769,11 +751,6 @@
 }
 
 @media (max-width: 640px) {
-  .provider-whatsapp {
-    min-height: 36px;
-    padding: 0 14px;
-  }
-
   .filter-toggle {
     min-height: 40px;
   }
