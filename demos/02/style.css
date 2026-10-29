@@ -666,14 +666,7 @@
   #categoryList { gap: 6px; padding-bottom: 8px; }
   .category-option { padding: 6px 11px; font-size: 12px; }
   .results-toolbar { margin: 4px 0 10px; gap: 8px; }
-  .results-actions { display: none; }
   .results-count { font-size: 12px; }
-}
-
-.d1-mobile-only { display: none; }
-
-@media (max-width: 640px) {
-  .d1-mobile-only { display: block; }
 }
 
 /* Barra de demo */
@@ -1234,23 +1227,6 @@
   background: #fff;
 }
 
-.app-brandbar {
-  background: #fff;
-}
-
-.app-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  max-width: 1120px;
-  height: 48px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.app-top .header-brand { height: 48px; }
-
 .app-search-row {
   display: flex;
   align-items: center;
@@ -1439,7 +1415,6 @@
 .d2-search { display: none; }
 
 @media (max-width: 640px) {
-  .app-top { padding: 0 16px; }
   .app-search-row { padding: 10px 16px 8px; gap: 7px; }
   .app-tabs { padding: 0 16px; gap: 22px; }
   .app-cats__inner { padding: 14px 16px 14px; }
@@ -1694,7 +1669,7 @@
   gap: 8px;
   margin-top: 10px;
   padding: 8px 12px;
-  border: 1px solid #e6e7ee;
+  border: 1px solid #e2eae5;
   border-radius: 10px;
   background: #fff;
   text-align: left;
@@ -1743,32 +1718,102 @@
    Ajustes de composición (Demo 02)
    ============================================================ */
 
-/* Cabecera de escritorio: marca + buscador + filtros en una fila */
+/* Cabecera: marca + buscador + filtros en una fila (móvil y escritorio) */
 
-.app-brand-inline,
-.app-subscribe-inline {
+.app-brand-inline {
+  display: inline-flex;
+  height: 44px;
+  flex: none;
+  text-decoration: none;
+}
+
+.app-brand-inline .header-brand-name { display: none; }
+
+.app-brand-inline .d2-brand-mark {
+  width: 30px;
+  height: 30px;
+}
+
+.app-subscribe-inline,
+.app-subscribe-tabs {
   display: none;
 }
 
+.app-tabbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-right: 16px;
+}
+
+.app-tabbar .app-tabs {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: none;
+  margin: 0;
+  padding: 0 0 0 20px;
+}
+
+@media (max-width: 1023px) {
+  .app-search-row {
+    gap: 8px;
+    padding: 10px 16px 8px;
+  }
+
+  .app-search-row .app-input {
+    height: 44px;
+    border-radius: 14px;
+  }
+
+  .app-search-row #mobileSearch input {
+    padding-left: 14px;
+    font-size: 13px;
+  }
+
+  .app-input-btn {
+    height: 44px;
+    border-radius: 0 14px 14px 0;
+  }
+
+  .app-filter { height: 44px; }
+
+  .app-subscribe-tabs {
+    display: inline-flex;
+    flex: none;
+    font-size: 13px;
+  }
+
+  .app-tabbar .app-tabs { padding-left: 16px; }
+}
+
+@media (max-width: 767px) {
+  .app-filter {
+    width: 44px;
+    gap: 0;
+    padding: 0;
+    border-radius: 14px;
+  }
+}
+
 @media (min-width: 1024px) {
-  .app-brandbar {
-    display: none;
+  .app-brand-inline .header-brand-name { display: inline; }
+
+  .app-brand-inline .d2-brand-mark {
+    width: 28px;
+    height: 28px;
   }
 
   .app-search-row {
-    gap: 14px;
+    gap: 12px;
     padding: 12px 20px 10px;
   }
 
-  .app-brand-inline {
-    display: inline-flex;
-    height: 44px;
-    text-decoration: none;
-  }
-
+  /* El buscador ocupa el ancho disponible: sin hueco antes de Filtros */
   .app-search-row .header-search {
     flex: 1 1 auto;
-    max-width: 560px;
+    max-width: none;
   }
 
   .app-subscribe-inline {
@@ -2029,10 +2074,6 @@ body[data-view="promos"] .results-panel {
   box-shadow: none;
 }
 
-body[data-view="promos"] .results-toolbar {
-  margin: 0 0 16px;
-}
-
 body[data-view="promos"] #loadMoreWrap {
   margin: 20px 0 2px;
 }
@@ -2124,15 +2165,13 @@ body[data-view="promos"] #loadMoreWrap {
 
 .d1-promo-card {
   padding: 13px 14px 12px;
-  border: 1px solid #e5e8ee;
-  border-left: 3px solid #0a7d32;
-  border-radius: 12px;
-  background: #fff;
+  border: 0;
+  border-radius: 14px;
+  background: #f5f8f6;
 }
 
 .d1-promo-card:hover {
-  border-color: #cfd6e0;
-  border-left-color: #0a7d32;
+  background: #eef4f1;
 }
 
 .d1-promo-price strong {
@@ -2143,4 +2182,161 @@ body[data-view="promos"] #loadMoreWrap {
 .d1-promo-card .d1-save {
   background: #e8f7ee;
   color: #0a7d32;
+}
+
+/* ============================================================
+   Fila de orden · una sola pieza, igual en Negocios y Promociones
+   ============================================================ */
+
+.results-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 18px 0 14px;
+}
+
+.results-count {
+  margin: 0;
+  color: #5b6470;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+
+.results-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.results-sort-label {
+  display: none;
+  color: #8a9099;
+  font-size: 12px;
+}
+
+.results-sort {
+  max-width: 220px;
+  height: 36px;
+  padding: 0 32px 0 12px;
+  border: 1px solid #cfcfd6;
+  border-radius: 10px;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23646a73' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-position: right 10px center;
+  background-repeat: no-repeat;
+  background-size: 12px;
+  color: #232a35;
+  font-size: 12.5px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  appearance: none;
+  cursor: pointer;
+}
+
+.results-sort:hover {
+  border-color: #c4c9d2;
+}
+
+@media (min-width: 641px) {
+  .results-toolbar {
+    margin: 28px 0 16px;
+  }
+
+  .results-sort-label {
+    display: inline;
+  }
+
+  .results-sort {
+    height: 38px;
+    border-radius: 8px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 640px) {
+  .results-toolbar {
+    margin: 14px 0 12px;
+    gap: 8px;
+  }
+
+  .results-count {
+    font-size: 12px;
+  }
+
+  .results-sort {
+    max-width: 190px;
+    height: 34px;
+    padding-left: 10px;
+    font-size: 12px;
+  }
+}
+
+/* Reserva el alto de categorías antes de que el JS las pinte */
+.app-cats__inner {
+  min-height: 98px;
+}
+
+@media (min-width: 768px) {
+  .app-cats__inner {
+    min-height: 193px;
+  }
+}
+
+/* ============================================================
+   Esqueleto de carga · reserva el alto del listado y evita el salto
+   ============================================================ */
+
+.d2-skel {
+  position: relative;
+  height: 326px;
+  overflow: hidden;
+  border: 1px solid #e7e7ec;
+  border-radius: 20px;
+  background: #fff;
+  animation: d2-skel-pulse 1.5s ease-in-out infinite;
+}
+
+.d2-skel::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 180px;
+  background: #eef0f4;
+}
+
+.d2-skel::after {
+  content: "";
+  position: absolute;
+  top: 200px;
+  right: 60px;
+  left: 16px;
+  height: 11px;
+  border-radius: 6px;
+  background: #e9ebef;
+  box-shadow: 0 24px 0 #eef0f4, 0 48px 0 #eef0f4;
+}
+
+@keyframes d2-skel-pulse {
+  50% { opacity: .55; }
+}
+
+@media (min-width: 600px) {
+  .d2-skel { height: 330px; }
+}
+
+@media (min-width: 900px) {
+  .d2-skel { height: 250px; }
+  .d2-skel::before { height: 130px; }
+  .d2-skel::after { top: 148px; }
+}
+
+@media (min-width: 1200px) {
+  .d2-skel { height: 236px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .d2-skel { animation: none; }
 }

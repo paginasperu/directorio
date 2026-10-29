@@ -11,21 +11,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../../assets/css/tailwind.css">
     <link rel="stylesheet" href="../../assets/css/styles.css">
-    <link rel="stylesheet" href="style.css?v=21">
+    <link rel="stylesheet" href="style.css?v=28">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body class="fm-page min-h-screen flex flex-col">
-
-    <div class="app-brandbar">
-        <div class="app-top">
-            <a class="header-brand" href="./" aria-label="Directorio, inicio">
-                <img class="d2-brand-mark" src="../../assets/img/favicon.svg" alt="" width="28" height="28">
-                <span class="header-brand-name">Directorio</span>
-            </a>
-
-            <a href="https://wa.me/51950141414?text=Hola%2C%20quiero%20registrarme%20en%20el%20directorio..." target="_blank" rel="noopener noreferrer" class="subscribe-soft">Regístrate</a>
-        </div>
-    </div>
 
     <header id="siteHeader" class="site-header app-header sticky top-0 z-40">
         <div class="app-search-row">
@@ -45,7 +34,7 @@
 
             <div id="mobileSearch" class="md:hidden">
                 <form class="relative flex-1" onsubmit="event.preventDefault()">
-                    <input type="search" id="mobileBusinessSearch" aria-label="Buscar negocios o promociones" placeholder="Buscar negocios o promociones" class="app-input w-full pr-12" autocomplete="off">
+                    <input type="search" id="mobileBusinessSearch" aria-label="Buscar negocios o promociones" placeholder="Buscar negocios" class="app-input w-full pr-12" autocomplete="off">
                     <button type="submit" aria-label="Ver resultados" title="Ver resultados" class="app-input-btn">
                         <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>
                     </button>
@@ -60,13 +49,16 @@
             <a href="https://wa.me/51950141414?text=Hola%2C%20quiero%20registrarme%20en%20el%20directorio..." target="_blank" rel="noopener noreferrer" class="subscribe-soft app-subscribe-inline">Regístrate</a>
         </div>
 
-        <div class="app-tabs" role="tablist" aria-label="Secciones">
-            <button type="button" class="section-tab is-active" data-view="negocios" aria-pressed="true" role="tab">
-                Negocios<span id="countNegocios"></span>
-            </button>
-            <button type="button" class="section-tab" data-view="promos" aria-pressed="false" role="tab">
-                Promociones<span id="countPromos"></span>
-            </button>
+        <div class="app-tabbar">
+            <div class="app-tabs" role="tablist" aria-label="Secciones">
+                <button type="button" class="section-tab is-active" data-view="negocios" aria-pressed="true" role="tab">
+                    Negocios<span id="countNegocios"></span>
+                </button>
+                <button type="button" class="section-tab" data-view="promos" aria-pressed="false" role="tab">
+                    Promociones<span id="countPromos"></span>
+                </button>
+            </div>
+            <a href="https://wa.me/51950141414?text=Hola%2C%20quiero%20registrarme%20en%20el%20directorio..." target="_blank" rel="noopener noreferrer" class="subscribe-soft app-subscribe-tabs">Regístrate</a>
         </div>
     </header>
 
@@ -104,21 +96,33 @@
     <main class="fm-main">
 
         <div class="results-panel" id="resultsPanel">
-            <div id="resultsToolbar" class="results-toolbar flex items-center justify-between gap-3 mb-4 flex-wrap" aria-label="Orden y filtros de resultados">
-                <p id="resultsCount" class="results-count text-xs sm:text-sm font-bold text-slate-600 m-0" aria-live="polite">Cargando...</p>
+            <div id="resultsToolbar" class="results-toolbar" aria-label="Orden y filtros de resultados">
+                <p id="resultsCount" class="results-count" aria-live="polite">Cargando…</p>
 
-                <div class="results-actions flex items-center gap-2">
-                    <label for="sortSelect" class="sr-only">Ordenar resultados</label>
-                    <select id="sortSelect" aria-label="Ordenar resultados" class="results-sort h-9 px-3 bg-white border border-slate-300 rounded-lg text-xs sm:text-sm font-medium text-slate-700 hover:bg-slate-50 transition shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-300">
-                        <option value="original">Orden original</option>
-                        <option value="promo">Con promoción primero</option>
-                        <option value="piso">Piso (menor a mayor)</option>
-                        <option value="name">Nombre AZ</option>
+                <div class="results-actions">
+                    <label for="sortSelect" class="results-sort-label">Ordenar por</label>
+                    <select id="sortSelect" aria-label="Ordenar resultados" class="results-sort">
+                        <option value="destacados">Destacados</option>
+                        <option value="name">Nombre A–Z</option>
+                        <option value="piso">Piso</option>
                     </select>
                 </div>
             </div>
 
-            <div id="providerGrid"></div>
+            <div id="providerGrid" aria-busy="true">
+                <div class="d2-skel" aria-hidden="true"></div>
+                <div class="d2-skel" aria-hidden="true"></div>
+                <div class="d2-skel" aria-hidden="true"></div>
+                <div class="d2-skel" aria-hidden="true"></div>
+                <div class="d2-skel" aria-hidden="true"></div>
+                <div class="d2-skel" aria-hidden="true"></div>
+                <div class="d2-skel" aria-hidden="true"></div>
+                <div class="d2-skel" aria-hidden="true"></div>
+                <div class="d2-skel" aria-hidden="true"></div>
+                <div class="d2-skel" aria-hidden="true"></div>
+                <div class="d2-skel" aria-hidden="true"></div>
+                <div class="d2-skel" aria-hidden="true"></div>
+            </div>
 
             <div id="loadMoreWrap" hidden>
                 <button id="loadMore" type="button" class="d2-load-more">Cargar más</button>
@@ -152,10 +156,6 @@
         </div>
 
         <div class="p-5 flex-1 overflow-y-auto space-y-6 text-sm">
-            <div class="d1-mobile-only">
-                <label for="sortMobile" class="block font-bold text-slate-800 mb-1.5">Orden</label>
-                <select id="sortMobile" class="w-full h-10 px-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-300"></select>
-            </div>
             <div>
                 <label for="categoryFilter" class="block font-bold text-slate-800 mb-1.5">Categoría</label>
                 <select id="categoryFilter" class="w-full h-10 px-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-300"></select>
@@ -214,7 +214,7 @@
         </div>
     </footer>
 
-    <script type="module" src="app.js?v=21"></script>
+    <script type="module" src="app.js?v=27"></script>
 </body>
 </html>
 

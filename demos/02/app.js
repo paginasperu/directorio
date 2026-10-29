@@ -238,11 +238,11 @@ const state = {
   category: "Todos",
   search: "",
   floor: "Todos",
-  bizSort: "promos",
+  bizSort: "destacados",
   promoTipo: "Todos",
   promoModalidad: "Todos",
   promoPrecio: "Todos",
-  promoSort: "name",
+  promoSort: "price-asc",
   page: 12,
   profiles: [],
   promos: [],
@@ -273,7 +273,6 @@ const ui = {
   heroPromos: $("#heroPromos"),
   heroFloors: $("#heroFloors"),
   sort: $("#sortSelect"),
-  sortMobile: $("#sortMobile"),
   filterToggle: $("#filterToggle"),
   drawer: $("#moreFilters"),
   drawerBackdrop: $("#filterDrawerBackdrop"),
@@ -302,15 +301,14 @@ const priceBands = [
 
 const sortOptions = {
   negocios: [
-    { value: "promos", label: "Con promoción primero" },
+    { value: "destacados", label: "Destacados" },
     { value: "name", label: "Nombre A–Z" },
     { value: "piso", label: "Piso" },
   ],
   promos: [
-    { value: "name", label: "Nombre A–Z" },
-    { value: "price-asc", label: "Precio: menor a mayor" },
-    { value: "price-desc", label: "Precio: mayor a menor" },
-    { value: "vigencia", label: "Vigencia" },
+    { value: "price-asc", label: "Menor precio" },
+    { value: "price-desc", label: "Mayor precio" },
+    { value: "vigencia", label: "Vencen pronto" },
   ],
 };
 
@@ -341,7 +339,6 @@ function setupSort() {
   const options = sortOptions[state.view];
   const current = state.view === "negocios" ? state.bizSort : state.promoSort;
   fillSelect(ui.sort, options, current);
-  fillSelect(ui.sortMobile, options, current);
 }
 
 /* ---------- filtros ---------- */
@@ -375,10 +372,13 @@ function sortedBusinesses(list) {
 
 function sortedPromos(list) {
   const result = [...list];
-  if (state.promoSort === "price-asc") result.sort((a, b) => (a.discounted || Infinity) - (b.discounted || Infinity));
-  else if (state.promoSort === "price-desc") result.sort((a, b) => (b.discounted || 0) - (a.discounted || 0));
-  else if (state.promoSort === "vigencia") result.sort((a, b) => String(a.until).localeCompare(String(b.until)) || collator.compare(a.title, b.title));
-  else result.sort((a, b) => collator.compare(a.title, b.title));
+  if (state.promoSort === "price-desc") {
+    result.sort((a, b) => (b.discounted || 0) - (a.discounted || 0) || collator.compare(a.title, b.title));
+  } else if (state.promoSort === "vigencia") {
+    result.sort((a, b) => String(a.until).localeCompare(String(b.until)) || collator.compare(a.title, b.title));
+  } else {
+    result.sort((a, b) => (a.discounted || Infinity) - (b.discounted || Infinity) || collator.compare(a.title, b.title));
+  }
   return result;
 }
 
@@ -465,6 +465,7 @@ function render({ keepPage = false } = {}) {
   if (!keepPage) state.page = PAGE_SIZE;
   if (state.view === "promos") renderPromos();
   else renderBusinesses();
+  ui.grid.setAttribute("aria-busy", "false");
   ui.bizFilters.classList.toggle("hidden", state.view !== "negocios");
   ui.promoFilters.classList.toggle("hidden", state.view !== "promos");
   ui.categoryFilter.value = state.category;
@@ -576,11 +577,11 @@ function resetFilters() {
   state.category = "Todos";
   state.search = "";
   state.floor = "Todos";
-  state.bizSort = "promos";
+  state.bizSort = "destacados";
   state.promoTipo = "Todos";
   state.promoModalidad = "Todos";
   state.promoPrecio = "Todos";
-  state.promoSort = "name";
+  state.promoSort = "price-asc";
   ui.search.value = "";
   ui.mobileSearch.value = "";
   ui.heroSearch.value = "";
@@ -641,12 +642,10 @@ function bindEvents() {
     if (state.view === "negocios") state.bizSort = value;
     else state.promoSort = value;
     ui.sort.value = value;
-    ui.sortMobile.value = value;
     render();
   }
 
   ui.sort.addEventListener("change", () => applySort(ui.sort.value));
-  ui.sortMobile.addEventListener("change", () => applySort(ui.sortMobile.value));
 
   ui.reset.addEventListener("click", resetFilters);
   ui.resetEmpty.addEventListener("click", resetFilters);
@@ -858,6 +857,8 @@ async function init() {
     }
   } catch (error) {
     console.error(error);
+    ui.grid.setAttribute("aria-busy", "false");
+    ui.grid.innerHTML = "";
     ui.count.textContent = "No se pudieron cargar los datos";
     ui.empty.classList.remove("hidden");
   }
