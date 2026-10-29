@@ -3,7 +3,7 @@
 Antes de responder a la primera tarea, lee la documentación privada:
 https://github.com/paginasperu/docs/tree/main/directorio
 
-Tu primera respuesta empieza con: `Leí: docs/directorio/README.md`.
+Tu primera respuesta empieza con: `Leí: docs/directorio/README.md` y una línea con el estado actual.
 Si no puedes acceder, responde `No pude leer: docs/directorio/README.md` y detente.
 
 Reglas fijas:
