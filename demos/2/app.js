@@ -151,10 +151,6 @@ function categoryStyle(category) {
   return CATEGORY_STYLE[category] || DEFAULT_CATEGORY_STYLE;
 }
 
-function categoryIcon(category) {
-  return icon(categoryStyle(category).icon);
-}
-
 function profileLocation(profile) {
   const parts = [];
   if (profile.floor) parts.push(`Piso ${profile.floor}`);

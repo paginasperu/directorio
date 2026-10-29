@@ -257,7 +257,6 @@ const PAGE_SIZE = 12;
 const $ = (selector) => document.querySelector(selector);
 const ui = {
   header: $("#siteHeader"),
-  heroSearchForm: $("#heroSearchForm"),
   grid: $("#providerGrid"),
   categoryList: $("#categoryList"),
   count: $("#resultsCount"),
@@ -267,11 +266,6 @@ const ui = {
   empty: $("#emptyState"),
   search: $("#businessSearch"),
   mobileSearch: $("#mobileBusinessSearch"),
-  heroSearch: $("#heroSearch"),
-  heroFeature: $("#heroFeature"),
-  heroBiz: $("#heroBiz"),
-  heroPromos: $("#heroPromos"),
-  heroFloors: $("#heroFloors"),
   sort: $("#sortSelect"),
   filterToggle: $("#filterToggle"),
   drawer: $("#moreFilters"),
@@ -584,7 +578,6 @@ function resetFilters() {
   state.promoSort = "price-asc";
   ui.search.value = "";
   ui.mobileSearch.value = "";
-  ui.heroSearch.value = "";
   ui.floor.value = "Todos";
   ui.tipo.value = "Todos";
   ui.modalidad.value = "Todos";
@@ -598,14 +591,12 @@ function setSearch(value) {
   state.search = normalize(value);
   ui.search.value = value;
   ui.mobileSearch.value = value;
-  ui.heroSearch.value = value;
   render();
 }
 
 function bindEvents() {
   ui.search.addEventListener("input", () => setSearch(ui.search.value));
   ui.mobileSearch.addEventListener("input", () => setSearch(ui.mobileSearch.value));
-  ui.heroSearch.addEventListener("input", () => setSearch(ui.heroSearch.value));
 
   if (ui.loadMore) {
     ui.loadMore.addEventListener("click", () => {
@@ -613,13 +604,6 @@ function bindEvents() {
       render({ keepPage: true });
     });
   }
-
-  ui.heroFeature.addEventListener("click", (event) => {
-    const trigger = event.target.closest("[data-hero-promo]");
-    if (!trigger) return;
-    const promo = state.promos.find((item) => String(item.id) === String(trigger.dataset.heroPromo));
-    if (promo) showPromo(promo);
-  });
 
   document.querySelectorAll("[data-view]").forEach((button) => {
     button.addEventListener("click", () => setView(button.dataset.view));
@@ -655,7 +639,7 @@ function bindEvents() {
   ui.drawerBackdrop.addEventListener("click", () => toggleDrawer(false));
 
   ui.grid.addEventListener("click", (event) => {
-    if (event.target.closest(".provider-whatsapp, a.d1-cta")) return;
+    if (event.target.closest("a.d1-cta")) return;
 
     const bizTrigger = event.target.closest("[data-business]");
     if (bizTrigger) {
@@ -731,51 +715,8 @@ function bindEvents() {
   });
 }
 
-function renderHeroFeature() {
-  // El hero está oculto por CSS en esta demo: la imagen va en lazy para no descargarla.
-  const candidates = state.promos
-    .filter((promo) => promo.type === "Descuento" && promo.profile?.banner)
-    .sort((a, b) => getSaving(b) - getSaving(a) || String(a.id).localeCompare(String(b.id)));
-  const promo = candidates[0] || state.promos[0];
-  if (!promo?.profile) {
-    ui.heroFeature.innerHTML = "";
-    return;
-  }
-
-  const profile = promo.profile;
-  const saving = getSaving(promo);
-  const percent = saving > 0 && promo.regular > 0 ? Math.round((saving / promo.regular) * 100) : 0;
-  ui.heroFeature.innerHTML = `
-    <div class="d2-feature__media">
-      <img src="${escapeHtml(profile.banner)}" alt="" width="600" height="300" loading="lazy" decoding="async">
-      <span class="d2-feature__badge">${percent ? `−${percent}%` : "Promoción"}</span>
-    </div>
-    <div class="d2-feature__body">
-      <img class="d2-feature__logo" src="${escapeHtml(profile.logo)}" alt="" width="40" height="40" loading="lazy" decoding="async">
-      <div class="d2-feature__info">
-        <p class="d2-feature__kicker">Promoción destacada</p>
-        <p class="d2-feature__name">${escapeHtml(profile.name)}</p>
-        <p class="d2-feature__meta">${escapeHtml(profile.category)} · ${escapeHtml(profile.floor ? `Piso ${profile.floor}` : "Directorio")}</p>
-      </div>
-      <button type="button" class="d2-feature__btn" data-hero-promo="${escapeHtml(promo.id)}" aria-label="Ver oferta de ${escapeHtml(profile.name)}">Ver oferta</button>
-    </div>`;
-}
-
-function setupHeroSearchVisibility() {
-  if (!("IntersectionObserver" in window)) return;
-  const update = (visible) => ui.header.classList.toggle("is-hero-search-visible", visible);
-  const rect = ui.heroSearchForm.getBoundingClientRect();
-  update(rect.top < window.innerHeight && rect.bottom > 60);
-
-  const observer = new IntersectionObserver(([entry]) => {
-    update(entry.isIntersecting);
-  }, { threshold: 0, rootMargin: "-60px 0px 0px 0px" });
-  observer.observe(ui.heroSearchForm);
-}
-
 function setupHeaderScroll() {
   const header = ui.header;
-  const brandbar = document.querySelector(".app-brandbar");
   let hidden = 0;      // px que la cabecera está fuera de la pantalla
   let target = 0;      // px que debería estar según el scroll
   let lastY = window.scrollY;
@@ -792,7 +733,7 @@ function setupHeaderScroll() {
     if (!frame) frame = requestAnimationFrame(paint);
   };
 
-  const pinAt = () => (brandbar ? brandbar.offsetHeight : 0);
+  const pinAt = () => 0;
 
   const onScroll = () => {
     const y = window.scrollY;
@@ -830,14 +771,9 @@ async function init() {
     const countPromos = document.getElementById("countPromos");
     if (countNegocios) countNegocios.textContent = profiles.length;
     if (countPromos) countPromos.textContent = promos.length;
-    if (ui.heroBiz) ui.heroBiz.textContent = profiles.length;
-    if (ui.heroPromos) ui.heroPromos.textContent = promos.length;
-    if (ui.heroFloors) ui.heroFloors.textContent = new Set(profiles.map((profile) => profile.floor).filter(Boolean)).size;
-    renderHeroFeature();
 
     setupFilters();
     setupSort();
-    setupHeroSearchVisibility();
     setupHeaderScroll();
     bindEvents();
 

@@ -7,6 +7,18 @@
     <meta name="description" content="Directorio de negocios, tiendas y servicios. Explora por categoría y piso, revisa promociones y contacta directo con cada negocio.">
     <meta name="robots" content="noindex, follow">
     <link rel="icon" type="image/svg+xml" href="../../assets/img/favicon.svg">
+    <link rel="apple-touch-icon" href="../../assets/img/icon-192.png">
+    <link rel="manifest" href="../../manifest.webmanifest">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Directorio">
+    <meta property="og:title" content="Directorio · Minimalista">
+    <meta property="og:description" content="Explora negocios por categoría y piso, revisa promociones y contacta directo.">
+    <meta property="og:url" content="https://directorio.oficial.pe/demos/1/">
+    <meta property="og:image" content="https://directorio.oficial.pe/assets/img/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Directorio · Minimalista">
+    <meta name="twitter:description" content="Explora negocios por categoría y piso, revisa promociones y contacta directo.">
+    <meta name="twitter:image" content="https://directorio.oficial.pe/assets/img/og-image.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../../assets/css/tailwind.css">
@@ -70,30 +82,9 @@
         </div>
     </section>
 
-    <section class="d2-hero">
-        <div class="d2-hero__inner">
-            <div class="d2-hero__copy">
-                <p class="fm-eyebrow">Directorio</p>
-                <h1>Encuentra negocios, tiendas y servicios.</h1>
-                <p class="fm-lead">Explora por categoría y piso, descubre promociones y contacta directo con cada negocio.</p>
-                <form class="d2-search" id="heroSearchForm" role="search" onsubmit="event.preventDefault()">
-                    <svg class="d2-search__icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>
-                    <input type="search" id="heroSearch" aria-label="Buscar negocio, producto o servicio" placeholder="Buscar negocios o promociones" autocomplete="off">
-                    <button type="submit" class="d2-search__btn">Buscar</button>
-                </form>
-                <div class="d2-hero__stats">
-                    <span><strong id="heroBiz">85</strong> negocios</span>
-                    <span><strong id="heroPromos">170</strong> promociones</span>
-                    <span><strong id="heroFloors">4</strong> pisos</span>
-                </div>
-            </div>
-            <aside class="d2-feature" id="heroFeature" aria-label="Promoción destacada">
-                <div class="d2-feature__placeholder">Cargando promoción…</div>
-            </aside>
-        </div>
-    </section>
-
     <main class="fm-main">
+
+        <h1 class="sr-only">Directorio de negocios, tiendas y servicios</h1>
 
         <div class="results-panel" id="resultsPanel">
             <div id="resultsToolbar" class="results-toolbar" aria-label="Orden y filtros de resultados">

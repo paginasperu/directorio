@@ -1,6 +1,7 @@
 {
-  "name": "directorio",
+  "name": "directorio-tools",
   "private": true,
+  "description": "Tailwind y validación del directorio",
   "scripts": {
     "build:css": "tailwindcss -i ./source.css -o ../assets/css/tailwind.css --minify",
     "check": "node check.mjs"
