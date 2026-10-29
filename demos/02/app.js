@@ -732,6 +732,7 @@ function bindEvents() {
 }
 
 function renderHeroFeature() {
+  // El hero está oculto por CSS en esta demo: la imagen va en lazy para no descargarla.
   const candidates = state.promos
     .filter((promo) => promo.type === "Descuento" && promo.profile?.banner)
     .sort((a, b) => getSaving(b) - getSaving(a) || String(a.id).localeCompare(String(b.id)));
@@ -746,7 +747,7 @@ function renderHeroFeature() {
   const percent = saving > 0 && promo.regular > 0 ? Math.round((saving / promo.regular) * 100) : 0;
   ui.heroFeature.innerHTML = `
     <div class="d2-feature__media">
-      <img src="${escapeHtml(profile.banner)}" alt="" width="600" height="300" loading="eager" decoding="async">
+      <img src="${escapeHtml(profile.banner)}" alt="" width="600" height="300" loading="lazy" decoding="async">
       <span class="d2-feature__badge">${percent ? `−${percent}%` : "Promoción"}</span>
     </div>
     <div class="d2-feature__body">
