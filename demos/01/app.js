@@ -330,7 +330,7 @@ function matches(item, ignoreCategory = false) {
     if (!ignoreCategory && state.category !== "Todos" && promo.category !== state.category) return false;
     if (state.floor !== "Todos" && String(promo.profile?.floor || "") !== state.floor) return false;
 
-    if (state.promoKind === "Premio" && state.modality !== "Todos" && promo.mode !== state.modality) return false;
+    if (state.promoKind === "Regalo" && state.modality !== "Todos" && promo.mode !== state.modality) return false;
     if (state.promoKind === "Descuento") {
       const band = PRICE_BANDS.find((entry) => entry.value === state.price) || PRICE_BANDS[0];
       if (!band.test(promo.discounted)) return false;
@@ -403,13 +403,13 @@ function sortList(list) {
 function businessCard(profile, index = 0) {
   const promos = sortedPromos(profile);
   const discount = promos.find((promo) => promo.type === "Descuento");
-  const prize = promos.find((promo) => promo.type === "Premio");
+  const prize = promos.find((promo) => promo.type === "Regalo");
   const percent = discount ? discountPercent(discount) : 0;
   const contact = primaryContact(profile);
   const adult = profile.category === "Sexshop";
   const promoStrip = [
     discount ? `<span class="promo-chip promo-chip--discount">${icon("tag", "icon--sm")} −${percent}%</span>` : "",
-    prize ? `<span class="promo-chip promo-chip--prize">${icon("gift", "icon--sm")} ${escapeHtml(prize.mode || "Premio")}</span>` : "",
+    prize ? `<span class="promo-chip promo-chip--prize">${icon("gift", "icon--sm")} ${escapeHtml(prize.mode || "Regalo")}</span>` : "",
   ].join("");
   const contactLabel = contact?.kind === "whatsapp" ? "WhatsApp" : contact?.kind === "phone" ? "Llamar" : contact?.label || "";
   const contactModifier = contact?.kind === "whatsapp" ? "whatsapp" : contact?.kind === "phone" ? "phone" : "social";
@@ -447,10 +447,10 @@ function businessCard(profile, index = 0) {
 }
 
 function promoCard(promo, index = 0) {
-  const isPrize = promo.type === "Premio";
+  const isPrize = promo.type === "Regalo";
   const percent = discountPercent(promo);
   const saving = getSaving(promo);
-  const badge = isPrize ? (promo.mode || "Premio") : percent ? `−${percent}%` : "Descuento";
+  const badge = isPrize ? (promo.mode || "Regalo") : percent ? `−${percent}%` : "Descuento";
   const business = promo.profile;
   const adult = promo.category === "Sexshop" || business?.category === "Sexshop";
   const media = adult
@@ -462,13 +462,13 @@ function promoCard(promo, index = 0) {
         ${promo.regular > promo.discounted ? `<s>${money(promo.regular)}</s>` : ""}
         ${saving ? `<span class="save-tag">Ahorras ${money(saving)}</span>` : ""}
       </div>`
-    : `<div class="promo-card__prize">${icon("gift")} ${escapeHtml(promo.mode || "Premio")} · ${escapeHtml(formatDate(promo.until))}</div>`;
+    : `<div class="promo-card__prize">${icon("gift")} ${escapeHtml(promo.mode || "Regalo")} · ${escapeHtml(formatDate(promo.until))}</div>`;
 
   return `<article class="promo-card promo-card--${isPrize ? "premio" : "descuento"}" data-card-promo="${escapeHtml(promo.id)}">
     ${media}
     <div class="promo-card__badges"><span class="badge ${isPrize ? "badge--prize" : "badge--promo"}">${escapeHtml(badge)}</span></div>
     <div class="promo-card__body">
-      <p class="promo-card__kind">${isPrize ? "Premio" : "Descuento"}</p>
+      <p class="promo-card__kind">${isPrize ? "Regalo" : "Descuento"}</p>
       <h3 class="promo-card__title"><button type="button" data-promo="${escapeHtml(promo.id)}">${escapeHtml(promo.title)}</button></h3>
       ${business ? `<p class="promo-card__biz">En <button type="button" data-business="${business.id}">${escapeHtml(business.name)}</button></p>` : ""}
       <p class="promo-card__desc">${escapeHtml(promo.description)}</p>
@@ -476,21 +476,21 @@ function promoCard(promo, index = 0) {
     </div>
     <div class="promo-card__foot">
       <span class="cat-tag" style="--cat-color:${categoryStyle(promo.category).color}"><span class="cat-tag__dot"></span><span>${escapeHtml(promo.category)}</span></span>
-      <button type="button" class="card-link" data-promo="${escapeHtml(promo.id)}">${isPrize ? "Ver premio" : "Ver oferta"} ${icon("arrow-right")}</button>
+      <button type="button" class="card-link" data-promo="${escapeHtml(promo.id)}">${isPrize ? "Ver regalo" : "Ver oferta"} ${icon("arrow-right")}</button>
     </div>
   </article>`;
 }
 
 function detailPromoRow(promo, profile) {
-  const isPrize = promo.type === "Premio";
+  const isPrize = promo.type === "Regalo";
   const percent = discountPercent(promo);
   const price = isPrize
-    ? `<span class="prize-label">${escapeHtml(promo.mode || "Premio")}</span>`
+    ? `<span class="prize-label">${escapeHtml(promo.mode || "Regalo")}</span>`
     : `${money(promo.discounted)}${promo.regular > promo.discounted ? `<s>${money(promo.regular)}</s>` : ""}`;
   return `<button type="button" class="detail-promo" data-promo="${escapeHtml(promo.id)}" data-back-business="${profile.id}">
     <span>
       <span class="detail-promo__title">${escapeHtml(promo.title)}</span>
-      <span class="detail-promo__meta">${isPrize ? "Premio" : "Descuento"}${!isPrize && percent ? ` · −${percent}%` : ""} · ${escapeHtml(promo.category)}</span>
+      <span class="detail-promo__meta">${isPrize ? "Regalo" : "Descuento"}${!isPrize && percent ? ` · −${percent}%` : ""} · ${escapeHtml(promo.category)}</span>
     </span>
     <span class="detail-promo__price">${price}</span>
   </button>`;
@@ -551,7 +551,7 @@ function businessDetail(profile) {
 
 function promoDetail(promo) {
   const business = promo.profile;
-  const isPrize = promo.type === "Premio";
+  const isPrize = promo.type === "Regalo";
   const percent = discountPercent(promo);
   const saving = getSaving(promo);
   const primary = business ? primaryContact(business) : null;
@@ -572,7 +572,7 @@ function promoDetail(promo) {
         ${saving ? `<span class="save-tag">Ahorras ${money(saving)}</span>` : ""}
       </div>`
     : `<div class="detail-price-block">
-        <div><strong>${escapeHtml(promo.mode || "Premio")}</strong></div>
+        <div><strong>${escapeHtml(promo.mode || "Regalo")}</strong></div>
         <span class="save-tag" style="background:var(--amber-soft);color:var(--amber)">${escapeHtml(formatDate(promo.until))}</span>
       </div>`;
 
@@ -580,13 +580,13 @@ function promoDetail(promo) {
     <div class="detail-hero">
       <img src="${escapeHtml(promo.image)}" alt="" width="600" height="300">
       <div class="detail-hero__badges">
-        <span class="badge ${isPrize ? "badge--prize" : "badge--promo"}">${escapeHtml(isPrize ? (promo.mode || "Premio") : percent ? `−${percent}%` : "Descuento")}</span>
+        <span class="badge ${isPrize ? "badge--prize" : "badge--promo"}">${escapeHtml(isPrize ? (promo.mode || "Regalo") : percent ? `−${percent}%` : "Descuento")}</span>
         <span class="badge badge--soft">${escapeHtml(promo.category)}</span>
         ${promo.category === "Sexshop" ? `<span class="badge badge--adult">+18</span>` : ""}
       </div>
     </div>
     <div class="detail-body detail-body--promo">
-      <p class="detail-kicker">${isPrize ? "Premio" : "Descuento"} · ${escapeHtml(promo.category)}</p>
+      <p class="detail-kicker">${isPrize ? "Regalo" : "Descuento"} · ${escapeHtml(promo.category)}</p>
       <div class="detail-title-row">
         <h2 class="detail-title detail-title--promo" id="modalTitle">${escapeHtml(promo.title)}</h2>
       </div>
@@ -641,7 +641,7 @@ function render() {
   syncNav();
   ui.categoriesSection.hidden = state.view === "favoritos";
   ui.promoTabs.hidden = state.view !== "promos";
-  ui.resultsEyebrow.textContent = state.view === "promos" ? "Ofertas y premios" : state.view === "favoritos" ? "Guardados" : "Directorio";
+  ui.resultsEyebrow.textContent = state.view === "promos" ? "Ofertas y regalos" : state.view === "favoritos" ? "Guardados" : "Directorio";
   ui.resultsTitle.textContent = state.view === "promos" ? "Promociones" : state.view === "favoritos" ? "Tus favoritos" : "Negocios";
 
   updatePromoTabs();
@@ -706,7 +706,7 @@ function renderCategories(base) {
 
 function getSortOptions() {
   if (state.view === "promos") {
-    if (state.promoKind === "Premio") {
+    if (state.promoKind === "Regalo") {
       return [
         { value: "name", label: "Nombre A–Z" },
         { value: "modality", label: "Modalidad" },
@@ -739,7 +739,7 @@ function setupSortOptions() {
 function renderFiltersVisibility() {
   ui.typeFilterWrap.hidden = state.view === "promos";
   ui.promoFilterWrap.hidden = state.view !== "promos";
-  ui.modalityWrap.hidden = state.promoKind !== "Premio";
+  ui.modalityWrap.hidden = state.promoKind !== "Regalo";
   ui.priceWrap.hidden = state.promoKind !== "Descuento";
 }
 
@@ -769,7 +769,7 @@ function syncControls() {
 
 function updatePromoTabs() {
   const discounts = state.promos.filter((promo) => promo.type === "Descuento").length;
-  const prizes = state.promos.filter((promo) => promo.type === "Premio").length;
+  const prizes = state.promos.filter((promo) => promo.type === "Regalo").length;
   ui.countDesc.textContent = discounts;
   ui.countPrem.textContent = prizes;
   $$("[data-promo-kind]", ui.promoTabs).forEach((button) => {
@@ -781,7 +781,7 @@ function updatePromoTabs() {
 
 function updateCount(total, start, visible) {
   const noun = state.view === "promos"
-    ? state.promoKind === "Premio" ? (total === 1 ? "premio" : "premios") : (total === 1 ? "descuento" : "descuentos")
+    ? state.promoKind === "Regalo" ? (total === 1 ? "regalo" : "regalos") : (total === 1 ? "descuento" : "descuentos")
     : state.view === "favoritos" ? (total === 1 ? "favorito" : "favoritos") : (total === 1 ? "negocio" : "negocios");
 
   if (!total) {
@@ -882,7 +882,7 @@ function renderActiveFilters() {
   if (state.category !== "Todos") add(state.category, "category");
   if (state.floor !== "Todos") add(`Piso ${state.floor}`, "floor");
   if (state.view !== "promos" && state.type !== "Todos") add(state.type, "type");
-  if (state.view === "promos" && state.promoKind === "Premio" && state.modality !== "Todos") add(state.modality, "modality");
+  if (state.view === "promos" && state.promoKind === "Regalo" && state.modality !== "Todos") add(state.modality, "modality");
   if (state.view === "promos" && state.promoKind === "Descuento" && state.price !== "Todos") {
     const band = PRICE_BANDS.find((entry) => entry.value === state.price);
     if (band) add(band.label, "price");
@@ -899,7 +899,7 @@ function updateFilterCount() {
     state.category !== "Todos",
     state.floor !== "Todos",
     state.view !== "promos" && state.type !== "Todos",
-    state.view === "promos" && state.promoKind === "Premio" && state.modality !== "Todos",
+    state.view === "promos" && state.promoKind === "Regalo" && state.modality !== "Todos",
     state.view === "promos" && state.promoKind === "Descuento" && state.price !== "Todos",
   ].filter(Boolean).length;
   ui.filterCount.textContent = count;
@@ -1029,7 +1029,7 @@ function setView(view) {
 }
 
 function setPromoKind(kind) {
-  if (!["Descuento", "Premio"].includes(kind)) return;
+  if (!["Descuento", "Regalo"].includes(kind)) return;
   state.promoKind = kind;
   state.modality = "Todos";
   state.price = "Todos";
@@ -1156,7 +1156,8 @@ function readUrl() {
   state.category = params.get("cat") || "Todos";
   state.floor = params.get("piso") || "Todos";
   state.type = params.get("tipo") || "Todos";
-  state.promoKind = params.get("promo") === "Premio" ? "Premio" : "Descuento";
+  const kindParam = params.get("promo");
+  state.promoKind = kindParam === "Regalo" || kindParam === "Premio" ? "Regalo" : "Descuento";
   state.modality = params.get("mod") || "Todos";
   state.price = params.get("precio") || "Todos";
   state.sort = defaultSort(state.view, state.promoKind);
@@ -1188,7 +1189,7 @@ function validateState() {
   if (state.type !== "Todos" && !types.has(state.type)) state.type = "Todos";
   if (!MODALITIES.includes(state.modality)) state.modality = "Todos";
   if (!PRICE_BANDS.some((band) => band.value === state.price)) state.price = "Todos";
-  if (!["Descuento", "Premio"].includes(state.promoKind)) state.promoKind = "Descuento";
+  if (!["Descuento", "Regalo"].includes(state.promoKind)) state.promoKind = "Descuento";
   if (!["grid", "list"].includes(state.layout)) state.layout = "grid";
 
   if (state.openBusinessId && !state.profilesById.has(state.openBusinessId)) state.openBusinessId = null;
@@ -1203,8 +1204,8 @@ function syncUrl() {
   if (state.floor !== "Todos") params.set("piso", state.floor);
   if (state.view !== "promos" && state.type !== "Todos") params.set("tipo", state.type);
   if (state.view === "promos") {
-    if (state.promoKind === "Premio") params.set("promo", "Premio");
-    if (state.promoKind === "Premio" && state.modality !== "Todos") params.set("mod", state.modality);
+    if (state.promoKind === "Regalo") params.set("promo", "Regalo");
+    if (state.promoKind === "Regalo" && state.modality !== "Todos") params.set("mod", state.modality);
     if (state.promoKind === "Descuento" && state.price !== "Todos") params.set("precio", state.price);
   }
   if (state.searchRaw.trim()) params.set("q", state.searchRaw.trim());
