@@ -3506,3 +3506,12 @@ img {
         transition-duration: 0.01ms !important;
     }
 }
+
+@media (max-width: 360px) {
+    .mobile-nav { gap: 2px; }
+
+    .mobile-nav .nav-link {
+        padding: 7px 8px;
+        font-size: 11.5px;
+    }
+}
