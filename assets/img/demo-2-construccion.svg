@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="Paisaje abstracto">
+  <rect width="1200" height="675" fill="#b9c0c8"/>
+  <circle cx="345" cy="304" r="50" fill="#ffffff"/>
+  <path d="M0 472
+           C 80 380, 180 354, 260 396
+           C 340 438, 360 540, 430 540
+           C 500 540, 560 422, 640 329
+           C 720 236, 790 160, 890 164
+           C 990 169, 1090 295, 1200 422
+           L 1200 675 L 0 675 Z" fill="#ffffff"/>
+</svg>
