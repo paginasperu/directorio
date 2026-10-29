@@ -10,6 +10,7 @@ Reglas fijas:
 - No borrar, mover ni renombrar archivos sin confirmación explícita.
 - Tarea grande = plan por fases. Al cerrar cada fase: verificar, avisar, commit y push.
 - Verificar con `node tools/check.mjs` antes de decir que está listo.
+- Respuestas cortas y precisas; no omitas decisiones críticas.
 - Si algo es ambiguo, pregunta solo lo que cambia el resultado.
 
 Al cerrar, di en una línea qué verificaste.
