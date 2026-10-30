@@ -1,1 +1,1 @@
-No borrar sin confirmar.
+No borrar sin confirmar
