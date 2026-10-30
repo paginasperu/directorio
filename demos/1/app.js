@@ -395,11 +395,30 @@ function categoryIcon(name) {
 function renderCategories(counts) {
   const left = ui.categoryList.scrollLeft;
   const categories = ["Todos", ...new Set(state.profiles.map((profile) => profile.category).filter(Boolean))].sort((a, b) => a === "Todos" ? -1 : b === "Todos" ? 1 : collator.compare(a, b));
-  ui.categoryList.innerHTML = categories.map((category) => {
+  const fragment = document.createDocumentFragment();
+  categories.forEach((category) => {
     const total = category === "Todos" ? counts.total : (counts.byCategory.get(category) || 0);
     const label = category === "Todos" ? "Todas" : category;
-    return `<button type="button" class="category-option${category === state.category ? " is-active" : ""}" data-category="${category}" aria-pressed="${String(category === state.category)}">${categoryIcon(category)}<span class="category-option__name">${label}</span><span class="d1-cat-count">${total}</span></button>`;
-  }).join("");
+    const active = category === state.category;
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `category-option${active ? " is-active" : ""}`;
+    button.dataset.category = category;
+    button.setAttribute("aria-pressed", String(active));
+
+    const icon = document.createElement("span");
+    icon.innerHTML = categoryIcon(category);
+    const name = document.createElement("span");
+    name.className = "category-option__name";
+    name.textContent = label;
+    const countElement = document.createElement("span");
+    countElement.className = "d1-cat-count";
+    countElement.textContent = String(total);
+
+    button.append(icon, name, countElement);
+    fragment.append(button);
+  });
+  ui.categoryList.replaceChildren(fragment);
   ui.categoryList.scrollLeft = left;
   updateCategoryNav();
 }

@@ -30,6 +30,16 @@ export function money(value) {
 export const listValues = (value) => String(value ?? "").split(/[,|;]+/).map((part) => part.trim()).filter(Boolean);
 export const phoneDigits = (value) => String(value ?? "").replace(/\D/g, "");
 export const imageUrl = (path) => (path ? new URL(path, ROOT).href : "");
+export const safeSocialUrl = (value) => {
+  const text = String(value ?? "").trim();
+  if (!text) return "";
+  try {
+    const url = new URL(text);
+    return url.protocol === "http:" || url.protocol === "https:" ? url.href : "";
+  } catch {
+    return "";
+  }
+};
 
 // Acepta "79.90" y "79,90"; devuelve null si no hay número.
 export const toNumber = (value) => {
@@ -55,9 +65,9 @@ function decorateProfile(row) {
     keywords: row.busqueda,
     logo: imageUrl(row.logo),
     banner: imageUrl(row.banner),
-    instagram: row.instagram,
-    facebook: row.facebook,
-    tiktok: row.tiktok,
+    instagram: safeSocialUrl(row.instagram),
+    facebook: safeSocialUrl(row.facebook),
+    tiktok: safeSocialUrl(row.tiktok),
     promos: [],
   };
 }
