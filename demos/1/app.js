@@ -1,7 +1,7 @@
 // Demo 02: vistas y comportamiento en un solo archivo.
 // Los datos viven en assets/js/data.js y son compartidos por todas las demos.
 
-import { escapeHtml, formatDate, getSaving, listValues, loadDirectory, money, normalize } from "../../assets/js/data.js?v=31";
+import { escapeHtml, formatDate, getSaving, listValues, loadDirectory, money, normalize } from "../../assets/js/data.js?v=32";
 
 /* ---------- Vistas ---------- */
 
@@ -250,6 +250,24 @@ const state = {
 };
 
 const PAGE_SIZE = 12;
+
+function dateInPeru() {
+  const parts = new Intl.DateTimeFormat("en", {
+    timeZone: "America/Lima",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(new Date());
+  const values = Object.fromEntries(parts.map(({ type, value }) => [type, value]));
+  return `${values.year}-${values.month}-${values.day}`;
+}
+
+function isPromoExpired(until, today) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(until)) return false;
+  const date = new Date(`${until}T00:00:00Z`);
+  if (Number.isNaN(date.valueOf()) || date.toISOString().slice(0, 10) !== until) return false;
+  return until < today;
+}
 
 const $ = (selector) => document.querySelector(selector);
 const ui = {
@@ -834,14 +852,19 @@ function setupHeaderScroll() {
 async function init() {
   try {
     const { profiles, promos, profilesById } = await loadDirectory();
+    const today = dateInPeru();
+    const activePromos = promos.filter((promo) => !isPromoExpired(promo.until, today));
+    profiles.forEach((profile) => {
+      profile.promos = profile.promos.filter((promo) => !isPromoExpired(promo.until, today));
+    });
     state.profiles = profiles;
-    state.promos = promos;
+    state.promos = activePromos;
     state.profilesById = profilesById;
 
     const countNegocios = document.getElementById("countNegocios");
     const countPromos = document.getElementById("countPromos");
     if (countNegocios) countNegocios.textContent = profiles.length;
-    if (countPromos) countPromos.textContent = promos.length;
+    if (countPromos) countPromos.textContent = activePromos.length;
 
     setupFilters();
     setupSort();
