@@ -502,12 +502,16 @@ function render({ keepPage = false } = {}) {
 
 /* ---------- navegación ---------- */
 
-function syncUrl() {
+function syncUrl({ push = false } = {}) {
   const params = new URLSearchParams();
   if (state.view !== "negocios") params.set("view", state.view);
   if (state.category !== "Todos") params.set("cat", state.category);
+  if (state.currentBusinessId) params.set("negocio", String(state.currentBusinessId));
+  else if (state.currentPromoId) params.set("oferta", String(state.currentPromoId));
   const query = params.toString();
-  history.replaceState(null, "", query ? `?${query}` : location.pathname);
+  const url = query ? `?${query}` : location.pathname;
+  if (push) history.pushState(null, "", url);
+  else history.replaceState(null, "", url);
 }
 
 function setView(view) {
@@ -540,7 +544,7 @@ function alignListToHeader() {
 let modalLastFocus = null;
 
 function openModal() {
-  modalLastFocus = document.activeElement;
+  if (ui.modal.classList.contains("hidden")) modalLastFocus = document.activeElement;
   ui.modal.classList.remove("hidden");
   ui.modal.classList.add("flex");
   ui.modal.scrollTop = 0;
@@ -549,17 +553,27 @@ function openModal() {
   setTimeout(() => $("#closeDetail")?.focus(), 0);
 }
 
-function closeModal() {
+function closeModal({ fromHistory = false } = {}) {
+  if (!fromHistory && (state.currentBusinessId || state.currentPromoId)) {
+    history.back();
+    return;
+  }
   ui.modal.classList.add("hidden");
   ui.modal.classList.remove("flex");
   document.body.classList.remove("overflow-hidden");
+  state.currentBusinessId = null;
+  state.currentPromoId = null;
+  state.backPromo = null;
+  syncUrl();
   if (modalLastFocus && modalLastFocus.isConnected) modalLastFocus.focus({ preventScroll: true });
   modalLastFocus = null;
 }
 
-function showPromo(promo, backBusinessId = null) {
+function showPromo(promo, backBusinessId = null, { fromHistory = false } = {}) {
+  const wasOpen = !ui.modal.classList.contains("hidden");
   state.backPromo = null;
   state.currentPromoId = promo.id;
+  state.currentBusinessId = null;
   ui.modalBody.innerHTML = promoDetail(promo, backBusinessId);
   $("#modalCallBtn").classList.add("hidden");
   const wa = $("#modalWhatsappBtn");
@@ -567,11 +581,14 @@ function showPromo(promo, backBusinessId = null) {
   wa.classList.toggle("hidden", !promo.profile?.whatsapp);
   wa.textContent = "WhatsApp del negocio";
   openModal();
+  if (!fromHistory) syncUrl({ push: !wasOpen });
 }
 
-function showBusiness(profile, backPromoId = null) {
+function showBusiness(profile, backPromoId = null, { fromHistory = false } = {}) {
+  const wasOpen = !ui.modal.classList.contains("hidden");
   state.backPromo = backPromoId;
   state.currentBusinessId = profile.id;
+  state.currentPromoId = null;
   ui.modalBody.innerHTML = businessDetail(profile, backPromoId);
   const call = $("#modalCallBtn");
   call.href = profile.fixed ? `tel:${profile.fixed}` : "#";
@@ -581,6 +598,26 @@ function showBusiness(profile, backPromoId = null) {
   wa.classList.toggle("hidden", !profile.whatsapp);
   wa.textContent = "Contactar por WhatsApp";
   openModal();
+  if (!fromHistory) syncUrl({ push: !wasOpen });
+}
+
+function handlePopState() {
+  const params = new URLSearchParams(location.search);
+  const businessId = Number(params.get("negocio") || params.get("open"));
+  const profile = businessId ? state.profilesById.get(businessId) : null;
+  if (profile) {
+    showBusiness(profile, null, { fromHistory: true });
+    return;
+  }
+
+  const promoId = params.get("oferta") || params.get("promo");
+  const promo = promoId && state.promos.find((item) => String(item.id) === promoId);
+  if (promo) {
+    showPromo(promo, null, { fromHistory: true });
+    return;
+  }
+
+  if (!ui.modal.classList.contains("hidden")) closeModal({ fromHistory: true });
 }
 
 /* ---------- drawer y eventos ---------- */
@@ -725,6 +762,7 @@ function bindEvents() {
 
   $("#closeDetail").addEventListener("click", closeModal);
   ui.modal.addEventListener("click", (event) => { if (event.target === ui.modal) closeModal(); });
+  window.addEventListener("popstate", handlePopState);
   document.addEventListener("keydown", (event) => {
     if (ui.modal.classList.contains("hidden")) return;
     if (event.key === "Escape") {
@@ -815,13 +853,13 @@ async function init() {
     if (params.get("cat")) state.category = params.get("cat");
     setView(params.get("view") === "promos" ? "promos" : "negocios");
 
-    const openId = Number(params.get("open"));
+    const openId = Number(params.get("negocio") || params.get("open"));
     if (openId) {
       const profile = state.profilesById.get(openId);
       if (profile) showBusiness(profile);
     }
 
-    const promoId = params.get("promo");
+    const promoId = params.get("oferta") || params.get("promo");
     if (promoId) {
       const promo = state.promos.find((item) => item.id === promoId);
       if (promo) showPromo(promo);
