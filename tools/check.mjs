@@ -35,7 +35,8 @@ for (const file of htmlFiles) {
     .filter(Boolean);
 
   for (const reference of new Set(references)) {
-    if (!existsSync(resolve(base, reference))) problems.push(`${file.replace(root + "\\", "")} -> ${reference}`);
+    const target = resolve(reference.startsWith("/") ? root : base, reference.replace(/^\//, ""));
+    if (!existsSync(target)) problems.push(`${file.replace(root + "\\", "")} -> ${reference}`);
   }
 }
 
