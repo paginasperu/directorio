@@ -11,97 +11,151 @@
         :root {
             color-scheme: light;
             font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-            color: #1d1d1f;
+            color: #171719;
             background: #f5f5f7;
             font-synthesis: none;
             text-rendering: optimizeLegibility;
             -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         * { box-sizing: border-box; }
 
         body {
             display: grid;
+            grid-template-columns: minmax(0, 1fr);
             min-height: 100vh;
+            min-height: 100svh;
             margin: 0;
-            padding: 24px;
+            padding: 16px;
             place-items: center;
         }
 
         main {
-            width: min(100%, 480px);
-            padding: 48px 32px;
-            border: 1px solid #e5e5ea;
-            border-radius: 24px;
+            display: flex;
+            width: min(100%, 486px);
+            min-width: 0;
+            min-height: min(696px, calc(100vh - 32px));
+            min-height: min(696px, calc(100svh - 32px));
+            max-width: 100%;
+            flex-direction: column;
+            align-items: center;
+            padding: 36px 32px 48px;
+            border: 1px solid #e2e3e7;
+            border-radius: 26px;
             background: #fff;
+            box-shadow: 0 12px 30px rgb(29 32 38 / 5%);
             text-align: center;
         }
 
         .brand {
             display: inline-flex;
+            min-height: 36px;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             color: inherit;
-            font-size: 17px;
-            font-weight: 700;
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: -.04em;
+            line-height: 1;
             text-decoration: none;
         }
 
-        .brand img { width: 26px; height: 26px; }
+        .brand img { width: 36px; height: 36px; }
 
         .code {
-            margin: 40px 0 8px;
-            color: #0071e3;
-            font-size: 14px;
+            width: 100%;
+            margin: 80px 0 24px;
+            color: #101012;
+            font-family: Arial, "Segoe UI", sans-serif;
+            font-size: clamp(120px, 38vw, 180px);
             font-weight: 700;
-            letter-spacing: .12em;
+            letter-spacing: -.04em;
+            line-height: .88;
         }
 
         h1 {
+            max-width: 100%;
             margin: 0;
-            font-size: clamp(26px, 7vw, 36px);
-            letter-spacing: -.04em;
+            font-size: clamp(27px, 7vw, 38px);
+            font-weight: 700;
+            letter-spacing: -.055em;
+            line-height: 1.2;
         }
 
-        p {
-            margin: 12px 0 28px;
-            color: #6e6e73;
-            font-size: 15px;
-            line-height: 1.6;
+        .message {
+            width: 100%;
+            max-width: 370px;
+            margin: 24px 0 0;
+            color: #555861;
+            font-size: 20px;
+            line-height: 1.5;
         }
 
         .home {
             display: inline-flex;
-            min-height: 44px;
+            min-width: 236px;
+            min-height: 58px;
             align-items: center;
             justify-content: center;
-            margin-top: 28px;
-            padding: 0 20px;
+            gap: 12px;
+            margin-top: 40px;
+            padding: 0 24px;
             border-radius: 999px;
-            background: #1d1d1f;
+            background: #171719;
             color: #fff;
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 19px;
+            font-weight: 550;
             text-decoration: none;
+            transition: background-color 160ms ease;
         }
 
-        .home:hover { background: #333336; }
-        .home:focus-visible, .brand:focus-visible { outline: 3px solid #0071e3; outline-offset: 4px; }
+        .home svg { width: 24px; height: 24px; flex: none; }
+        .home:hover { background: #343438; }
+        .home:focus-visible, .brand:focus-visible { outline: 3px solid #a91d32; outline-offset: 5px; }
 
-        @media (max-width: 480px) {
-            main { padding: 36px 22px; }
+        @media (max-width: 520px) {
+            body { padding: 16px; }
+
+            main {
+                width: 100%;
+                padding: 36px 22px 48px;
+                border-radius: 25px;
+            }
+
+            .code { margin-top: clamp(83px, calc(24vw - 11px), 101px); margin-bottom: 65px; }
+            h1 { font-size: clamp(27px, 7.2vw, 36px); }
+            .message { margin-top: 35px; font-size: 18px; }
+            .home { margin-top: 45px; }
+        }
+
+        @media (max-height: 720px) {
+            main { padding-top: 28px; padding-bottom: 48px; }
+            .code { margin-top: clamp(45px, calc(13vh - 11px), 77px); margin-bottom: 23px; }
+            .message { margin-top: 19px; }
+            .home { margin-top: 24px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .home { transition: none; }
         }
     </style>
 </head>
 <body>
     <main>
         <a class="brand" href="/" aria-label="Directorio, volver al inicio">
-            <img src="/assets/img/favicon.svg" alt="" width="26" height="26">
+            <img src="/assets/img/favicon.svg" alt="" width="36" height="36">
             Directorio
         </a>
-        <p class="code">ERROR 404</p>
+        <p class="code" aria-label="Error 404"><span aria-hidden="true">404</span></p>
         <h1>Página no encontrada</h1>
-        <a class="home" href="/">Volver al inicio</a>
+        <p class="message">La página que buscas no existe, fue movida o ya no está disponible.</p>
+        <a class="home" href="/">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                <path d="m3 10 9-7 9 7M5.5 9v11h5.25v-6.5h2.5V20h5.75V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Volver al inicio
+        </a>
     </main>
 </body>
 </html>
