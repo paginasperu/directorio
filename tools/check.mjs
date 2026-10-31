@@ -23,6 +23,43 @@ function readCsv(path) {
   return rows.map((values) => Object.fromEntries(headers.map((header, index) => [header, String(values[index] ?? "").trim()])));
 }
 
+function validateRows(file, rows, requiredColumns) {
+  if (!rows.length) {
+    problems.push(`${file}: no hay filas de datos`);
+    return;
+  }
+
+  const columns = new Set(Object.keys(rows[0]));
+  for (const column of requiredColumns) {
+    if (!columns.has(column)) problems.push(`${file}: no encuentro la columna obligatoria ${column}`);
+  }
+
+  rows.forEach((row, index) => {
+    for (const column of requiredColumns) {
+      if (columns.has(column) && !row[column]) {
+        problems.push(`${file}: fila ${index + 2}, campo obligatorio ${column} vacío`);
+      }
+    }
+  });
+
+  const idCounts = new Map();
+  rows.forEach((row) => {
+    if (row.id) idCounts.set(row.id, (idCounts.get(row.id) || 0) + 1);
+  });
+  for (const [id, count] of idCounts) {
+    if (count > 1) problems.push(`${file}: id ${id} está repetido ${count} veces`);
+  }
+}
+
+function isHttpUrl(value) {
+  try {
+    const url = new URL(value);
+    return ["http:", "https:"].includes(url.protocol) && Boolean(url.hostname);
+  } catch {
+    return false;
+  }
+}
+
 const htmlFiles = walk(root).filter((file) => file.endsWith(".html"));
 
 for (const file of htmlFiles) {
@@ -42,6 +79,29 @@ for (const file of htmlFiles) {
 
 const negocios = readCsv("data/negocios.csv");
 const promos = readCsv("data/promociones.csv");
+
+validateRows("negocios.csv", negocios, ["id", "nombre", "piso", "tienda", "categoria", "tipo"]);
+validateRows("promociones.csv", promos, ["id", "negocio_id", "titulo", "vigencia_hasta", "categoria", "tipo"]);
+
+const locations = new Map();
+for (const negocio of negocios) {
+  const location = `${negocio.piso.toLocaleLowerCase("es-PE")}|${negocio.tienda.toLocaleLowerCase("es-PE")}`;
+  if (locations.has(location)) {
+    problems.push(`negocios.csv: piso ${negocio.piso}, tienda ${negocio.tienda} está repetido (ids ${locations.get(location)} y ${negocio.id})`);
+  } else {
+    locations.set(location, negocio.id);
+  }
+
+  if (negocio.whatsapp && !/^51\d{9}$/.test(negocio.whatsapp)) {
+    problems.push(`negocios.csv: WhatsApp inválido para id ${negocio.id}; se esperaba 51 seguido de 9 dígitos`);
+  }
+
+  for (const column of ["instagram", "facebook", "tiktok"]) {
+    if (negocio[column] && !isHttpUrl(negocio[column])) {
+      problems.push(`negocios.csv: URL inválida en ${column} para id ${negocio.id}`);
+    }
+  }
+}
 
 const negociosIds = new Set(negocios.map((row) => row.id));
 for (const promo of promos) {
