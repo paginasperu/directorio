@@ -1,6 +1,6 @@
 ﻿// Capa de datos: carga, parseo y normalización.
 
-import { normalize, parseCsv } from "./csv.js";
+import { normalize, parseCsv } from "./csv.js?v=2f119c97a127";
 
 export { normalize, parseCsv };
 

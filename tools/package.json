@@ -4,8 +4,9 @@
   "description": "Tailwind y validación del directorio",
   "scripts": {
     "build:css": "tailwindcss -i ./source.css -o ../assets/css/tailwind.css --minify",
-    "check": "node check.mjs",
-    "test": "node --test"
+    "check": "node release.mjs --check && node check.mjs",
+    "test": "node --test",
+    "release": "node release.mjs"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.17"
