@@ -1,4 +1,4 @@
-// Demo 01 · Directorio
+// Demo 2 · Directorio
 // Datos compartidos: assets/js/data.js
 
 import {

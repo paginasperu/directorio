@@ -1,7 +1,7 @@
-// Demo 02: vistas y comportamiento en un solo archivo.
+// Demo 1: vistas y comportamiento en un solo archivo.
 // Los datos viven en assets/js/data.js y son compartidos por todas las demos.
 
-import { escapeHtml, formatDate, getSaving, listValues, loadDirectory, money, normalize } from "../../assets/js/data.js?v=32";
+import { escapeHtml, formatDate, getSaving, listValues, loadDirectory, money, normalize } from "./assets/js/data.js?v=32";
 
 /* ---------- Vistas ---------- */
 
