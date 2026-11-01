@@ -15,7 +15,11 @@
     --fm-blue-hover: #0077ed;
 }
 
-html { scrollbar-gutter: stable; }
+html {
+    scrollbar-gutter: stable;
+    background: var(--fm-bg);
+    color-scheme: light;
+}
 
 body {
     background: var(--fm-bg);

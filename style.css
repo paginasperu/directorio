@@ -1820,3 +1820,26 @@ body[data-view="promos"] #loadMoreWrap {
 @media (prefers-reduced-motion: reduce) {
   .d2-skel { animation: none; }
 }
+
+/* Marca de cabecera alineada con buscador y filtro */
+.app-brand-inline {
+  height: 44px;
+}
+
+.app-brand-inline .d2-brand-mark {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+@media (min-width: 1024px) {
+  .app-brand-inline {
+    height: 48px;
+  }
+
+  .app-brand-inline .d2-brand-mark {
+    width: 36px;
+    height: 36px;
+  }
+}
