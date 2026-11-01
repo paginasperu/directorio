@@ -29,7 +29,11 @@ export function money(value) {
 
 export const listValues = (value) => String(value ?? "").split(/[,|;]+/).map((part) => part.trim()).filter(Boolean);
 export const phoneDigits = (value) => String(value ?? "").replace(/\D/g, "");
-export const imageUrl = (path) => (path ? new URL(path, ROOT).href : "");
+export const imageUrl = (path) => {
+  if (!path) return "";
+  const localPath = String(path).replace(/^data\/images(?=\/)/, "data/img");
+  return new URL(localPath, ROOT).href;
+};
 export const safeSocialUrl = (value) => {
   const text = String(value ?? "").trim();
   if (!text) return "";

@@ -29,8 +29,8 @@ COPY (
       descripcion_larga,
       catalogo,
       busqueda,
-      logo,
-      banner
+      replace(logo, 'data/images/', 'data/img/') AS logo,
+      replace(banner, 'data/images/', 'data/img/') AS banner
     FROM read_csv('data/negocios.csv', header = true, all_varchar = true)
   ),
   p AS (
@@ -45,7 +45,7 @@ COPY (
       TRY_CAST(precio_rebajado AS DOUBLE) AS precio_rebajado,
       categoria,
       tipo,
-      banner
+      replace(banner, 'data/images/', 'data/img/') AS banner
     FROM read_csv('data/promociones.csv', header = true, all_varchar = true)
   )
   SELECT n.*, coalesce(list(p ORDER BY p.id) FILTER (WHERE p.id IS NOT NULL), []) AS promociones

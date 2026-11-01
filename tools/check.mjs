@@ -121,12 +121,13 @@ for (const [file, rows, columns] of [
     }
     for (const row of rows) {
       const path = row[column];
-      if (path && !existsSync(join(root, path))) problems.push(`${file}: falta ${path}`);
+      const localPath = path.replace(/^data\/images(?=\/)/, "data/img");
+      if (path && !existsSync(join(root, localPath))) problems.push(`${file}: falta ${localPath} (CSV: ${path})`);
     }
   }
 }
 
-const images = walk(join(root, "data", "images")).length;
+const images = walk(join(root, "data", "img")).length;
 
 if (problems.length) {
   console.error("Problemas encontrados:");
