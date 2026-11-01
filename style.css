@@ -761,6 +761,7 @@
 
 .app-header {
   background: #fff;
+  padding-top: env(safe-area-inset-top, 0px);
 }
 
 .app-search-row {
