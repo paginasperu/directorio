@@ -24,10 +24,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="assets/css/tailwind.css?v=1665b044988e">
     <link rel="stylesheet" href="assets/css/styles.css?v=dc65bfc6571e">
-    <link rel="stylesheet" href="style.css?v=ece8a33c1856">
+    <link rel="stylesheet" href="style.css?v=ff7566b90b60">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body class="fm-page min-h-screen flex flex-col">
+
+    <aside id="installBanner" class="install-banner" aria-label="Instalar Directorio" hidden>
+        <span>Instala la app de Directorio</span>
+        <div class="install-banner__actions">
+            <button id="installApp" type="button" class="install-banner__primary">Instalar</button>
+            <button id="dismissInstall" type="button" class="install-banner__secondary">Ahora no</button>
+        </div>
+    </aside>
+    <dialog id="installGuide" class="install-guide" aria-labelledby="installGuideTitle">
+        <h2 id="installGuideTitle">Añadir Directorio al inicio</h2>
+        <ol><li>En Safari, toca <strong>Compartir</strong></li><li>Elige <strong>Añadir a pantalla de inicio</strong></li><li>Confirma con <strong>Añadir</strong></li></ol>
+        <form method="dialog"><button class="install-banner__primary">Entendido</button></form>
+    </dialog>
 
     <header id="siteHeader" class="site-header app-header sticky top-0 z-40">
         <div class="app-search-row">
@@ -208,6 +221,6 @@
         </div>
     </footer>
 
-    <script type="module" src="app.js?v=8218fc2d2d4e"></script>
+    <script type="module" src="app.js?v=2361a8b70d16"></script>
 </body>
 </html>

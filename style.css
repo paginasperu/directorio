@@ -1843,3 +1843,24 @@ body[data-view="promos"] #loadMoreWrap {
     height: 36px;
   }
 }
+
+/* Controles reconocibles sobre blanco: contraste de borde 3,16:1. */
+.app-search-row .app-input,
+.app-search-row #mobileSearch input,
+.app-filter { border-color: #90909a; }
+.app-search-row .app-input:focus,
+.app-search-row #mobileSearch input:focus { outline: 2px solid #0071e3; outline-offset: 2px; }
+.install-banner[hidden] { display: none; }
+.install-banner { display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:12px; padding:12px 16px; background:#fff; border-bottom:1px solid #e5e5ea; font-size:13px; text-align:center; }
+.install-banner__actions { display:flex; align-items:center; gap:12px; }
+.install-banner__primary,.install-banner__secondary { min-height:40px; padding:9px 13px; line-height:1.4; font-family:inherit; font-size:13px; font-weight:600; cursor:pointer; border-radius:8px; }
+.install-banner__primary { background:#1d1d1f; color:#fff; border:1px solid #1d1d1f; }
+.install-banner__primary:hover { background:#353538; }
+.install-banner__secondary { background:transparent; color:#1d1d1f; border:0; padding:9px 2px; }
+.install-banner__secondary:hover { text-decoration:underline; }
+.install-banner button:focus-visible,.install-guide button:focus-visible { outline:2px solid #0071e3; outline-offset:3px; }
+.install-guide { width:min(360px,calc(100% - 32px)); margin:auto; border:1px solid #e5e5ea; border-radius:20px; padding:24px; color:#1d1d1f; background:white; }
+.install-guide::backdrop { background:#14141b66; }
+.install-guide h2 { margin:0 0 16px; font-size:21px; font-weight:700; }
+.install-guide ol { padding-left:20px; margin:0 0 20px; line-height:1.7; }
+@media(max-width:420px) { .install-banner > span { flex-basis:100%; } }
