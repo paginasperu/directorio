@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#f5f5f7">
     <meta name="color-scheme" content="light">
+    <script>
+        // Decidir antes del primer dibujo: el aviso no aparece tarde sobre la cabecera.
+        (() => {
+            const ios = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+            const safari = /Safari/.test(navigator.userAgent) && !/CriOS|FxiOS|EdgiOS|OPiOS/.test(navigator.userAgent);
+            const supported = ios ? safari : /Chrome|Chromium|Edg\//.test(navigator.userAgent);
+            let dismissed = false;
+            try { dismissed = Number(localStorage.getItem('directorio.install.dismissedUntil')) > Date.now(); } catch {}
+            if (supported && !dismissed && !matchMedia('(display-mode: standalone)').matches && navigator.standalone !== true) {
+                document.documentElement.classList.add('install-promotion');
+            }
+        })();
+    </script>
     <title>Directorio · Minimalista</title>
     <meta name="description" content="Directorio de negocios, tiendas y servicios. Explora por categoría y piso, revisa promociones y contacta directo con cada negocio.">
     <link rel="manifest" href="manifest.webmanifest">
@@ -24,12 +37,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="assets/css/tailwind.css?v=1665b044988e">
     <link rel="stylesheet" href="assets/css/styles.css?v=dc65bfc6571e">
-    <link rel="stylesheet" href="style.css?v=ff7566b90b60">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=f6cdb49e1e7e">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=optional" rel="stylesheet">
 </head>
 <body class="fm-page min-h-screen flex flex-col">
 
-    <aside id="installBanner" class="install-banner" aria-label="Instalar Directorio" hidden>
+    <aside id="installBanner" class="install-banner" aria-label="Instalar Directorio">
         <span>Instala la app de Directorio</span>
         <div class="install-banner__actions">
             <button id="installApp" type="button" class="install-banner__primary">Instalar</button>
@@ -221,6 +234,6 @@
         </div>
     </footer>
 
-    <script type="module" src="app.js?v=2361a8b70d16"></script>
+    <script type="module" src="app.js?v=60d0c16590a7"></script>
 </body>
 </html>

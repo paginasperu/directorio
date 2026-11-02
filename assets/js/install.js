@@ -1,4 +1,4 @@
-// Promoción de instalación: solo cuando hay un flujo disponible.
+// La franja se decide en el head; la oferta nativa cambia la acción, no su altura.
 const banner = document.querySelector('#installBanner');
 const install = document.querySelector('#installApp');
 const dismiss = document.querySelector('#dismissInstall');
@@ -9,8 +9,6 @@ const cooldown = 30 * 24 * 60 * 60 * 1000;
 let promptEvent;
 const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
   || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-const isSafari = /Safari/.test(navigator.userAgent)
-  && !/CriOS|FxiOS|EdgiOS|OPiOS/.test(navigator.userAgent);
 
 function isInstalled() {
   return standalone.matches || navigator.standalone === true;
@@ -25,8 +23,7 @@ function hideForNow() {
   banner.hidden = true;
 }
 function refresh() {
-  banner.hidden = isInstalled() || dismissed() || !(promptEvent || (isIOS && isSafari));
-  install.textContent = isIOS ? 'Cómo instalar' : 'Instalar';
+  banner.hidden = isInstalled() || dismissed();
 }
 window.addEventListener('beforeinstallprompt', (event) => {
   event.preventDefault();
@@ -40,11 +37,20 @@ window.addEventListener('appinstalled', () => {
 standalone.addEventListener('change', refresh);
 dismiss.addEventListener('click', hideForNow);
 install.addEventListener('click', async () => {
-  if (isIOS) {
+  if (!promptEvent) {
+    const steps = isIOS
+      ? ['En Safari, toca Compartir', 'Elige Añadir a pantalla de inicio', 'Confirma con Añadir']
+      : /Android/.test(navigator.userAgent)
+        ? ['Abre el menú ⋮ de Chrome', 'Busca Añadir a pantalla de inicio o Instalar aplicación', 'Confirma la instalación si el navegador la ofrece']
+        : ['Abre el menú de tu navegador', 'Busca la opción para instalar esta página como aplicación', 'Si no aparece, puedes seguir utilizando Directorio desde el navegador'];
+    guide.querySelector('ol').replaceChildren(...steps.map((text) => {
+      const item = document.createElement('li');
+      item.textContent = text;
+      return item;
+    }));
     guide.showModal();
     return;
   }
-  if (!promptEvent) return;
   const current = promptEvent;
   promptEvent = undefined;
   install.disabled = true;
