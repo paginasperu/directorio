@@ -1940,11 +1940,11 @@ body[data-view="promos"] #loadMoreWrap {
 .app-search-row #mobileSearch input:focus { outline: 2px solid #0071e3; outline-offset: 2px; }
 html:not(.install-promotion) .install-banner,
 .install-banner[hidden] { display: none; }
-.install-banner { display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:12px; padding:12px 16px; background:#fff; border-bottom:1px solid #e5e5ea; font-size:13px; text-align:center; }
-.install-banner__actions { display:flex; align-items:center; gap:12px; }
-.install-banner__primary,.install-banner__secondary { min-height:40px; padding:9px 13px; line-height:1.4; font-family:inherit; font-size:13px; font-weight:600; cursor:pointer; border-radius:8px; }
-.install-banner__primary { background:#1d1d1f; color:#fff; border:1px solid #1d1d1f; }
-.install-banner__primary:hover { background:#353538; }
+.install-banner { display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:8px; padding:8px 16px; background:#fff; border-bottom:1px solid #e5e5ea; font-size:13px; text-align:center; }
+.install-banner__actions { display:flex; align-items:center; gap:8px; }
+.install-banner__primary,.install-banner__secondary { min-height:32px; padding:5px 11px; line-height:1.4; font-family:inherit; font-size:12px; font-weight:600; cursor:pointer; border-radius:999px; }
+.install-banner__primary { background:#fff3f5; color:#a91530; border:1px solid #f1c8d0; }
+.install-banner__primary:hover { background:#ffe8ed; border-color:#e7aab6; }
 .install-banner__secondary { background:transparent; color:#1d1d1f; border:0; padding:9px 2px; }
 .install-banner__secondary:hover { text-decoration:underline; }
 .install-banner button:focus-visible,.install-guide button:focus-visible { outline:2px solid #0071e3; outline-offset:3px; }
@@ -1952,4 +1952,4 @@ html:not(.install-promotion) .install-banner,
 .install-guide::backdrop { background:#14141b66; }
 .install-guide h2 { margin:0 0 16px; font-size:21px; font-weight:700; }
 .install-guide ol { padding-left:20px; margin:0 0 20px; line-height:1.7; }
-@media(max-width:420px) { .install-banner > span { flex-basis:100%; } }
+@media(max-width:420px) { .install-banner { gap:6px 8px; padding:7px 12px; } .install-banner > span { flex-basis:100%; } }
