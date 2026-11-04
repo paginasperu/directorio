@@ -1,4 +1,4 @@
-import "./assets/js/install.js?v=543e1e4ceb90";
+import "./assets/js/install.js?v=9c610c3040b5";
 // Versión principal: vistas y comportamiento en un solo archivo.
 // Los datos viven en assets/js/data.js y son compartidos por todas las demos.
 

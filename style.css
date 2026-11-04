@@ -1952,4 +1952,5 @@ html:not(.install-promotion) .install-banner,
 .install-guide::backdrop { background:#14141b66; }
 .install-guide h2 { margin:0 0 16px; font-size:21px; font-weight:700; }
 .install-guide ol { padding-left:20px; margin:0 0 20px; line-height:1.7; }
+.install-guide__note { margin:-6px 0 16px; color:#6e6e73; font-size:12px; line-height:1.5; }
 @media(max-width:420px) { .install-banner { gap:6px 8px; padding:7px 12px; } .install-banner > span { flex-basis:100%; } }

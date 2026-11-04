@@ -3,6 +3,7 @@ const banner = document.querySelector('#installBanner');
 const install = document.querySelector('#installApp');
 const dismiss = document.querySelector('#dismissInstall');
 const guide = document.querySelector('#installGuide');
+const guideNote = guide.querySelector('#installGuideNote');
 const standalone = window.matchMedia('(display-mode: standalone)');
 const key = 'directorio.install.dismissedUntil';
 const cooldown = 30 * 24 * 60 * 60 * 1000;
@@ -43,6 +44,11 @@ install.addEventListener('click', async () => {
       : /Android/.test(navigator.userAgent)
         ? ['Abre el menú ⋮ de Chrome', 'Busca Añadir a pantalla de inicio o Instalar aplicación', 'Confirma la instalación si el navegador la ofrece']
         : ['Abre el menú de tu navegador', 'Busca la opción para instalar esta página como aplicación', 'Si no aparece, puedes seguir utilizando Directorio desde el navegador'];
+    const isAndroid = /Android/.test(navigator.userAgent);
+    guideNote.hidden = !isAndroid;
+    if (isAndroid) {
+      guideNote.textContent = 'Chrome no permite instalar desde incógnito. Si abriste esta pestaña así, abre Directorio en una pestaña normal.';
+    }
     guide.querySelector('ol').replaceChildren(...steps.map((text) => {
       const item = document.createElement('li');
       item.textContent = text;
