@@ -1,5 +1,5 @@
 import "./assets/js/install.js?v=543e1e4ceb90";
-// Demo 1: vistas y comportamiento en un solo archivo.
+// Versión principal: vistas y comportamiento en un solo archivo.
 // Los datos viven en assets/js/data.js y son compartidos por todas las demos.
 
 import { escapeHtml, formatDate, getSaving, listValues, loadDirectory, money, normalize } from "./assets/js/data.js?v=f94a7258acc3";
@@ -276,6 +276,8 @@ const ui = {
   grid: $("#providerGrid"),
   categoryList: $("#categoryList"),
   count: $("#resultsCount"),
+  activeFilters: $("#activeFilters"),
+  filterCount: $("#filterCount"),
   loadMore: $("#loadMore"),
   loadMoreWrap: $("#loadMoreWrap"),
   loadMoreNote: $("#loadMoreNote"),
@@ -508,6 +510,70 @@ function renderPromos() {
   ui.empty.classList.toggle("hidden", results.length > 0);
 }
 
+function renderActiveFilters() {
+  const chips = [];
+  const add = (label, key) => {
+    const safeLabel = escapeHtml(label);
+    chips.push(`<span class="active-filter-chip"><span class="active-filter-chip__label" title="${safeLabel}">${safeLabel}</span><button type="button" class="active-filter-chip__remove" data-clear-filter="${key}" aria-label="Quitar filtro ${safeLabel}">×</button></span>`);
+  };
+
+  const query = ui.search.value.trim();
+  if (query) add(`Buscar: ${query}`, "search");
+  if (state.category !== "Todos") add(`Categoría: ${state.category}`, "category");
+  if (state.floor !== "Todos") add(`Piso ${state.floor}`, "floor");
+
+  if (state.view === "promos") {
+    if (state.promoTipo !== "Todos") add(`Tipo: ${state.promoTipo}`, "type");
+    if (state.promoPrecio !== "Todos") {
+      const band = priceBands.find((item) => item.value === state.promoPrecio);
+      if (band) add(`Precio: ${band.label}`, "price");
+    }
+  }
+
+  const filterCount = chips.length - Number(Boolean(query));
+  ui.activeFilters.hidden = chips.length === 0;
+  ui.activeFilters.innerHTML = chips.length
+    ? `${chips.join("")}<button type="button" class="active-filter-clear" data-clear-filter="all">Limpiar todo</button>`
+    : "";
+  ui.filterCount.textContent = String(filterCount);
+  ui.filterCount.hidden = filterCount === 0;
+  ui.filterToggle.setAttribute("aria-label", filterCount ? `Filtros, ${filterCount} activos` : "Filtros");
+}
+
+function clearActiveFilters(key) {
+  if (key === "all") {
+    state.search = "";
+    state.category = "Todos";
+    state.floor = "Todos";
+    state.promoTipo = "Todos";
+    state.promoPrecio = "Todos";
+    ui.search.value = "";
+    ui.mobileSearch.value = "";
+    ui.floor.value = "Todos";
+    ui.tipo.value = "Todos";
+    ui.precio.value = "Todos";
+  } else if (key === "search") {
+    state.search = "";
+    ui.search.value = "";
+    ui.mobileSearch.value = "";
+  } else if (key === "category") {
+    state.category = "Todos";
+  } else if (key === "floor") {
+    state.floor = "Todos";
+    ui.floor.value = "Todos";
+  } else if (key === "type") {
+    state.promoTipo = "Todos";
+    ui.tipo.value = "Todos";
+  } else if (key === "price") {
+    state.promoPrecio = "Todos";
+    ui.precio.value = "Todos";
+  } else {
+    return;
+  }
+
+  render();
+}
+
 function render({ keepPage = false } = {}) {
   if (!keepPage) state.page = PAGE_SIZE;
   if (state.view === "promos") renderPromos();
@@ -516,6 +582,7 @@ function render({ keepPage = false } = {}) {
   ui.bizFilters.classList.toggle("hidden", state.view !== "negocios");
   ui.promoFilters.classList.toggle("hidden", state.view !== "promos");
   ui.categoryFilter.value = state.category;
+  renderActiveFilters();
   syncUrl();
 }
 
@@ -719,6 +786,11 @@ function bindEvents() {
   }
 
   ui.sort.addEventListener("change", () => applySort(ui.sort.value));
+
+  ui.activeFilters.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-clear-filter]");
+    if (button) clearActiveFilters(button.dataset.clearFilter);
+  });
 
   ui.reset.addEventListener("click", resetFilters);
   ui.resetEmpty.addEventListener("click", resetFilters);

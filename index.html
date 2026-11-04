@@ -18,26 +18,26 @@
             }
         })();
     </script>
-    <title>Directorio · Minimalista</title>
+    <title>Directorio</title>
     <meta name="description" content="Directorio de negocios, tiendas y servicios. Explora por categoría y piso, revisa promociones y contacta directo con cada negocio.">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg?v=f0b3d614b8a5">
     <link rel="apple-touch-icon" href="assets/img/icon-192.png?v=e70d0b8529c8">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Directorio">
-    <meta property="og:title" content="Directorio · Minimalista">
+    <meta property="og:title" content="Directorio">
     <meta property="og:description" content="Explora negocios por categoría y piso, revisa promociones y contacta directo.">
     <meta property="og:url" content="https://directorio.oficial.pe/">
     <meta property="og:image" content="https://directorio.oficial.pe/assets/img/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Directorio · Minimalista">
+    <meta name="twitter:title" content="Directorio">
     <meta name="twitter:description" content="Explora negocios por categoría y piso, revisa promociones y contacta directo.">
     <meta name="twitter:image" content="https://directorio.oficial.pe/assets/img/og-image.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="assets/css/tailwind.css?v=1665b044988e">
     <link rel="stylesheet" href="assets/css/styles.css?v=dc65bfc6571e">
-    <link rel="stylesheet" href="style.css?v=f6cdb49e1e7e">
+    <link rel="stylesheet" href="style.css?v=0c08005eb6f8">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=optional" rel="stylesheet">
 </head>
 <body class="fm-page min-h-screen flex flex-col">
@@ -83,6 +83,7 @@
             <button id="filterToggle" type="button" aria-controls="moreFilters" aria-expanded="false" aria-label="Filtros" class="filter-toggle app-filter">
                 <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 5h17l-6.5 7.5V18l-4 2v-7.5L3.5 5Z"/></svg>
                 <span>Filtros</span>
+                <span id="filterCount" class="filter-count" hidden></span>
             </button>
 
             <a href="https://wa.me/51950141414?text=Hola%2C%20quiero%20registrarme%20en%20el%20directorio..." target="_blank" rel="noopener noreferrer" class="subscribe-soft app-subscribe-inline">Regístrate</a>
@@ -132,6 +133,8 @@
                     </select>
                 </div>
             </div>
+
+            <div id="activeFilters" class="active-filters" role="region" aria-label="Filtros activos" hidden></div>
 
             <div id="providerGrid" aria-busy="true">
                 <div class="d2-skel" aria-hidden="true"></div>
@@ -234,6 +237,6 @@
         </div>
     </footer>
 
-    <script type="module" src="app.js?v=60d0c16590a7"></script>
+    <script type="module" src="app.js?v=dbf245f00b3c"></script>
 </body>
 </html>
