@@ -696,35 +696,6 @@
   transition: opacity 0.2s, visibility 0.2s;
 }
 
-/* Portadas neutras para contenido para adultos */
-.d1-cover--adult {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  background:
-    radial-gradient(circle at 30% 20%, rgba(199, 31, 55, 0.24), transparent 45%),
-    #1d1d1f;
-}
-
-.d1-adult {
-  color: #f5b945;
-  font-size: 30px;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1;
-}
-
-.d1-adult-label {
-  color: rgba(255, 255, 255, 0.55);
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  line-height: 1;
-  text-transform: uppercase;
-}
-
 /* Foco visible en controles de la Demo 02 */
 .header-search input:focus,
 #mobileSearch input:focus {
@@ -749,10 +720,6 @@
   .filter-toggle {
     min-height: 40px;
   }
-}
-
-.d1-adult-label {
-  color: rgba(255, 255, 255, 0.68);
 }
 
 /* ============================================================

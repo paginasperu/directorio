@@ -42,19 +42,11 @@ function businessCard(profile) {
     profile.unit ? `Local ${profile.unit}` : "",
   ].filter(Boolean).join(" · ");
   const contact = primaryContact(profile);
-  const adult = profile.category === "Sexshop";
-  const cover = adult
-    ? `<span class="d1-cover d1-cover--adult">
-        <span class="d1-adult">+18</span>
-        <span class="d1-adult-label">Sexshop</span>
-        <span class="d1-cat">${escapeHtml(profile.category)}</span>
-        <img class="d1-logo" src="${escapeHtml(profile.logo)}" alt="" width="56" height="56" loading="lazy" decoding="async">
-      </span>`
-    : `<span class="d1-cover">
-        <img class="d1-banner" src="${escapeHtml(profile.banner)}" alt="" width="600" height="300" loading="lazy" decoding="async">
-        <span class="d1-cat">${escapeHtml(profile.category)}</span>
-        <img class="d1-logo" src="${escapeHtml(profile.logo)}" alt="" width="56" height="56" loading="lazy" decoding="async">
-      </span>`;
+  const cover = `<span class="d1-cover">
+    <img class="d1-banner" src="${escapeHtml(profile.banner)}" alt="" width="600" height="300" loading="lazy" decoding="async">
+    <span class="d1-cat">${escapeHtml(profile.category)}</span>
+    <img class="d1-logo" src="${escapeHtml(profile.logo)}" alt="" width="56" height="56" loading="lazy" decoding="async">
+  </span>`;
 
   return `<article class="d1-card">
     <button type="button" class="d1-hit" data-detail="${profile.id}">
@@ -83,20 +75,12 @@ function promoCard(promo) {
   const saving = getSaving(promo);
   const discount = saving ? Math.round((saving / promo.regular) * 100) : 0;
   const badge = discount ? `-${discount}%` : promo.kind;
-  const adult = promo.category === "Sexshop" || promo.profile?.category === "Sexshop";
   const badgeClass = discount ? "d1-promo is-discount" : "d1-promo";
-  const cover = adult
-    ? `<span class="d1-cover d1-cover--adult">
-        <span class="d1-adult">+18</span>
-        <span class="d1-adult-label">Sexshop</span>
-        <span class="d1-cat">${escapeHtml(promo.category)}</span>
-        <span class="${badgeClass}">${escapeHtml(badge)}</span>
-      </span>`
-    : `<span class="d1-cover">
-        <img class="d1-banner" src="${escapeHtml(promo.image)}" alt="" width="600" height="300" loading="lazy" decoding="async">
-        <span class="d1-cat">${escapeHtml(promo.category)}</span>
-        <span class="${badgeClass}">${escapeHtml(badge)}</span>
-      </span>`;
+  const cover = `<span class="d1-cover">
+    <img class="d1-banner" src="${escapeHtml(promo.image)}" alt="" width="600" height="300" loading="lazy" decoding="async">
+    <span class="d1-cat">${escapeHtml(promo.category)}</span>
+    <span class="${badgeClass}">${escapeHtml(badge)}</span>
+  </span>`;
 
   return `<article class="d1-pcard${promo.discounted > 0 ? "" : " d1-pcard--free"}">
     <button type="button" class="d1-hit" data-promo="${promo.id}">
