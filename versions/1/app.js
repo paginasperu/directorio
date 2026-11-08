@@ -10,7 +10,7 @@ import {
   money,
   normalize,
   phoneDigits,
-} from "../../assets/js/data.js?v=f94a7258acc3";
+} from "../../assets/js/data.js?v=5e3ac29274b5";
 
 const PAGE_SIZE = 12;
 const FAV_KEY = "directorio:favoritos:negocios";

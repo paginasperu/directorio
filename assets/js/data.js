@@ -109,22 +109,29 @@ export function getSaving(promo) {
   return promo.regular > promo.discounted ? promo.regular - promo.discounted : 0;
 }
 
-export async function loadDirectory() {
-  const [profilesResponse, promosResponse] = await Promise.all([
-    fetch(FILES.profiles, { cache: "no-cache" }),
-    fetch(FILES.promos, { cache: "no-cache" }),
-  ]);
-  if (!profilesResponse.ok) throw new Error(`negocios.csv (${profilesResponse.status})`);
-  if (!promosResponse.ok) throw new Error(`promociones.csv (${promosResponse.status})`);
+export async function loadProfiles() {
+  const response = await fetch(FILES.profiles, { cache: "no-cache" });
+  if (!response.ok) throw new Error(`negocios.csv (${response.status})`);
+  return parseCsv(await response.text()).map(decorateProfile);
+}
 
-  const profiles = parseCsv(await profilesResponse.text()).map(decorateProfile);
-  const promos = parseCsv(await promosResponse.text()).map(decoratePromo);
+export async function loadPromos() {
+  const response = await fetch(FILES.promos, { cache: "no-cache" });
+  if (!response.ok) throw new Error(`promociones.csv (${response.status})`);
+  return parseCsv(await response.text()).map(decoratePromo);
+}
 
+export function linkPromos(profiles, promos) {
+  profiles.forEach((profile) => { profile.promos = []; });
   const profilesById = new Map(profiles.map((profile) => [profile.id, profile]));
   promos.forEach((promo) => {
     promo.profile = profilesById.get(promo.profileId) || null;
     if (promo.profile) promo.profile.promos.push(promo);
   });
-
   return { profiles, promos, profilesById };
+}
+
+export async function loadDirectory() {
+  const [profiles, promos] = await Promise.all([loadProfiles(), loadPromos()]);
+  return linkPromos(profiles, promos);
 }
