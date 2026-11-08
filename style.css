@@ -228,15 +228,21 @@
 }
 
 .d1-promo-card {
+  --promo-accent: #0071e3;
+  --promo-tint: #e9f1fd;
   padding: 13px 14px 12px;
-  border: 1px solid #e5e5ea;
-  border-left: 3px solid #0071e3;
+  border: 2px solid var(--promo-accent);
   border-radius: 14px;
   background: #fff;
 }
 
+.d1-promo-card[data-promo-type="Descuento"] { --promo-accent: #2f9e44; --promo-tint: #eaf6ed; }
+.d1-promo-card[data-promo-type="Canje"] { --promo-accent: #1971c2; --promo-tint: #eaf3fd; }
+.d1-promo-card[data-promo-type="Sorteo"] { --promo-accent: #e8890c; --promo-tint: #fff7e6; }
+.d1-promo-card[data-promo-type="Concurso"] { --promo-accent: #6741d9; --promo-tint: #f4f0ff; }
+
 .d1-promo-card:hover {
-  background: #fafafc;
+  background: #fff;
 }
 
 .d1-promos-head .d1-section-title {
@@ -270,6 +276,11 @@
   letter-spacing: .06em;
   text-transform: uppercase;
   line-height: 1.4;
+}
+
+.d1-promo-card .d1-tag {
+  background: var(--promo-tint);
+  color: var(--promo-accent);
 }
 
 .d1-tag.is-soft {
@@ -742,7 +753,7 @@
 
 .app-search-row .header-search {
   flex: 1;
-  max-width: none;
+  max-width: 680px;
   margin: 0;
 }
 
@@ -812,6 +823,7 @@
 .app-filter:hover { background: #fafafa; }
 
 .app-header {
+  background: #fff;
   will-change: transform;
   backface-visibility: hidden;
 }
@@ -1268,7 +1280,7 @@
 @media (max-width: 767px) {
   .app-search-row {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 48px;
+    grid-template-columns: minmax(0, 1fr) auto;
     grid-template-rows: 36px 44px;
     gap: 8px;
     padding: 8px 16px;
@@ -1291,7 +1303,7 @@
   .app-search-row .app-input-btn { border-radius: 0 10px 10px 0; }
 
   .app-search-row #mobileSearch {
-    grid-column: 1;
+    grid-column: 1 / -1;
     grid-row: 2;
     width: 100%;
   }
@@ -1341,10 +1353,7 @@
   }
 
   /* El buscador ocupa el ancho disponible: sin hueco antes de Filtros */
-  .app-search-row .header-search {
-    flex: 1 1 auto;
-    max-width: none;
-  }
+  .app-search-row .header-search { flex: 1 1 560px; max-width: 680px; }
 
   .app-subscribe-inline {
     display: inline-flex;
@@ -1416,19 +1425,6 @@
   .results-toolbar {
     margin: 16px 0 14px;
     gap: 10px;
-  }
-
-  .results-actions {
-    display: flex;
-    margin-left: auto;
-  }
-
-  .results-sort {
-    height: 34px;
-    max-width: 176px;
-    padding: 0 8px;
-    border-radius: 10px;
-    font-size: 12px;
   }
 
   #providerGrid {
@@ -1586,6 +1582,75 @@
   box-shadow: none;
 }
 
+/* Tipos de promoción: mismo patrón vertical que las categorías de Negocios. */
+.app-cats #categoryList.category-list--promo-types {
+  align-items: center;
+  gap: 18px;
+}
+
+.app-cats #categoryList.category-list--promo-types .category-option--promo-type {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 76px;
+  min-width: 76px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: #3f4652;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.15;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.app-cats #categoryList.category-list--promo-types .category-option--promo-type:hover {
+  background: none;
+}
+
+.app-cats #categoryList.category-list--promo-types .category-option--promo-type.is-active {
+  color: #111;
+  font-weight: 700;
+}
+
+.app-cats #categoryList.category-list--promo-types .category-option--promo-type .category-option__icon {
+  width: 48px;
+  height: 48px;
+  border: 0;
+  background: #f1f2f5;
+  color: #5f6673;
+}
+
+.app-cats #categoryList.category-list--promo-types .category-option--promo-type .category-option__icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.app-cats #categoryList.category-list--promo-types .category-option--promo-type[data-promo-type="Descuento"] .category-option__icon { background: #eaf6ed; color: #2f9e44; }
+.app-cats #categoryList.category-list--promo-types .category-option--promo-type[data-promo-type="Canje"] .category-option__icon { background: #eaf3fd; color: #1971c2; }
+.app-cats #categoryList.category-list--promo-types .category-option--promo-type[data-promo-type="Sorteo"] .category-option__icon { background: #fff7e6; color: #e8890c; }
+.app-cats #categoryList.category-list--promo-types .category-option--promo-type[data-promo-type="Concurso"] .category-option__icon { background: #f4f0ff; color: #6741d9; }
+
+.app-cats #categoryList.category-list--promo-types .category-option--promo-type.is-active .category-option__icon {
+  background: #1d1d1f;
+  color: #fff;
+}
+
+body[data-view="promos"] .app-cats__inner {
+  display: flex;
+  align-items: center;
+}
+
+body[data-view="promos"] .app-cats .category-strip {
+  flex: 1;
+  min-width: 0;
+}
+
 /* ---------- Promociones: banda de ofertas + ficha limpia ---------- */
 
 body[data-view="promos"] .results-panel {
@@ -1695,9 +1760,9 @@ body[data-view="promos"] #loadMoreWrap {
 
 .results-toolbar {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
   margin: 18px 0 14px;
 }
 
@@ -1710,31 +1775,61 @@ body[data-view="promos"] #loadMoreWrap {
 }
 
 .results-actions {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-left: auto;
+  min-width: 0;
+  width: 100%;
 }
 
-.results-sort-label {
-  display: none;
-  color: #8a9099;
-  font-size: 12px;
+.results-controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 220px));
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.results-controls .app-filter {
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  height: 44px;
+  padding: 0 13px;
+  gap: 8px;
+  border-color: #cfcfd6;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.results-controls .app-filter > span:first-of-type { display: inline; }
+
+.results-sort-icon {
+  position: absolute;
+  z-index: 1;
+  left: 13px;
+  top: 50%;
+  width: 19px;
+  height: 19px;
+  color: var(--fm-ink, #1d1d1f);
+  pointer-events: none;
+  transform: translateY(-50%);
 }
 
 .results-sort {
-  max-width: 220px;
-  height: 36px;
-  padding: 0 32px 0 12px;
+  width: 100%;
+  max-width: none;
+  height: 44px;
+  padding: 0 32px 0 40px;
   border: 1px solid #cfcfd6;
   border-radius: 10px;
   background-color: #fff;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23646a73' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231d1d1f' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
   background-position: right 10px center;
   background-repeat: no-repeat;
   background-size: 12px;
-  color: #232a35;
-  font-size: 12.5px;
+  color: var(--fm-ink, #1d1d1f);
+  font-size: 13px;
   font-weight: 600;
   text-overflow: ellipsis;
   appearance: none;
@@ -1834,21 +1929,13 @@ body[data-view="promos"] #loadMoreWrap {
     margin: 28px 0 16px;
   }
 
-  .results-sort-label {
-    display: inline;
-  }
-
-  .results-sort {
-    height: 38px;
-    border-radius: 8px;
-    font-size: 13px;
-  }
+  .results-sort { border-radius: 10px; font-size: 13px; }
 }
 
 @media (max-width: 640px) {
   .results-toolbar {
     margin: 14px 0 12px;
-    gap: 8px;
+    gap: 9px;
   }
 
   .results-count {
@@ -1856,11 +1943,15 @@ body[data-view="promos"] #loadMoreWrap {
   }
 
   .results-sort {
-    max-width: 190px;
-    height: 34px;
-    padding-left: 10px;
-    font-size: 12px;
+    height: 44px;
+    font-size: 13px;
   }
+
+  .results-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .results-controls .app-filter { justify-content: center; }
 }
 
 /* Reserva el alto de categorías antes de que el JS las pinte */

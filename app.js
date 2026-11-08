@@ -103,11 +103,11 @@ function promoCard(promo) {
 
 function promoRow(promo) {
   const saving = getSaving(promo);
-  return `<li class="d1-promo-card" data-promo="${promo.id}">
+  return `<li class="d1-promo-card" data-promo="${promo.id}" data-promo-type="${escapeHtml(promo.kind)}">
     <div class="d1-promo-main">
       <div class="d1-promo-info">
         <div class="d1-tags">
-          <span class="d1-tag">${escapeHtml(promo.kind)}</span>
+          <span class="d1-tag" data-promo-type="${escapeHtml(promo.kind)}">${escapeHtml(promo.kind)}</span>
         </div>
         <p class="d1-promo-title">
           <button type="button" class="d1-promo-title-btn" data-promo="${promo.id}">
@@ -281,7 +281,6 @@ const ui = {
   bizFilters: $("#bizFilters"),
   promoFilters: $("#promoFilters"),
   floor: $("#floorFilter"),
-  tipo: $("#tipoFilter"),
   precio: $("#precioFilter"),
   categoryFilter: $("#categoryFilter"),
 };
@@ -296,6 +295,21 @@ const priceBands = [
   { value: "200+", label: "Más de S/ 200", test: (price) => price > 200 },
 ];
 
+const promoTypeTabs = [
+  { value: "Descuento", label: "Descuentos", slug: "descuentos", icon: '<path d="m19 5-14 14"/><circle cx="7.5" cy="7.5" r="2"/><circle cx="16.5" cy="16.5" r="2"/>' },
+  { value: "Canje", label: "Canjes", slug: "canjes", icon: '<path d="M20 7H4m0 0 3-3M4 7l3 3M4 17h16m0 0-3-3m3 3-3 3"/>' },
+  { value: "Sorteo", label: "Sorteos", slug: "sorteos", icon: '<path d="M4 7h16v3a2 2 0 0 0 0 4v3H4v-3a2 2 0 0 0 0-4V7Z"/><path d="M12 8v1m0 3v1m0 3v1"/>' },
+  { value: "Concurso", label: "Concursos", slug: "concursos", icon: '<path d="M8 4h8v4a4 4 0 0 1-8 0V4Z"/><path d="M8 6H5v2a4 4 0 0 0 4 4m7-6h3v2a4 4 0 0 1-4 4m-3 0v4m-4 3h8m-7-3h6"/>' },
+];
+
+function promoTypeFromSlug(slug) {
+  return promoTypeTabs.find((item) => item.slug === slug)?.value || "Todos";
+}
+
+function promoTypeSlug(type) {
+  return promoTypeTabs.find((item) => item.value === type)?.slug || "";
+}
+
 const sortOptions = {
   negocios: [
     { value: "destacados", label: "Más relevantes" },
@@ -306,6 +320,10 @@ const sortOptions = {
     { value: "price-asc", label: "Menor precio" },
     { value: "price-desc", label: "Mayor precio" },
     { value: "vigencia", label: "Próximas a vencer" },
+  ],
+  promosWithoutPrice: [
+    { value: "vigencia", label: "Próximas a vencer" },
+    { value: "name", label: "Nombre A–Z" },
   ],
 };
 
@@ -325,9 +343,6 @@ function setupFilters() {
     .sort((a, b) => Number(a) - Number(b));
   fillSelect(ui.floor, [{ value: "Todos", label: "Todos los pisos" }, ...floors.map((floor) => ({ value: floor, label: `Piso ${floor}` }))], state.floor);
 
-  const tipos = [...new Set(state.promos.map((promo) => promo.kind).filter(Boolean))].sort(collator.compare);
-  fillSelect(ui.tipo, [{ value: "Todos", label: "Todos los tipos" }, ...tipos.map((tipo) => ({ value: tipo, label: tipo }))], state.promoTipo);
-
   fillSelect(ui.precio, priceBands.map(({ value, label }) => ({ value, label })), state.promoPrecio);
 
   const categories = categoriesForCurrentView();
@@ -335,9 +350,15 @@ function setupFilters() {
 }
 
 function setupSort() {
-  const options = sortOptions[state.view];
+  const options = state.view === "promos"
+    ? (state.promoTipo === "Descuento" ? sortOptions.promos : sortOptions.promosWithoutPrice)
+    : sortOptions.negocios;
   const current = state.view === "negocios" ? state.bizSort : state.promoSort;
-  fillSelect(ui.sort, options, current);
+  const fallback = state.view === "promos" && state.promoTipo !== "Descuento" ? "vigencia" : options[0].value;
+  const selected = options.some((option) => option.value === current) ? current : fallback;
+  if (state.view === "promos") state.promoSort = selected;
+  else state.bizSort = selected;
+  fillSelect(ui.sort, options, selected);
 }
 
 /* ---------- filtros ---------- */
@@ -349,10 +370,10 @@ function matchesBusiness(profile, ignoreCategory = false) {
   return normalize([profile.name, profile.category, profile.type, profile.short, profile.catalog, profile.keywords, profile.floor, profile.unit].join(" ")).includes(state.search);
 }
 
-function matchesPromo(promo, ignoreCategory = false) {
+function matchesPromo(promo, ignoreCategory = false, ignoreType = false) {
   if (!ignoreCategory && state.category !== "Todos" && promo.category !== state.category) return false;
-  if (state.promoTipo !== "Todos" && promo.kind !== state.promoTipo) return false;
-  if (!priceBands.find((band) => band.value === state.promoPrecio).test(promo.discounted)) return false;
+  if (!ignoreType && state.promoTipo !== "Todos" && promo.kind !== state.promoTipo) return false;
+  if (state.promoTipo === "Descuento" && !priceBands.find((band) => band.value === state.promoPrecio).test(promo.discounted)) return false;
   if (!state.search) return true;
   return normalize([promo.title, promo.description, promo.kind, promo.profile?.name, promo.category].join(" ")).includes(state.search);
 }
@@ -373,6 +394,8 @@ function sortedPromos(list) {
     result.sort((a, b) => (b.discounted || 0) - (a.discounted || 0) || collator.compare(a.title, b.title));
   } else if (state.promoSort === "vigencia") {
     result.sort((a, b) => String(a.until).localeCompare(String(b.until)) || collator.compare(a.title, b.title));
+  } else if (state.promoSort === "name") {
+    result.sort((a, b) => collator.compare(a.title, b.title));
   } else {
     result.sort((a, b) => (a.discounted || Infinity) - (b.discounted || Infinity) || collator.compare(a.title, b.title));
   }
@@ -404,6 +427,11 @@ function categoryIcon(name) {
 }
 
 function renderCategories(counts) {
+  if (state.view === "promos") {
+    renderPromoTypes(counts);
+    return;
+  }
+  ui.categoryList.classList.remove("category-list--promo-types");
   const left = ui.categoryList.scrollLeft;
   const categories = ["Todos", ...categoriesForCurrentView()].sort((a, b) => a === "Todos" ? -1 : b === "Todos" ? 1 : collator.compare(a, b));
   const fragment = document.createDocumentFragment();
@@ -429,6 +457,40 @@ function renderCategories(counts) {
     button.append(icon, name, countElement);
     fragment.append(button);
   });
+  ui.categoryList.replaceChildren(fragment);
+  ui.categoryList.scrollLeft = left;
+  updateCategoryNav();
+}
+
+function renderPromoTypes(counts) {
+  const left = ui.categoryList.scrollLeft;
+  const items = [{ value: "Todos", label: "Todas", slug: "", icon: categoryMenuIcons.Todos }, ...promoTypeTabs];
+  const fragment = document.createDocumentFragment();
+  ui.categoryList.classList.add("category-list--promo-types");
+
+  items.forEach((item) => {
+    const total = item.value === "Todos" ? counts.total : (counts.byCategory.get(item.value) || 0);
+    const params = new URLSearchParams();
+    params.set("view", "promos");
+    if (item.slug) params.set("tipo", item.slug);
+    if (state.category !== "Todos") params.set("cat", state.category);
+    const query = ui.search.value.trim();
+    if (query) params.set("q", query);
+    if (item.value === "Descuento" && state.promoPrecio !== "Todos") params.set("precio", state.promoPrecio);
+
+    const link = document.createElement("a");
+    link.href = `?${params.toString()}`;
+    link.className = "category-option category-option--promo-type";
+    link.dataset.promoType = item.value;
+    link.setAttribute("aria-label", `${item.label}, ${total} promociones`);
+    if (item.value === state.promoTipo) {
+      link.setAttribute("aria-current", "page");
+      link.classList.add("is-active");
+    }
+    link.innerHTML = `<span class="category-option__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${item.icon}</svg></span><span class="category-option__name">${item.label}</span>`;
+    fragment.append(link);
+  });
+
   ui.categoryList.replaceChildren(fragment);
   ui.categoryList.scrollLeft = left;
   updateCategoryNav();
@@ -482,20 +544,30 @@ function renderBusinesses() {
   const shown = results.slice(0, state.page);
   ui.grid.innerHTML = shown.map(businessCard).join("");
   renderLoadMore(results.length, shown.length);
-  ui.count.textContent = `${results.length} ${results.length === 1 ? "negocio" : "negocios"}`;
+  const hasCriteria = Boolean(ui.search.value.trim())
+    || state.category !== "Todos"
+    || state.floor !== "Todos";
+  const resultNoun = results.length === 1 ? "negocio" : "negocios";
+  const resultFound = results.length === 1 ? "encontrado" : "encontrados";
+  ui.count.textContent = `${results.length} ${resultNoun}${hasCriteria ? ` ${resultFound}` : ""}`;
   ui.empty.querySelector("p").textContent = "Prueba con otra palabra, categoría o piso.";
   ui.empty.classList.toggle("hidden", results.length > 0);
 }
 
 function renderPromos() {
-  const base = state.promos.filter((promo) => matchesPromo(promo, true));
-  renderCategories(countBy(base, "category", base.length));
+  const base = state.promos.filter((promo) => matchesPromo(promo, false, true));
+  renderCategories(countBy(base, "kind", base.length));
 
   const results = sortedPromos(state.promos.filter((promo) => matchesPromo(promo)));
   const shown = results.slice(0, state.page);
   ui.grid.innerHTML = shown.map(promoCard).join("");
   renderLoadMore(results.length, shown.length);
-  ui.count.textContent = `${results.length} ${results.length === 1 ? "promoción" : "promociones"}`;
+  const hasCriteria = Boolean(ui.search.value.trim())
+    || state.category !== "Todos"
+    || (state.promoTipo === "Descuento" && state.promoPrecio !== "Todos");
+  const resultNoun = results.length === 1 ? "promoción" : "promociones";
+  const resultFound = results.length === 1 ? "encontrada" : "encontradas";
+  ui.count.textContent = `${results.length} ${resultNoun}${hasCriteria ? ` ${resultFound}` : ""}`;
   ui.empty.querySelector("p").textContent = "Prueba con otra palabra, categoría o filtro.";
   ui.empty.classList.toggle("hidden", results.length > 0);
 }
@@ -513,8 +585,7 @@ function renderActiveFilters() {
   if (state.view === "negocios") {
     if (state.floor !== "Todos") add(`Piso ${state.floor}`, "floor");
   } else {
-    if (state.promoTipo !== "Todos") add(`Tipo: ${state.promoTipo}`, "type");
-    if (state.promoPrecio !== "Todos") {
+    if (state.promoTipo === "Descuento" && state.promoPrecio !== "Todos") {
       const band = priceBands.find((item) => item.value === state.promoPrecio);
       if (band) add(`Precio: ${band.label}`, "price");
     }
@@ -527,7 +598,7 @@ function renderActiveFilters() {
     : "";
   ui.filterCount.textContent = String(filterCount);
   ui.filterCount.hidden = filterCount === 0;
-  ui.filterToggle.setAttribute("aria-label", filterCount ? `Filtros, ${filterCount} activos` : "Filtros");
+  ui.filterToggle.setAttribute("aria-label", filterCount ? `Filtrar, ${filterCount} activos` : "Filtrar");
 }
 
 function clearActiveFilters(key) {
@@ -540,9 +611,7 @@ function clearActiveFilters(key) {
       state.floor = "Todos";
       ui.floor.value = "Todos";
     } else {
-      state.promoTipo = "Todos";
       state.promoPrecio = "Todos";
-      ui.tipo.value = "Todos";
       ui.precio.value = "Todos";
     }
   } else if (key === "search") {
@@ -554,9 +623,6 @@ function clearActiveFilters(key) {
   } else if (key === "floor") {
     state.floor = "Todos";
     ui.floor.value = "Todos";
-  } else if (key === "type") {
-    state.promoTipo = "Todos";
-    ui.tipo.value = "Todos";
   } else if (key === "price") {
     state.promoPrecio = "Todos";
     ui.precio.value = "Todos";
@@ -587,6 +653,12 @@ function render({ keepPage = false } = {}) {
   }
   ui.bizFilters.classList.toggle("hidden", state.view !== "negocios");
   ui.promoFilters.classList.toggle("hidden", state.view !== "promos");
+  const showPromoPrice = state.view === "promos" && state.promoTipo === "Descuento";
+  $("#promoPriceFilter").classList.toggle("hidden", !showPromoPrice);
+  if (!showPromoPrice && state.promoPrecio !== "Todos") {
+    state.promoPrecio = "Todos";
+    ui.precio.value = "Todos";
+  }
   ui.categoryFilter.value = state.category;
   renderActiveFilters();
   syncUrl();
@@ -598,6 +670,8 @@ function syncUrl({ push = false } = {}) {
   const params = new URLSearchParams();
   if (state.view !== "negocios") params.set("view", state.view);
   if (state.category !== "Todos") params.set("cat", state.category);
+  if (state.view === "promos" && state.promoTipo !== "Todos") params.set("tipo", promoTypeSlug(state.promoTipo));
+  if (state.view === "promos" && state.promoTipo === "Descuento" && state.promoPrecio !== "Todos") params.set("precio", state.promoPrecio);
   const searchQuery = ui.search.value.trim();
   if (searchQuery) params.set("q", searchQuery);
   if (state.currentBusinessId) params.set("negocio", String(state.currentBusinessId));
@@ -631,16 +705,71 @@ function setView(view) {
   alignListToHeader();
 }
 
-/* Al cambiar de vista estando abajo, deja el listado justo debajo de la cabecera */
+/* Al cambiar de vista, deja visibles los controles al inicio del listado. */
 function alignListToHeader() {
   const toolbar = document.getElementById("resultsToolbar");
   if (!toolbar) return;
   const align = () => {
-    const offset = toolbar.getBoundingClientRect().top - ui.header.offsetHeight - 12;
+    const headerBottom = ui.header.getBoundingClientRect().bottom;
+    const visibleHeader = Math.max(0, Math.min(ui.header.offsetHeight, headerBottom));
+    const offset = toolbar.getBoundingClientRect().top - visibleHeader - 12;
     if (offset < 0) window.scrollBy({ top: offset, behavior: "instant" });
   };
   align();
   requestAnimationFrame(() => requestAnimationFrame(align));
+}
+
+function setupHeaderScroll() {
+  const header = ui.header;
+  let stickyStart = header.offsetTop;
+  let compactHeight = compactOffset();
+  let hidden = Math.max(0, Math.min(header.offsetHeight, window.scrollY - stickyStart));
+  let lastY = window.scrollY;
+
+  function compactOffset() {
+    if (!window.matchMedia("(max-width: 767px)").matches) return 0;
+    const search = header.querySelector("#mobileSearch");
+    if (!search || getComputedStyle(search).display === "none") return 0;
+    return Math.max(0, search.getBoundingClientRect().top - header.getBoundingClientRect().top - 12);
+  }
+
+  const render = () => {
+    header.style.transform = hidden > 0.5 ? `translate3d(0, ${-hidden}px, 0)` : "";
+  };
+
+  render();
+  window.addEventListener("scroll", () => {
+    const y = window.scrollY;
+    const previousY = lastY;
+    const delta = y - previousY;
+    const height = header.offsetHeight;
+    lastY = y;
+
+    if (y <= stickyStart) {
+      hidden = 0;
+    } else if (delta > 0.5) {
+      // En bajada, la cabecera se va al mismo ritmo que el scroll.
+      const distance = y - Math.max(previousY, stickyStart);
+      hidden = Math.min(height, hidden + Math.max(0, distance));
+    } else if (delta < -0.5) {
+      // En subida, aparece gradualmente. Mantiene buscador y pestañas visibles;
+      // al acercarse al inicio también reaparece la fila del logo.
+      hidden = Math.max(compactHeight, Math.min(height, hidden + delta));
+      if (y <= stickyStart + compactHeight) {
+        hidden = Math.min(hidden, Math.max(0, y - stickyStart));
+      }
+    }
+
+    render();
+  }, { passive: true });
+
+  window.addEventListener("resize", () => {
+    stickyStart = header.offsetTop;
+    compactHeight = compactOffset();
+    hidden = Math.max(0, Math.min(header.offsetHeight, window.scrollY - stickyStart));
+    lastY = window.scrollY;
+    render();
+  });
 }
 
 /* ---------- detalle ---------- */
@@ -728,6 +857,12 @@ function handlePopState() {
   }
   const category = params.get("cat");
   if (category && categoriesForCurrentView().includes(category)) state.category = category;
+  const type = params.get("tipo");
+  state.promoTipo = viewFromUrl === "promos" ? promoTypeFromSlug(type) : "Todos";
+  const price = params.get("precio");
+  state.promoPrecio = viewFromUrl === "promos" && state.promoTipo === "Descuento" && priceBands.some((band) => band.value === price) ? price : "Todos";
+  ui.precio.value = state.promoPrecio;
+  setupSort();
   render();
 
   const businessId = Number(params.get("negocio") || params.get("open"));
@@ -816,10 +951,8 @@ function resetFilters() {
     state.bizSort = "destacados";
     ui.floor.value = "Todos";
   } else {
-    state.promoTipo = "Todos";
     state.promoPrecio = "Todos";
     state.promoSort = "price-asc";
-    ui.tipo.value = "Todos";
     ui.precio.value = "Todos";
   }
   setupSort();
@@ -857,6 +990,29 @@ function bindEvents() {
   });
 
   ui.categoryList.addEventListener("click", (event) => {
+    const typeLink = event.target.closest("[data-promo-type]");
+    if (typeLink) {
+      event.preventDefault();
+      const nextType = typeLink.dataset.promoType;
+      if (nextType === state.promoTipo) return;
+      state.promoTipo = nextType;
+      if (nextType !== "Descuento") {
+        state.promoPrecio = "Todos";
+        ui.precio.value = "Todos";
+      }
+      setupSort();
+      state.view = "promos";
+      document.body.dataset.view = "promos";
+      document.querySelectorAll("[data-view]").forEach((link) => {
+        const active = link.dataset.view === "promos";
+        link.classList.toggle("is-active", active);
+        if (active) link.setAttribute("aria-current", "page");
+        else link.removeAttribute("aria-current");
+      });
+      history.pushState(null, "", typeLink.href);
+      render();
+      return;
+    }
     const button = event.target.closest("[data-category]");
     if (!button) return;
     state.category = button.dataset.category;
@@ -865,7 +1021,6 @@ function bindEvents() {
 
   ui.categoryFilter.addEventListener("change", () => { state.category = ui.categoryFilter.value; render(); });
   ui.floor.addEventListener("change", () => { state.floor = ui.floor.value; render(); });
-  ui.tipo.addEventListener("change", () => { state.promoTipo = ui.tipo.value; render(); });
   ui.precio.addEventListener("change", () => { state.promoPrecio = ui.precio.value; render(); });
 
   function applySort(value) {
@@ -987,63 +1142,6 @@ function bindEvents() {
   });
 }
 
-function setupHeaderScroll() {
-  const header = ui.header;
-  let hidden = 0;      // px que la cabecera está fuera de la pantalla
-  let target = 0;      // px que debería estar según el scroll
-  let lastY = window.scrollY;
-  let frame = 0;
-
-  const compactOffset = () => {
-    if (!window.matchMedia("(max-width: 767px)").matches) return 0;
-    const search = header.querySelector("#mobileSearch");
-    if (!search || getComputedStyle(search).display === "none") return 0;
-    const topGap = 12;
-    return Math.max(0, search.getBoundingClientRect().top - header.getBoundingClientRect().top - topGap);
-  };
-
-  let compactHeight = compactOffset();
-
-  const paint = () => {
-    hidden += (target - hidden) * 0.3;
-    if (Math.abs(target - hidden) < 0.4) hidden = target;
-    header.style.transform = hidden > 0.4 ? `translate3d(0, ${(-hidden).toFixed(2)}px, 0)` : "";
-    frame = hidden === target ? 0 : requestAnimationFrame(paint);
-  };
-
-  const schedule = () => {
-    if (!frame) frame = requestAnimationFrame(paint);
-  };
-
-  const onScroll = () => {
-    const y = window.scrollY;
-    const delta = y - lastY;
-    const height = header.offsetHeight;
-    lastY = y;
-
-    if (y <= 0) target = 0;
-    else if (delta > 0.5) target = height;
-    else if (delta < -0.5) target = compactHeight;
-
-    if (target > height) {
-      target = height;
-    }
-
-    schedule();
-  };
-
-  window.addEventListener("scroll", onScroll, { passive: true });
-
-  window.addEventListener("resize", () => {
-    const height = header.offsetHeight;
-    compactHeight = compactOffset();
-    target = window.scrollY <= 0 ? 0 : Math.max(0, Math.min(height, target));
-    hidden = Math.max(0, Math.min(height, hidden));
-    lastY = window.scrollY;
-    schedule();
-  });
-}
-
 async function init() {
   setupCategoryNav();
   setupHeaderScroll();
@@ -1094,6 +1192,11 @@ async function init() {
   setupSort();
   const requestedCategory = params.get("cat");
   if (requestedCategory && categoriesForCurrentView().includes(requestedCategory)) state.category = requestedCategory;
+  state.promoTipo = initialView === "promos" ? promoTypeFromSlug(params.get("tipo")) : "Todos";
+  const requestedPrice = params.get("precio");
+  state.promoPrecio = initialView === "promos" && state.promoTipo === "Descuento" && priceBands.some((band) => band.value === requestedPrice) ? requestedPrice : "Todos";
+  ui.precio.value = state.promoPrecio;
+  setupSort();
   const requestedQuery = params.get("q") || "";
   if (requestedQuery.trim()) {
     state.search = normalize(requestedQuery);

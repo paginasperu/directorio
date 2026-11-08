@@ -37,7 +37,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="assets/css/tailwind.css?v=1665b044988e">
     <link rel="stylesheet" href="assets/css/styles.css?v=dc65bfc6571e">
-    <link rel="stylesheet" href="style.css?v=3dcd8f3c626d">
+    <link rel="stylesheet" href="style.css?v=5a9d3ff05fce">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=optional" rel="stylesheet">
 </head>
 <body class="fm-page min-h-screen flex flex-col">
@@ -65,7 +65,7 @@
 
             <div class="header-search hidden md:flex items-center min-w-0">
                 <form class="relative flex-1 min-w-0" onsubmit="event.preventDefault()">
-                    <input type="search" id="businessSearch" aria-label="Buscar negocios o promociones" placeholder="Buscar negocios o promociones" class="app-input w-full pr-12" autocomplete="off">
+                    <input type="search" id="businessSearch" aria-label="Buscar negocios o promociones" placeholder="Buscar en Directorio" class="app-input w-full pr-12" autocomplete="off">
                     <button type="submit" aria-label="Ver resultados" title="Ver resultados" class="app-input-btn">
                         <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>
                     </button>
@@ -74,18 +74,12 @@
 
             <div id="mobileSearch" class="md:hidden">
                 <form class="relative flex-1" onsubmit="event.preventDefault()">
-                    <input type="search" id="mobileBusinessSearch" aria-label="Buscar negocios o promociones" placeholder="Buscar negocios o promociones" class="app-input w-full pr-12" autocomplete="off">
+                    <input type="search" id="mobileBusinessSearch" aria-label="Buscar negocios o promociones" placeholder="Buscar en Directorio" class="app-input w-full pr-12" autocomplete="off">
                     <button type="submit" aria-label="Ver resultados" title="Ver resultados" class="app-input-btn">
                         <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>
                     </button>
                 </form>
             </div>
-
-            <button id="filterToggle" type="button" aria-controls="moreFilters" aria-expanded="false" aria-label="Filtros" class="filter-toggle app-filter">
-                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 5h17l-6.5 7.5V18l-4 2v-7.5L3.5 5Z"/></svg>
-                <span>Filtros</span>
-                <span id="filterCount" class="filter-count" hidden></span>
-            </button>
 
             <a href="https://wa.me/51950141414?text=Hola%2C%20quiero%20registrarme%20en%20el%20directorio..." target="_blank" rel="noopener noreferrer" class="subscribe-soft app-subscribe-inline">Registrar negocio</a>
             <a href="https://wa.me/51950141414?text=Hola%2C%20quiero%20registrarme%20en%20el%20directorio..." target="_blank" rel="noopener noreferrer" class="subscribe-soft app-subscribe-mobile">Registrar negocio</a>
@@ -106,7 +100,7 @@
     <section class="app-cats" aria-label="Categorías">
         <div class="app-cats__inner">
             <div class="category-strip">
-                <nav id="categoryList" aria-label="Categorías"></nav>
+                <nav id="categoryList" aria-label="Categorías y tipos de promoción"></nav>
             </div>
             <button type="button" class="cat-nav cat-nav--prev" aria-label="Ver categorías anteriores">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
@@ -125,13 +119,20 @@
             <div id="resultsToolbar" class="results-toolbar" aria-label="Orden y filtros de resultados">
                 <p id="resultsCount" class="results-count" aria-live="polite"></p>
 
-                <div class="results-actions">
-                    <label for="sortSelect" class="results-sort-label">Ordenar por</label>
-                    <select id="sortSelect" aria-label="Ordenar resultados" class="results-sort">
-                        <option value="destacados">Destacados</option>
-                        <option value="name">Nombre A–Z</option>
-                        <option value="piso">Piso</option>
-                    </select>
+                <div class="results-controls">
+                    <button id="filterToggle" type="button" aria-controls="moreFilters" aria-expanded="false" aria-label="Filtrar" class="filter-toggle app-filter">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 5h17l-6.5 7.5V18l-4 2v-7.5L3.5 5Z"/></svg>
+                        <span>Filtrar</span>
+                        <span id="filterCount" class="filter-count" hidden></span>
+                    </button>
+                    <div class="results-actions">
+                        <svg class="results-sort-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m3 16 4 4 4-4M7 20V4m14 4-4-4-4 4m4-4v16"/></svg>
+                        <select id="sortSelect" aria-label="Ordenar resultados" class="results-sort">
+                            <option value="destacados">Destacados</option>
+                            <option value="name">Nombre A–Z</option>
+                            <option value="piso">Piso</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
@@ -202,11 +203,7 @@
             </div>
 
             <div id="promoFilters" class="space-y-6 hidden">
-                <div>
-                    <label for="tipoFilter" class="block font-bold text-slate-800 mb-1.5">Tipo de promoción</label>
-                    <select id="tipoFilter" class="w-full h-10 px-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-300"></select>
-                </div>
-                <div>
+                <div id="promoPriceFilter">
                     <label for="precioFilter" class="block font-bold text-slate-800 mb-1.5">Precio</label>
                     <select id="precioFilter" class="w-full h-10 px-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-300"></select>
                 </div>
@@ -243,6 +240,6 @@
         </div>
     </footer>
 
-    <script type="module" src="app.js?v=017ba6afba28"></script>
+    <script type="module" src="app.js?v=fd367347c42c"></script>
 </body>
 </html>
