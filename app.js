@@ -994,6 +994,16 @@ function setupHeaderScroll() {
   let lastY = window.scrollY;
   let frame = 0;
 
+  const compactOffset = () => {
+    if (!window.matchMedia("(max-width: 767px)").matches) return 0;
+    const search = header.querySelector("#mobileSearch");
+    if (!search || getComputedStyle(search).display === "none") return 0;
+    const topGap = 12;
+    return Math.max(0, search.getBoundingClientRect().top - header.getBoundingClientRect().top - topGap);
+  };
+
+  let compactHeight = compactOffset();
+
   const paint = () => {
     hidden += (target - hidden) * 0.3;
     if (Math.abs(target - hidden) < 0.4) hidden = target;
@@ -1005,17 +1015,18 @@ function setupHeaderScroll() {
     if (!frame) frame = requestAnimationFrame(paint);
   };
 
-  const pinAt = () => 0;
-
   const onScroll = () => {
     const y = window.scrollY;
     const delta = y - lastY;
     const height = header.offsetHeight;
     lastY = y;
 
-    if (y <= pinAt()) target = 0;
-    else if (Math.abs(delta) > 0.5) {
-      target = Math.max(0, Math.min(height, target + delta));
+    if (y <= 0) target = 0;
+    else if (delta > 0.5) target = height;
+    else if (delta < -0.5) target = compactHeight;
+
+    if (target > height) {
+      target = height;
     }
 
     schedule();
@@ -1025,7 +1036,8 @@ function setupHeaderScroll() {
 
   window.addEventListener("resize", () => {
     const height = header.offsetHeight;
-    target = window.scrollY <= pinAt() ? 0 : Math.max(0, Math.min(height, target));
+    compactHeight = compactOffset();
+    target = window.scrollY <= 0 ? 0 : Math.max(0, Math.min(height, target));
     hidden = Math.max(0, Math.min(height, hidden));
     lastY = window.scrollY;
     schedule();

@@ -1205,8 +1205,6 @@
   text-decoration: none;
 }
 
-.app-brand-inline .header-brand-name { display: none; }
-
 .app-brand-inline .d2-brand-mark {
   width: 30px;
   height: 30px;
@@ -1949,6 +1947,34 @@ body[data-view="promos"] #loadMoreWrap {
     height: 48px;
   }
 
+  .app-brand-inline .d2-brand-mark {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 767px) {
+  .app-search-row {
+    row-gap: 12px;
+  }
+
+  .app-brand-inline {
+    height: 36px;
+  }
+
+  .app-brand-inline .d2-brand-mark {
+    width: 36px;
+    height: 36px;
+  }
+
+  .app-subscribe-mobile {
+    grid-column: 1 / -1;
+    justify-self: end;
+    padding-right: 0;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
   .app-brand-inline .d2-brand-mark {
     width: 36px;
     height: 36px;
