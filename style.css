@@ -967,9 +967,7 @@
 
   .app-cats #categoryList .category-option {
     flex: 0 0 auto;
-    width: auto;
-    min-width: 88px;
-    padding: 0 6px;
+    width: 88px;
   }
 
   .cat-nav { display: grid; }
@@ -1583,30 +1581,8 @@
 }
 
 /* Tipos de promoción: mismo patrón vertical que las categorías de Negocios. */
-.app-cats #categoryList.category-list--promo-types {
-  align-items: center;
-  gap: 18px;
-}
-
 .app-cats #categoryList.category-list--promo-types .category-option--promo-type {
-  display: flex;
-  flex: 0 0 auto;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  width: 76px;
-  min-width: 76px;
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  background: none;
-  color: #3f4652;
-  font-size: 11px;
-  font-weight: 600;
-  line-height: 1.15;
   text-decoration: none;
-  white-space: nowrap;
 }
 
 .app-cats #categoryList.category-list--promo-types .category-option--promo-type:hover {
@@ -1639,16 +1615,6 @@
 .app-cats #categoryList.category-list--promo-types .category-option--promo-type.is-active .category-option__icon {
   background: #1d1d1f;
   color: #fff;
-}
-
-body[data-view="promos"] .app-cats__inner {
-  display: flex;
-  align-items: center;
-}
-
-body[data-view="promos"] .app-cats .category-strip {
-  flex: 1;
-  min-width: 0;
 }
 
 /* ---------- Promociones: banda de ofertas + ficha limpia ---------- */
