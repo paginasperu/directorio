@@ -695,6 +695,14 @@
   flex: none;
 }
 
+.official-wordmark {
+  display: block;
+  width: 84px;
+  height: 24px;
+  flex: none;
+  object-fit: contain;
+}
+
 @media (max-width: 640px) {
   .d2-brand-mark {
     width: 28px;
@@ -2017,6 +2025,12 @@ body[data-view="promos"] #loadMoreWrap {
 
   .app-brand-inline {
     height: 36px;
+    width: 84px;
+  }
+
+  .app-brand-inline .official-wordmark {
+    width: 84px;
+    height: 24px;
   }
 
   .app-brand-inline .d2-brand-mark {
