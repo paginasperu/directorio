@@ -721,10 +721,15 @@ function alignListToHeader() {
 
 function setupHeaderScroll() {
   const header = ui.header;
-  let stickyStart = header.offsetTop;
+  // El marcador permanece en el flujo; offsetTop de un sticky cambia al bajar.
+  const origin = document.getElementById("headerOrigin");
+  const readStart = () => origin.getBoundingClientRect().top + window.scrollY;
+  const readY = () => Math.max(0, Math.min(window.scrollY,
+    document.documentElement.scrollHeight - window.innerHeight));
+  let stickyStart = readStart();
   let compactHeight = compactOffset();
   let hidden = Math.max(0, Math.min(header.offsetHeight, window.scrollY - stickyStart));
-  let lastY = window.scrollY;
+  let lastY = readY();
 
   function compactOffset() {
     if (!window.matchMedia("(max-width: 767px)").matches) return 0;
@@ -739,7 +744,7 @@ function setupHeaderScroll() {
 
   render();
   window.addEventListener("scroll", () => {
-    const y = window.scrollY;
+    const y = readY();
     const previousY = lastY;
     const delta = y - previousY;
     const height = header.offsetHeight;
@@ -763,13 +768,20 @@ function setupHeaderScroll() {
     render();
   }, { passive: true });
 
-  window.addEventListener("resize", () => {
-    stickyStart = header.offsetTop;
+  function refreshGeometry() {
+    stickyStart = readStart();
     compactHeight = compactOffset();
-    hidden = Math.max(0, Math.min(header.offsetHeight, window.scrollY - stickyStart));
-    lastY = window.scrollY;
+    const distance = Math.max(0, readY() - stickyStart);
+    // Conserva el estado al cambiar las barras de Chrome, el teclado o la orientación.
+    hidden = Math.min(header.offsetHeight, distance, Math.max(compactHeight, hidden));
+    lastY = readY();
     render();
-  });
+  }
+  window.addEventListener("resize", refreshGeometry);
+  const geometryObserver = new ResizeObserver(refreshGeometry);
+  geometryObserver.observe(header);
+  const installBanner = document.getElementById("installBanner");
+  if (installBanner) geometryObserver.observe(installBanner);
 }
 
 /* ---------- detalle ---------- */
